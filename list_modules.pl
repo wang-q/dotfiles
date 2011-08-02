@@ -87,7 +87,7 @@ gen_cmd( $dual_dists, "dual life" );
 {
     my $dists = Set::Scalar->new;
     for my $i ( $all_dists->members ) {
-        if ( $i =~ /^(Math|Statistics|Crypt|Digest|PDL)/i ) {
+        if ( $i =~ /^(Math|Stat|Crypt|Digest|PDL)/i ) {
             $dists->insert($i);
         }
     }
@@ -149,9 +149,27 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
+
+    # dzil and plugins
+    my $dists = Set::Scalar->new(qw{ Dist-Zilla });
+    $dists->insert( find_all_down_deps($dists) );
+    $dists = $dists->intersection($all_dists);
+    $dists->insert(
+        qw{ File-Find-Rule Parse-CSV Readonly Set-Light Set-Scalar
+            Spreadsheet-WriteExcel Excel-Writer-XLSX Time-Duration Pod-POM-Web
+            App-Ack Chart-Math-Axis Data-UUID YAML POE }
+    );
+    $dists->insert( find_all_deps($dists) );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists     = Set::Scalar->new(@deps);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "aligndb" );
+}
+
+{
     my $dists = Set::Scalar->new;
     for my $i ( $all_dists->members ) {
-        if ( $i =~ /(?:Wx|wx|Tk|Gtk|Glib|Gnome|Cairo|Pango|Canvas)/ ) {
+        if ( $i =~ /(?:Wx|wx|Tk|Gtk|Glib|Gnome|Cairo|Pango|Canvas|gui)/i ) {
             $dists->insert($i);
         }
     }
@@ -329,7 +347,7 @@ sub module2dist {
         return $mo->distribution;
     }
     else {
-        return undef;
+        return;
     }
 }
 
@@ -343,7 +361,7 @@ sub dist2release {
         return $distribution->release;
     }
     else {
-        return undef;
+        return;
     }
 }
 
