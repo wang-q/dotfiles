@@ -14,7 +14,7 @@ use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 # GetOpt section
 #----------------------------------------------------------#
 
-my $backup_dir = 'E:\Software\AppData';
+my $backup_dir = 'd:\Software\AppData';
 
 my $man  = 0;
 my $help = 0;
@@ -82,24 +82,24 @@ my %backup_of = (
         ],
     },
 
-    Scripts => { dir => [ dir('E:\wq\Scripts') ], },
-    zotero  => { dir => [ dir('E:\zotero') ], },
+    Scripts => { dir => [ dir('d:\wq\Scripts') ], },
+    zotero  => { dir => [ dir('d:\zotero') ], },
 
     bioinfo => {
         dir => [
-            dir('D:\Tools\clustalw1.83.XP'), dir('D:\Tools\clustalx1.81'),
-            dir('D:\Tools\HYPHY'),           dir('D:\Tools\muscle'),
-            dir('D:\Tools\paml'),            dir('D:\Tools\PAUP'),
-            dir('D:\Tools\phylip'),          dir('D:\Tools\Primer3'),
-            dir('D:\Tools\ProSeq'),          dir('D:\Tools\readseq'),
+            dir('c:\Tools\clustalw1.83.XP'), dir('c:\Tools\clustalx1.81'),
+            dir('c:\Tools\HYPHY'),           dir('c:\Tools\muscle'),
+            dir('c:\Tools\paml'),            dir('c:\Tools\PAUP'),
+            dir('c:\Tools\phylip'),          dir('c:\Tools\Primer3'),
+            dir('c:\Tools\ProSeq'),          dir('c:\Tools\readseq'),
         ],
     },
     NetProxy => {
         dir => [
-            dir('D:\Tools\CCProxy'),  dir('D:\Tools\FreeCap'),
-            dir('D:\Tools\mproxy12'), dir('D:\Tools\QQWry'),
+            dir('c:\Tools\CCProxy'),  dir('c:\Tools\FreeCap'),
+            dir('c:\Tools\mproxy12'), dir('c:\Tools\QQWry'),
         ],
-        file => [ file('D:\proxy.pac') ],
+        file => [ file('c:\proxy.pac') ],
         reg  => {
             freecap      => q{"HKEY_CURRENT_USER\Software\Bert's Software"},
             fc_uninstall => q{"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows}
