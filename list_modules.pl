@@ -99,6 +99,49 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
+    my $dists = Set::Scalar->new;
+    for my $i ( $all_dists->members ) {
+        if ( $i =~ /Win32/i ) {
+            $dists->insert($i);
+        }
+    }
+    $dists->insert( find_all_down_deps($dists) );
+    $dists     = $dists->intersection($all_dists);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "win32" );
+}
+
+{
+    my $dists = Set::Scalar->new;
+    for my $i ( $all_dists->members ) {
+        if ( $i
+            =~ /(?:Wx|Tk|Gtk|Glib|Gnome|Cairo|Pango|Canvas|gui|Padre|SDL|OpenGL|Games)/i
+            )
+        {
+            $dists->insert($i);
+        }
+    }
+    $dists->insert( find_all_down_deps($dists) );
+    $dists     = $dists->intersection($all_dists);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "gui" );
+}
+
+{
+    my $dists = Set::Scalar->new;
+    for my $i ( $all_dists->members ) {
+        if ( $i =~ /CPAN/i ) {
+            $dists->insert($i);
+        }
+    }
+    $dists->insert( find_all_deps($dists) );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists     = Set::Scalar->new(@deps);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "CPAN" );
+}
+
+{
     my $dists = Set::Scalar->new(qw{ Any-Moose Class-MOP Moose Mouse });
     for my $i ( $all_dists->members ) {
         if ( $i =~ /Mo[ou]seX/i ) {
@@ -127,20 +170,6 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
-    my $dists = Set::Scalar->new;
-    for my $i ( $all_dists->members ) {
-        if ( $i =~ /CPAN/i ) {
-            $dists->insert($i);
-        }
-    }
-    $dists->insert( find_all_deps($dists) );
-    my @deps = grep { $all_dists->has($_) } $dists->elements;
-    $dists     = Set::Scalar->new(@deps);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "CPAN" );
-}
-
-{
     my $dists = Set::Scalar->new(
         qw{ Task-Catalyst Task-Catalyst-Tutorial Task-Dancer });
     $dists->insert( find_all_deps($dists) );
@@ -157,24 +186,11 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
-    my $dists = Set::Scalar->new;
-    for my $i ( $all_dists->members ) {
-        if ( $i =~ /Win32/i ) {
-            $dists->insert($i);
-        }
-    }
-    $dists->insert( find_all_down_deps($dists) );
-    $dists     = $dists->intersection($all_dists);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "win32" );
-}
-
-{
     my $dists = Set::Scalar->new(qw{ Dist-Zilla Pod-Weaver});
     $dists->insert( find_all_down_deps($dists) );
     $dists->insert( find_all_deps($dists) );
     for my $i ( $all_dists->members ) {
-        if ( $i =~ /(?:Dist::Zilla|Pod::Weaver)/i ) {
+        if ( $i =~ /(?:Zilla|Weaver)/i ) {
             $dists->insert($i);
         }
     }
@@ -199,22 +215,6 @@ gen_cmd( $dual_dists, "dual life" );
     $dists     = Set::Scalar->new(@deps);
     $all_dists = $all_dists->difference($dists);
     gen_cmd( $dists, "aligndb" );
-}
-
-{
-    my $dists = Set::Scalar->new;
-    for my $i ( $all_dists->members ) {
-        if ( $i
-            =~ /(?:Wx|Tk|Gtk|Glib|Gnome|Cairo|Pango|Canvas|gui|Padre|SDL|OpenGL|Games)/i
-            )
-        {
-            $dists->insert($i);
-        }
-    }
-    $dists->insert( find_all_down_deps($dists) );
-    $dists     = $dists->intersection($all_dists);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "gui" );
 }
 
 gen_cmd( $all_dists, "all left" );
