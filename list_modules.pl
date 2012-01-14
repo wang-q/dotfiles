@@ -127,12 +127,33 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
-    my $dists = Set::Scalar->new(qw{ Task-Catalyst Task-Catalyst-Tutorial });
+    my $dists = Set::Scalar->new;
+    for my $i ( $all_dists->members ) {
+        if ( $i =~ /CPAN/i ) {
+            $dists->insert($i);
+        }
+    }
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
     $dists     = Set::Scalar->new(@deps);
     $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "catalyst" );
+    gen_cmd( $dists, "CPAN" );
+}
+
+{
+    my $dists = Set::Scalar->new(
+        qw{ Task-Catalyst Task-Catalyst-Tutorial Task-Dancer });
+    $dists->insert( find_all_deps($dists) );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists = Set::Scalar->new(@deps);
+
+    for my $i ( $all_dists->members ) {
+        if ( $i =~ /(?:catalyst|dancer)/i ) {
+            $dists->insert($i);
+        }
+    }
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "catalyst-dancer" );
 }
 
 {
@@ -149,15 +170,29 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
+    my $dists = Set::Scalar->new(qw{ Dist-Zilla Pod-Weaver});
+    $dists->insert( find_all_down_deps($dists) );
+    $dists->insert( find_all_deps($dists) );
+    for my $i ( $all_dists->members ) {
+        if ( $i =~ /(?:Dist::Zilla|Pod::Weaver)/i ) {
+            $dists->insert($i);
+        }
+    }
+    $dists     = $dists->intersection($all_dists);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "dist-zilla" );
+}
+
+{
 
     # dzil and plugins
-    my $dists = Set::Scalar->new(qw{ Dist-Zilla });
-    $dists->insert( find_all_down_deps($dists) );
-    $dists = $dists->intersection($all_dists);
+    my $dists = Set::Scalar->new;
     $dists->insert(
-        qw{ File-Find-Rule Parse-CSV Readonly Set-Light Set-Scalar
-            Spreadsheet-WriteExcel Excel-Writer-XLSX Time-Duration Pod-POM-Web
-            App-Ack Chart-Math-Axis Data-UUID YAML POE }
+        qw{ App-Ack
+            Chart-Math-Axis Config-Tiny Data-Stag Data-UUID Excel-Writer-XLSX
+            File-Find-Rule GD GD-SVG Graph JSON JSON-XS List-MoreUtils
+            Number-Format Parse-CSV Pod-POM-Web POE Readonly Set-Light
+            Set-Scalar Spreadsheet-WriteExcel Text-CSV_XS Time-Duration YAML }
     );
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
@@ -169,7 +204,10 @@ gen_cmd( $dual_dists, "dual life" );
 {
     my $dists = Set::Scalar->new;
     for my $i ( $all_dists->members ) {
-        if ( $i =~ /(?:Wx|wx|Tk|Gtk|Glib|Gnome|Cairo|Pango|Canvas|gui)/i ) {
+        if ( $i
+            =~ /(?:Wx|Tk|Gtk|Glib|Gnome|Cairo|Pango|Canvas|gui|Padre|SDL|OpenGL|Games)/i
+            )
+        {
             $dists->insert($i);
         }
     }
@@ -198,7 +236,7 @@ sub gen_cmd {
 
     print "# $name\n" if $name;
     print "# There are ", scalar @modules, " modules\n";
-    print "cpan @modules\n\n";
+    print "cpanm @modules\n\n";
 }
 
 sub merge_modules {
@@ -210,7 +248,7 @@ sub merge_modules {
         next unless defined $mo;
         next unless defined $mo->inst_file;
         next
-            if $mo->cpan_file =~ /perl\-5/;  # skip non-dual-life core modules
+            if $mo->cpan_file =~ /perl\-5/;    # skip non-dual-life core modules
 
         my $dist = $mo->cpan_file;
         if ( exists $distributions{$dist} ) {
