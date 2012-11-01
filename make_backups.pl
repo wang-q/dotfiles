@@ -94,18 +94,19 @@ my %backup_of = (
             dir('c:\Tools\ProSeq'),          dir('c:\Tools\readseq'),
         ],
     },
-    NetProxy => {
-        dir => [
-            dir('c:\Tools\CCProxy'),  dir('c:\Tools\FreeCap'),
-            dir('c:\Tools\mproxy12'), dir('c:\Tools\QQWry'),
-        ],
-        file => [ file('c:\proxy.pac') ],
-        reg  => {
-            freecap      => q{"HKEY_CURRENT_USER\Software\Bert's Software"},
-            fc_uninstall => q{"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows}
-                . q{\CurrentVersion\Uninstall\FreeCap_is1"},
-        },
-    },
+    
+    #NetProxy => {
+    #    dir => [
+    #        dir('c:\Tools\CCProxy'),  dir('c:\Tools\FreeCap'),
+    #        dir('c:\Tools\mproxy12'), dir('c:\Tools\QQWry'),
+    #    ],
+    #    file => [ file('c:\proxy.pac') ],
+    #    reg  => {
+    #        freecap      => q{"HKEY_CURRENT_USER\Software\Bert's Software"},
+    #        fc_uninstall => q{"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows}
+    #            . q{\CurrentVersion\Uninstall\FreeCap_is1"},
+    #    },
+    #},
 
     #vcs => { dir => [ dir('D:\Tools\Git'), dir('D:\Tools\subversion'), ], },
     #VanDyke     => { dir => [ dir( $ENV{APPDATA}, 'VanDyke' ) ], },
