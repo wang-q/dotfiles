@@ -57,10 +57,14 @@ my %backup_of = (
     XShell        => { dir => [ dir( $ENV{APPDATA}, 'NetSarang' ) ], },
 
     dots => {
-        dir  => [ dir( $ENV{USERPROFILE}, '.crossftp' ) ],
+        dir => [
+            dir( $ENV{USERPROFILE}, '.crossftp' ),
+            dir( $ENV{USERPROFILE}, '.ssh' )
+        ],
         file => [
             file( $ENV{USERPROFILE}, '.bash_history' ),
             file( $ENV{USERPROFILE}, '.gitconfig' ),
+            file( $ENV{USERPROFILE}, '.gitk' ),
             file( $ENV{USERPROFILE}, '.gtkrc-2.0' ),
             file( $ENV{USERPROFILE}, '.minicpanrc' ),
             file( $ENV{USERPROFILE}, '.perldl_hist' ),
@@ -94,7 +98,7 @@ my %backup_of = (
             dir('c:\Tools\ProSeq'),          dir('c:\Tools\readseq'),
         ],
     },
-    
+
     #NetProxy => {
     #    dir => [
     #        dir('c:\Tools\CCProxy'),  dir('c:\Tools\FreeCap'),
@@ -108,18 +112,6 @@ my %backup_of = (
     #    },
     #},
 
-    #vcs => { dir => [ dir('D:\Tools\Git'), dir('D:\Tools\subversion'), ], },
-    #VanDyke     => { dir => [ dir( $ENV{APPDATA}, 'VanDyke' ) ], },
-    #freeime  => { dir => [ dir('D:\Tools\freeime') ], },
-    #Perforce => { dir => [ dir('D:\Tools\Perforce') ], },
-    #EverNote => {
-    #    dir =>
-    #        [ dir( $ENV{USERPROFILE}, 'Documents', 'My EverNote Files' ), ],
-    #},
-    #FlashFXP => {
-    #    dir =>
-    #        [ dir( $ENV{ALLUSERSPROFILE}, 'Application Data', 'FlashFXP' ) ],
-    #},
     #ultraedit => {
     #    dir => [
     #        dir( $ENV{APPDATA}, 'IDMComp' ),
