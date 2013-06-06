@@ -69,13 +69,12 @@ gen_cmd( $dual_dists, "dual life" );
 #----------------------------------------------------------#
 {
     my $dists = Set::Scalar->new(
-        qw{ Test-Assert Test-Assertions Test-Base
-            Test-Block Test-Class Test-ClassAPI Test-Compile Test-Deep
-            Test-Differences Test-Exception Test-LongString Test-Memory-Cycle
-            Test-Manifest Test-MockObject Test-Most Test-NoWarnings
-            Test-Output Test-Perl-Critic Test-Pod Test-Pod-Coverage
-            Test-Script Test-TempDir Test-Tester Test-Unit-Lite Test-Warn
-            Test-use-ok }
+        qw{ Test-Assert Test-Assertions Test-Base Test-Block Test-Class
+            Test-ClassAPI Test-Compile Test-Deep Test-Differences Test-Exception
+            Test-LongString Test-Memory-Cycle Test-Manifest Test-MockObject
+            Test-Most Test-NoWarnings Test-Output Test-Perl-Critic Test-Pod
+            Test-Pod-Coverage Test-Script Test-TempDir Test-Tester
+            Test-Unit-Lite Test-Warn Test-use-ok }
     );
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
@@ -142,9 +141,24 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
-    my $dists = Set::Scalar->new(qw{ Any-Moose Class-MOP Moose Mouse });
+    my $dists = Set::Scalar->new(
+        qw{ App-Ack App-cpanminus App-cpanoutdated App-pmuninstall App-FatPacker
+            Devel-NYTProf Devel-REPL Devel-Cover ExtUtils-PkgConfig
+            ExtUtils-Depends ExtUtils-Config ExtUtils-InstallPaths Set-Scalar
+            Set-Object Set-Light Set-IntSpan Set-IntSpan-Island Set-IntSpan-Fast
+            Set-IntSpan-Partition Pod-POM-Web }
+    );
+    $dists->insert( find_all_deps($dists) );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists     = Set::Scalar->new(@deps);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "devel-tools" );
+}
+
+{
+    my $dists = Set::Scalar->new(qw{ Any-Moose Class-MOP Moose Mouse Moo });
     for my $i ( $all_dists->members ) {
-        if ( $i =~ /Mo[ou]seX/i ) {
+        if ( $i =~ /Mo[ou]/i ) {
             $dists->insert($i);
         }
     }
@@ -182,7 +196,7 @@ gen_cmd( $dual_dists, "dual life" );
         }
     }
     $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "catalyst-dancer" );
+    gen_cmd( $dists, "catalyst-dancer-mojo" );
 }
 
 {
@@ -200,15 +214,12 @@ gen_cmd( $dual_dists, "dual life" );
 }
 
 {
-
-    # dzil and plugins
     my $dists = Set::Scalar->new;
     $dists->insert(
-        qw{ App-Ack
-            Chart-Math-Axis Config-Tiny Data-Stag Data-UUID Excel-Writer-XLSX
-            File-Find-Rule GD GD-SVG Graph JSON JSON-XS List-MoreUtils
-            Number-Format Parse-CSV Pod-POM-Web POE Readonly Set-Light
-            Set-Scalar Spreadsheet-WriteExcel Text-CSV_XS Time-Duration YAML }
+        qw{ Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
+            Excel-Writer-XLSX File-Find-Rule GD GD-SVG Graph JSON JSON-XS
+            List-MoreUtils Number-Format Parse-CSV POE Readonly
+            Spreadsheet-WriteExcel Text-CSV_XS Time-Duration YAML }
     );
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
