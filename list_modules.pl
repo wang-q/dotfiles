@@ -142,19 +142,21 @@ gen_cmd( $dual_dists, "dual life" );
 
 {
     my $dists = Set::Scalar->new(
-        qw{ App-Ack App-cpanminus App-cpanoutdated App-pmuninstall App-FatPacker
-            Devel-NYTProf Devel-REPL Devel-Cover ExtUtils-PkgConfig
-            ExtUtils-Depends ExtUtils-Config ExtUtils-InstallPaths Set-Scalar
-            Set-Object Set-Light Set-IntSpan Set-IntSpan-Island Set-IntSpan-Fast
-            Set-IntSpan-Partition Pod-POM-Web }
+        qw{ Algorithm-Munkres Array-Compare Convert-Binary-C Data-Stag
+            Error File-Sort GraphViz HTML-TableExtract Math-Random
+            PostScript-TextBlock SVG SVG-Graph Spreadsheet-ParseExcel
+            XML-DOM-XPath XML-Parser-PerlSAX XML-SAX-Writer XML-Twig XML-Writer
+            Clone Config-General Font-TTF-Font GD GD-Image GD-SVG List-MoreUtils
+            List-Util Math-Bezier Math-Round Math-VecStat Memoize
+            Params-Validate Readonly Regexp-Common Sys-Hostname Text-Balanced
+            Text-Format }
     );
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
     $dists     = Set::Scalar->new(@deps);
     $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "devel-tools" );
+    gen_cmd( $dists, "bioperl-circos" );
 }
-
 {
     my $dists = Set::Scalar->new(qw{ Any-Moose Class-MOP Moose Mouse Moo });
     for my $i ( $all_dists->members ) {
@@ -167,6 +169,41 @@ gen_cmd( $dual_dists, "dual life" );
     $dists     = Set::Scalar->new(@deps);
     $all_dists = $all_dists->difference($dists);
     gen_cmd( $dists, "moose" );
+}
+
+{
+    my $dists = Set::Scalar->new(
+        qw{ Pod-POM-Web Graph EV
+            }
+    );
+    for my $i ( $all_dists->members ) {
+        if ( $i
+            =~ /^(AnyEvent|App|Class|Config|DBD|Devel|ExtUtils|File|Module|PAR|Pod|POE|Object|Set|SQL)/i
+            )
+        {
+            $dists->insert($i);
+        }
+    }
+    $dists->insert( find_all_deps($dists) );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists     = Set::Scalar->new(@deps);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "devel-tools" );
+}
+
+{
+    my $dists = Set::Scalar->new;
+    $dists->insert(
+        qw{ Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
+            Excel-Writer-XLSX File-Find-Rule GD Graph JSON JSON-XS Number-Format
+            Parse-CSV POE Proc-Background Readonly Spreadsheet-WriteExcel
+            Text-CSV_XS Time-Duration YAML }
+    );
+    $dists->insert( find_all_deps($dists) );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists     = Set::Scalar->new(@deps);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "aligndb" );
 }
 
 {
@@ -185,18 +222,28 @@ gen_cmd( $dual_dists, "dual life" );
 
 {
     my $dists = Set::Scalar->new(
-        qw{ Task-Catalyst Task-Catalyst-Tutorial Task-Dancer });
+        qw{ Task-Catalyst Task-Catalyst-Tutorial Task-Dancer Mojolicious });
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
     $dists = Set::Scalar->new(@deps);
 
     for my $i ( $all_dists->members ) {
-        if ( $i =~ /(?:catalyst|dancer)/i ) {
+        if ( $i =~ /(?:catalyst|dancer|mojo)/i ) {
             $dists->insert($i);
         }
     }
     $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "catalyst-dancer-mojo" );
+
+    for my $i ( $all_dists->members ) {
+        if ( $i =~ /^(HTML|WWW|LWP|HTTP)/i ) {
+            $dists->insert($i);
+        }
+    }
+    $dists->insert( find_all_deps($dists) );
+
+    $dists     = $dists->intersection($all_dists);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "catalyst-dancer-mojo-html" );
 }
 
 {
@@ -211,21 +258,6 @@ gen_cmd( $dual_dists, "dual life" );
     $dists     = $dists->intersection($all_dists);
     $all_dists = $all_dists->difference($dists);
     gen_cmd( $dists, "dist-zilla" );
-}
-
-{
-    my $dists = Set::Scalar->new;
-    $dists->insert(
-        qw{ Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
-            Excel-Writer-XLSX File-Find-Rule GD GD-SVG Graph JSON JSON-XS
-            List-MoreUtils Number-Format Parse-CSV POE Readonly
-            Spreadsheet-WriteExcel Text-CSV_XS Time-Duration YAML }
-    );
-    $dists->insert( find_all_deps($dists) );
-    my @deps = grep { $all_dists->has($_) } $dists->elements;
-    $dists     = Set::Scalar->new(@deps);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "aligndb" );
 }
 
 gen_cmd( $all_dists, "all left" );
