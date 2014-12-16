@@ -89,6 +89,13 @@ my %backup_of = (
     Scripts => { dir => [ dir('d:\wq\Scripts') ], },
     zotero  => { dir => [ dir('d:\zotero') ], },
 
+    ultraedit => {
+        dir => [
+            dir( $ENV{APPDATA}, 'IDMComp' ),
+            dir('c:/Program Files (x86)/IDM Computer Solutions/'),
+        ],
+    },
+
     bioinfo => {
         dir => [
             dir('c:\Tools\clustalw1.83.XP'), dir('c:\Tools\clustalx1.81'),
@@ -112,12 +119,6 @@ my %backup_of = (
     #    },
     #},
 
-    #ultraedit => {
-    #    dir => [
-    #        dir( $ENV{APPDATA}, 'IDMComp' ),
-    #        dir('D:\Program Files\IDM Computer Solutions\UltraEdit'),
-    #    ],
-    #},
 );
 
 #----------------------------------------------------------#

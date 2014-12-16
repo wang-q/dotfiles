@@ -4,6 +4,7 @@ use warnings;
 
 use Template;
 use File::Spec;
+use Number::Format qw(:subs);
 
 my $dirpath = shift || '.';
 $dirpath = File::Spec->rel2abs($dirpath);
@@ -26,7 +27,6 @@ __END__
 [% NEXT IF f.name.match('~') -%]
 [% NEXT IF f.name.match('\.bak') -%]
 [% PERL %]
-    use Number::Format qw(:subs);
     my $fullpath = $stash->get('f.path');
     my $wc_result = `wc $fullpath`;
     my ($lines, $words, $bytes, $name) = grep { $_ } split /\s+/, $wc_result;
@@ -36,7 +36,7 @@ __END__
     else {
         $stash->set('f.lines' => "$lines lines");
     }
-    $stash->set('f.bytes' => format_bytes($bytes));
+    $stash->set('f.bytes' => Number::Format::format_bytes($bytes));
     
     # calc tailing spaces
     my (undef, $dirs, $file) = File::Spec->splitpath($fullpath);

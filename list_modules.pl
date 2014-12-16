@@ -69,7 +69,89 @@ gen_cmd( $dual_dists, "dual life" );
 #----------------------------------------------------------#
 {
     my $dists = Set::Scalar->new(
-        qw{ Test-Assert Test-Assertions Test-Base Test-Block Test-Class
+        qw{
+            Algorithm-Diff aliased Alien-Tidyp Alt-Crypt-RSA-BigInt
+            App-cpanminus App-local-lib-Win32Helper App-module-version AppConfig
+            Archive-Extract Archive-Tar Archive-Zip autodie AutoLoader B-Debug
+            B-Hooks-EndOfScope B-Hooks-OP-Check bareword-filehandles BerkeleyDB
+            Bytes-Random-Secure Capture-Tiny Carp Carp-Clan CGI.pm
+            Class-Accessor Class-ErrorHandler Class-Inspector Class-Load
+            Class-Load-XS Class-Loader Class-Method-Modifiers Class-Singleton
+            Class-Tiny Clone Clone-PP common-sense Compress-Bzip2
+            Compress-Raw-Bzip2 Compress-Raw-Lzma Compress-Raw-Zlib
+            Compress-unLZMA Config-Perl-V Context-Preserve Convert-ASCII-Armour
+            Convert-ASN1 Convert-PEM CPAN-Checksums CPAN-DistnameInfo
+            CPAN-Inject CPAN-Meta CPAN-Meta-Check CPAN-Meta-Requirements
+            CPAN-Meta-YAML CPAN-Mini CPAN-SQLite CPANPLUS CPANPLUS-Dist-Build
+            Crypt-Blowfish Crypt-CAST5_PP Crypt-CBC Crypt-DES Crypt-DES_EDE3
+            Crypt-DH Crypt-DSA Crypt-IDEA Crypt-OpenSSL-AES Crypt-OpenSSL-Bignum
+            Crypt-OpenSSL-DSA Crypt-OpenSSL-Random Crypt-OpenSSL-RSA
+            Crypt-Random-Seed Crypt-Random-TESHA2 Crypt-Rijndael Crypt-RIPEMD160
+            Crypt-SSLeay Crypt-Twofish Data-Buffer Data-Compare Data-Dump
+            Data-OptList Data-Printer Data-Random DateTime DateTime-Locale
+            DateTime-TimeZone DB_File DBD-ADO DBD-mysql DBD-ODBC DBD-Pg
+            DBD-SQLite DBI DBIx-Simple DBM-Deep Devel-Declare
+            Devel-GlobalDestruction Devel-PartialDump Devel-PPPort
+            Digest-BubbleBabble Digest-HMAC Digest-MD2 Digest-MD5 Digest-SHA
+            Digest-SHA1 Dist-CheckConflicts Encode Encode-Locale Eval-Closure
+            ExtUtils-CBuilder ExtUtils-Command ExtUtils-Config ExtUtils-Depends
+            ExtUtils-F77 ExtUtils-Helpers ExtUtils-InstallPaths
+            ExtUtils-MakeMaker ExtUtils-ParseXS FCGI File-chmod File-Fetch
+            File-Find-Rule File-HomeDir File-Listing File-pushd File-Remove
+            File-ShareDir File-Slurp File-Temp File-Which Filter GD Getopt-Long
+            Hook-LexWrap HTML-Form HTML-Parser HTML-Tagset HTML-Tree
+            HTTP-Cookies HTTP-Daemon HTTP-Date HTTP-Message HTTP-Negotiate
+            HTTP-Server-Simple HTTP-Tiny Imager Import-Into indirect IO-Compress
+            IO-Compress-Lzma IO-HTML IO-Interactive IO-SessionData
+            IO-Socket-INET6 IO-Socket-IP IO-Socket-SSL IO-String IO-stringy
+            IPC-Cmd IPC-Run IPC-Run3 IPC-System-Simple JSON JSON-XS
+            Lexical-SealRequireHints libnet libwww-perl List-MoreUtils local-lib
+            Locale-Codes Log-Message LWP-MediaTypes LWP-Online
+            LWP-Protocol-https Math-BigInt-GMP Math-GMP Math-Int64 Math-MPC
+            Math-MPFR Math-Pari Math-Prime-Util Math-Prime-Util-GMP
+            Math-Random-ISAAC Math-Round MIME-Base64 Module-Build Module-Build
+            Module-Build-Tiny Module-Implementation Module-Load-Conditional
+            Module-Metadata Module-Pluggable Module-Runtime Moo Moose
+            MooseX-ClassAttribute MooseX-Declare MooseX-LazyRequire
+            MooseX-Meta-TypeConstraint-ForceCoercion MooseX-Method-Signatures
+            MooseX-NonMoose MooseX-Role-Parameterized MooseX-Traits MooseX-Types
+            MooseX-Types-DateTime MooseX-Types-Structured Mozilla-CA MRO-Compat
+            multidimensional namespace-autoclean namespace-clean Net-HTTP
+            Net-SMTP-TLS Net-SSH2 Net-SSLeay Net-Telnet Number-Compare
+            Object-Accessor Package-Constants Package-DeprecationManager
+            Package-Stash Package-Stash-XS PAR PAR-Dist PAR-Dist-FromPPD
+            PAR-Dist-InstallPPD PAR-Repository-Client PAR-Repository-Query
+            Params-Check Params-Util Params-Validate parent Parse-Binary
+            Parse-CPAN-Meta Parse-Method-Signatures Perl-OSType perlfaq pip pler
+            Pod-Checker Pod-Parser Pod-Perldoc Pod-Usage podlators Portable PPI
+            PPM Probe-Perl Role-Tiny Scalar-List-Utils SOAP-Lite Socket Socket6
+            Sort-Naturally Sort-Versions Storable strictures String-CRC32
+            Sub-Exporter Sub-Exporter-Progressive Sub-Install Sub-Name
+            Sub-Uplevel Task-Weaken Template-Tiny Template-Toolkit Term-Cap
+            Term-ReadLine Term-ReadLine-Perl Term-UI TermReadKey Test-CheckDeps
+            Test-Deep Test-Differences Test-Exception Test-Fatal Test-Harness
+            Test-Manifest Test-NoWarnings Test-Object Test-Output Test-Requires
+            Test-Script Test-Simple Test-SubCalls Test-Tester Test-use-ok
+            Test-Warn Text-Diff Text-Glob Text-ParseWords Text-Patch
+            Text-Tabs+Wrap threads threads-shared Tie-EncryptedHash Time-HiRes
+            Time-Piece TimeDate Tree-DAG_Node Try-Tiny Types-Serialiser
+            Unicode-Collate Unicode-Normalize URI Variable-Magic version Win32
+            Win32-API Win32-Console-ANSI Win32-EventLog Win32-Exe Win32-File
+            Win32-File-Object Win32-OLE Win32-Pipe Win32-Process
+            Win32-TieRegistry Win32-UTCFileTime Win32-WinError Win32API-Registry
+            WWW-Mechanize WWW-RobotRules XML-LibXML XML-LibXSLT
+            XML-NamespaceSupport XML-Parser XML-SAX XML-SAX-Base XML-SAX-Expat
+            XML-Simple YAML YAML-LibYAML YAML-Tiny
+        }
+    );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "strawberry" );
+}
+
+{
+    my $dists = Set::Scalar->new(
+        qw{ Test-Assert Test-Assertions Test-Block Test-Class
             Test-ClassAPI Test-Compile Test-Deep Test-Differences Test-Exception
             Test-LongString Test-Memory-Cycle Test-Manifest Test-MockObject
             Test-Most Test-NoWarnings Test-Output Test-Perl-Critic Test-Pod
@@ -86,7 +168,7 @@ gen_cmd( $dual_dists, "dual life" );
 {
     my $dists = Set::Scalar->new;
     for my $i ( $all_dists->members ) {
-        if ( $i =~ /^(Math|Stat|Crypt|Digest|PDL)/i ) {
+        if ( $i =~ /^(Math|Stat|Crypt|Digest|PDL|PGPLOT)/i ) {
             $dists->insert($i);
         }
     }
@@ -142,14 +224,13 @@ gen_cmd( $dual_dists, "dual life" );
 
 {
     my $dists = Set::Scalar->new(
-        qw{ Algorithm-Munkres Array-Compare Convert-Binary-C Data-Stag
-            Error File-Sort GraphViz HTML-TableExtract Math-Random
+        qw{ Algorithm-Munkres Array-Compare Bio-ASN1-EntrezGene Convert-Binary-C
+            Data-Stag Error File-Sort GraphViz HTML-TableExtract Math-Random
             PostScript-TextBlock SVG SVG-Graph Spreadsheet-ParseExcel
             XML-DOM-XPath XML-Parser-PerlSAX XML-SAX-Writer XML-Twig XML-Writer
             Clone Config-General Font-TTF-Font GD GD-Image GD-SVG List-MoreUtils
             List-Util Math-Bezier Math-Round Math-VecStat Memoize
-            Params-Validate Readonly Regexp-Common Sys-Hostname Text-Balanced
-            Text-Format }
+            Params-Validate Readonly Regexp-Common Text-Balanced Text-Format }
     );
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
@@ -194,10 +275,10 @@ gen_cmd( $dual_dists, "dual life" );
 {
     my $dists = Set::Scalar->new;
     $dists->insert(
-        qw{ Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
-            Excel-Writer-XLSX File-Find-Rule GD Graph JSON JSON-XS Number-Format
-            Parse-CSV POE Proc-Background Readonly Spreadsheet-WriteExcel
-            Text-CSV_XS Time-Duration YAML }
+        qw{ Bio-Graphics Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
+            Excel-Writer-XLSX File-Find-Rule GD Graph Growl-GNTP JSON JSON-XS
+            MCE Number-Format Parse-CSV POE Proc-Background Readonly
+            Spreadsheet-WriteExcel Text-CSV_XS Time-Duration YAML }
     );
     $dists->insert( find_all_deps($dists) );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
