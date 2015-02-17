@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use autodie;
 
 use Getopt::Long;
 use Pod::Usage;
-use Config::Tiny;
 use YAML qw(Dump Load DumpFile LoadFile);
 
 use Path::Class;
@@ -13,8 +13,7 @@ use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 #----------------------------------------------------------#
 # GetOpt section
 #----------------------------------------------------------#
-
-my $backup_dir = 'd:\Software\AppData';
+my $backup_dir = dir( 'd:', 'software', 'Backup', 'PC' )->stringify;
 
 my $man  = 0;
 my $help = 0;
@@ -46,15 +45,12 @@ my %backup_of = (
         ],
     },
 
-    Mozilla     => { dir => [ dir( $ENV{APPDATA}, 'Mozilla' ) ], },
+    Firefox => { dir => [ dir( $ENV{APPDATA}, 'Mozilla' ) ], },
+
     ActiveState => {
         dir => [ dir( $ENV{LOCALAPPDATA}, 'ActiveState' ) ],
         file => [ file( $ENV{APPDATA}, 'ActiveState', 'ActiveState.lic' ) ],
     },
-
-    Launchy       => { dir => [ dir( $ENV{APPDATA}, 'Launchy' ) ], },
-    BeyondCompare => { dir => [ dir( $ENV{APPDATA}, 'Scooter Software' ) ], },
-    XShell        => { dir => [ dir( $ENV{APPDATA}, 'NetSarang' ) ], },
 
     dots => {
         dir => [
@@ -62,37 +58,38 @@ my %backup_of = (
             dir( $ENV{USERPROFILE}, '.ssh' )
         ],
         file => [
-            file( $ENV{USERPROFILE}, '.bash_history' ),
             file( $ENV{USERPROFILE}, '.gitconfig' ),
-            file( $ENV{USERPROFILE}, '.gitk' ),
-            file( $ENV{USERPROFILE}, '.gtkrc-2.0' ),
             file( $ENV{USERPROFILE}, '.minicpanrc' ),
-            file( $ENV{USERPROFILE}, '.perldl_hist' ),
-            file( $ENV{USERPROFILE}, '.recently-used.xbel' ),
             file( $ENV{USERPROFILE}, '_vimrc' ),
+            file( $ENV{USERPROFILE}, '_vimperatorrc' ),
         ],
     },
 
-    SlickEdit => {
+    Scripts => { dir => [ dir( 'd:', 'Scripts' ), ], },
+
+    zotero => { dir => [ dir( 'd:', 'zotero' ), ], },
+
+    ultraedit => {
         dir => [
-            dir( $ENV{USERPROFILE}, 'Documents',    'My SlickEdit Config' ),
-            dir( $ENV{USERPROFILE}, 'My Documents', 'My SlickEdit Config' ),
+            dir( 'c:', 'Program Files (x86)', 'IDM Computer Solutions' ),
+            dir( $ENV{APPDATA}, 'IDMComp' ),
         ],
     },
+
+    beyondcompare => {
+        dir => [
+            dir( 'c:',          'Program Files (x86)', 'Beyond Compare 3' ),
+            dir( $ENV{APPDATA}, 'Scooter Software' ),
+        ],
+    },
+
+    Launchy => { dir => [ dir( $ENV{APPDATA}, 'Launchy' ) ], },
+    XShell  => { dir => [ dir( $ENV{APPDATA}, 'NetSarang' ) ], },
+
     StartMenu => {
         dir => [
             dir( $ENV{ProgramData}, 'Microsoft', 'Windows', 'Start Menu' ),
             dir( $ENV{APPDATA},     'Microsoft', 'Windows', 'Start Menu' ),
-        ],
-    },
-
-    Scripts => { dir => [ dir('d:\wq\Scripts') ], },
-    zotero  => { dir => [ dir('d:\zotero') ], },
-
-    ultraedit => {
-        dir => [
-            dir( $ENV{APPDATA}, 'IDMComp' ),
-            dir('c:/Program Files (x86)/IDM Computer Solutions/'),
         ],
     },
 
@@ -105,6 +102,13 @@ my %backup_of = (
             dir('c:\Tools\ProSeq'),          dir('c:\Tools\readseq'),
         ],
     },
+
+    #SlickEdit => {
+    #    dir => [
+    #        dir( $ENV{USERPROFILE}, 'Documents',    'My SlickEdit Config' ),
+    #        dir( $ENV{USERPROFILE}, 'My Documents', 'My SlickEdit Config' ),
+    #    ],
+    #},
 
     #NetProxy => {
     #    dir => [
@@ -230,24 +234,5 @@ perl make_backups.pl [options] [file ...]
     --help              brief help message
     --man               full documentation
     -d, --backup_dir    where to store backup files
-
-=head1 OPTIONS
-
-=over 8
-
-=item B<-help>
-
-Print a brief help message and exits.
-
-=item B<-man>
-
-Prints the manual page and exits.
-
-=back
-
-=head1 DESCRIPTION
-
-B<This program> will read the given input file(s) and do someting
-useful with the contents thereof.
 
 =cut
