@@ -238,6 +238,22 @@ gen_cmd( $dual_dists, "dual life" );
     $all_dists = $all_dists->difference($dists);
     gen_cmd( $dists, "bioperl-circos" );
 }
+
+{
+    my $dists = Set::Scalar->new;
+    $dists->insert(
+        qw{ Bio-Graphics Bio-Phylo Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
+            Excel-Writer-XLSX File-Find-Rule GD Graph Growl-GNTP JSON JSON-XS
+            MCE Number-Format Parse-CSV POE Proc-Background Readonly
+            Spreadsheet-WriteExcel Text-CSV_XS Time-Duration YAML }
+    );
+    $dists->insert( find_all_deps($dists) );
+    my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists     = Set::Scalar->new(@deps);
+    $all_dists = $all_dists->difference($dists);
+    gen_cmd( $dists, "aligndb" );
+}
+
 {
     my $dists = Set::Scalar->new(qw{ Any-Moose Class-MOP Moose Mouse Moo });
     for my $i ( $all_dists->members ) {
@@ -270,21 +286,6 @@ gen_cmd( $dual_dists, "dual life" );
     $dists     = Set::Scalar->new(@deps);
     $all_dists = $all_dists->difference($dists);
     gen_cmd( $dists, "devel-tools" );
-}
-
-{
-    my $dists = Set::Scalar->new;
-    $dists->insert(
-        qw{ Bio-Graphics Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
-            Excel-Writer-XLSX File-Find-Rule GD Graph Growl-GNTP JSON JSON-XS
-            MCE Number-Format Parse-CSV POE Proc-Background Readonly
-            Spreadsheet-WriteExcel Text-CSV_XS Time-Duration YAML }
-    );
-    $dists->insert( find_all_deps($dists) );
-    my @deps = grep { $all_dists->has($_) } $dists->elements;
-    $dists     = Set::Scalar->new(@deps);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "aligndb" );
 }
 
 {
