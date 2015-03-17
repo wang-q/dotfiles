@@ -145,6 +145,7 @@ gen_cmd( $dual_dists, "dual life" );
         }
     );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
+    $dists     = Set::Scalar->new(@deps);
     $all_dists = $all_dists->difference($dists);
     gen_cmd( $dists, "strawberry" );
 }
