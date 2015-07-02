@@ -30,39 +30,64 @@ CPANDB->import( { show_progress => 1, } );
 #----------------------------------------------------------#
 # Loading core and installed modules
 #----------------------------------------------------------#
-my $cpan_count = CPANDB::Distribution->count;
 
-my ( $dual_dists, $all_dists );
+my $all_dists;
 
-{    # find core modules
-    my @cores = Module::CoreList->find_modules(qr/./);
-    @cores = merge_modules(@cores);
-    my @dual_dists = grep { defined $_ } map { module2dist($_) } @cores;
-
-    $dual_dists = Set::Scalar->new(@dual_dists);
-    print "Find ", $dual_dists->size, " core modules\n";
-}
-
-{    # find installed modules
-    print "Reading local .packlists\n";
+{
+    # find installed modules
+    print "# Reading local .packlists\n";
     my $inst    = ExtUtils::Installed->new;
     my @modules = $inst->modules;
     @modules = merge_modules(@modules);
     my @dists = grep { defined $_ } map { module2dist($_) } @modules;
 
+    # find core modules
+    my @cores = Module::CoreList->find_modules(qr/./);
+    @cores = merge_modules(@cores);
+    my @dual_dists = grep { defined $_ } map { module2dist($_) } @cores;
+    my $dual_dists = Set::Scalar->new(@dual_dists);
+    print "# Find ", $dual_dists->size, " core modules\n";
+
     $all_dists = Set::Scalar->new(@dists);
     $all_dists = $all_dists->difference($dual_dists);
-    my $all_count = $all_dists->size;
-    print "Find ", $all_count, " installed modules\n";
-    printf "  that is %.2f%% of cpan (%d in total)\n",
+
+    # one of CGI.pm dependencies, FCGI, isn't in core
+    $dual_dists->delete("CGI.pm");
+    $all_dists->insert("CGI.pm");
+
+    my $cpan_count = CPANDB::Distribution->count;
+    my $all_count  = $all_dists->size;
+    print "# Find ", $all_count, " installed modules\n";
+    printf "#   that is %.2f%% of cpan (%d in total)\n",
         100 * $all_count / $cpan_count, $cpan_count;
+
+    gen_cmd( $dual_dists, "dual life" );
 }
 
-# one of CGI.pm dependencies, FCGI, isn't in core
-$dual_dists->delete("CGI.pm");
-$all_dists->insert("CGI.pm");
+#----------------------------------------------------------#
+# Minimal sets
+#----------------------------------------------------------#
+{
+    my $dist_set = $all_dists->copy;
 
-gen_cmd( $dual_dists, "dual life" );
+    my @dists = $dist_set->elements;
+
+    my $dep_dist = Set::Scalar->new;
+
+    for my $dist (@dists) {
+        my @deps = find_deps($dist);
+        for my $dep (@deps) {
+            next unless defined $dep;
+            next if $dep eq "perl";
+            next unless $dist_set->has($dep);
+            next if $dist eq $dep;
+            $dep_dist->insert($dep);
+        }
+    }
+
+    $dist_set = $dist_set->difference($dep_dist);
+    gen_cmd( $dist_set, "minimal", "alpha_sort" );
+}
 
 #----------------------------------------------------------#
 # Every categories
@@ -142,7 +167,7 @@ gen_cmd( $dual_dists, "dual life" );
             WWW-Mechanize WWW-RobotRules XML-LibXML XML-LibXSLT
             XML-NamespaceSupport XML-Parser XML-SAX XML-SAX-Base XML-SAX-Expat
             XML-Simple YAML YAML-LibYAML YAML-Tiny
-        }
+            }
     );
     my @deps = grep { $all_dists->has($_) } $dists->elements;
     $dists     = Set::Scalar->new(@deps);
@@ -345,23 +370,32 @@ gen_cmd( $dual_dists, "dual life" );
 
 gen_cmd( $all_dists, "all left" );
 
-print "All modules processed\n";
+print "# All modules processed\n";
 
 #----------------------------------------------------------#
 # Subroutines
 #----------------------------------------------------------#
 sub gen_cmd {
-    my $dist_set = shift;
-    my $name     = shift;
+    my $dist_set   = shift;
+    my $name       = shift;
+    my $alpha_sort = shift;
 
-    my @toposort_dists = dep_sort($dist_set);
+    $name = "JohnDoe" unless $name;
+
+    my @sort_dists;
+    if ($alpha_sort) {
+        @sort_dists = sort $dist_set->elements;
+    }
+    else {
+        @sort_dists = dep_sort($dist_set);
+    }
+
     my @modules;
-    for (@toposort_dists) {
+    for (@sort_dists) {
         push @modules, dist2module($_);
     }
 
-    print "# $name\n" if $name;
-    print "# There are ", scalar @modules, " modules\n";
+    printf "# [%s], %d modules\n", $name, scalar @modules;
     print "cpanm @modules\n\n";
 }
 
@@ -414,7 +448,7 @@ sub dep_sort {
     while (1) {
         my @vertices = $graph->find_a_cycle;
         last if @vertices == 0;
-        print "Find a cyclic dependency: @vertices\n";
+        print "#     Find a cyclic dependency: @vertices\n";
         $graph->delete_cycle(@vertices);
     }
 
