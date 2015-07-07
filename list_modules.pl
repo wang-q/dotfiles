@@ -10,18 +10,21 @@ use YAML qw(Dump Load DumpFile LoadFile);
 use CPAN;
 use ExtUtils::Installed;
 use Module::CoreList;
-use Set::Scalar;
-
-use List::MoreUtils qw(uniq);
 use CPANDB ();
+
+use Set::Scalar;
+use List::MoreUtils qw(uniq);
 use String::Compare;
 use Graph;
 
 #----------------------------------------------------------#
 # GetOpt section
 #----------------------------------------------------------#
-my $reload;
+my $input;
 my $output;
+
+my $minimal;
+my $reload;
 
 my $man  = 0;
 my $help = 0;
@@ -29,7 +32,9 @@ my $help = 0;
 GetOptions(
     'help|?'     => \$help,
     'man'        => \$man,
+    'i|input=s'  => \$input,
     'o|output=s' => \$output,
+    'm|minimal'  => \$minimal,
     'r|reload'   => \$reload,
 
 ) or pod2usage(2);
@@ -64,7 +69,19 @@ CPANDB->import(
 #----------------------------------------------------------#
 my $all_dists;
 
-{
+if ($input) {
+    open my $infh, '<', $input;
+    my $content = do { local $/; <$infh> };
+    close $infh;
+    my @modules = grep { !( /\/|\\|\[/ or /^\-\-/ or /^#/ ) } split /\s+/,
+        $content;
+
+    @modules = merge_modules(@modules);
+    my @dists = grep { defined $_ } map { module2dist($_) } @modules;
+    $all_dists = Set::Scalar->new(@dists);
+    warn "* Find ", $all_dists->size, " modules from input file\n";
+}
+else {
 
     # find core modules
     my @cores = Module::CoreList->find_modules( qr/./, $] );
@@ -91,7 +108,7 @@ my $all_dists;
 
     warn "* Find ", $all_dists->size, " installed modules\n";
 
-    gen_cmd( $dual_dists, "dual life" );
+    gen_cmd( $dual_dists, "dual life" ) unless $minimal;
 }
 
 #----------------------------------------------------------#
@@ -122,7 +139,7 @@ my $all_dists;
 #----------------------------------------------------------#
 # Every categories
 #----------------------------------------------------------#
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new(
         qw{
             Algorithm-C3 Algorithm-Diff aliased Alien-Tidyp Alt-Crypt-RSA-BigInt
@@ -222,7 +239,7 @@ my $all_dists;
     gen_cmd( $dists, "strawberry" );
 }
 
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new(
         qw{ Test-Assert Test-Assertions Test-Block Test-Class
             Test-ClassAPI Test-Compile Test-Deep Test-Differences Test-Exception
@@ -238,7 +255,7 @@ my $all_dists;
     gen_cmd( $dists, "test" );
 }
 
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new;
     for my $i ( $all_dists->members ) {
         if ( $i =~ /^(Math|Stat|Crypt|Digest|PDL|PGPLOT)/i ) {
@@ -252,7 +269,7 @@ my $all_dists;
     gen_cmd( $dists, "math" );
 }
 
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new;
     for my $i ( $all_dists->members ) {
         if ( $i =~ /Win32/i ) {
@@ -265,7 +282,7 @@ my $all_dists;
     gen_cmd( $dists, "win32" );
 }
 
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new;
     for my $i ( $all_dists->members ) {
         if ( $i
@@ -281,21 +298,7 @@ my $all_dists;
     gen_cmd( $dists, "gui" );
 }
 
-{
-    my $dists = Set::Scalar->new;
-    for my $i ( $all_dists->members ) {
-        if ( $i =~ /CPAN/i ) {
-            $dists->insert($i);
-        }
-    }
-    $dists->insert( find_all_deps($dists) );
-    my @deps = grep { $all_dists->has($_) } $dists->elements;
-    $dists     = Set::Scalar->new(@deps);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "CPAN" );
-}
-
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new(
         qw{ Algorithm-Munkres Array-Compare Bio-ASN1-EntrezGene Convert-Binary-C
             Data-Stag Error File-Sort GraphViz HTML-TableExtract Math-Random
@@ -312,7 +315,7 @@ my $all_dists;
     gen_cmd( $dists, "bioperl-circos" );
 }
 
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new;
     $dists->insert(
         qw{ Bio-Graphics Bio-Phylo Chart-Math-Axis Config-Tiny Data-Stag Data-UUID
@@ -327,7 +330,7 @@ my $all_dists;
     gen_cmd( $dists, "aligndb" );
 }
 
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new(qw{ Any-Moose Class-MOP Moose Mouse Moo });
     for my $i ( $all_dists->members ) {
         if ( $i =~ /Mo[ou]/i ) {
@@ -341,14 +344,14 @@ my $all_dists;
     gen_cmd( $dists, "moose" );
 }
 
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new(
         qw{ Pod-POM-Web Graph EV
             }
     );
     for my $i ( $all_dists->members ) {
         if ( $i
-            =~ /^(AnyEvent|App|Class|Config|DBD|Devel|ExtUtils|File|Module|PAR|Pod|POE|Object|Set|SQL)/i
+            =~ /^(AnyEvent|App|Class|Config|DBD|Devel|ExtUtils|File|Module|PAR|Pod|POE|Object|Set|SQL|CPAN|DateTime|TimeDate)/i
             )
         {
             $dists->insert($i);
@@ -361,23 +364,8 @@ my $all_dists;
     gen_cmd( $dists, "devel-tools" );
 }
 
-{
-    my $dists = Set::Scalar->new;
-    for my $i ( $all_dists->members ) {
-        if ( $i =~ /DateTime/i ) {
-            $dists->insert($i);
-        }
-    }
-    $dists->insert( find_all_deps($dists) );
-    my @deps = grep { $all_dists->has($_) } $dists->elements;
-    $dists     = Set::Scalar->new(@deps);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "DateTime" );
-}
-
-{
+unless ($minimal) {
     my $dists = Set::Scalar->new(qw{ Dist-Zilla Pod-Weaver});
-    $dists->insert( find_all_down_deps($dists) );
     $dists->insert( find_all_deps($dists) );
     for my $i ( $all_dists->members ) {
         if ( $i =~ /(?:Zilla|Weaver)/i ) {
@@ -389,7 +377,9 @@ my $all_dists;
     gen_cmd( $dists, "dist-zilla" );
 }
 
-gen_cmd( $all_dists, "all left" );
+unless ($minimal) {
+    gen_cmd( $all_dists, "all left" );
+}
 
 warn "* All modules processed\n";
 
@@ -599,10 +589,13 @@ list_modules.pl - list installed CPAN modules
       Options:
         --help              brief help message
         --man               full documentation
-        --output, -o        write to a file
-        --reload, -r        reload CPAN index
+        --input   -i        read modules from a file
+        --output  -o        write to a file
+        --minimal -m        only minimal set of modules
+        --reload  -r        reload CPAN index
 
     perl list_modules.pl > mo.txt
     perl list_modules.pl -o mo.txt
+    perl list_modules.pl -i stpan.txt -m
 
 =cut
