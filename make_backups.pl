@@ -37,6 +37,8 @@ if ( $^O eq 'MSWin32' ) {
         $backup_dir = dir( 'd:\\', 'software', 'Backup', 'PC' )->stringify;
     }
 
+    printf "* Backup %s, dir is [%s]\n\n", "PC", $backup_dir;
+
     %backup_of = (
         strawberry => {
             dir    => [ dir('C:\strawberry'), ],
@@ -135,6 +137,8 @@ elsif ( $^O eq 'darwin' ) {
     if ( !$backup_dir ) {
         $backup_dir = dir( $ENV{HOME}, 'software', 'Backup', 'Mac' )->stringify;
     }
+
+    printf "* Backup %s, dir is [%s]\n\n", "Mac", $backup_dir;
 
     %backup_of = (
 
