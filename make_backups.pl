@@ -63,7 +63,6 @@ if ( $^O eq 'MSWin32' ) {
         dots => {
             dir => [
                 dir( $ENV{USERPROFILE}, '.crossftp' ),
-                dir( $ENV{USERPROFILE}, '.ssh' ),
                 dir( $ENV{USERPROFILE}, '.vim' )
             ],
             file => [
@@ -193,7 +192,6 @@ elsif ( $^O eq 'darwin' ) {
         dots => {
             dir => [
                 dir( $ENV{HOME}, '.crossftp' ),
-                dir( $ENV{HOME}, '.ssh' ),
                 dir( $ENV{HOME}, '.parallel' ),
                 dir( $ENV{HOME}, '.vim' ),
                 dir( $ENV{HOME}, '.vimperator' ),
