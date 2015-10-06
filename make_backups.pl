@@ -19,9 +19,9 @@ my $man  = 0;
 my $help = 0;
 
 GetOptions(
-    'help|?' => \$help,
-    'man'    => \$man,
-    'd|dir'  => \$backup_dir,
+    'help|?'  => \$help,
+    'man'     => \$man,
+    'd|dir=s' => \$backup_dir,
 ) or pod2usage(2);
 
 pod2usage(1) if $help;
@@ -46,10 +46,8 @@ if ( $^O eq 'MSWin32' ) {
                 print "Clean useless files in Perl directory...\n";
             },
             delete => [
-                dir('C:\strawberry\cpan\build'),
-                dir('C:\strawberry\cpan\sources\authors\id'),
-                dir('C:\strawberry\perl\html'),
-                dir('C:\strawberry\perl\man'),
+                dir('C:\strawberry\cpan\build'), dir('C:\strawberry\cpan\sources\authors\id'),
+                dir('C:\strawberry\perl\html'),  dir('C:\strawberry\perl\man'),
             ],
         },
 
@@ -61,10 +59,7 @@ if ( $^O eq 'MSWin32' ) {
         },
 
         dots => {
-            dir => [
-                dir( $ENV{USERPROFILE}, '.crossftp' ),
-                dir( $ENV{USERPROFILE}, '.vim' )
-            ],
+            dir  => [ dir( $ENV{USERPROFILE}, '.crossftp' ), dir( $ENV{USERPROFILE}, '.vim' ) ],
             file => [
                 file( $ENV{USERPROFILE}, '.gitconfig' ),
                 file( $ENV{USERPROFILE}, '_vimrc' ),
@@ -79,7 +74,7 @@ if ( $^O eq 'MSWin32' ) {
 
         ultraedit => {
             dir => [
-                dir( 'c:\\', 'Program Files (x86)', 'IDM Computer Solutions' ),
+                dir( 'c:\\',        'Program Files (x86)', 'IDM Computer Solutions' ),
                 dir( $ENV{APPDATA}, 'IDMComp' ),
             ],
         },
@@ -110,25 +105,25 @@ if ( $^O eq 'MSWin32' ) {
             ],
         },
 
-       #SlickEdit => {
-       #    dir => [
-       #        dir( $ENV{USERPROFILE}, 'Documents',    'My SlickEdit Config' ),
-       #        dir( $ENV{USERPROFILE}, 'My Documents', 'My SlickEdit Config' ),
-       #    ],
-       #},
+        #SlickEdit => {
+        #    dir => [
+        #        dir( $ENV{USERPROFILE}, 'Documents',    'My SlickEdit Config' ),
+        #        dir( $ENV{USERPROFILE}, 'My Documents', 'My SlickEdit Config' ),
+        #    ],
+        #},
 
-      #NetProxy => {
-      #    dir => [
-      #        dir('c:\Tools\CCProxy'),  dir('c:\Tools\FreeCap'),
-      #        dir('c:\Tools\mproxy12'), dir('c:\Tools\QQWry'),
-      #    ],
-      #    file => [ file('c:\proxy.pac') ],
-      #    reg  => {
-      #        freecap      => q{"HKEY_CURRENT_USER\Software\Bert's Software"},
-      #        fc_uninstall => q{"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows}
-      #            . q{\CurrentVersion\Uninstall\FreeCap_is1"},
-      #    },
-      #},
+        #NetProxy => {
+        #    dir => [
+        #        dir('c:\Tools\CCProxy'),  dir('c:\Tools\FreeCap'),
+        #        dir('c:\Tools\mproxy12'), dir('c:\Tools\QQWry'),
+        #    ],
+        #    file => [ file('c:\proxy.pac') ],
+        #    reg  => {
+        #        freecap      => q{"HKEY_CURRENT_USER\Software\Bert's Software"},
+        #        fc_uninstall => q{"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows}
+        #            . q{\CurrentVersion\Uninstall\FreeCap_is1"},
+        #    },
+        #},
 
     );
 }
@@ -147,10 +142,8 @@ elsif ( $^O eq 'darwin' ) {
                 system "brew list > $ENV{HOME}/brew_list.txt";
                 system "brew cask list > $ENV{HOME}/brew_cask_list.txt";
                 system "pip list > $ENV{HOME}/pip_list.txt";
-                system
-                    "ls $ENV{HOME}/Library/R/3.1/library/ > $ENV{HOME}/r_list.txt";
-                system
-                    "tlmgr list --only-installed > $ENV{HOME}/tlmgr_list.txt";
+                system "ls $ENV{HOME}/Library/R/3.1/library/ > $ENV{HOME}/r_list.txt";
+                system "tlmgr list --only-installed > $ENV{HOME}/tlmgr_list.txt";
             },
             file => [
                 file( $ENV{HOME}, 'brew_tap.txt' ),
@@ -163,27 +156,17 @@ elsif ( $^O eq 'darwin' ) {
 
         },
 
-        Firefox => {
-            dir => [
-                dir( $ENV{HOME}, 'Library', 'Application Support', 'Firefox' ),
-            ],
-        },
+        Firefox => { dir => [ dir( $ENV{HOME}, 'Library', 'Application Support', 'Firefox' ), ], },
 
         ActiveState => {
             dir => [
-                dir($ENV{HOME}, 'Library', 'Application Support', 'KomodoIDE'
-                ),
-                dir($ENV{HOME},            'Library',
-                    'Application Support', 'Komodo IDE'
-                ),
-                dir($ENV{HOME},            'Library',
-                    'Application Support', 'ActiveState'
-                ),
+                dir( $ENV{HOME}, 'Library', 'Application Support', 'KomodoIDE' ),
+                dir( $ENV{HOME}, 'Library', 'Application Support', 'Komodo IDE' ),
+                dir( $ENV{HOME}, 'Library', 'Application Support', 'ActiveState' ),
             ],
             file => [
                 file(
-                    $ENV{HOME},            'Library',
-                    'Application Support', 'ActiveState',
+                    $ENV{HOME}, 'Library', 'Application Support', 'ActiveState',
                     'ActiveState.lic'
                 ),
             ],
@@ -208,6 +191,13 @@ elsif ( $^O eq 'darwin' ) {
             ],
         },
 
+        settings => {
+            file => [
+                file( $ENV{HOME}, 'Library', 'Spelling',    'LocalDictionary' ),
+                file( $ENV{HOME}, 'Library', 'Preferences', 'com.apple.Terminal.plist' ),
+            ],
+        },
+
         Scripts => { dir => [ dir( $ENV{HOME}, 'Scripts' ), ], },
 
         zotero => { dir => [ dir( $ENV{HOME}, 'zotero' ), ], },
@@ -215,17 +205,14 @@ elsif ( $^O eq 'darwin' ) {
         ultraedit => {
             dir => [
                 dir( '/Applications', 'UltraEdit.app' ),
-                dir($ENV{HOME}, 'Library', 'Application Support', 'UltraEdit'
-                ),
+                dir( $ENV{HOME}, 'Library', 'Application Support', 'UltraEdit' ),
             ],
         },
 
         beyondcompare => {
             dir => [
                 dir( '/Applications', 'Beyond Compare.app' ),
-                dir($ENV{HOME},            'Library',
-                    'Application Support', 'Beyond Compare'
-                ),
+                dir( $ENV{HOME}, 'Library', 'Application Support', 'Beyond Compare' ),
             ],
         },
     );
