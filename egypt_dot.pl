@@ -11,7 +11,7 @@ use Path::Class;
 # GetOpt section
 #----------------------------------------------------------#
 my $dir    = '.';
-my $suffix = '.c.01.rtl';
+my $suffix = '.expand';
 my $type   = 'png';
 
 my $man  = 0;
@@ -55,31 +55,24 @@ egypt_dot.pl - Draw C functions calling graph with egypt and dot
 
 =head1 SYNOPSIS
 
-perl egypt_dot.pl [options] [file ...]
-  Options:
-    --help              brief help message
-    --man               full documentation
-    -d, --dir           where to find the .c.01.rtl files
-    -s, --suffix        alternative suffix (GCC 4)
-    -t, --type          output file format (.png)
+    perl egypt_dot.pl [options] [file ...]
+      Options:
+        --help              brief help message
+        --man               full documentation
+        -d, --dir           where to find the .c.01.rtl files
+        -s, --suffix        alternative suffix (GCC 4)
+        -t, --type          output file format (.png)
 
-=head1 OPTIONS
+    make clean
+    make CFLAGS=-fdump-rtl-expand
+    perl ~/Scripts/tool/egypt_dot.pl -d .
+    
+=cut
 
-=over 8
+=head1 egypt
 
-=item B<-help>
+http://www.gson.org/egypt/
 
-Print a brief help message and exits.
-
-=item B<-man>
-
-Prints the manual page and exits.
-
-=back
-
-=head1 DESCRIPTION
-
-B<This program> will read the given input file(s) and do someting
-useful with the contents thereof.
+cpanm http://www.gson.org/egypt/download/egypt-1.10.tar.gz
 
 =cut
