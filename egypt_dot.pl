@@ -66,7 +66,8 @@ egypt_dot.pl - Draw C functions calling graph with egypt and dot
     make clean
     make CFLAGS=-fdump-rtl-expand
     perl ~/Scripts/tool/egypt_dot.pl -d .
-    
+    rm *.dot *.expand
+
 =cut
 
 =head1 egypt
