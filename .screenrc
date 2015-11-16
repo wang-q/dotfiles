@@ -1,0 +1,23 @@
+# Change logfile name
+logfile screen.%S-%n.log
+
+# Flush output every 1 second
+logfile flush 1
+
+# Turn off that annoying start up message
+startup_message off
+
+# Window list at the bottom. hostname, centered tabs and redmarked active windows:
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+# http://superuser.com/questions/217066/prevent-gnu-screen-from-resizing-display-size
+# Change the xterm initialization string from is2=\E[!p\E[?3;4l\E[4l\E>
+# (This fixes the "Aborted because of window size change" konsole symptoms found
+#  in bug #134198)
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# http://stackoverflow.com/questions/359109/using-the-scrollwheel-in-gnu-screen/1125947
+# use mouse wheel in screen
+termcapinfo xterm* ti@:te@
+
