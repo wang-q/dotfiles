@@ -3,121 +3,126 @@ use strict;
 use warnings;
 use autodie;
 
-use Getopt::Long;
-use Pod::Usage;
+use Getopt::Long qw(HelpMessage);
 use YAML qw(Dump Load DumpFile LoadFile);
 
-use Path::Class;
+use Path::Tiny;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 
 #----------------------------------------------------------#
 # GetOpt section
 #----------------------------------------------------------#
-my $backup_dir;
 
-my $man  = 0;
-my $help = 0;
+=head1 NAME
+
+make_backups.pl - Backup directories and files in your machine
+
+=head1 SYNOPSIS
+
+    perl make_backups.pl [options] [file ...]
+      Options:
+        --help          -?          brief help message
+        --backup_dir    -d  STR     where to store backup files, default values are
+                                    [d:/software/Backup/PC] on PC and
+                                    [~/software/Backup/Mac] on Mac
+
+=cut
 
 GetOptions(
-    'help|?'  => \$help,
-    'man'     => \$man,
-    'd|dir=s' => \$backup_dir,
-) or pod2usage(2);
-
-pod2usage(1) if $help;
-pod2usage( -exitstatus => 0, -verbose => 2 ) if $man;
+    'help|?'  => sub { HelpMessage(0) },
+    'dir|d=s' => \my $backup_dir,
+) or HelpMessage(1);
 
 #----------------------------------------------------------#
-# directories to be backuped
+# directories and files
 #----------------------------------------------------------#
 my %backup_of;
 
 if ( $^O eq 'MSWin32' ) {
     if ( !$backup_dir ) {
-        $backup_dir = dir( 'd:\\', 'software', 'Backup', 'PC' )->stringify;
+        $backup_dir = path( 'd:\\', 'software', 'Backup', 'PC' )->stringify;
     }
 
-    printf "* Backup %s, dir is [%s]\n\n", "PC", $backup_dir;
+    printf "====> Backup %s, dir is [%s] <====\n\n", "PC", $backup_dir;
 
     %backup_of = (
         strawberry => {
-            dir    => [ dir('C:\strawberry'), ],
+            dir    => [ path('C:\strawberry'), ],
             action => sub {
                 print "Clean useless files in Perl directory...\n";
             },
             delete => [
-                dir('C:\strawberry\cpan\build'), dir('C:\strawberry\cpan\sources\authors\id'),
-                dir('C:\strawberry\perl\html'),  dir('C:\strawberry\perl\man'),
+                path('C:\strawberry\cpan\build'), path('C:\strawberry\cpan\sources\authors\id'),
+                path('C:\strawberry\perl\html'),  path('C:\strawberry\perl\man'),
             ],
         },
 
-        Firefox => { dir => [ dir( $ENV{APPDATA}, 'Mozilla' ) ], },
+        Firefox => { dir => [ path( $ENV{APPDATA}, 'Mozilla' ) ], },
 
         ActiveState => {
-            dir => [ dir( $ENV{LOCALAPPDATA}, 'ActiveState' ) ],
-            file => [ file( $ENV{APPDATA}, 'ActiveState', 'ActiveState.lic' ) ],
+            dir  => [ path( $ENV{LOCALAPPDATA}, 'ActiveState' ) ],
+            file => [ path( $ENV{APPDATA},      'ActiveState', 'ActiveState.lic' ) ],
         },
 
         dots => {
-            dir  => [ dir( $ENV{USERPROFILE}, '.crossftp' ), dir( $ENV{USERPROFILE}, '.vim' ) ],
+            dir  => [ path( $ENV{USERPROFILE}, '.crossftp' ), path( $ENV{USERPROFILE}, '.vim' ) ],
             file => [
-                file( $ENV{USERPROFILE}, '.gitconfig' ),
-                file( $ENV{USERPROFILE}, '_vimrc' ),
-                file( $ENV{USERPROFILE}, '_viminfo' ),
-                file( $ENV{USERPROFILE}, '_vimperatorrc' ),
+                path( $ENV{USERPROFILE}, '.gitconfig' ),
+                path( $ENV{USERPROFILE}, '_vimrc' ),
+                path( $ENV{USERPROFILE}, '_vimperatorrc' ),
             ],
         },
 
-        Scripts => { dir => [ dir( 'd:\\', 'Scripts' ), ], },
+        Scripts => { dir => [ path( 'd:\\', 'Scripts' ), ], },
 
-        zotero => { dir => [ dir( 'd:\\', 'zotero' ), ], },
+        zotero => { dir => [ path( 'd:\\', 'zotero' ), ], },
 
         ultraedit => {
             dir => [
-                dir( 'c:\\',        'Program Files (x86)', 'IDM Computer Solutions' ),
-                dir( $ENV{APPDATA}, 'IDMComp' ),
+                path( 'c:\\',        'Program Files (x86)', 'IDM Computer Solutions' ),
+                path( $ENV{APPDATA}, 'IDMComp' ),
             ],
         },
 
         beyondcompare => {
             dir => [
-                dir( 'c:\\',        'Program Files (x86)', 'Beyond Compare 3' ),
-                dir( $ENV{APPDATA}, 'Scooter Software' ),
+                path( 'c:\\',        'Program Files (x86)', 'Beyond Compare 3' ),
+                path( $ENV{APPDATA}, 'Scooter Software' ),
             ],
         },
 
-        Launchy => { dir => [ dir( $ENV{APPDATA}, 'Launchy' ) ], },
-        XShell  => { dir => [ dir( $ENV{APPDATA}, 'NetSarang' ) ], },
+        Launchy => { dir => [ path( $ENV{APPDATA}, 'Launchy' ) ], },
+        XShell  => { dir => [ path( $ENV{APPDATA}, 'NetSarang' ) ], },
 
         StartMenu => {
             dir => [
-                dir( $ENV{ProgramData}, 'Microsoft', 'Windows', 'Start Menu' ),
-                dir( $ENV{APPDATA},     'Microsoft', 'Windows', 'Start Menu' ),
+                path( $ENV{ProgramData}, 'Microsoft', 'Windows', 'Start Menu' ),
+                path( $ENV{APPDATA},     'Microsoft', 'Windows', 'Start Menu' ),
             ],
         },
 
         bioinfo => {
             dir => [
-                dir('c:\Tools\clustalw1.83.XP'), dir('c:\Tools\HYPHY'),
-                dir('c:\Tools\muscle'),          dir('c:\Tools\paml'),
-                dir('c:\Tools\PAUP'),            dir('c:\Tools\phylip'),
-                dir('c:\Tools\Primer3'),         dir('c:\Tools\ProSeq'),
+                path('c:\Tools\clustalw1.83.XP'), path('c:\Tools\HYPHY'),
+                path('c:\Tools\muscle'),          path('c:\Tools\paml'),
+                path('c:\Tools\PAUP'),            path('c:\Tools\phylip'),
+                path('c:\Tools\Primer3'),         path('c:\Tools\ProSeq'),
             ],
         },
 
         #SlickEdit => {
         #    dir => [
-        #        dir( $ENV{USERPROFILE}, 'Documents',    'My SlickEdit Config' ),
-        #        dir( $ENV{USERPROFILE}, 'My Documents', 'My SlickEdit Config' ),
+        #        path( $ENV{USERPROFILE}, 'Documents',    'My SlickEdit Config' ),
+        #        path( $ENV{USERPROFILE}, 'My Documents', 'My SlickEdit Config' ),
         #    ],
         #},
 
         #NetProxy => {
         #    dir => [
-        #        dir('c:\Tools\CCProxy'),  dir('c:\Tools\FreeCap'),
-        #        dir('c:\Tools\mproxy12'), dir('c:\Tools\QQWry'),
+        #        path('c:\Tools\CCProxy'),  path('c:\Tools\FreeCap'),
+        #        path('c:\Tools\mproxy12'), path('c:\Tools\QQWry'),
         #    ],
-        #    file => [ file('c:\proxy.pac') ],
+        #    file => [ path('c:\proxy.pac') ],
         #    reg  => {
         #        freecap      => q{"HKEY_CURRENT_USER\Software\Bert's Software"},
         #        fc_uninstall => q{"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows}
@@ -129,43 +134,50 @@ if ( $^O eq 'MSWin32' ) {
 }
 elsif ( $^O eq 'darwin' ) {
     if ( !$backup_dir ) {
-        $backup_dir = dir( $ENV{HOME}, 'software', 'Backup', 'Mac' )->stringify;
+        $backup_dir = path( $ENV{HOME}, 'software', 'Backup', 'Mac' )->stringify;
     }
 
-    printf "* Backup %s, dir is [%s]\n\n", "Mac", $backup_dir;
+    printf "====> Backup %s, dir is [%s] <====\n\n", "Mac", $backup_dir;
 
     %backup_of = (
 
         package_list => {
             action => sub {
+                print " " x 4, "Generate package list files\n";
                 system "brew tap > $ENV{HOME}/brew_tap.txt";
                 system "brew list > $ENV{HOME}/brew_list.txt";
                 system "brew cask list > $ENV{HOME}/brew_cask_list.txt";
                 system "pip list > $ENV{HOME}/pip_list.txt";
-                system "ls $ENV{HOME}/Library/R/3.1/library/ > $ENV{HOME}/r_list.txt";
+                system qq{ls \$(Rscript -e 'cat(.Library)') > $ENV{HOME}/r_list.txt};
+                system qq{ls \$(Rscript -e 'cat(.Library.site)') >> $ENV{HOME}/r_list.txt};
+                system qq{sort -u -o $ENV{HOME}/r_list.txt $ENV{HOME}/r_list.txt};
                 system "tlmgr list --only-installed > $ENV{HOME}/tlmgr_list.txt";
             },
             file => [
-                file( $ENV{HOME}, 'brew_tap.txt' ),
-                file( $ENV{HOME}, 'brew_list.txt' ),
-                file( $ENV{HOME}, 'brew_cask_list.txt' ),
-                file( $ENV{HOME}, 'pip_list.txt' ),
-                file( $ENV{HOME}, 'r_list.txt' ),
-                file( $ENV{HOME}, 'tlmgr_list.txt' ),
+                path( $ENV{HOME}, 'brew_tap.txt' ),
+                path( $ENV{HOME}, 'brew_list.txt' ),
+                path( $ENV{HOME}, 'brew_cask_list.txt' ),
+                path( $ENV{HOME}, 'pip_list.txt' ),
+                path( $ENV{HOME}, 'r_list.txt' ),
+                path( $ENV{HOME}, 'tlmgr_list.txt' ),
             ],
-
+            post_action => sub {
+                print " " x 4, "Clean package list files\n";
+                system
+                    q{find ~ -name "*.txt"  -mmin -5 -type f -maxdepth 1 | parallel --no-run-if-empty rm};
+            },
         },
 
-        Firefox => { dir => [ dir( $ENV{HOME}, 'Library', 'Application Support', 'Firefox' ), ], },
+        Firefox => { dir => [ path( $ENV{HOME}, 'Library', 'Application Support', 'Firefox' ), ], },
 
         ActiveState => {
             dir => [
-                dir( $ENV{HOME}, 'Library', 'Application Support', 'KomodoIDE' ),
-                dir( $ENV{HOME}, 'Library', 'Application Support', 'Komodo IDE' ),
-                dir( $ENV{HOME}, 'Library', 'Application Support', 'ActiveState' ),
+                path( $ENV{HOME}, 'Library', 'Application Support', 'KomodoIDE' ),
+                path( $ENV{HOME}, 'Library', 'Application Support', 'Komodo IDE' ),
+                path( $ENV{HOME}, 'Library', 'Application Support', 'ActiveState' ),
             ],
             file => [
-                file(
+                path(
                     $ENV{HOME}, 'Library', 'Application Support', 'ActiveState',
                     'ActiveState.lic'
                 ),
@@ -174,45 +186,45 @@ elsif ( $^O eq 'darwin' ) {
 
         dots => {
             dir => [
-                dir( $ENV{HOME}, '.crossftp' ),
-                dir( $ENV{HOME}, '.parallel' ),
-                dir( $ENV{HOME}, '.vim' ),
-                dir( $ENV{HOME}, '.vimperator' ),
+                path( $ENV{HOME}, '.crossftp' ),
+                path( $ENV{HOME}, '.parallel' ),
+                path( $ENV{HOME}, '.vim' ),
+                path( $ENV{HOME}, '.vimperator' ),
             ],
             file => [
-                file( $ENV{HOME}, '.bash_profile' ),
-                file( $ENV{HOME}, '.bashrc' ),
-                file( $ENV{HOME}, '.gitconfig' ),
-                file( $ENV{HOME}, '.ncbirc' ),
-                file( $ENV{HOME}, '.wgetrc' ),
-                file( $ENV{HOME}, '.screenrc' ),
-                file( $ENV{HOME}, '.vimrc' ),
-                file( $ENV{HOME}, '.vimperatorrc' ),
+                path( $ENV{HOME}, '.bash_profile' ),
+                path( $ENV{HOME}, '.bashrc' ),
+                path( $ENV{HOME}, '.gitconfig' ),
+                path( $ENV{HOME}, '.ncbirc' ),
+                path( $ENV{HOME}, '.wgetrc' ),
+                path( $ENV{HOME}, '.screenrc' ),
+                path( $ENV{HOME}, '.vimrc' ),
+                path( $ENV{HOME}, '.vimperatorrc' ),
             ],
         },
 
         settings => {
             file => [
-                file( $ENV{HOME}, 'Library', 'Spelling',    'LocalDictionary' ),
-                file( $ENV{HOME}, 'Library', 'Preferences', 'com.apple.Terminal.plist' ),
+                path( $ENV{HOME}, 'Library', 'Spelling',    'LocalDictionary' ),
+                path( $ENV{HOME}, 'Library', 'Preferences', 'com.apple.Terminal.plist' ),
             ],
         },
 
-        Scripts => { dir => [ dir( $ENV{HOME}, 'Scripts' ), ], },
+        Scripts => { dir => [ path( $ENV{HOME}, 'Scripts' ), ], },
 
-        zotero => { dir => [ dir( $ENV{HOME}, 'zotero' ), ], },
+        zotero => { dir => [ path( $ENV{HOME}, 'zotero' ), ], },
 
         ultraedit => {
             dir => [
-                dir( '/Applications', 'UltraEdit.app' ),
-                dir( $ENV{HOME}, 'Library', 'Application Support', 'UltraEdit' ),
+                path( '/Applications', 'UltraEdit.app' ),
+                path( $ENV{HOME}, 'Library', 'Application Support', 'UltraEdit' ),
             ],
         },
 
         beyondcompare => {
             dir => [
-                dir( '/Applications', 'Beyond Compare.app' ),
-                dir( $ENV{HOME}, 'Library', 'Application Support', 'Beyond Compare' ),
+                path( '/Applications', 'Beyond Compare.app' ),
+                path( $ENV{HOME}, 'Library', 'Application Support', 'Beyond Compare' ),
             ],
         },
     );
@@ -226,13 +238,13 @@ else {
 # Start
 #----------------------------------------------------------#
 BACKUP: for my $key ( keys %backup_of ) {
-    my $zipped_file = file( $backup_dir, "$key.zip" );
-    if ( -e $zipped_file ) {
-        print "=== $zipped_file already exists, skip it\n\n";
+    my $zipped_file = path( $backup_dir, "$key.zip" );
+    if ( $zipped_file->is_file ) {
+        print "==> $zipped_file already exists, skip it\n\n";
         next BACKUP;
     }
 
-    print "=== Start backuping [$key] as $zipped_file\n";
+    print "==> Start backuping [$key] as $zipped_file\n";
 
     my $zip = Archive::Zip->new;
     my @temp_files;
@@ -262,34 +274,34 @@ BACKUP: for my $key ( keys %backup_of ) {
     # delete directories
     if ( exists $backup_of{$key}->{delete} ) {
         for my $del ( @{ $backup_of{$key}->{delete} } ) {
-            next if !-e $del;
-            if ( !-d $del ) {
+            next unless $del->exists;
+            if ( !$del->is_dir ) {
                 warn "$del is not a directory!\n";
                 warn "Stop backuping [$key]\n";
                 next BACKUP;
             }
             print "Delete directory tree $del\n";
-            $del->rmtree;
+            $del->remove_tree;
         }
     }
 
     # backup directories
     if ( exists $backup_of{$key}->{dir} ) {
         for my $dir ( @{ $backup_of{$key}->{dir} } ) {
-            if ( !-d $dir ) {
+            if ( !$dir->is_dir ) {
                 warn "$dir is not a directory!\n";
                 warn "Stop backuping [$dir]\n";
                 next;
             }
             print "Add directory tree $dir to archive\n";
-            $zip->addTree( "$dir", $dir->dir_list(-1) );    # stringify
+            $zip->addTree( "$dir", $dir->basename );    # stringify
         }
     }
 
     # backup files
     if ( exists $backup_of{$key}->{file} ) {
         for my $file ( @{ $backup_of{$key}->{file} } ) {
-            if ( !-e $file ) {
+            if ( !$file->is_file ) {
                 warn "$file does not exist!\n";
                 warn "Stop backuping [$file]\n";
                 next;
@@ -313,23 +325,15 @@ BACKUP: for my $key ( keys %backup_of ) {
         unlink $_;
     }
 
-    print "=== Finish backuping [$key]\n\n";
+    # execute actions post backup
+    if ( exists $backup_of{$key}->{post_action} ) {
+        print "Execute post actions of [$key]\n";
+        $backup_of{$key}->{post_action}->();
+    }
+
+    print "==> Finish backuping [$key]\n\n";
 }
 
 exit;
 
 __END__
-
-=head1 NAME
-
-make_backups.pl - Backup directories and files in your machine
-
-=head1 SYNOPSIS
-
-    perl make_backups.pl [options] [file ...]
-      Options:
-        --help              brief help message
-        --man               full documentation
-        -d, --backup_dir    where to store backup files
-
-=cut
