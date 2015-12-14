@@ -10,9 +10,11 @@ Or `brew cask install hammerspoon`.
 
 `hyper`: `Ctrl` + `Alt` + `Cmd`
 
-- Maximize current window. `hyper` + `M`
-- Center current window. `hyper` + `C`
-- Rezide and center current window. `hyper` + `Shift` + `C`
+* Maximize current window. `hyper` + `M`
+* Center current window. `hyper` + `C`
+* Resize and center current window. `hyper` + `Shift` + `C`
+* Half screen size. `hyper` + `left` or `right`
+* 3/4 screen size. `hyper` + `Shift` + left` or `right`
 
 ## Come from this post
 
