@@ -4,11 +4,13 @@
 brew install wget aria2
 
 # gnu
-brew install gcc gnu-sed gnu-tar gsl
+brew install gcc gnu-sed gnu-tar
+
+# libs
+brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
 
 # other tools
-brew install cloc cmake gd htop-osx pandoc parallel tree
-brew install berkeley-db sqlite
+brew install cloc cmake htop-osx pandoc parallel sqlite tree
 
 # gtk+3
 brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
@@ -30,5 +32,6 @@ brew install r --with-openblas
 
 # casks
 brew tap caskroom/cask
-brew cask install aegisub figtree jabref packer xmind
-brew cask install disk-inventory-x hammerspoon mpv robomongo
+brew cask install aegisub figtree mpv jabref xmind
+brew cask install disk-inventory-x hammerspoon
+brew cask install packer robomongo sourcetree
