@@ -7,7 +7,7 @@ fi
 
 # User specific aliases and functions
 
-export PATH=/Library/TeX/texbin:/usr/texbin/:$HOME/bin:$PATH
+export PATH=/Library/TeX/texbin:$HOME/bin:$PATH
 export INCLUDE=$HOME/inlcude:$INCLUDE
 export LIB=$HOME/lib:$LIB
 export PKG_CONFIG_PATH=$HOME/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/:$PKG_CONFIG_PATH
