@@ -175,6 +175,36 @@ hs.hotkey.bind(hyper, "M", function()
   win:setFrame(f)
 end)
 
+hs.hotkey.bind(hyperShift, "M", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  local basew = 0.75
+  local baseh = 0.90
+  local serials = {1, 0.8, 0.6, 0.4}
+
+  if f.w == math.floor(max.w * basew * serials[1]) then
+    f.w = math.floor(max.w * basew * serials[2])
+    f.h = math.floor(max.h * baseh * serials[2])
+  elseif f.w == math.floor(max.w * basew * serials[2]) then
+    f.w = math.floor(max.w * basew * serials[3])
+    f.h = math.floor(max.h * baseh * serials[3])
+  elseif f.w == math.floor(max.w * basew * serials[3]) then
+    f.w = math.floor(max.w * basew * serials[4])
+    f.h = math.floor(max.h * baseh * serials[4])
+  elseif f.w == math.floor(max.w * basew * serials[4]) then
+    f.w = math.floor(max.w * basew * serials[1])
+    f.h = math.floor(max.h * baseh * serials[1])
+  else
+    f.w = math.floor(max.w * basew * serials[1])
+    f.h = math.floor(max.h * baseh * serials[1])
+  end
+
+  win:setFrame(f)
+end)
+
 -- Center window
 hs.hotkey.bind(hyper, "C", function()
   local win = hs.window.focusedWindow()
@@ -182,23 +212,6 @@ hs.hotkey.bind(hyper, "C", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + (max.w - f.w) / 2
-  f.y = max.y + (max.h - f.h) / 2
-  win:setFrame(f,0)
-end)
-
--- Resize and center window
-hs.hotkey.bind(hyperShift, "C", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  local percw = 75
-  local perch = 90
-
-  f.w = max.w / 100 * percw
-  f.h = max.h / 100 * perch
   f.x = max.x + (max.w - f.w) / 2
   f.y = max.y + (max.h - f.h) / 2
   win:setFrame(f,0)
