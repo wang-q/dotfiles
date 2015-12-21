@@ -13,7 +13,7 @@ end)
 
 -- Move Window
 
--- half screen
+-- vertical half screen
 hs.hotkey.bind(hyper, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
@@ -40,17 +40,27 @@ hs.hotkey.bind(hyper, "Right", function()
   win:setFrame(f)
 end)
 
--- 3/4 screen
+-- loop 3/4, 1/2, 1/4 screen width
 hs.hotkey.bind(hyperShift, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 4 * 3
-  f.h = max.h
+  if f.w == math.floor(max.w / 4 * 3) then
+    f.w = math.floor(max.w / 2)
+    f.x = max.x
+  elseif f.w == math.floor(max.w / 2) then
+    f.w = math.floor(max.w / 4)
+    f.x = max.x
+  elseif f.w == math.floor(max.w / 4) then
+    f.w = math.floor(max.w / 4 * 3)
+    f.x = max.x
+  else
+    f.w = math.floor(max.w / 4 * 3)
+    f.x = max.x
+  end
+
   win:setFrame(f)
 end)
 
@@ -60,10 +70,94 @@ hs.hotkey.bind(hyperShift, "Right", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.x + (max.w / 4)
+  if f.w == math.floor(max.w / 4 * 3) then
+    f.w = math.floor(max.w / 2)
+    f.x = max.x + (max.w / 2)
+  elseif f.w == math.floor(max.w / 2) then
+    f.w = math.floor(max.w / 4)
+    f.x = max.x + (max.w / 4 * 3)
+  elseif f.w == math.floor(max.w / 4) then
+    f.w = math.floor(max.w / 4 * 3)
+    f.x = max.x + (max.w / 4)
+  else
+    f.w = math.floor(max.w / 4 * 3)
+    f.x = max.x + (max.w / 4)
+  end
+
+  win:setFrame(f)
+end)
+
+-- horizonal half screen
+hs.hotkey.bind(hyper, "Up", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
   f.y = max.y
-  f.w = max.w / 4 * 3
-  f.h = max.h
+  f.w = max.w
+  f.h = max.h / 2
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind(hyper, "Down", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y + (max.h - f.h)
+  f.w = max.w
+  f.h = max.h / 2
+  win:setFrame(f)
+end)
+
+-- loop 3/4, 1/2, 1/4 screen height
+hs.hotkey.bind(hyperShift, "Up", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  if f.h == math.floor(max.h / 4 * 3) then
+    f.h = math.floor(max.h / 2)
+    f.y = max.y
+  elseif f.h == math.floor(max.h / 2) then
+    f.h = math.floor(max.h / 4)
+    f.y = max.y
+  elseif math.floor(max.h / 4) then
+    f.h = math.floor(max.h / 4 * 3)
+    f.y = max.y
+  else
+    f.h = math.floor(max.h / 4 * 3)
+    f.y = max.y
+  end
+
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind(hyperShift, "Down", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  if f.h == math.floor(max.h / 4 * 3) then
+    f.h = math.floor(max.h / 2)
+    f.y = max.y + (max.h - f.h)
+  elseif f.h == math.floor(max.h / 2) then
+    f.h = math.floor(max.h / 4)
+    f.y = max.y + (max.h - f.h)
+  elseif math.floor(max.h / 4) then
+    f.h = math.floor(max.h / 4 * 3)
+    f.y = max.y + (max.h - f.h)
+  else
+    f.h = math.floor(max.h / 4 * 3)
+    f.y = max.y + (max.h - f.h)
+  end
+
   win:setFrame(f)
 end)
 

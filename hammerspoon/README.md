@@ -13,9 +13,11 @@ Or `brew cask install hammerspoon`.
 * Maximize current window. `hyper` + `M`
 * Center current window. `hyper` + `C`
 * Resize and center current window. `hyper` + `Shift` + `C`
-* Half screen size. `hyper` + `left` or `right`
-* 3/4 screen size. `hyper` + `Shift` + left` or `right`
+* Vertical half screen size. `hyper` + `Left` or `Right`
+* Loop 3/4, 1/2 and 1/4 screen width. `hyper` + `Shift` + `Left` or `Right`
+* Horizontal half screen size. `hyper` + `Up` or `Down`
+* Loop 3/4, 1/2 and 1/4 screen height. `hyper` + `Shift` + `Up` or `Down`
 
-## Come from this post
+## Ideas come from this post
 
 [here](http://songchenwen.com/tech/2015/04/02/hammerspoon-mac-window-manager/)
