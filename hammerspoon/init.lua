@@ -181,25 +181,29 @@ hs.hotkey.bind(hyperShift, "M", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  local basew = 0.75
-  local baseh = 0.90
-  local serials = {1, 0.8, 0.6, 0.4}
+  -- 4:3 window
+  local basew = math.floor(max.h * 4 / 3)
+  local baseh = max.h
+  local serials = {1, 0.9, 0.7, 0.5, 0.3}
 
-  if f.w == math.floor(max.w * basew * serials[1]) then
-    f.w = math.floor(max.w * basew * serials[2])
-    f.h = math.floor(max.h * baseh * serials[2])
-  elseif f.w == math.floor(max.w * basew * serials[2]) then
-    f.w = math.floor(max.w * basew * serials[3])
-    f.h = math.floor(max.h * baseh * serials[3])
-  elseif f.w == math.floor(max.w * basew * serials[3]) then
-    f.w = math.floor(max.w * basew * serials[4])
-    f.h = math.floor(max.h * baseh * serials[4])
-  elseif f.w == math.floor(max.w * basew * serials[4]) then
-    f.w = math.floor(max.w * basew * serials[1])
-    f.h = math.floor(max.h * baseh * serials[1])
+  if f.w == math.floor(basew * serials[1]) then
+    f.w = math.floor(basew * serials[2])
+    f.h = math.floor(baseh * serials[2])
+  elseif f.w == math.floor(basew * serials[2]) then
+    f.w = math.floor(basew * serials[3])
+    f.h = math.floor(baseh * serials[3])
+  elseif f.w == math.floor(basew * serials[3]) then
+    f.w = math.floor(basew * serials[4])
+    f.h = math.floor(baseh * serials[4])
+  elseif f.w == math.floor(basew * serials[4]) then
+    f.w = math.floor(basew * serials[5])
+    f.h = math.floor(baseh * serials[5])
+  elseif f.w == math.floor(basew * serials[5]) then
+    f.w = math.floor(basew * serials[1])
+    f.h = math.floor(baseh * serials[1])
   else
-    f.w = math.floor(max.w * basew * serials[1])
-    f.h = math.floor(max.h * baseh * serials[1])
+    f.w = math.floor(basew * serials[1])
+    f.h = math.floor(baseh * serials[1])
   end
 
   win:setFrame(f)
