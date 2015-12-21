@@ -163,7 +163,16 @@ end)
 
 -- Maximize window
 hs.hotkey.bind(hyper, "M", function()
-    hs.grid.maximizeWindow()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w
+  f.h = max.h
+  win:setFrame(f)
 end)
 
 -- Center window
@@ -184,6 +193,7 @@ hs.hotkey.bind(hyperShift, "C", function()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
+
   local percw = 75
   local perch = 90
 
