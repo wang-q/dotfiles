@@ -186,6 +186,9 @@ hs.hotkey.bind(hyperShift, "M", function()
   local baseh = max.h
   local serials = {1, 0.9, 0.7, 0.5, 0.3}
 
+  f.x = max.x
+  f.y = max.y
+
   if f.w == math.floor(basew * serials[1]) then
     f.w = math.floor(basew * serials[2])
     f.h = math.floor(baseh * serials[2])
