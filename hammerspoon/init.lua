@@ -40,24 +40,32 @@ hs.hotkey.bind(hyper, "Right", function()
   win:setFrame(f)
 end)
 
--- loop 3/4, 1/2, 1/4 screen width
+-- loop 3/4, 3/5, 1/2, 2/5, 1/4 screen width
 hs.hotkey.bind(hyperShift, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
   local max = screen:frame()
 
-  if f.w == math.floor(max.w / 4 * 3) then
-    f.w = math.floor(max.w / 2)
+  local serials = {0.75, 0.6, 0.5, 0.4, 0.25}
+
+  if f.w == math.floor(max.w * serials[1]) then
+    f.w = math.floor(max.w * serials[2])
     f.x = max.x
-  elseif f.w == math.floor(max.w / 2) then
-    f.w = math.floor(max.w / 4)
+  elseif f.w == math.floor(max.w * serials[2]) then
+    f.w = math.floor(max.w * serials[3])
     f.x = max.x
-  elseif f.w == math.floor(max.w / 4) then
-    f.w = math.floor(max.w / 4 * 3)
+  elseif f.w == math.floor(max.w * serials[3]) then
+    f.w = math.floor(max.w * serials[4])
+    f.x = max.x
+  elseif f.w == math.floor(max.w * serials[4]) then
+    f.w = math.floor(max.w * serials[5])
+    f.x = max.x
+  elseif f.w == math.floor(max.w * serials[5]) then
+    f.w = math.floor(max.w * serials[1])
     f.x = max.x
   else
-    f.w = math.floor(max.w / 4 * 3)
+    f.w = math.floor(max.w * serials[1])
     f.x = max.x
   end
 
@@ -70,18 +78,26 @@ hs.hotkey.bind(hyperShift, "Right", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  if f.w == math.floor(max.w / 4 * 3) then
-    f.w = math.floor(max.w / 2)
-    f.x = max.x + (max.w / 2)
-  elseif f.w == math.floor(max.w / 2) then
-    f.w = math.floor(max.w / 4)
-    f.x = max.x + (max.w / 4 * 3)
-  elseif f.w == math.floor(max.w / 4) then
-    f.w = math.floor(max.w / 4 * 3)
-    f.x = max.x + (max.w / 4)
+  local serials = {0.75, 0.6, 0.5, 0.4, 0.25}
+
+  if f.w == math.floor(max.w * serials[1]) then
+    f.w = math.floor(max.w * serials[2])
+    f.x = max.x + math.floor(max.w * (1 - serials[2]) )
+  elseif f.w == math.floor(max.w * serials[2]) then
+    f.w = math.floor(max.w * serials[3])
+    f.x = max.x + math.floor(max.w * (1 - serials[3]) )
+  elseif f.w == math.floor(max.w * serials[3]) then
+    f.w = math.floor(max.w * serials[4])
+    f.x = max.x + math.floor(max.w * (1 - serials[4]) )
+  elseif f.w == math.floor(max.w * serials[4]) then
+    f.w = math.floor(max.w * serials[5])
+    f.x = max.x + math.floor(max.w * (1 - serials[5]) )
+  elseif f.w == math.floor(max.w * serials[5]) then
+    f.w = math.floor(max.w * serials[1])
+    f.x = max.x + math.floor(max.w * (1 - serials[1]) )
   else
-    f.w = math.floor(max.w / 4 * 3)
-    f.x = max.x + (max.w / 4)
+    f.w = math.floor(max.w * serials[1])
+    f.x = max.x + math.floor(max.w * (1 - serials[1]) )
   end
 
   win:setFrame(f)

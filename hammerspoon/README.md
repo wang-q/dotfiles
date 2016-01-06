@@ -21,7 +21,7 @@ Or `brew cask install hammerspoon`.
 * Maximize current window. `hyper` + `M`
 * Base size is 1.33x1 screen height (4:3 window). Loop through 1, 0.9, 0.7, 0.5 and 0.3. `hyper` + `Shift` + `M`
 * Vertical half screen size. `hyper` + `Left` or `Right`
-* Loop through 3/4, 1/2 and 1/4 screen width. `hyper` + `Shift` + `Left` or `Right`
+* Loop through 3/4, 3/5, 1/2, 2/5, 1/4 screen width. `hyper` + `Shift` + `Left` or `Right`
 * Horizontal half screen size. `hyper` + `Up` or `Down`
 * Loop through 3/4, 1/2 and 1/4 screen height. `hyper` + `Shift` + `Up` or `Down`
 
