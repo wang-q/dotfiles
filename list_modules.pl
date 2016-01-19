@@ -47,7 +47,7 @@ list_modules.pl - list installed CPAN modules
 GetOptions(
     'help|?'     => sub { HelpMessage(0) },
     'input|i=s'  => \( my $input ),
-    'output|i=s' => \( my $output ),
+    'output|o=s' => \( my $output ),
     'minimal|m'  => \( my $minimal ),
     'reload|r'   => \( my $reload ),
 ) or HelpMessage(1);
