@@ -3,4 +3,7 @@
 * [bash](.bashrc)
 * [git](.gitconfig)
 * [GNU screen](.screenrc)
-* [Hammerspoon](.hammerspoon/)
+
+* [Homebrew](brew/)
+* [Hammerspoon](hammerspoon/)
+* [mpv](mpv/)
