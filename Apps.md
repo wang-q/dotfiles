@@ -20,7 +20,7 @@
     * Thunder
     * Crossftp
 
-* Read and note
+* Reading and notes
     * Evernote
     * Reeder
     * Pocket
@@ -36,6 +36,7 @@
         * UltraEdit
     * VCS
         * GitHub
+        * SourceTree
 
 * System tools
     * CleanMyMac

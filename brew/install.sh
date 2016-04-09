@@ -23,7 +23,7 @@ brew install ffmpeg --with-libass --with-fdk-aac
 # Graphics
 brew install freeglut gnuplot graphviz imagemagick plplot
 
-# other languages
+# other programming languages
 brew install maven ant
 brew install lua node
 brew install python
@@ -32,9 +32,9 @@ brew install r --with-openblas
 
 # casks
 brew tap caskroom/cask
-brew cask install aegisub figtree jabref xmind
-brew cask install disk-inventory-x hammerspoon
-brew cask install packer robomongo sourcetree
+brew cask install aegisub caffeine disk-inventory-x figtree
+brew cask install hammerspoon jabref packer robomongo
+brew cask install scroll-reverser sourcetree xmind
 
 # mpv
 brew install duti
