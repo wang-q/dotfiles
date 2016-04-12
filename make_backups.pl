@@ -152,6 +152,7 @@ elsif ( $^O eq 'darwin' ) {
                 system qq{ls \$(Rscript -e 'cat(.Library.site)') >> $ENV{HOME}/r_list.txt};
                 system qq{sort -u -o $ENV{HOME}/r_list.txt $ENV{HOME}/r_list.txt};
                 system "tlmgr list --only-installed > $ENV{HOME}/tlmgr_list.txt";
+                system "apm list --installed > $ENV{HOME}/atom_list.txt";
             },
             file => [
                 path( $ENV{HOME}, 'brew_tap.txt' ),
@@ -160,6 +161,7 @@ elsif ( $^O eq 'darwin' ) {
                 path( $ENV{HOME}, 'pip_list.txt' ),
                 path( $ENV{HOME}, 'r_list.txt' ),
                 path( $ENV{HOME}, 'tlmgr_list.txt' ),
+                path( $ENV{HOME}, 'atom_list.txt' ),
             ],
             post_action => sub {
                 print " " x 4, "Clean package list files\n";
