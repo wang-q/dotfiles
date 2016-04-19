@@ -9,10 +9,11 @@ cd ~/.config
 ln -Fs "$MPVDIR"
 
 # as default player
-APPFILE=~/Applications/mpv.app
+APPFILE=/Applications/mpv.app
 
 if [ ! -e "$APPFILE" ]; then
-    exit
+    echo "mpv.app doesn't exist"
+    exit;
 fi
 
 BUNDLEID=$(mdls -name kMDItemCFBundleIdentifier -r $APPFILE)

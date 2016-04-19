@@ -38,4 +38,5 @@ brew cask install scroll-reverser sourcetree xmind
 
 # mpv
 brew install duti
-brew cask install mpv
+brew reinstall mpv --with-bundle
+brew linkapps mpv
