@@ -16,6 +16,10 @@
 
 ## GUI
 
+* Communication
+    * Slack
+    * QQ
+
 * Downloading tools
     * Thunder
     * Crossftp
@@ -27,6 +31,7 @@
 
 * Programming
     * IDE
+        * IntelliJ IDEA
         * Komodo
         * WebStorm
         * CLion
@@ -38,9 +43,16 @@
         * GitHub
         * SourceTree
 
-* System tools
+* Databases
+    * MySQLWorkbench
+    * Robomongo
+
+* System and file management tools
+    * BeyondCompare
     * CleanMyMac
     * 1Password
+    * Caffeine
+    * disk-inventory-x
 
 * Virtualization
     * VirtualBox
