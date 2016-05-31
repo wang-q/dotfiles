@@ -9,7 +9,7 @@ is_installed <- function(package) {
 
 # CRAN packages
 basic_libraries <- c("plyr", "reshape2", "getopt")
-graphics_libraries <- c("scales", "ggplot2", "gridExtra", "knitr", "rmarkdown", "extrafont")
+graphics_libraries <- c("scales", "ggplot2", "gridExtra", "knitr", "rmarkdown", "extrafont", "tikzDevice")
 bio_libraries <- c("ape")
 
 for(library in c(basic_libraries, graphics_libraries, bio_libraries ) ) {
@@ -27,9 +27,3 @@ for(library in bioC_libraries) {
         biocLite(library)
     }
 }
-
-# extrafont
-library(extrafont)
-font_install('fontcm', prompt = FALSE)
-font_import(prompt = FALSE)
-fonts()
