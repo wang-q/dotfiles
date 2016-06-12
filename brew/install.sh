@@ -32,9 +32,9 @@ brew install r --with-openblas
 
 # casks
 brew tap caskroom/cask
-brew cask install aegisub caffeine disk-inventory-x figtree
-brew cask install hammerspoon jabref packer robomongo
-brew cask install scroll-reverser sourcetree xmind
+brew cask install aegisub caffeine disk-inventory-x hammerspoon jabref
+brew cask install packer robomongo scroll-reverser sourcetree xmind
+brew cask install figtree dendroscope
 
 # mpv
 brew install duti
