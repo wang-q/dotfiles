@@ -8,7 +8,7 @@ is_installed <- function(package) {
 }
 
 # CRAN packages
-basic_libraries <- c("plyr", "reshape2", "getopt")
+basic_libraries <- c("magrittr", "stringr", "plyr", "dplyr", "readr", "reshape2", "getopt", "devtools")
 graphics_libraries <- c("scales", "ggplot2", "gridExtra", "knitr", "rmarkdown", "extrafont", "tikzDevice")
 bio_libraries <- c("ape")
 
