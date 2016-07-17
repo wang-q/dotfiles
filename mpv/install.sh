@@ -1,23 +1,23 @@
 #!/bin/bash
 
-MPVDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # symlink
 echo "mpv configuring"
 mkdir -p ~/.config
 cd ~/.config
-ln -Fs "$MPVDIR"
+ln -Fs "${BASE_DIR}"
 
 # as default player
-APPFILE=/Applications/mpv.app
+APP_FILE=/Applications/mpv.app
 
-if [ ! -e "$APPFILE" ]; then
+if [ ! -e "${APP_FILE}" ]; then
     echo "mpv.app doesn't exist"
     exit;
 fi
 
-BUNDLEID=$(mdls -name kMDItemCFBundleIdentifier -r $APPFILE)
-echo "mpv id: $BUNDLEID"
+BUNDLE_ID=$(mdls -name kMDItemCFBundleIdentifier -r $APPFILE)
+echo "mpv id: ${BUNDLE_ID}"
 
 EXTS=( 3GP ASF AVI FLV M4V MKV MOV MP4 MPEG MPG MPG2 MPG4 RMVB WMV )
 
