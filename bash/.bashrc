@@ -24,3 +24,6 @@ export CLICOLOR=1
 
 # mongodbbin
 export PATH="$HOME/share/mongodb/bin:$PATH"
+
+# mysqlbin
+export PATH="$HOME/share/mysql/bin:$PATH"

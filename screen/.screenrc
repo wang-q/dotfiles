@@ -20,4 +20,3 @@ termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 # http://stackoverflow.com/questions/359109/using-the-scrollwheel-in-gnu-screen/1125947
 # use mouse wheel in screen
 termcapinfo xterm* ti@:te@
-
