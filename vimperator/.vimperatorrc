@@ -1,0 +1,24 @@
+autocmd LocationChange .*                             js modes.passAllKeys = false
+autocmd LocationChange mail\\.google\\.com            js modes.passAllKeys = true
+autocmd LocationChange docs\\.google\\.com            js modes.passAllKeys = true
+autocmd LocationChange www\\.google\\.com/calendar    js modes.passAllKeys = true
+autocmd LocationChange feedly.com                     js modes.passAllKeys = true
+autocmd LocationChange http://127.0.0.1:8888          js modes.passAllKeys = true
+autocmd LocationChange http://127.0.0.1:3000          js modes.passAllKeys = true
+
+" Key Mappings
+nnoremap j 5j
+nnoremap k 5k
+noremap e :emenu Tools.Clearly<cr>
+
+" file should be unix-ending and utf-8
+set nextpattern+=下一页,下页,下一章,»
+set previouspattern+=上一页,上页,上一章,«
+
+" Ctrl-c and Ctrl-v
+noremap <C-c> <C-v><C-c>
+noremap <C-v> <C-v><C-v> 
+
+cnoremap <C-c> <C-v><C-c>
+cnoremap <C-v> <C-v><C-v> 
+
