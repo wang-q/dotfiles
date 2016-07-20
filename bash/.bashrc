@@ -12,15 +12,25 @@ export INCLUDE=$HOME/inlcude:$INCLUDE
 export LIB=$HOME/lib:$LIB
 export PKG_CONFIG_PATH=$HOME/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/:$PKG_CONFIG_PATH
 
+# Make vim the default editor.
+export EDITOR='vim'
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X'
+
+# FreeBSD ls colors
+export CLICOLOR=1
+
 # plenv
 export PATH="$HOME/.plenv/bin:$PATH"
 eval "$(plenv init -)"
 
 # vcftools
 export PERL5LIB=/usr/local/lib/perl5/site_perl:${PERL5LIB}
-
-# FreeBSD ls colors
-export CLICOLOR=1
 
 # mongodbbin
 export PATH="$HOME/share/mongodb/bin:$PATH"
