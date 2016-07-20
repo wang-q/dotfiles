@@ -1,4 +1,6 @@
-# My configuration files on OSX
+# My configuration files on macOS
+
+![Screenshot of a terminal window](images/screen.png)
 
 * Managed by GNU stow
 
@@ -10,7 +12,9 @@
     * [wget](wget/.wgetrc)
     * [perltidy](perltidy/.perltidyrc)
 
-* [Homebrew](brew/)
+* [macOS](macos.sh)
+    * Extracted from [here](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
+* [Homebrew](brew.sh)
 * [Hammerspoon](hammerspoon/)
 * [mpv](mpv/)
 * [r](r/)
