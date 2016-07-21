@@ -1,0 +1,5 @@
+--ignore-dir=.git
+--ignore-dir=.idea
+--ignore-dir=node_modules
+
+--type-set=md=.md,.markdown,.mkdn

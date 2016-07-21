@@ -10,7 +10,7 @@ hash stow 2>/dev/null || {
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${BASE_DIR}
 
-DIRS=( bash git screen vim vimperator wget perltidy )
+DIRS=( bash git screen vim vimperator wget ack perltidy )
 
 echo "==> Restow dotfiles <=="
 for d in ${DIRS[@]}

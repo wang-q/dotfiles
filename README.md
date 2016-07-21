@@ -10,6 +10,7 @@
     * [vim](vim/.vimrc)
     * [vimperator](vimperator/.vimperatorrc)
     * [wget](wget/.wgetrc)
+    * [ack](ack/.ackrc)
     * [perltidy](perltidy/.perltidyrc)
 
 * [`macos.sh`](macos.sh)
