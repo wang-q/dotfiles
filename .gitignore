@@ -1,2 +1,5 @@
 mpv/watch_later
 mpv/tmp
+
+# IDE
+.idea
