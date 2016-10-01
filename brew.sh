@@ -16,14 +16,16 @@ brew install cloc cmake htop-osx pandoc parallel sqlite tree
 brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
 
 # Graphics
-brew install freeglut gnuplot graphviz imagemagick plplot
+brew install gnuplot graphviz imagemagick plplot
 
 # other programming languages
 brew install maven ant
 brew install lua node
 brew install python
 pip install --upgrade pip setuptools
-brew install r --with-openblas
+
+brew tap homebrew/science
+brew install r
 
 # https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
 # ffmpeg
