@@ -4,14 +4,14 @@
 
 * Managed by GNU stow
     * `bash install.sh`
-    * [bash](bash/)
-    * [git](git/)
-    * [GNU screen](screen/.screenrc)
-    * [vim](vim/.vimrc)
-    * [vimperator](vimperator/.vimperatorrc)
-    * [wget](wget/.wgetrc)
-    * [ack](ack/.ackrc)
-    * [perltidy](perltidy/.perltidyrc)
+    * [ack](stow-ack/.ackrc)
+    * [bash](stow-bash/)
+    * [git](stow-git/)
+    * [perltidy](stow-perltidy/.perltidyrc)
+    * [GNU screen](stow-screen/.screenrc)
+    * [vim](stow-vim/.vimrc)
+    * [vimperator](stow-vimperator/.vimperatorrc)
+    * [wget](stow-wget/.wgetrc)
 
 * [`macos.sh`](macos.sh)
     * Extracted from [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)

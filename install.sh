@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# chech faops is installed
+# check gnu stow is installed
 hash stow 2>/dev/null || {
     echo >&2 "GNU stow is required but it's not installed.";
     echo >&2 "Install with homebrew: brew install stow";
@@ -10,7 +10,7 @@ hash stow 2>/dev/null || {
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${BASE_DIR}
 
-DIRS=( bash git screen vim vimperator wget ack perltidy )
+DIRS=( stow-ack stow-bash stow-git stow-perltidy stow-screen stow-wget stow-vim stow-vimperator )
 
 echo "==> Restow dotfiles <=="
 for d in ${DIRS[@]}
