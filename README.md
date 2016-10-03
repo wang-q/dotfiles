@@ -2,7 +2,7 @@
 
 ![Screenshot of a terminal window](images/screen.png)
 
-* Managed by GNU stow
+* Configurations managed by GNU stow
     * `bash install.sh`
     * [ack](stow-ack/.ackrc)
     * [bash](stow-bash/)
@@ -16,13 +16,15 @@
 * [`macos.sh`](macos.sh)
     * Extracted from [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
 * [`brew.sh`](brew.sh)
-    * Homebrew formulas, CLI and GUI
-* vim plugins
-    * `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-    * `vim +PluginInstall +qall`
-* [r](r/)
+    * Install CLI apps from Homebrew
+* [`brewcask.sh`](brewcask.sh)
+    * Install GUI apps from Homebrew cask
 
 * [Hammerspoon](hammerspoon/)
     * Lua powered Mac window manager
 * [mpv](mpv/)
     * Video player I choose.
+* vim plugins
+    * `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+    * `vim +PluginInstall +qall`
+* [r](r/)
