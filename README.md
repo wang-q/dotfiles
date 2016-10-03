@@ -22,9 +22,12 @@
 
 * [Hammerspoon](hammerspoon/)
     * Lua powered Mac window manager
+    * `bash hammerspoon/install.sh`
 * [mpv](mpv/)
     * Video player I choose.
+    * `bash mpv/install.sh`
+* [r](r/)
+    * `bash r/install.sh`
 * vim plugins
     * `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
     * `vim +PluginInstall +qall`
-* [r](r/)
