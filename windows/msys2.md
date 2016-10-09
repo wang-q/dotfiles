@@ -2,7 +2,7 @@
 
 ## install
 
-1. Download [msys2 installer](http://mirrors.ustc.edu.cn/msys2/Base/i686/msys2-i686-20150512.exe) and install it.
+1. Download [msys2 installer](http://mirrors.ustc.edu.cn/msys2/Base/i686/msys2-i686-20160921.exe) and install it.
 
 2. Update the system packages.
 
@@ -21,6 +21,7 @@
 
     pacman -Syu
     ```
+
 4. Other packages.
 
     ```bash
