@@ -10,7 +10,7 @@ hash stow 2>/dev/null || {
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${BASE_DIR}
 
-DIRS=( stow-ack stow-bash stow-git stow-perltidy stow-screen stow-wget stow-vim stow-vimperator )
+DIRS=( stow-ack stow-bash stow-git stow-perltidy stow-screen stow-wget stow-vim stow-vimperator stow-proxychains )
 
 echo "==> Restow dotfiles <=="
 for d in ${DIRS[@]}
