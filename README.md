@@ -8,6 +8,7 @@
     * [bash](stow-bash/)
     * [git](stow-git/)
     * [perltidy](stow-perltidy/.perltidyrc)
+    * [proxychains](stow-proxychains/)
     * [GNU screen](stow-screen/.screenrc)
     * [vim](stow-vim/.vimrc)
     * [vimperator](stow-vimperator/.vimperatorrc)
