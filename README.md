@@ -16,9 +16,9 @@
 * [`macos.sh`](macos.sh)
     * Extracted from [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
 * [`brew.sh`](brew.sh)
-    * Install CLI apps from Homebrew
+    * Install CLI apps via Homebrew
 * [`brewcask.sh`](brewcask.sh)
-    * Install GUI apps from Homebrew cask
+    * Install GUI apps via Homebrew cask
 
 * [Hammerspoon](hammerspoon/)
     * Lua powered Mac window manager
