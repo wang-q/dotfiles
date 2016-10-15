@@ -52,6 +52,7 @@
     * CleanMyMac
     * 1Password
     * Caffeine
+    * CheatSheet: 长按command键显示当前程序的快捷键列表
     * disk-inventory-x
 
 * Virtualization

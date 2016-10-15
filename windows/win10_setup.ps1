@@ -1,4 +1,7 @@
 # https://gist.github.com/NickCraver/7ebf9efbfd0c3eab72e9
+# https://github.com/Disassembler0/Win10-Initial-Setup-Script/blob/master/Win10.ps1
+# https://github.com/joakimlemb/win10-setup/blob/master/win10-setup.ps1
+# https://github.com/Nummer/Destroy-Windows-10-Spying/releases
 
 #----------------------------------------------------------#
 # Personal Preferences on UI
