@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# gcc
+brew install gcc --with-glibc
+brew unlink gcc
+
 # download tools
 brew install wget aria2
 
 # gnu
-brew install gcc --with-glibc
-brew unlink gcc
 brew install gnu-sed gnu-tar
 
 # libs
