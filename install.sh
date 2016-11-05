@@ -9,30 +9,48 @@ hash stow 2>/dev/null || {
 
 # colors in term
 # http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
+GREEN=
+RED=
+NC=
+if tty -s < /dev/fd/1 2> /dev/null; then
+  GREEN='\033[0;32m'
+  RED='\033[0;31m'
+  NC='\033[0m' # No Color
+fi
+
+log_warn () {
+  echo -e "==> ${RED}$@${NC} <=="
+}
+
+log_info () {
+  echo -e "==> ${GREEN}$@${NC}"
+}
+
+log_debug () {
+  echo -e "==> $@"
+}
 
 # enter BASE_DIR
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${BASE_DIR}
 
 # stow configurations
-echo -e "${GREEN}==> Restow dotfiles <==${NC}"
+log_warn "Restow dotfiles"
 DIRS=( stow-ack stow-bash stow-git stow-perltidy stow-screen stow-wget stow-vim stow-vimperator stow-proxychains )
 
 for d in ${DIRS[@]}
 do
-    echo -e "${GREEN}==> ${d}${NC}"
+    log_info "${d}"
     for f in $(find ${d} -maxdepth 1 | cut -sd / -f 2- | grep .)
     do
         homef="${HOME}/${f}"
         if [ -h ${homef} ] ; then
-            echo "==> Symlink exists: [${homef}]"
+            log_debug "Symlink exists: [${homef}]"
         elif [ -f ${homef} ] ; then
-            echo "==> Delete file: [${homef}]"
+            log_debug "Delete file: [${homef}]"
             rm ${homef}
         elif [ -d ${homef} ] ; then
-            echo "==> Delete dir: [${homef}]"
+            log_debug "Delete dir: [${homef}]"
             rm -fr ${homef}
         fi
     done
