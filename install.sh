@@ -12,12 +12,14 @@ hash stow 2>/dev/null || {
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+# enter BASE_DIR
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${BASE_DIR}
 
+# stow configurations
+echo -e "${GREEN}==> Restow dotfiles <==${NC}"
 DIRS=( stow-ack stow-bash stow-git stow-perltidy stow-screen stow-wget stow-vim stow-vimperator stow-proxychains )
 
-echo -e "${GREEN}==> Restow dotfiles <==${NC}"
 for d in ${DIRS[@]}
 do
     echo -e "${GREEN}==> ${d}${NC}"

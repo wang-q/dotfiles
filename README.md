@@ -21,8 +21,8 @@
     * Install CLI apps via Homebrew
 
 * [`genomics.sh`](genomics.sh)
-    * Install bioinformatics apps via Homebrew science and my own tap
-    * Trinity, GATK and picard
+    * Install bioinformatics apps via Homebrew science and my own homebrew-tap
+    * Install Trinity, GATK and picard manually
 
 * [r](r/)
     * `bash r/install.sh`
