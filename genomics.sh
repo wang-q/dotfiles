@@ -19,6 +19,7 @@ brew install stringtie hisat2 canu kmergenie
 
 echo "==> custom tap"
 brew tap wang-q/tap
+brew install faops multiz sparsemem
 brew install scythe
 
 echo "==> trinity"
