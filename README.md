@@ -7,6 +7,7 @@
 * `bash install.sh`
 * [ack](stow-ack/.ackrc)
 * [bash](stow-bash/)
+* [htop](stow-htop/)
 * [git](stow-git/)
 * [perltidy](stow-perltidy/.perltidyrc)
 * [proxychains](stow-proxychains/)

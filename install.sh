@@ -36,7 +36,7 @@ cd ${BASE_DIR}
 
 # stow configurations
 log_warn "Restow dotfiles"
-DIRS=( stow-ack stow-bash stow-git stow-perltidy stow-screen stow-wget stow-vim stow-vimperator stow-proxychains )
+DIRS=( stow-ack stow-git stow-htop stow-perltidy stow-screen stow-wget stow-vim stow-vimperator stow-proxychains )
 
 for d in ${DIRS[@]}
 do
@@ -56,3 +56,12 @@ do
     done
 	stow -t ${HOME} ${d} -v 2
 done
+
+# don't ruin Ubuntu
+log_info "stwo-bash"
+stow -t ${HOME} stow-bash -v 2
+
+# don't ruin Ubuntu
+mkdir -p ${HOME}/.config/htop
+log_info "stow-htop to .config"
+stow -t ${HOME}/.config/htop stow-htop -v 2
