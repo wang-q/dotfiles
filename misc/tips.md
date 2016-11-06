@@ -228,7 +228,7 @@ Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用
 ## how to install arial font in ubuntu
 
 ```
-sudo apt-get install ttf-mscorefonts-installer
+sudo apt-get -y install ttf-mscorefonts-installer
 sudo fc-cache
 ```
 
@@ -253,6 +253,7 @@ sudo apt-get -y install gnome-panel gnome-settings-daemon metacity nautilus gnom
 Create a customized `~/.vnc/xstartup`.
 
 ```bash
+cat <<EOF > ~/.vnc/xstartup
 #!/bin/sh
 
 export XKL_XMODMAP_DISABLE=1
@@ -269,6 +270,14 @@ gnome-settings-daemon &
 metacity &
 nautilus &
 gnome-terminal &
+
+EOF
+```
+
+Customized resolution.
+
+```bash
+vncserver -geometry 1200x900
 ```
 
 ## Install desktop for ubuntu-server
@@ -276,6 +285,15 @@ gnome-terminal &
 ```bash
 # sudo apt-get install --no-install-recommends ubuntu-desktop
 ```
+
+## lvm
+
+```bash
+sudo apt-get install gparted
+sudo apt-get install system-config-lvm
+```
+
+http://www.howtogeek.com/127246/linux-sysadmin-how-to-manage-lvms-with-a-gui/
 
 ## Checking your Ubuntu Version
 
