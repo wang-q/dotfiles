@@ -25,7 +25,7 @@
     * Install bioinformatics apps via Homebrew science and my own homebrew-tap
     * Install Trinity, GATK and picard manually
 
-* [r](r/)
+* [`r`](r/)
     * `bash r/install.sh`
 
 * vim plugins
