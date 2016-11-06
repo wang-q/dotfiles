@@ -62,6 +62,5 @@ log_info "stwo-bash"
 stow -t ${HOME} stow-bash -v 2
 
 # don't ruin Ubuntu
-mkdir -p ${HOME}/.config/htop
-log_info "stow-htop to .config"
-stow -t ${HOME}/.config/htop stow-htop -v 2
+log_info "stow-htop2 to .config"
+stow -t ${HOME}/.config/htop stow-htop2 -v 2
