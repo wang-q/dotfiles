@@ -212,7 +212,7 @@ https://bugs.launchpad.net/inkscape/+bug/1218578
 Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用的 `-`，但在如上面说的，macOS里又要使用绝对路径，所以用`/dev/fd/1`.
 
 ```bash
- /Applications/Inkscape.app/Contents/Resources/script \
+/Applications/Inkscape.app/Contents/Resources/script \
     ~/Downloads/textextract-good.pdf \
     --export-plain-svg /dev/fd/1 \
     | xmllint --format - \
