@@ -49,6 +49,12 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
 
 ```
 
+## Kill all by names
+
+```bash
+ps ax | grep lastz | perl -anle 'print $F[0]' | xargs kill -9
+```
+
 ## sha1 sum
 
 ```bash
