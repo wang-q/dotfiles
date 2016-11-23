@@ -1,2 +1,2 @@
 -pbp   # Start with Perl Best Practices
--l=80  # 80 characters per line
+-l=100 # 100 characters per line
