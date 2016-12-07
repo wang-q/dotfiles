@@ -49,6 +49,12 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
 
 ```
 
+## cloc of tracked files
+
+```bash
+cloc $(git ls-files)
+```
+
 ## Kill all by names
 
 ```bash

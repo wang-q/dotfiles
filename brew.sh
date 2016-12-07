@@ -14,7 +14,7 @@ brew install gnu-sed gnu-tar
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
 
 # other tools
-brew install cloc cmake htop-osx pandoc parallel sqlite tree proxychains-ng
+brew install cloc cmake htop-osx pandoc parallel sqlite tree proxychains-ng nmap
 
 # gtk+3
 brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
