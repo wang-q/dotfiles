@@ -3,10 +3,7 @@ use strict;
 use warnings;
 use autodie;
 
-use Getopt::Long qw(HelpMessage);
-use Config::Tiny;
-use FindBin;
-use YAML qw(Dump Load DumpFile LoadFile);
+use Getopt::Long;
 
 use CPAN;
 use Module::CoreList;
@@ -45,12 +42,12 @@ list_modules.pl - list installed CPAN modules
 =cut
 
 GetOptions(
-    'help|?'     => sub { HelpMessage(0) },
+    'help|?'     => sub { Getopt::Long::HelpMessage(0) },
     'input|i=s'  => \( my $input ),
     'output|o=s' => \( my $output ),
     'minimal|m'  => \( my $minimal ),
     'reload|r'   => \( my $reload ),
-) or HelpMessage(1);
+) or Getopt::Long::HelpMessage(1);
 
 #----------------------------------------------------------#
 # Loading CPAN and CPANDB
@@ -92,9 +89,7 @@ else {
 
     # find core modules
     my @cores = Module::CoreList->find_modules( qr/./, $] );
-    my $core_module = scalar @cores;
     @cores = merge_modules(@cores);
-    my $core_dist  = scalar @cores;
     my @dual_dists = grep { defined $_ } map { module2dist($_) } @cores;
     my $dual_dists = Set::Scalar->new(@dual_dists);
     warn "* Find ", $dual_dists->size, " core modules\n";
@@ -122,6 +117,7 @@ else {
 # Minimal sets
 #----------------------------------------------------------#
 {
+    #@type Set::Scalar
     my $dist_set = $all_dists->copy;
 
     my @dists = $dist_set->elements;
@@ -146,97 +142,6 @@ else {
 #----------------------------------------------------------#
 # Every categories
 #----------------------------------------------------------#
-unless ($minimal) {
-    my $dists = Set::Scalar->new(
-        qw{
-            Algorithm-C3 Algorithm-Diff aliased Alien-Tidyp Alt-Crypt-RSA-BigInt App-cpanminus
-            App-local-lib-Win32Helper App-module-version App-pmuninstall AppConfig Archive-Extract
-            Archive-Tar Archive-Zip Attribute-Handlers Authen-SASL autodie B-Debug
-            B-Hooks-EndOfScope B-Hooks-OP-Check B-Lint B-Utils base BerkeleyDB bignum
-            Bytes-Random-Secure Capture-Tiny Carp Carp-Always Carp-Clan CGI CGI-Fast Class-Accessor
-            Class-Accessor-Chained Class-Accessor-Grouped Class-Accessor-Lite Class-C3
-            Class-C3-Componentised Class-Data-Inheritable Class-ErrorHandler Class-Inspector
-            Class-Load Class-Load-XS Class-Loader Class-Method-Modifiers Class-Singleton Class-Tiny
-            Class-XSAccessor Clone Clone-PP common-sense Compress-Raw-Bzip2 Compress-Raw-Lzma
-            Compress-Raw-Zlib Compress-unLZMA Config-Any Config-Perl-V constant Context-Preserve
-            Convert-ASCII-Armour Convert-ASN1 Convert-PEM CPAN CPAN-DistnameInfo CPAN-Meta
-            CPAN-Meta-Check CPAN-Meta-Requirements CPAN-Meta-YAML CPAN-Mini cpan-outdated
-            CPAN-SQLite Cpanel-JSON-XS CPANPLUS CPANPLUS-Dist-Build Crypt-Blowfish Crypt-CAST5_PP
-            Crypt-CBC Crypt-DES Crypt-DES_EDE3 Crypt-DSA Crypt-DSA-GMP Crypt-IDEA Crypt-OpenPGP
-            Crypt-OpenSSL-AES Crypt-OpenSSL-Bignum Crypt-OpenSSL-DSA Crypt-OpenSSL-Random
-            Crypt-OpenSSL-RSA Crypt-OpenSSL-X509 Crypt-Random Crypt-Random-Seed Crypt-Random-TESHA2
-            Crypt-RC4 Crypt-RC6 Crypt-Rijndael Crypt-RIPEMD160 Crypt-Serpent Crypt-SSLeay
-            Crypt-Twofish CryptX Data-Buffer Data-Dump Data-Dump-Streamer Data-Dumper
-            Data-Dumper-Concise Data-OptList Data-Page Data-Printer Data-Random DateTime
-            DateTime-Format-DateParse DateTime-Locale DateTime-TimeZone
-            DateTime-TimeZone-Local-Win32 DB_File DBD-ADO DBD-CSV DBD-mysql DBD-ODBC DBD-Oracle
-            DBD-Pg DBD-SQLite DBI DBIx-Class DBIx-Simple DBM-Deep Devel-CheckLib Devel-Declare
-            Devel-GlobalDestruction Devel-OverloadInfo Devel-PartialDump Devel-PPPort
-            Devel-StackTrace Digest-CMAC Digest-HMAC Digest-MD2 Digest-MD5 Digest-Perl-MD5
-            Digest-SHA Digest-SHA1 Digest-Whirlpool Dist-CheckConflicts Email-Abstract Email-Address
-            Email-Date-Format Email-MessageID Email-MIME Email-MIME-ContentType Email-MIME-Encodings
-            Email-MIME-Kit Email-Sender Email-Simple Email-Stuffer Email-Valid Encode Encode-compat
-            Encode-Locale enum Eval-Closure Excel-Writer-XLSX Exception-Class experimental Exporter
-            Exporter-Tiny ExtUtils-CBuilder ExtUtils-Config ExtUtils-Depends ExtUtils-F77
-            ExtUtils-Helpers ExtUtils-Install ExtUtils-InstallPaths ExtUtils-MakeMaker
-            ExtUtils-Manifest ExtUtils-ParseXS ExtUtils-PkgConfig FCGI FFI-Raw File-CheckTree
-            File-Copy-Recursive File-Find-Rule File-Find-Rule-Perl File-HomeDir File-Listing
-            File-Map File-Path File-Remove File-ShareDir File-ShareDir-Install File-Slurp
-            File-Slurp-Tiny File-Slurper File-Which Filter GD Getopt-Long Graphics-ColorUtils
-            Hash-Merge Hook-LexWrap HTML-Form HTML-Parser HTML-Tagset HTML-Tree HTTP-Cookies
-            HTTP-Daemon HTTP-Date HTTP-Message HTTP-Negotiate HTTP-Server-Simple HTTP-Tiny if Imager
-            inc-latest IO-All IO-CaptureOutput IO-Compress IO-Compress-Lzma IO-HTML IO-Interactive
-            IO-SessionData IO-Socket-INET6 IO-Socket-IP IO-Socket-Socks IO-Socket-SSL IO-String
-            IO-stringy IPC-Run IPC-Run3 IPC-System-Simple JSON JSON-MaybeXS JSON-PP JSON-XS libnet
-            libwww-perl List-MoreUtils local-lib Locale-Codes Locale-Maketext Log-Message
-            Log-Message-Simple Log-Report Log-Report-Optional LWP-MediaTypes LWP-Online
-            LWP-Protocol-https MailTools Math-Base-Convert Math-BigInt Math-BigInt-FastCalc
-            Math-BigInt-GMP Math-BigRat Math-GMP Math-Int64 Math-MPC Math-MPFR Math-Pari
-            Math-Prime-Util Math-Prime-Util-GMP Math-Random-ISAAC Math-Round MIME-Base64
-            MIME-Charset MIME-Types Modern-Perl Module-Build Module-Build-Deprecated
-            Module-Build-Tiny Module-CoreList Module-Find Module-Implementation
-            Module-Load-Conditional Module-Metadata Module-Pluggable Module-Runtime
-            Module-Runtime-Conflicts Module-Signature Mojolicious Moo Moose MooseX-ClassAttribute
-            MooseX-Declare MooseX-LazyRequire MooseX-Meta-TypeConstraint-ForceCoercion
-            MooseX-Method-Signatures MooseX-NonMoose MooseX-Role-Parameterized
-            MooseX-Role-WithOverloading MooseX-Traits MooseX-Types MooseX-Types-DateTime
-            MooseX-Types-Structured MooX-Types-MooseLike Mozilla-CA MRO-Compat namespace-autoclean
-            namespace::clean Net-DNS Net-HTTP Net-IMAP-Client Net-SMTPS Net-SSH2 Net-SSLeay
-            Net-Telnet Number-Compare Object-Accessor Object-Tiny OLE-Storage_Lite OpenGL
-            Package-Constants Package-DeprecationManager Package-Stash Package-Stash-XS PAR PAR-Dist
-            PAR-Dist-FromPPD PAR-Dist-InstallPPD PAR-Repository-Client PAR-Repository-Query
-            Params-Util Params-Validate parent Parse-Binary Parse-CPAN-Meta Parse-Method-Signatures
-            Parse-RecDescent Path-Class Path-Tiny PathTools Perl-OSType Perl-Tidy perlfaq
-            PerlIO-Layers PerlIO-via-QuotedPrint PkgConfig pler Pod-Checker Pod-Escapes Pod-LaTeX
-            Pod-Parser Pod-Perldoc Pod-Simple Pod-Usage podlators Portable PPI PPM Probe-Perl
-            Role-Tiny Scalar-List-Utils Scope-Guard SOAP-Lite Socket Socket6 Sort-Naturally
-            Sort-Versions Spiffy Spreadsheet-ParseExcel Spreadsheet-ParseXLSX Spreadsheet-WriteExcel
-            SQL-Abstract SQL-Statement Storable String-Print String-RewritePrefix Sub-Exporter
-            Sub-Exporter-ForMethods Sub-Exporter-Progressive Sub-Identify Sub-Install Sub-Name
-            Sub-Uplevel SUPER syntax Syntax-Keyword-Junction Sys-Syslog Task-Weaken Template-Tiny
-            Template-Toolkit Term-ANSIColor Term-Cap Term-ReadLine-Perl Term-UI TermReadKey
-            Test-Base Test-CleanNamespaces Test-Deep Test-Differences Test-Exception Test-Fatal
-            Test-Harness Test-LeakTrace Test-MockModule Test-Most Test-NoWarnings Test-Number-Delta
-            Test-Object Test-Pod Test-Requires Test-Script Test-Simple Test-SubCalls Test-Warn
-            Test-Warnings Test-Without-Module Test-YAML Text-Balanced Text-CSV Text-CSV_XS Text-Diff
-            Text-Glob Text-ParseWords Text-Patch Text-Soundex Thread-Queue threads threads-shared
-            Throwable Tie-Array-CSV Tie-EncryptedHash Time-HiRes Time-Moment Time-Piece TimeDate
-            Tree-DAG_Node Try-Tiny Types-Serialiser Unicode-Collate Unicode-LineBreak
-            Unicode-Normalize Unicode-UTF8 URI V Variable-Magic version Win32 Win32-API
-            Win32-Console Win32-Console-ANSI Win32-Daemon Win32-EventLog Win32-Exe Win32-File
-            Win32-File-Object Win32-GuiTest Win32-IPHelper Win32-Job Win32-OLE Win32-Pipe
-            Win32-Process Win32-Service Win32-ServiceManager Win32-ShellQuote Win32-TieRegistry
-            Win32-UTCFileTime Win32-WinError Win32API-File Win32API-Registry WWW-Mechanize
-            WWW-RobotRules XML-LibXML XML-LibXSLT XML-NamespaceSupport XML-Parser XML-Parser-Lite
-            XML-SAX XML-SAX-Base XML-SAX-Expat XML-Simple XML-Twig YAML YAML-LibYAML YAML-Tiny
-            }
-    );
-    my @deps = grep { $all_dists->has($_) } $dists->elements;
-    $dists     = Set::Scalar->new(@deps);
-    $all_dists = $all_dists->difference($dists);
-    gen_cmd( $dists, "strawberry" );
-}
-
 unless ($minimal) {
     my $dists = Set::Scalar->new(
         qw{ Test-Assert Test-Assertions Test-Block Test-Class
@@ -385,6 +290,8 @@ warn "* All modules processed\n";
 # Subroutines
 #----------------------------------------------------------#
 sub gen_cmd {
+
+    #@type Set::Scalar
     my $dist_set   = shift;
     my $name       = shift;
     my $alpha_sort = shift;
@@ -451,6 +358,8 @@ sub merge_modules {
 }
 
 sub dep_sort {
+
+    #@type Set::Scalar
     my $dist_set = shift;
 
     my @dists = $dist_set->elements;
@@ -490,6 +399,8 @@ sub find_deps {
 }
 
 sub find_all_deps {
+
+    #@type Set::Scalar
     my $dist_set = shift;
 
 DEPS: while (1) {
@@ -519,6 +430,8 @@ sub find_down_deps {
 }
 
 sub find_all_down_deps {
+
+    #@type Set::Scalar
     my $dist_set = shift;
 
 DOWNDEPS: while (1) {
