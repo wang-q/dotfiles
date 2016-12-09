@@ -23,15 +23,22 @@
 * Downloading tools
     * Thunder
     * Crossftp
+    * Baidu Pan
 
 * Reading and notes
     * Evernote
     * Reeder
-    * Pocket
 
 * Programming
     * IDE
         * IntelliJ IDEA
+            * .ignore
+            * BashSupport
+            * Gauge
+            * Ini4idea
+            * LaTeX
+            * Markdown Navigator
+            * Perl
         * Komodo
         * WebStorm
         * CLion
@@ -56,5 +63,5 @@
     * disk-inventory-x
 
 * Virtualization
-    * VirtualBox
     * Parallels Desktop
+    * VirtualBox
