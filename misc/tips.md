@@ -17,7 +17,8 @@ screen -S op -x -X screen ~/share/mysql/bin/mysqld_safe
 
 ## 列出所有子目录的git状态
 
-Ideas from this [SO post](http://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories).
+Ideas from this
+[SO post](http://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories).
 
 * Status of all repos
 
@@ -137,7 +138,8 @@ find . -type f  -not -iname ".*" -not -path "*.git*" \
 
 http://superuser.com/questions/223308/name-terminal-tabs
 
-Note that "0" sets both the window and the tab title. As of Mac OS X Lion 10.7, you can set them independently, using "1" (tab title) and "2" (window title).
+Note that "0" sets both the window and the tab title. As of Mac OS X Lion 10.7, you can set them
+independently, using "1" (tab title) and "2" (window title).
 
 ```bash
 echo -n -e "\033]0;In soviet russia, the title bar sets you\007"
@@ -155,7 +157,8 @@ echo -n -e "\033]0;In soviet russia, the title bar sets you\007"
 
 * Navigate to the Applications folder and open Terminal.
 * Enter `open ~/Library/Spelling/` and press Return.
-* This will open a Finder window. The file LocalDictionary contains the dictionary your Mac uses for spell checking.
+* This will open a Finder window. The file LocalDictionary contains the dictionary your Mac uses for
+  spell checking.
 
 ## 英文界面 Mac 使用中文界面 Office 的方法
 
@@ -221,7 +224,8 @@ https://bugs.launchpad.net/inkscape/+bug/1218578
 /Applications/Inkscape.app/Contents/Resources/script -f /path/to/drawing.svg --export-png=/path/to/export/drawing.png
 ```
 
-Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用的 `-`，但在如上面说的，macOS里又要使用绝对路径，所以用`/dev/fd/1`.
+Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用的
+`-`，但在如上面说的，macOS里又要使用绝对路径，所以用`/dev/fd/1`.
 
 ```bash
 /Applications/Inkscape.app/Contents/Resources/script \
@@ -233,7 +237,8 @@ Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用
 
 如 [APUE](http://www.informit.com/articles/article.aspx?p=99706&seqNum=15) 里所说：
 
-> Some systems provide the pathnames /dev/stdin, /dev/stdout, and /dev/stderr. These pathnames are equivalent to /dev/fd/0, /dev/fd/1, and /dev/fd/2.
+> Some systems provide the pathnames /dev/stdin, /dev/stdout, and /dev/stderr. These pathnames are
+> equivalent to /dev/fd/0, /dev/fd/1, and /dev/fd/2.
 
 # Ubuntu
 
@@ -385,3 +390,4 @@ apt-cache show PACKAGE_NAME
 ```bash
 df -BG
 ```
+
