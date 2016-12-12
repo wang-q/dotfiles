@@ -50,6 +50,24 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
 
 ```
 
+* 统计源码行数
+
+```bash
+find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
+    | sort > dirs.tmp
+
+cat dirs.tmp \
+    | parallel -r -k -j 1 "
+    	cd {//}; git ls-files | perl -MCwd -nle 'print Cwd::realpath(\$_)'
+    " \
+    > files.tmp
+
+cloc --list-file files.tmp --exclude-lang HTML,YAML,RobotFramework
+
+rm dirs.tmp files.tmp
+
+```
+
 ## cloc of tracked files
 
 ```bash
@@ -390,4 +408,3 @@ apt-cache show PACKAGE_NAME
 ```bash
 df -BG
 ```
-
