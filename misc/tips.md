@@ -50,7 +50,11 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
 
 ```
 
-* 统计源码行数
+## cloc of tracked files
+
+```bash
+cloc $(git ls-files)
+```
 
 ```bash
 find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
@@ -66,12 +70,6 @@ cloc --list-file files.tmp --exclude-lang HTML,YAML,RobotFramework
 
 rm dirs.tmp files.tmp
 
-```
-
-## cloc of tracked files
-
-```bash
-cloc $(git ls-files)
 ```
 
 ## Kill all by names
