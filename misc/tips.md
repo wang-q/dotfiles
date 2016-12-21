@@ -72,6 +72,13 @@ rm dirs.tmp files.tmp
 
 ```
 
+## 中英文中间加空格
+
+中文 [\u4e00-\u9fa5]
+
+s/([\u4e00-\u9fa5])([\w$\\}])/$1 $2/g
+s/([\w$\\}])([\u4e00-\u9fa5])/$1 $2/g
+
 ## Kill all by names
 
 ```bash
