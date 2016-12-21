@@ -14,5 +14,6 @@ brew cask install figtree dendroscope
 
 # fonts
 brew tap caskroom/fonts
-brew cask install font-fira-mono
 brew cask install font-fira-sans
+brew cask install font-fira-mono
+brew cask install font-charter
