@@ -36,7 +36,7 @@ cd ${BASE_DIR}
 
 # stow configurations
 log_warn "Restow dotfiles"
-DIRS=( stow-ack stow-git stow-htop stow-perltidy stow-screen stow-wget stow-vim stow-vimperator stow-proxychains )
+DIRS=( stow-ack stow-git stow-htop stow-latexmk stow-perltidy stow-screen stow-wget stow-vim stow-vimperator stow-proxychains )
 
 for d in ${DIRS[@]}
 do
