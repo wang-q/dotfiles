@@ -148,6 +148,7 @@ elsif ( $^O eq 'darwin' ) {
                 system "brew list > $ENV{HOME}/brew_list.txt";
                 system "brew cask list > $ENV{HOME}/brew_cask_list.txt";
                 system "pip list > $ENV{HOME}/pip_list.txt";
+                system "npm -g ls --depth=0 > $ENV{HOME}/npm_list.txt";
                 system qq{ls \$(Rscript -e 'cat(.Library)') > $ENV{HOME}/r_list.txt};
                 system qq{ls \$(Rscript -e 'cat(.Library.site)') >> $ENV{HOME}/r_list.txt};
                 system qq{sort -u -o $ENV{HOME}/r_list.txt $ENV{HOME}/r_list.txt};
@@ -159,6 +160,7 @@ elsif ( $^O eq 'darwin' ) {
                 path( $ENV{HOME}, 'brew_list.txt' ),
                 path( $ENV{HOME}, 'brew_cask_list.txt' ),
                 path( $ENV{HOME}, 'pip_list.txt' ),
+                path( $ENV{HOME}, 'npm_list.txt' ),
                 path( $ENV{HOME}, 'r_list.txt' ),
                 path( $ENV{HOME}, 'tlmgr_list.txt' ),
                 path( $ENV{HOME}, 'atom_list.txt' ),
@@ -166,7 +168,7 @@ elsif ( $^O eq 'darwin' ) {
             post_action => sub {
                 print " " x 4, "Clean package list files\n";
                 system
-                    q{find ~ -name "*.txt"  -mmin -5 -type f -maxdepth 1 | parallel --no-run-if-empty rm};
+                    q{find ~ -name "*_list.txt"  -mmin -5 -type f -maxdepth 1 | parallel --no-run-if-empty rm};
             },
         },
 
