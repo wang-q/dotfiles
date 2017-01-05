@@ -3,7 +3,7 @@
 ## 用screen启动几个常用后台程序
 
 ```bash
-screen -dmS op
+screen -dmS op -t htop htop
 screen -S op -x -X screen perl -MPod::POM::Web -e "server 8888"
 rm ~/share/mongodb/data/mongod.lock
 screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
