@@ -37,3 +37,7 @@ export PATH="$HOME/share/mongodb/bin:$PATH"
 
 # mysqlbin
 export PATH="$HOME/share/mysql/bin:$PATH"
+
+# ustc mirror of Homebrew bottles
+# https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
