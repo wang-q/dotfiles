@@ -7,9 +7,9 @@ brew linkapps mpv
 
 # casks
 brew tap caskroom/cask
-brew cask install aegisub caffeine disk-inventory-x hammerspoon jabref
+brew cask install caffeine disk-inventory-x hammerspoon  scroll-reverser
 brew cask install mysqlworkbench robomongo
-brew cask install scroll-reverser sourcetree xmind
+brew cask install aegisub jabref xmind
 brew cask install figtree dendroscope
 
 # fonts

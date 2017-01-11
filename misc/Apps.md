@@ -34,8 +34,6 @@
         * IntelliJ IDEA
             * .ignore
             * BashSupport
-            * Gauge
-            * Ini4idea
             * LaTeX
             * Markdown Navigator
             * Perl
@@ -45,10 +43,16 @@
         * RStudio
     * Editor
         * Atom
+            * file-icons
+            * language-gfm
+            * language-lua
+            * language-lua
+            * merge-conflicts
+            * pdf-view
+            * perltidy
         * UltraEdit
     * VCS
         * GitHub
-        * SourceTree
 
 * Databases
     * MySQLWorkbench
