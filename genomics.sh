@@ -11,7 +11,7 @@ pip install --upgrade setuptools
 
 echo "==> other tools"
 brew install cmake
-brew install samtools bamtools htslib bowtie bowtie2
+brew install samtools bamtools htslib bowtie bowtie2 bbtools
 brew install tophat cufflinks
 brew install sratoolkit fastqc sickle
 brew install bedtools bedops genometools
