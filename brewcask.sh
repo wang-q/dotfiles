@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # mpv
-brew install duti mvtools ffms2 subliminal
+brew install duti mvtools ffms2
 brew reinstall --with-vapoursynth --with-bundle mpv
 brew linkapps mpv
 
