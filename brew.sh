@@ -14,13 +14,13 @@ brew install gnu-sed gnu-tar
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
 
 # other tools
-brew install cloc cmake htop-osx pandoc parallel sqlite tree proxychains-ng nmap
+brew install cloc cmake htop-osx pandoc parallel pigz sqlite tree proxychains-ng nmap
 
 # gtk+3
 brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
 
 # Graphics
-brew install gnuplot graphviz imagemagick plplot
+brew install homebrew/versions/gnuplot4 graphviz imagemagick plplot
 
 # other programming languages
 brew install maven ant
