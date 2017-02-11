@@ -14,13 +14,14 @@ brew install cmake
 brew install samtools bamtools htslib bowtie bowtie2 bbtools igv
 brew install tophat cufflinks
 brew install sratoolkit fastqc sickle
-brew install bedtools bedops genometools
+brew install bedtools genometools
 brew install stringtie hisat2 canu kmergenie
 
 echo "==> custom tap"
 brew tap wang-q/tap
 brew install faops multiz sparsemem
 brew install scythe
+brew install dazz_db@20161112 daligner@20170203
 
 echo "==> trinity"
 #brew install trinity
