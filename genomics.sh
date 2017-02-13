@@ -4,26 +4,27 @@ mkdir -p $HOME/share/
 
 echo "====> Building Genomics related tools <===="
 
+echo "==> anchr"
+curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/install_dep.sh | bash
+
 echo "==> python"
 brew install python
 pip install --upgrade pip
 pip install --upgrade setuptools
 
 echo "==> other tools"
-brew install cmake
-brew install samtools bamtools htslib bowtie bowtie2 bbtools igv
-brew install tophat cufflinks
-brew install sratoolkit fastqc sickle
-brew install bedtools genometools
-brew install stringtie hisat2 canu kmergenie
+brew tap homebrew/science
+brew install htslib bowtie bowtie2 igv
+brew install tophat cufflinks stringtie hisat2
+brew install sratoolkit
+brew install genometools
+brew install canu kmergenie
 
 echo "==> custom tap"
 brew tap wang-q/tap
-brew install faops multiz sparsemem
-brew install scythe
-brew install dazz_db@20161112 daligner@20170203
+brew install multiz
 
-echo "==> trinity"
+echo "==> trinity 2.0.6"
 #brew install trinity
 cd /prepare/resource/
 wget -N https://github.com/trinityrnaseq/trinityrnaseq/archive/v2.0.6.tar.gz
@@ -35,7 +36,7 @@ cd $HOME/share/trinityrnaseq-*
 make
 make plugins
 
-echo "==> gatk"
+echo "==> gatk 3.5"
 # brew install maven
 
 if [ ! -e /prepare/resource/gatk-3.5.tar.gz ];
@@ -61,12 +62,3 @@ fi
 
 cd $HOME/share/
 java -jar java -jar gatk/GenomeAnalysisTK.jar --help
-
-echo "==> picard"
-cd /prepare/resource/
-wget -N https://github.com/broadinstitute/picard/releases/download/1.128/picard-tools-1.128.zip
-
-cd $HOME/share/
-unzip /prepare/resource/picard-tools-1.128.zip
-
-java -jar picard-tools-1.128/picard.jar -h
