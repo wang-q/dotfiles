@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # gcc
-brew install gcc --with-glibc
-brew unlink gcc
+brew install gcc@4.8
+brew unlink gcc@4.8
 
 # download tools
 brew install wget aria2
@@ -13,8 +13,11 @@ brew install gnu-sed gnu-tar
 # libs
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
 
+# development tools
+brew install bfg cloc cmake
+
 # other tools
-brew install cloc cmake htop-osx pandoc parallel pigz sqlite tree proxychains-ng nmap
+brew install htop-osx pandoc parallel pigz sqlite tree proxychains-ng nmap
 
 # gtk+3
 brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
