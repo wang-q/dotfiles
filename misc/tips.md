@@ -372,6 +372,15 @@ sudo adduser wangq sudo
 sudo deluser --remove-home newuser
 ```
 
+## use root account
+
+Switch to root account with `su` command to set root account's password.
+
+```bash
+sudo passwd root
+su -
+```
+
 ## kernel upgrade broke vbox
 
 http://askubuntu.com/questions/289335/kernel-update-breaks-oracle-virtual-box-frequently-how-do-i-avoid-this
