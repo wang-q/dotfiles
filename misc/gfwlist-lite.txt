@@ -65,6 +65,8 @@
 ||gstatic.com
 ||html5rocks.com
 /^https?:\/\/[^\/]+google\.(.*)/
+/^https?:\/\/[^\/]+googleapis\.(.*)/
+/^https?:\/\/[^\/]+gstatic\.(.*)/
 ||imgur.com
 ||instagram.com
 ||letsencrypt.org
