@@ -67,6 +67,9 @@
 /^https?:\/\/[^\/]+google\.(.*)/
 /^https?:\/\/[^\/]+googleapis\.(.*)/
 /^https?:\/\/[^\/]+gstatic\.(.*)/
+/^https?:\/\/[^\/]+tumblr\.(.*)/
+/^https?:\/\/[^\/]+twitter\.(.*)/
+/^https?:\/\/[^\/]+twimg\.(.*)/
 ||imgur.com
 ||instagram.com
 ||letsencrypt.org
@@ -82,14 +85,6 @@
 ||redditstatic.com
 ||staticflickr.com
 ||t.co
-||tumblr.com
-||turbobit.net
-||tweetdeck.com
-||twimg.co
-||twimg.com
-||twitpic.com
-||twitter.com
-||twittercounter.com
 ||w3p.la
 ||w3schools.com
 ||wikibooks.org
