@@ -3,6 +3,8 @@
 ||bit.ly
 ||goo.gl
 ||t.co
+||youtu.be
+/^https?:\/\/[^\/]+booklink\.(.*)/
 /^https?:\/\/[^\/]+amazonaws\.(.*)/
 /^https?:\/\/[^\/]+archive\.(.*)/
 /^https?:\/\/[^\/]+bootstrapcdn\.(.*)/
