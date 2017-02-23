@@ -5,6 +5,9 @@
 ||t.co
 ||youtu.be
 /^https?:\/\/[^\/]+booklink\.(.*)/
+/^https?:\/\/[^\/]+codecov\.(.*)/
+/^https?:\/\/[^\/]+github\.(.*)/
+/^https?:\/\/[^\/]+githubusercontent\.(.*)/
 /^https?:\/\/[^\/]+amazonaws\.(.*)/
 /^https?:\/\/[^\/]+archive\.(.*)/
 /^https?:\/\/[^\/]+bootstrapcdn\.(.*)/
