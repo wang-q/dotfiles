@@ -1,6 +1,7 @@
 [AutoProxy 0.2.9]
 !
 ||bit.ly
+||github.com
 ||goo.gl
 ||t.co
 ||youtu.be
@@ -8,6 +9,7 @@
 /^https?:\/\/[^\/]+codecov\.(.*)/
 /^https?:\/\/[^\/]+github\.(.*)/
 /^https?:\/\/[^\/]+githubusercontent\.(.*)/
+/^https?:\/\/[^\/]+travis-ci\.(.*)/
 /^https?:\/\/[^\/]+amazonaws\.(.*)/
 /^https?:\/\/[^\/]+archive\.(.*)/
 /^https?:\/\/[^\/]+bootstrapcdn\.(.*)/
