@@ -421,3 +421,47 @@ apt-cache show PACKAGE_NAME
 ```bash
 df -BG
 ```
+
+## Docker VPN
+
+* Install Docker
+
+```bash
+# Recommended extra packages for Trusty 14.04
+sudo apt-get update -y
+sudo apt-get install -y --no-install-recommends linux-image-extra-virtual
+sudo apt-get install -y --no-install-recommends linux-image-extra-$(uname -r)
+
+# Set up the repository
+sudo apt-get install -y --no-install-recommends \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
+
+sudo add-apt-repository \
+    "deb https://apt.dockerproject.org/repo/ \
+    ubuntu-$(lsb_release -cs) \
+    main"
+
+# Install Docker
+sudo apt-get update
+sudo apt-get -y install docker-engine
+sudo docker run hello-world
+```
+
+* VPN
+
+    as root
+
+```bash
+docker run --privileged -d --name ikev2-vpn-server \
+    --restart=always -p 500:500/udp -p 4500:4500/udp gaomd/ikev2-vpn-server:0.3.0
+
+docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
+    -e "HOST=45.79.80.100" gaomd/ikev2-vpn-server:0.3.0 generate-mobileconfig \
+    > ikev2-vpn.mobileconfig
+```
