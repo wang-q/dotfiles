@@ -98,6 +98,7 @@
 /^https?:\/\/[^\/]*archive\.(.*)/
 /^https?:\/\/[^\/]*bbc\.(.*)/
 /^https?:\/\/[^\/]*bbcchinese\.(.*)/
+/^https?:\/\/[^\/]*feedburner\.(.*)/
 /^https?:\/\/[^\/]*bootstrapcdn\.(.*)/
 /^https?:\/\/[^\/]*buzzfed\.(.*)/
 /^https?:\/\/[^\/]*certificate-transparency\.(.*)/
