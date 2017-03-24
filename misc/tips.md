@@ -133,6 +133,27 @@ nc -l -p 7777 | pv | tar -x             # on the destination machine
 tar -c . | pv | nc wq.nju.edu.cn 7777   # on the source machine
 ```
 
+## 使用 `rsync` 传送文件
+
+* rsync
+
+    * -a: archive mode - rescursive, preserves owner, preserves permissions, preserves modification times, preserves group, copies symlinks as symlinks, preserves device files.
+    * -v: increase verbosity
+    * -P: show progress during transfer
+
+* ssh
+
+    * -T: turn off pseudo-tty to decrease cpu load on destination.
+    * -c arcfour: use the weakest but fastest SSH encryption. Must specify "Ciphers arcfour" in sshd_config on destination.
+    * -o Compression=no: Turn off SSH compression.
+    * -x: turn off X forwarding if it is on by default.
+
+前一个目录后要跟上 `/`, 后一个不要.
+
+```bash
+rsync -avP -e "ssh -T -c arcfour -o Compression=no -x" ~/data/anchr/col_0/3_pacbio/ wangq@wq.nju.edu.cn:data/anchr/col_0/3_pacbio
+```
+
 ## 去掉PDF中的水印
 
 ```bash
