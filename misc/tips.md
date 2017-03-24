@@ -123,6 +123,16 @@ http://stackoverflow.com/questions/466764/show-ignored-files-in-git
 git ls-files --others -i --exclude-standard
 ```
 
+## 使用 `netcat` 与 `tar` 传送文件
+
+`nc` is the BSD version of `netcat`. `pv` is a pipe viewer.
+
+```bash
+nc -l -p 7777 | pv | tar -x             # on the destination machine
+
+tar -c . | pv | nc wq.nju.edu.cn 7777   # on the source machine
+```
+
 ## 去掉PDF中的水印
 
 ```bash
