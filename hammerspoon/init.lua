@@ -11,6 +11,32 @@ hs.hotkey.bind(hyperShift, "W", function()
     hs.notify.new({ title = "Hammerspoon", informativeText = "Hello World" }):send()
 end)
 
+-- Move to another screen
+
+hs.hotkey.bind(hyper, "J", function()
+    local win = hs.window.focusedWindow()
+    if not win then
+        return
+    end
+
+    local screen = win:screen():toEast()
+    if screen then
+        win:moveToScreen(screen)
+    end
+end)
+
+hs.hotkey.bind(hyper, "K", function()
+    local win = hs.window.focusedWindow()
+    if not win then
+        return
+    end
+
+    local screen = win:screen():toWest()
+    if screen then
+        win:moveToScreen(screen)
+    end
+end)
+
 -- Move Window
 
 -- vertical half screen

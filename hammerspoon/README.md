@@ -23,6 +23,7 @@ Or `brew cask install hammerspoon`.
 `hyperShift`: &#8963; + &#8997; + &#8984; + &#8679;
 
 * Center current window. `hyper` + `C`
+* Move current window to another monitor. `hyper` + `J` or `K`
 * Base size is 1.33x1 screen height (4:3 window). Loop through 1, 0.9, 0.7, 0.5 and 0.3. `hyper` + `M`
 * Maximize current window. `hyperShift` + `M`
 * Loop through 3/4, 3/5, 1/2, 2/5, 1/4 screen width. `hyper` + &#9668; or &#9658;
