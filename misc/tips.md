@@ -198,6 +198,12 @@ independently, using "1" (tab title) and "2" (window title).
 echo -n -e "\033]0;In soviet russia, the title bar sets you\007"
 ```
 
+## Beyond Compare 4 for Mac 无限试用版
+
+```bash
+rm "/Users/$(whoami)/Library/Application Support/Beyond Compare/registry.dat"
+```
+
 ## Local Backup
 
 因为你把Time Machine打开但太久没有把备份硬盘插回去导致的, 他会继续备份然后储存在本机 等你接上备份硬盘再传过去.
