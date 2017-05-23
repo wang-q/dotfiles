@@ -22,8 +22,14 @@ export LC_ALL='en_US.UTF-8'
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X'
 
-# FreeBSD ls colors
+# colors
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
 
 # plenv
 export PATH="$HOME/.plenv/bin:$PATH"
