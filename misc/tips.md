@@ -299,6 +299,14 @@ Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用
 > Some systems provide the pathnames /dev/stdin, /dev/stdout, and /dev/stderr. These pathnames are
 > equivalent to /dev/fd/0, /dev/fd/1, and /dev/fd/2.
 
+## librsvg
+
+简单的 SVG 可以使用 `rsvg-converter` 来转换
+
+```bash
+rsvg-convert ~/Scripts/alignDB/doc/alignDB.svg -z 2 -f png -o ~/Scripts/alignDB/doc/alignDB.png
+```
+
 # Ubuntu
 
 ## how to install arial font in ubuntu
