@@ -32,7 +32,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 
 # plenv
-export PATH="$HOME/.plenv/bin:$PATH"
+export PATH="$HOME/.plenv/bin:$HOME/.plenv/shims:$PATH"
 eval "$(plenv init -)"
 
 # vcftools
