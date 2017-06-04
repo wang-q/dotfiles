@@ -198,10 +198,14 @@ independently, using "1" (tab title) and "2" (window title).
 echo -n -e "\033]0;In soviet russia, the title bar sets you\007"
 ```
 
+## 将 HOME 目录移动它其它硬盘
+
+https://www.lifewire.com/move-macs-home-folder-new-location-2260157
+
 ## Beyond Compare 4 for Mac 无限试用版
 
 ```bash
-rm "/Users/$(whoami)/Library/Application Support/Beyond Compare/registry.dat"
+rm "${HOME}/Library/Application Support/Beyond Compare/registry.dat"
 ```
 
 ## Local Backup
