@@ -1,6 +1,6 @@
 # Common
 
-## 用screen启动几个常用后台程序
+## 用 screen 启动几个常用后台程序
 
 ```bash
 screen -dmS op htop
@@ -14,7 +14,7 @@ screen -S op -x -X screen redis-server
 screen -S op -x -X screen ~/share/mysql/bin/mysqld_safe
 ```
 
-## 列出所有子目录的git状态
+## 列出所有子目录的 git 状态
 
 Ideas from this
 [SO post](http://stackoverflow.com/questions/3497123/run-git-pull-over-all-subdirectories).
@@ -154,7 +154,7 @@ tar -c . | pv | nc wq.nju.edu.cn 7777   # on the source machine
 rsync -avP -e "ssh -T -c arcfour -o Compression=no -x" ~/data/anchr/col_0/3_pacbio/ wangq@wq.nju.edu.cn:data/anchr/col_0/3_pacbio
 ```
 
-## 去掉PDF中的水印
+## 去掉 PDF 中的水印
 
 ```bash
 cat Graphing\ Data\ with\ R.pdf | grep -v "it\-ebooks" > Graphing_Data_with_R.pdf
@@ -170,7 +170,7 @@ valgrind --tool=memcheck --leak-check=full --track-fds=yes ./faops
 
 # Mac
 
-## 修改mac osx系统的hostname
+## 修改 macOS 系统的 hostname
 
 ```bash
 sudo scutil --set HostName yourname
@@ -187,7 +187,7 @@ find . -type f  -not -iname ".*" -not -path "*.git*" \
     | parallel -j 1 "perl -pi -e 's/\r\n|\n|\r/\n/g' {}"
 ```
 
-## 设置终端的Title
+## 设置终端的 Title
 
 http://superuser.com/questions/223308/name-terminal-tabs
 
@@ -227,7 +227,7 @@ defaults write $(mdls -name kMDItemCFBundleIdentifier -raw '/Applications/Micros
 defaults write $(mdls -name kMDItemCFBundleIdentifier -raw '/Applications/Microsoft PowerPoint.app') AppleLanguages "(zh-Hans, zh_CN, zh, en)"
 ```
 
-## RStudio运行时console里locale错误
+## RStudio 运行时 console 里 locale 错误
 
 ```bash
 defaults write org.R-project.R force.LANG en_US.UTF-8
