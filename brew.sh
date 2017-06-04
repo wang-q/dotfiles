@@ -2,7 +2,6 @@
 
 # gcc
 brew install gcc@4.8
-brew unlink gcc@4.8
 
 # download tools
 brew install aria2 curl wget
