@@ -31,12 +31,9 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ll='ls -alF'
 alias la='ls -A'
 
-# plenv
-export PATH="$HOME/.plenv/bin:$HOME/.plenv/shims:$PATH"
-eval "$(plenv init -)"
-
-# vcftools
-export PERL5LIB=/usr/local/lib/perl5/site_perl:${PERL5LIB}
+# PERL_518_PATH
+export PATH="/usr/local/Cellar/perl@5.18/5.18.2/bin:$PATH"
+export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
 
 # mongodbbin
 export PATH="$HOME/share/mongodb/bin:$PATH"

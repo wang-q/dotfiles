@@ -13,6 +13,26 @@ brew install gnu-sed gnu-tar
 # libs
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
 
+# perl
+brew install perl@5.18
+brew link --force perl@5.18
+
+if grep -q -i PERL_518_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PERL_518_PATH"
+else
+    echo "==> Updating .bashrc with PERL_518_PATH..."
+    PERL_518_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl@5.18 | sed 's/ /\//')
+    PERL_518_PATH="export PATH=\"$PERL_518_BREW/bin:\$PATH\""
+    BREW_SITE_PERL='export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"'
+    echo '# PERL_518_PATH' >> $HOME/.bashrc
+    echo $PERL_518_PATH >> $HOME/.bashrc
+    echo $BREW_SITE_PERL >> $HOME/.bashrc
+    echo >> $HOME/.bashrc
+
+    # make the above available for the rest of this script
+    eval $PERL_518_PATH
+fi
+
 # development tools
 brew install bfg cloc cmake
 
