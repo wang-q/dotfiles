@@ -23,15 +23,18 @@ else
     echo "==> Updating .bashrc with PERL_518_PATH..."
     PERL_518_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl@5.18 | sed 's/ /\//')
     PERL_518_PATH="export PATH=\"$PERL_518_BREW/bin:\$PATH\""
-    BREW_SITE_PERL='export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"'
+    BREW_SITE_PERL="export PERL5LIB=\"$(brew --prefix)/lib/perl5/site_perl:\$PERL5LIB\""
     echo '# PERL_518_PATH' >> $HOME/.bashrc
-    echo $PERL_518_PATH >> $HOME/.bashrc
-    echo $BREW_SITE_PERL >> $HOME/.bashrc
+    echo $PERL_518_PATH    >> $HOME/.bashrc
+    echo $BREW_SITE_PERL   >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
-    # make the above available for the rest of this script
+    # make the above environment variables available for the rest of this script
     eval $PERL_518_PATH
+    eval $BREW_SITE_PERL
 fi
+
+curl -L https://cpanmin.us | perl - App::cpanminus
 
 # development tools
 brew install bfg cloc cmake
