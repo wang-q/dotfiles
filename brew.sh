@@ -5,7 +5,7 @@ brew install gcc@4.8
 brew unlink gcc@4.8
 
 # download tools
-brew install wget aria2
+brew install aria2 curl wget
 
 # gnu
 brew install gnu-sed gnu-tar
@@ -23,7 +23,7 @@ brew install htop-osx pandoc parallel pigz sqlite tree proxychains-ng nmap
 brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
 
 # Graphics
-brew install homebrew/versions/gnuplot4 graphviz imagemagick plplot
+brew install gnuplot graphviz imagemagick
 
 # other programming languages
 brew install maven ant
