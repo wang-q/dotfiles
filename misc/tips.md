@@ -202,6 +202,15 @@ echo -n -e "\033]0;In soviet russia, the title bar sets you\007"
 
 https://www.lifewire.com/move-macs-home-folder-new-location-2260157
 
+## 稍微平滑字体
+
+默认值是 0 或 2
+
+```bash
+defaults write -g AppleFontSmoothing -int 1
+sudo defaults write -g AppleFontSmoothing -int 1
+```
+
 ## Beyond Compare 4 for Mac 无限试用版
 
 ```bash
