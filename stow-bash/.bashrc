@@ -43,4 +43,5 @@ export PATH="$HOME/share/mysql/bin:$PATH"
 
 # ustc mirror of Homebrew bottles
 # https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles
+export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
