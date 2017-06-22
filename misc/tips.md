@@ -187,6 +187,14 @@ find . -type f  -not -iname ".*" -not -path "*.git*" \
     | parallel -j 1 "perl -pi -e 's/\r\n|\n|\r/\n/g' {}"
 ```
 
+## Make Hidden Apps “Hidden” in Dock
+
+⌘H (hide app)
+
+```bash
+defaults write com.apple.Dock showhidden -bool TRUE; killall Dock
+```
+
 ## 设置终端的 Title
 
 http://superuser.com/questions/223308/name-terminal-tabs
