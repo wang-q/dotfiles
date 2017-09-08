@@ -53,9 +53,6 @@ brew install lua node
 brew install python
 pip install --upgrade pip setuptools
 
-brew tap homebrew/science
-brew install r --without-tcltk --without-x11
-
 # https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
 # ffmpeg
 brew install lame libvo-aacenc x264 xvid fdk-aac
