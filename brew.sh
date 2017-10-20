@@ -39,7 +39,7 @@ curl -L https://cpanmin.us | perl - App::cpanminus
 brew install bfg cloc cmake
 
 # other tools
-brew install htop-osx pandoc parallel pigz sqlite tree proxychains-ng nmap
+brew install htop pandoc parallel pigz sqlite tree proxychains-ng nmap
 
 # gtk+3
 brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
