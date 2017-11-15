@@ -13,7 +13,6 @@
 * [proxychains](stow-proxychains/)
 * [GNU screen](stow-screen/.screenrc)
 * [vim](stow-vim/.vimrc)
-* [vimperator](stow-vimperator/.vimperatorrc)
 * [wget](stow-wget/.wgetrc)
 
 ## macOS and Ubuntu

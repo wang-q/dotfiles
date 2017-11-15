@@ -69,7 +69,6 @@ if ( $^O eq 'MSWin32' ) {
             file => [
                 path( $ENV{USERPROFILE}, '.gitconfig' ),
                 path( $ENV{USERPROFILE}, '_vimrc' ),
-                path( $ENV{USERPROFILE}, '_vimperatorrc' ),
             ],
         },
 
@@ -193,7 +192,6 @@ elsif ( $^O eq 'darwin' ) {
                 path( $ENV{HOME}, '.crossftp' ),
                 path( $ENV{HOME}, '.parallel' ),
                 path( $ENV{HOME}, '.vim' ),
-                path( $ENV{HOME}, '.vimperator' ),
             ],
             file => [
                 path( $ENV{HOME}, '.bash_profile' ),
@@ -203,7 +201,6 @@ elsif ( $^O eq 'darwin' ) {
                 path( $ENV{HOME}, '.wgetrc' ),
                 path( $ENV{HOME}, '.screenrc' ),
                 path( $ENV{HOME}, '.vimrc' ),
-                path( $ENV{HOME}, '.vimperatorrc' ),
             ],
         },
 
