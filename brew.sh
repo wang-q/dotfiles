@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# gcc
-brew install gcc@4.8
-
 # download tools
 brew install aria2 curl wget
 
@@ -42,7 +39,7 @@ brew install bfg cloc cmake
 brew install htop pandoc parallel pigz sqlite tree proxychains-ng nmap
 
 # gtk+3
-brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
+brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme
 
 # Graphics
 brew install gnuplot graphviz imagemagick
@@ -51,7 +48,7 @@ brew install gnuplot graphviz imagemagick
 brew install maven ant
 brew install lua node
 brew install python
-pip install --upgrade pip setuptools
+pip2 install --upgrade pip setuptools
 
 # https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
 # ffmpeg
