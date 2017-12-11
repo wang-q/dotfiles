@@ -52,6 +52,9 @@ brew install jdk@8
 brew link --force jdk@8
 brew install maven ant
 
+# other programming languages
+brew install lua node
+
 # libs
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
 
@@ -66,9 +69,6 @@ brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme
 
 # Graphics
 brew install gnuplot graphviz imagemagick
-
-# other programming languages
-brew install lua node
 
 # https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
 # ffmpeg
