@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# gcc
-brew install gcc@4.8
-
 # download tools
 brew install aria2 curl wget
 
@@ -65,7 +62,7 @@ brew install bfg cloc cmake
 brew install htop pandoc parallel pigz sqlite tree proxychains-ng nmap
 
 # gtk+3
-brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
+brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme
 
 # Graphics
 brew install gnuplot graphviz imagemagick
