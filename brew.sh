@@ -9,9 +9,6 @@ brew install aria2 curl wget
 # gnu
 brew install gnu-sed gnu-tar
 
-# libs
-brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
-
 # perl
 brew install perl@5.18
 brew link --force perl@5.18
@@ -35,6 +32,32 @@ fi
 
 curl -L https://cpanmin.us | perl - App::cpanminus
 
+# python
+brew install python
+
+if grep -q -i PYTHON_27_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PYTHON_27_PATH"
+else
+    echo "==> Updating .bashrc with PYTHON_27_PATH..."
+    PYTHON_27_PATH="export PATH=\"$(brew --prefix)/opt/python/libexec/bin:\$PATH\""
+    echo '# PYTHON_27_PATH' >> $HOME/.bashrc
+    echo $PYTHON_27_PATH    >> $HOME/.bashrc
+    echo >> $HOME/.bashrc
+
+    # make the above environment variables available for the rest of this script
+    eval $PYTHON_27_PATH
+fi
+
+pip install --upgrade pip setuptools
+
+# java
+brew install jdk@8
+brew link --force jdk@8
+brew install maven ant
+
+# libs
+brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
+
 # development tools
 brew install bfg cloc cmake
 
@@ -48,10 +71,7 @@ brew install gsettings-desktop-schemas gtk+3 gnome-icon-theme
 brew install gnuplot graphviz imagemagick
 
 # other programming languages
-brew install maven ant
 brew install lua node
-brew install python
-pip install --upgrade pip setuptools
 
 # https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
 # ffmpeg
