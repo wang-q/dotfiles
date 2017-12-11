@@ -154,6 +154,13 @@ tar -c . | pv | nc wq.nju.edu.cn 7777   # on the source machine
 rsync -avP -e "ssh -T -c arcfour -o Compression=no -x" ~/data/anchr/col_0/3_pacbio/ wangq@wq.nju.edu.cn:data/anchr/col_0/3_pacbio
 ```
 
+## ssh-copy-id
+
+```bash
+ssh-keygen -b 1024 -t rsa -q
+ssh-copy-id -i ~/.ssh/id_rsa.pub wangq@202.119.37.251
+```
+
 ## 去掉 PDF 中的水印
 
 ```bash
