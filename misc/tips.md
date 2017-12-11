@@ -531,3 +531,83 @@ docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
     -e "HOST=45.79.80.100" gaomd/ikev2-vpn-server:0.3.0 generate-mobileconfig \
     > ikev2-vpn.mobileconfig
 ```
+
+# CentOS 6
+
+## create a sudoer user
+
+```bash
+usermod -aG wheel wangq
+```
+
+Or use `visudo`.
+
+## Upgrade gcc
+
+```bash
+$ cat /etc/centos-release
+CentOS release 6.7 (Final)
+
+$ sudo yum install centos-release-scl
+$ sudo yum install devtoolset-3-toolchain
+$ scl enable devtoolset-3 bash
+
+$ gcc --version
+gcc (GCC) 4.9.2 20150212 (Red Hat 4.9.2-6)
+
+```
+
+## Change the Home directory
+
+`usermod` is the command to edit an existing user. `-d` (abbreviation for `--home`) will change
+the user's home directory. Adding `-m` (abbreviation for `--move-home` will also move the content
+from the user's current directory to the new directory.
+
+```bash
+mkdir -p /share/home
+usermod -m -d /share/home/wangq wangq
+```
+
+## Install Linuxbrew
+
+Enable the SCL environment:
+
+```bash
+scl enable devtoolset-3 bash
+```
+
+Install Linuxbrew:
+
+```bash
+git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+```
+
+Add these to your `.bashrc`, and source it:
+
+```bash
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+```
+Create symlinks to your new gcc/g++/gfortran:
+
+```bash
+ln -s $(which gcc) `brew --prefix`/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)
+ln -s $(which g++) `brew --prefix`/bin/g++-$(g++ -dumpversion |cut -d. -f1,2)
+ln -s $(which gfortran) `brew --prefix`/bin/gfortran-$(gfortran -dumpversion |cut -d. -f1,2)
+```
+
+Test your installation:
+
+```bash
+brew install hello
+brew test hello
+brew remove hello
+```
+
+Mirror to remote server:
+
+```bash
+rsync -avP .linuxbrew/ wangq@202.119.37.251:.linuxbrew
+
+```
