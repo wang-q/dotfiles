@@ -2,10 +2,9 @@
 
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-if [ hash Rscript 2>/dev/null ];
-then
+hash Rscript 2>/dev/null || {
     brew install r
-fi
+}
 
 cd ${BASE_DIR}
 

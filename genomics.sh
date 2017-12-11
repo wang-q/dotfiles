@@ -7,11 +7,6 @@ echo "====> Building Genomics related tools <===="
 echo "==> anchr"
 curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/install_dep.sh | bash
 
-echo "==> python"
-brew install python
-pip install --upgrade pip
-pip install --upgrade setuptools
-
 echo "==> other tools"
 brew tap homebrew/science
 brew install htslib bowtie bowtie2 igv
