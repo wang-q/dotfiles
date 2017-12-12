@@ -596,6 +596,7 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 ```
+
 Create symlinks to your new gcc/g++/gfortran:
 
 ```bash
@@ -612,9 +613,25 @@ brew test hello
 brew remove hello
 ```
 
+Some packages have building problems, use bottled or source versions.
+
+```bash
+brew install --force-bottle git gawk
+brew install --force-bottle glib
+brew install --force-bottle fontconfig
+brew install --without-x11 cairo
+# brew install --without-x11 r
+brew install --force-bottle graphviz
+brew install --force-bottle hdf5
+
+brew install --build-from-source htslib
+brew install --build-from-source samtools
+
+```
+
 Mirror to remote server:
 
 ```bash
-rsync -avP .linuxbrew/ wangq@202.119.37.251:.linuxbrew
+rsync -avP ~/.linuxbrew/ wangq@202.119.37.251:.linuxbrew
 
 ```
