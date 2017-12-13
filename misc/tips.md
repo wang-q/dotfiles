@@ -616,7 +616,8 @@ brew remove hello
 Some packages have building problems, use bottled or source versions.
 
 ```bash
-brew install --force-bottle git gawk
+brew install --force-bottle git
+brew install --force-bottle gawk
 brew install --force-bottle glib
 brew install --force-bottle fontconfig
 brew install --without-x11 cairo
