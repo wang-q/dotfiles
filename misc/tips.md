@@ -623,6 +623,7 @@ brew install --force-bottle fontconfig
 brew install --without-x11 cairo
 # brew install --without-x11 r
 brew install --force-bottle graphviz
+brew install --force-bottle imagemagick
 brew install --force-bottle hdf5
 
 brew install --build-from-source htslib

@@ -9,15 +9,15 @@ curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/insta
 
 echo "==> other tools"
 brew tap homebrew/science
-brew install bowtie igv
+brew install bowtie igvtools
 brew install tophat cufflinks stringtie hisat2
 brew install sratoolkit
-brew install genometools
+brew install genometools --without-pangocairo
 brew install canu kmergenie
 
 echo "==> custom tap"
 brew tap wang-q/tap
-brew install multiz
+brew install multiz faops
 
 echo "==> trinity 2.0.6"
 #brew install trinity
