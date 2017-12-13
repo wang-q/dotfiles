@@ -31,10 +31,6 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ll='ls -alF'
 alias la='ls -A'
 
-# PERL_518_PATH
-export PATH="/usr/local/Cellar/perl@5.18/5.18.2/bin:$PATH"
-export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
-
 # mongodbbin
 export PATH="$HOME/share/mongodb/bin:$PATH"
 
@@ -45,3 +41,7 @@ export PATH="$HOME/share/mysql/bin:$PATH"
 # https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+# PERL_518_PATH
+export PATH="/usr/local/Cellar/perl@5.18.4/5.18.4_1/bin:$PATH"
+export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
+
