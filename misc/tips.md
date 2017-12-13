@@ -549,6 +549,17 @@ usermod -aG wheel wangq
 
 Or use `visudo`.
 
+## Change the Home directory
+
+`usermod` is the command to edit an existing user. `-d` (abbreviation for `--home`) will change
+the user's home directory. Adding `-m` (abbreviation for `--move-home` will also move the content
+from the user's current directory to the new directory.
+
+```bash
+mkdir -p /share/home
+usermod -m -d /share/home/wangq wangq
+```
+
 ## Upgrade gcc
 
 ```bash
@@ -562,17 +573,6 @@ $ scl enable devtoolset-3 bash
 $ gcc --version
 gcc (GCC) 4.9.2 20150212 (Red Hat 4.9.2-6)
 
-```
-
-## Change the Home directory
-
-`usermod` is the command to edit an existing user. `-d` (abbreviation for `--home`) will change
-the user's home directory. Adding `-m` (abbreviation for `--move-home` will also move the content
-from the user's current directory to the new directory.
-
-```bash
-mkdir -p /share/home
-usermod -m -d /share/home/wangq wangq
 ```
 
 ## Install Linuxbrew
@@ -616,7 +616,7 @@ brew remove hello
 Some packages have building problems, use bottled or source versions.
 
 ```bash
-brew install --force-bottle git
+# brew install --force-bottle git
 brew install --force-bottle gawk
 brew install --force-bottle glib
 brew install --force-bottle fontconfig
@@ -634,5 +634,6 @@ Mirror to remote server:
 
 ```bash
 rsync -avP ~/.linuxbrew/ wangq@202.119.37.251:.linuxbrew
+rsync -avP ~/.bashrc wangq@202.119.37.251:.bashrc
 
 ```
