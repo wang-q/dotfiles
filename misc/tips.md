@@ -613,10 +613,11 @@ brew test hello
 brew remove hello
 ```
 
-Some packages have building problems, use bottled or source versions.
+Some packages have building problems, use bottled or from-source versions.
+
+**Don't `brew install git`**
 
 ```bash
-# brew install --force-bottle git
 brew install --force-bottle gawk
 brew install --force-bottle glib
 brew install --force-bottle fontconfig
@@ -625,6 +626,18 @@ brew install --without-x11 cairo
 brew install --force-bottle graphviz
 brew install --force-bottle imagemagick
 brew install --force-bottle hdf5
+
+brew reinstall --build-from-source lua
+
+brew reinstall --build-from-source lua@5.1
+brew reinstall --build-from-source libtiff
+brew reinstall --build-from-source --without-webp gd # broken, can't find libwebp.so.6
+brew reinstall --build-from-source gnuplot@4 --without-lua@5.1
+brew unlink gnuplot
+brew link gnuplot@4 --force
+
+brew install --build-from-source oniguruma
+brew install --build-from-source jq
 
 brew install --build-from-source htslib
 brew install --build-from-source samtools
