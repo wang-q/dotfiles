@@ -71,6 +71,12 @@ rm dirs.tmp files.tmp
 
 ```
 
+## 找出占用空间最大的目录
+
+```bash
+find . -type d -print0 | xargs -0 du -s | sort -n | tail -20 | cut -f2 | xargs -I{} du -sh {}
+```
+
 ## 中英文中间加空格
 
 中文 [\u4e00-\u9fa5]
