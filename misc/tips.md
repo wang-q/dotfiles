@@ -415,7 +415,9 @@ http://www.howtogeek.com/127246/linux-sysadmin-how-to-manage-lvms-with-a-gui/
 
 ## Checking your Ubuntu Version
 
-`lsb_release -a`
+```bash
+lsb_release -a
+```
 
 ## virtualbox
 
@@ -541,7 +543,7 @@ docker run --privileged -d --name ikev2-vpn-server \
     --restart=always -p 500:500/udp -p 4500:4500/udp gaomd/ikev2-vpn-server:0.3.0
 
 docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
-    -e "HOST=45.79.80.100" gaomd/ikev2-vpn-server:0.3.0 generate-mobileconfig \
+    -e "HOST=$(hostname -I | cut -d\  -f1)" gaomd/ikev2-vpn-server:0.3.0 generate-mobileconfig \
     > ikev2-vpn.mobileconfig
 ```
 
