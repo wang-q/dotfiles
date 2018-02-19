@@ -77,6 +77,34 @@ rm dirs.tmp files.tmp
 find . -type d -print0 | xargs -0 du -s | sort -n | tail -20 | cut -f2 | xargs -I{} du -sh {}
 ```
 
+## youtube-dl with socks proxy
+
+On May 10, 2016, youtube-dl supports socks proxy.
+
+```bash
+youtube-dl \
+    -o "%(title)s.%(ext)s" --recode-video mp4 \
+    --format bestvideo[ext!=webm]+bestaudio[ext!=webm]/best[ext!=webm] \
+    --restrict-filenames --continue --ignore-errors --no-call-home \
+    --write-sub --write-auto-sub --convert-subs srt --sub-lang en \
+    --proxy socks5://127.0.0.1:1080 \
+    https://www.youtube.com/watch?v=1t1OL2zN0LQ
+
+```
+
+## Add subtitles to mp4
+
+```bash
+ffmpeg \
+    -i How_to_Solve_the_Rubik_s_Cube_-_An_Easy_Tutorial.mp4 \
+    -f srt \
+    -i How_to_Solve_the_Rubik_s_Cube_-_An_Easy_Tutorial.en.srt \
+    -map 0:0 -map 0:1 -map 1:0 -c:v copy -c:a copy \
+    -c:s mov_text \
+    How_to_Solve_the_Rubik_s_Cube.mp4
+
+```
+
 ## 中英文中间加空格
 
 中文 [\u4e00-\u9fa5]
