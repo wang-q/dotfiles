@@ -10,19 +10,19 @@ brew tap caskroom/cask
 
 # utils
 brew cask install alfred caffeine disk-inventory-x hammerspoon scroll-reverser
-brew cask install free-download-manager xmind
+brew cask install free-download-manager netspot utorrent xmind
 
 # media
-brew cask install aegisub iina
+brew cask install aegisub handbrake iina
 
 # sci
-brew cask install jabref figtree dendroscope
+brew cask install dendroscope figtree jabref
 
 # development
-brew cask install mysqlworkbench robomongo
+brew cask install mysqlworkbench robomongo sourcetree
 
 # 163
-brew cask install youdaodict youdaonote neteasemusic
+brew cask install neteasemusic youdaodict youdaonote
 
 # fonts
 brew tap caskroom/fonts
