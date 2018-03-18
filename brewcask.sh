@@ -8,9 +8,11 @@ brew linkapps mpv
 # casks
 brew tap caskroom/cask
 
-# utils
+# system
 brew cask install alfred caffeine disk-inventory-x hammerspoon scroll-reverser
-brew cask install free-download-manager netspot utorrent xmind
+
+# utils
+brew cask install calibre free-download-manager netspot utorrent xmind
 
 # media
 brew cask install aegisub handbrake iina
