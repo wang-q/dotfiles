@@ -57,6 +57,7 @@ brew install gnu-sed gnu-tar
 
 # libs
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
+brew link --force libffi
 
 # development tools
 brew install bfg cloc cmake
