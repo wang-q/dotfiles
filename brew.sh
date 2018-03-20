@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # perl
+echo "==> Install Perl 5.18"
 brew install wang-q/tap/perl@5.18.4
 brew link --force wang-q/tap/perl@5.18.4
 
@@ -24,7 +25,9 @@ fi
 curl -L https://cpanmin.us | perl - App::cpanminus
 
 # python
-brew install python
+echo "==> Install Python 2.7"
+
+brew install python@2
 
 if grep -q -i PYTHON_27_PATH $HOME/.bashrc; then
     echo "==> .bashrc already contains PYTHON_27_PATH"
@@ -42,9 +45,8 @@ fi
 pip install --upgrade pip setuptools
 
 # java
-brew install jdk@8
-brew link --force jdk@8
-brew install maven
+brew install jdk
+brew install ant maven
 
 # other programming languages
 brew install lua node
