@@ -432,6 +432,14 @@ vncserver -geometry 1200x900
 # sudo apt-get install --no-install-recommends ubuntu-desktop
 ```
 
+## Remove libreoffice from ubuntu-desktop
+
+```bash
+sudo apt-get remove --purge libreoffice*
+sudo apt-get clean
+sudo apt-get autoremove
+```
+
 ## lvm
 
 ```bash
