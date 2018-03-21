@@ -1,24 +1,24 @@
 #!/bin/bash
 
 # perl
-echo "==> Install Perl 5.18"
-brew install wang-q/tap/perl@5.18.4
-brew link --force wang-q/tap/perl@5.18.4
+echo "==> Install Perl 5.22"
+brew install wang-q/tap/perl@5.22.4
+brew link --force wang-q/tap/perl@5.22.4
 
-if grep -q -i PERL_518_PATH $HOME/.bashrc; then
-    echo "==> .bashrc already contains PERL_518_PATH"
+if grep -q -i PERL_522_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PERL_522_PATH"
 else
-    echo "==> Updating .bashrc with PERL_518_PATH..."
-    PERL_518_BREW=$(brew --prefix)/Cellar/$(brew list --versions wang-q/tap/perl@5.18.4 | sed 's/ /\//')
-    PERL_518_PATH="export PATH=\"$PERL_518_BREW/bin:\$PATH\""
+    echo "==> Updating .bashrc with PERL_522_PATH..."
+    PERL_522_BREW=$(brew --prefix)/Cellar/$(brew list --versions wang-q/tap/perl@5.22.4 | sed 's/ /\//')
+    PERL_522_PATH="export PATH=\"$PERL_518_BREW/bin:\$PATH\""
     BREW_SITE_PERL="export PERL5LIB=\"$(brew --prefix)/lib/perl5/site_perl:\$PERL5LIB\""
-    echo '# PERL_518_PATH' >> $HOME/.bashrc
-    echo $PERL_518_PATH    >> $HOME/.bashrc
+    echo '# PERL_522_PATH' >> $HOME/.bashrc
+    echo $PERL_522_PATH    >> $HOME/.bashrc
     echo $BREW_SITE_PERL   >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
-    eval $PERL_518_PATH
+    eval $PERL_522_PATH
     eval $BREW_SITE_PERL
 fi
 
