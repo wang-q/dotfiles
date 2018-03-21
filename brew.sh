@@ -61,20 +61,17 @@ brew install gnu-sed gnu-tar
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
 brew link --force libffi
 
-# development tools
-brew install bfg cloc cmake
-
 # other tools
-brew install htop pandoc parallel pigz sqlite tree proxychains-ng
+brew install cloc cmake htop pandoc parallel pigz sqlite tree
+
+# weird dependancies by Cairo.pm
+brew install linuxbrew/xorg/libpthread-stubs linuxbrew/xorg/renderproto linuxbrew/xorg/kbproto linuxbrew/xorg/xextproto
 
 # gtk+3
 brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme
 
 # Graphics
 brew install gnuplot graphviz imagemagick
-
-# bioinformatics
-brew install htslib bowtie2
 
 # https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
 # ffmpeg
