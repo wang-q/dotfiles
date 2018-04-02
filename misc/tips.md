@@ -133,6 +133,12 @@ brew install openssl
 /usr/local/opt/openssl/bin/openssl version # OpenSSL 1.0.2j  26 Sep 2016
 ```
 
+## Random numbers with openssl
+
+```bash
+openssl rand 3 | od -DAn
+```
+
 ## Extract bash codes from this markdown file.
 
 ```bash
@@ -685,6 +691,8 @@ brew install --build-from-source jq
 
 brew install --build-from-source htslib
 brew install --build-from-source samtools
+
+brew install --build-from-source raxml
 
 ```
 
