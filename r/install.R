@@ -10,7 +10,7 @@ is_installed <- function(package) {
 # CRAN packages
 basic_libraries <- c("devtools", "magrittr", "stringr", "plyr", "dplyr", "readr", "reshape2", "getopt", "doMC")
 graphics_libraries <- c("scales", "ggplot2", "gridExtra", "knitr", "rmarkdown", "extrafont", "tikzDevice", "pander")
-bio_libraries <- c("ape", "adephylo", "genetics", "poppr", "taxize", "brranching")
+bio_libraries <- c("ape", "adephylo", "genetics", "poppr", "taxize", "brranching", "survival", "randomForestSRC", "pROC")
 
 for(library in c(basic_libraries, graphics_libraries, bio_libraries ) ) {
     if(!is_installed(library)) {
