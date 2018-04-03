@@ -25,7 +25,6 @@ curl -L https://cpanmin.us | perl - App::cpanminus
 
 # python
 echo "==> Install Python 3"
-
 brew install python
 
 if grep -q -i PYTHON_3_PATH $HOME/.bashrc; then
@@ -43,6 +42,9 @@ fi
 
 pip install --upgrade pip setuptools
 
+# r
+brew install r
+
 # java
 brew install jdk
 brew install ant maven
@@ -58,19 +60,19 @@ brew install gnu-sed gnu-tar
 
 # libs
 brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
-brew link --force libffi
+# brew link --force libffi
 
 # other tools
 brew install cloc cmake htop pandoc parallel pigz sqlite tree
 
+# Graphics
+brew install gnuplot graphviz imagemagick
+
 # weird dependancies by Cairo.pm
-brew install linuxbrew/xorg/libpthread-stubs linuxbrew/xorg/renderproto linuxbrew/xorg/kbproto linuxbrew/xorg/xextproto
+# brew install linuxbrew/xorg/libpthread-stubs linuxbrew/xorg/renderproto linuxbrew/xorg/kbproto linuxbrew/xorg/xextproto
 
 # gtk+3
 brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme
-
-# Graphics
-brew install gnuplot graphviz imagemagick
 
 # https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
 # ffmpeg
