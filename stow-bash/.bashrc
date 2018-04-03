@@ -45,9 +45,9 @@ export PATH="$HOME/share/mysql/bin:$PATH"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
-# PERL_522_PATH
-export PATH="/usr/local/Cellar/perl@5.22.4/5.22.4/bin:$PATH"
-export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
-
 # PYTHON_3_PATH
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# PERL_526_PATH
+export PATH="/usr/local/Cellar/perl/5.26.1/bin:$PATH"
+export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
