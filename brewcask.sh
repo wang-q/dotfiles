@@ -28,6 +28,4 @@ brew cask install neteasemusic youdaodict youdaonote
 
 # fonts
 brew tap caskroom/fonts
-brew cask install font-fira-sans
-brew cask install font-fira-mono
-brew cask install font-charter
+brew cask install font-fira-sans font-fira-mono font-charter
