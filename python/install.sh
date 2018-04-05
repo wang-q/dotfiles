@@ -2,8 +2,8 @@
 
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-hash perl 2>/dev/null || {
-    brew install perl
+hash python 2>/dev/null || {
+    brew install python
 }
 
 cd ${BASE_DIR}
