@@ -8,6 +8,8 @@ hash python 2>/dev/null || {
 
 cd ${BASE_DIR}
 
+pip install --upgrade pip setuptools
+
 pip install numpy matplotlib
 pip install pandas sympy
 pip install ipython ipynb

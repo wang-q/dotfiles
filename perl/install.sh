@@ -8,6 +8,8 @@ hash perl 2>/dev/null || {
 
 cd ${BASE_DIR}
 
+curl -L https://cpanmin.us | perl - App::cpanminus
+
 CPAN_MIRROR=http://mirrors.ustc.edu.cn/CPAN/
 NO_TEST=--notest
 
