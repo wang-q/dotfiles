@@ -18,11 +18,13 @@
 ## macOS and Ubuntu
 
 * [`brew.sh`](brew.sh)
-    * Install CLI apps via Homebrew
+    * Install CLI apps via Homebrew/Linuxbrew
 
-* [`genomics.sh`](genomics.sh)
-    * Install bioinformatics apps via Homebrew science and my own homebrew-tap
-    * Install Trinity, GATK and picard manually
+* [`perl`](perl/)
+    * `bash perl/install.sh`
+
+* [`python`](python/)
+    * `bash python/install.sh`
 
 * [`r`](r/)
     * `bash r/install.sh`
@@ -30,6 +32,10 @@
 * vim plugins
     * `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
     * `vim +PluginInstall +qall`
+
+* [`genomics.sh`](genomics.sh)
+    * Install bioinformatics apps via Homebrew science and my own homebrew-tap
+    * Install Trinity, GATK and picard manually
 
 ## macOS only
 
