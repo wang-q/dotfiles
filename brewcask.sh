@@ -21,7 +21,7 @@ brew cask install aegisub handbrake iina
 brew cask install dendroscope figtree jabref
 
 # development
-brew cask install mysqlworkbench robomongo sourcetree
+brew cask install mysqlworkbench robo-3t sourcetree mongodb-compass
 
 # 163
 brew cask install neteasemusic youdaodict youdaonote
