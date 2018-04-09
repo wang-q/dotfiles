@@ -26,7 +26,6 @@ curl -L https://cpanmin.us | perl - App::cpanminus
 
 # python
 echo "==> Install Python 3"
-
 brew install python
 
 if grep -q -i PYTHON_3_PATH $HOME/.bashrc; then
