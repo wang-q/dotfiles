@@ -9,7 +9,9 @@ curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/insta
 
 echo "==> other tools"
 brew tap brewsci/bio
-brew install htslib bowtie bowtie2 igvtools
+brew tap brewsci/science
+
+brew install bowtie bowtie2 igvtools
 brew install tophat cufflinks stringtie hisat2
 brew install sratoolkit
 brew install genometools --without-pangocairo

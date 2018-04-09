@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# https://www.reddit.com/r/osx/comments/4ljbdq/mpv_tutorial_and_60_fps_playback_on_os_x/
+# ffmpeg
+brew install lame libvo-aacenc x264 xvid fdk-aac
+brew install --without-harfbuzz libass
+brew install --with-x265 --with-theora --with-rtmpdump --with-openssl \
+    --with-libvorbis --with-libass --with-libbs2b --with-rubberband --with-fdk-aac \
+    ffmpeg
+
 # mpv
 brew install duti mvtools ffms2
 brew reinstall --with-vapoursynth --with-bundle mpv
@@ -21,13 +29,11 @@ brew cask install aegisub handbrake iina
 brew cask install dendroscope figtree jabref
 
 # development
-brew cask install mysqlworkbench robomongo sourcetree
+brew cask install mysqlworkbench robo-3t sourcetree mongodb-compass
 
 # 163
 brew cask install neteasemusic youdaodict youdaonote
 
 # fonts
 brew tap caskroom/fonts
-brew cask install font-fira-sans
-brew cask install font-fira-mono
-brew cask install font-charter
+brew cask install font-fira-sans font-fira-mono font-charter

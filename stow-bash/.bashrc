@@ -8,9 +8,7 @@ fi
 # User specific aliases and functions
 
 export PATH=/Library/TeX/texbin:$HOME/bin:$PATH
-export INCLUDE=$HOME/inlcude:$INCLUDE
-export LIB=$HOME/lib:$LIB
-export PKG_CONFIG_PATH=$HOME/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/:$PKG_CONFIG_PATH
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/:$PKG_CONFIG_PATH
 
 # Make vim the default editor.
 export EDITOR='vim'
@@ -45,9 +43,9 @@ export PATH="$HOME/share/mysql/bin:$PATH"
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
-# PERL_522_PATH
-export PATH="/usr/local/Cellar/perl@5.22.4/5.22.4/bin:$PATH"
-export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
-
 # PYTHON_3_PATH
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# PERL_526_PATH
+export PATH="/usr/local/Cellar/perl/5.26.1/bin:$PATH"
+export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"

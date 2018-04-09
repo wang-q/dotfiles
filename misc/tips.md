@@ -22,20 +22,19 @@ Ideas from this
 * Status of all repos
 
 ```bash
-find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
-    | sort \
-    | parallel -r -k -j 1 \
-    "echo {//}; git -C {//} status; echo ===="
+find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" |
+    sort |
+    parallel -r -k -j 1 "echo {//}; git -C {//} status; echo ===="
+
 ```
 
 * Only show repos needing attentions
 
 ```bash
-find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
-    | sort \
-    | parallel -r -k -j 1 \
-        "echo {//}; git -C {//} status; echo ====" \
-    | perl -e '
+find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" |
+    sort |
+    parallel -r -k -j 1 "echo {//}; git -C {//} status; echo ====" |
+    perl -e '
         @lines = <>;
         @sections = split /\=+/, join("", @lines);
         print "\n==> Behind\n";
@@ -45,7 +44,8 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
         print "\n==> Not staged\n";
         print for grep {/Changes not staged for commit/} @sections;
         print "\n==> Untrack\n";
-        print for grep {/Untracked files/} @sections;'
+        print for grep {/Untracked files/} @sections;
+    '
 
 ```
 
