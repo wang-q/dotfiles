@@ -8,7 +8,9 @@ hash perl 2>/dev/null || {
 
 cd ${BASE_DIR}
 
-curl -L https://cpanmin.us | perl - App::cpanminus
+hash cpanm 2>/dev/null || {
+    curl -L https://cpanmin.us | perl - App::cpanminus
+}
 
 CPAN_MIRROR=http://mirrors.ustc.edu.cn/CPAN/
 NO_TEST=--notest
@@ -16,6 +18,9 @@ NO_TEST=--notest
 # basic modules
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Archive::Extract Config::Tiny DB_File File::Find::Rule Getopt::Long::Descriptive JSON JSON::XS Text::CSV_XS YAML::Syck
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST App::Ack App::Cmd DBI MCE Moo Moose Perl::Tidy Template WWW::Mechanize XML::Parser
+
+# RepeatMasker need this
+cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Text::Soundex
 
 # GD
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST GD SVG GD::SVG
