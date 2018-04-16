@@ -12,5 +12,5 @@ pip install --upgrade pip setuptools
 
 pip install numpy matplotlib
 pip install pandas sympy
-pip install ipython ipynb
+pip install jupyter
 pip install scipy
