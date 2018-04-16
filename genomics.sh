@@ -22,6 +22,8 @@ echo "==> custom tap"
 brew tap wang-q/tap
 brew install multiz faops
 
+mkdir -p $HOME/share/
+
 echo "==> trinity 2.0.6"
 #brew install trinity
 cd /prepare/resource/
@@ -60,3 +62,23 @@ fi
 
 cd $HOME/share/
 java -jar java -jar gatk/GenomeAnalysisTK.jar --help
+
+echo "==> circos"
+cd /prepare/resource/
+wget -N http://circos.ca/distribution/circos-0.69-6.tgz
+wget -N http://circos.ca/distribution/circos-tools-0.22.tgz
+
+cd $HOME/share/
+rm -fr circos
+tar xvfz /prepare/resource/circos-0.69-6.tgz
+mv circos-0.69-6 circos
+
+perl -pi -e 's{^#!\/bin\/env}{#!\/usr\/bin\/env}g' $HOME/share/circos/bin/circos
+perl -pi -e 's{^#!\/bin\/env}{#!\/usr\/bin\/env}g' $HOME/share/circos/bin/gddiag
+
+ln -fs $HOME/share/circos/bin/circos $HOME/bin/circos
+
+cd $HOME/share/
+rm -fr circos-tools
+tar xvfz /prepare/resource/circos-tools-0.22.tgz
+mv circos-tools-0.22 circos-tools
