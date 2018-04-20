@@ -44,7 +44,7 @@ cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST XML::XML2JSON PDF::API2 Math:
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Bio::Phylo
 
 # Database and WWW
-cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST MongoDB Mojolicious
+cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST MongoDB LWP::Protocol::https Mojolicious
 
 # text, rtf and xlsx
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Roman Text::Table RTF::Writer Chart::Math::Axis

@@ -17,6 +17,8 @@ brew install sratoolkit
 brew install genometools --without-pangocairo
 brew install canu
 brew install kmergenie --with-maxkmer=200
+brew install snp-sites --build-from-source # macOS bottles broken
+brew install bcftools
 
 echo "==> custom tap"
 brew tap wang-q/tap
