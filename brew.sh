@@ -49,6 +49,12 @@ brew install r
 brew install jdk
 brew install ant maven
 
+# pin these
+brew pin perl
+brew pin python
+brew pin r
+brew pin jdk
+
 # other programming languages
 brew install lua node
 
