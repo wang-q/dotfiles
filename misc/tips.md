@@ -700,6 +700,8 @@ Mirror to remote server:
 
 ```bash
 rsync -avP ~/.linuxbrew/ wangq@202.119.37.251:.linuxbrew
+rsync -avP ~/share/ wangq@202.119.37.251:share
+rsync -avP ~/bin/ wangq@202.119.37.251:bin
 rsync -avP ~/.bashrc wangq@202.119.37.251:.bashrc
 
 ```
