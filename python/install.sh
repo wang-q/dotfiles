@@ -8,9 +8,10 @@ hash python 2>/dev/null || {
 
 cd ${BASE_DIR}
 
-pip install --upgrade pip setuptools
+pip3 install --upgrade pip setuptools
 
-pip install numpy matplotlib
-pip install pandas sympy
-pip install jupyter
-pip install scipy
+pip3 install numpy matplotlib
+pip3 install pandas sympy
+pip3 install jupyter scipy
+pip3 install lxml statsmodels patsy
+pip3 install beautifulsoup4 scikit-learn seaborn
