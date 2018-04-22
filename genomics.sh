@@ -11,6 +11,7 @@ echo "==> other tools"
 brew tap brewsci/bio
 brew tap brewsci/science
 
+brew install mafft
 brew install bowtie bowtie2 igvtools
 brew install tophat cufflinks stringtie hisat2
 brew install sratoolkit

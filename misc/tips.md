@@ -86,7 +86,7 @@ youtube-dl \
     -o "%(title)s.%(ext)s" --recode-video mp4 \
     --format bestvideo[ext!=webm]+bestaudio[ext!=webm]/best[ext!=webm] \
     --restrict-filenames --continue --ignore-errors --no-call-home \
-    --write-sub --write-auto-sub --convert-subs srt --sub-lang en \
+    --write-sub --write-auto-sub --embed-subs --sub-lang en \
     --proxy socks5://127.0.0.1:1080 \
     https://www.youtube.com/watch?v=1t1OL2zN0LQ
 
