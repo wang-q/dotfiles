@@ -85,3 +85,24 @@ cd $HOME/share/
 rm -fr circos-tools
 tar xvfz /prepare/resource/circos-tools-0.22.tgz
 mv circos-tools-0.22 circos-tools
+
+echo "==> clone or pull"
+mkdir -p $HOME/Scripts/
+
+for OP in dotfiles alignDB withncbi; do
+    if [ ! -d "$HOME/Scripts/$OP/.git" ]; then
+        if [ ! -d "$HOME/Scripts/$OP" ]; then
+            echo "==> Clone $OP"
+            git clone https://github.com/wang-q/$OP.git "$HOME/Scripts/$OP"
+        else
+            echo "==> $OP exists"
+        fi
+    else
+        echo "==> Pull $OP"
+        cd "$HOME/Scripts/$OP"
+        git pull
+    fi
+done
+
+chmod +x $HOME/Scripts/alignDB/alignDB.pl
+ln -fs $HOME/Scripts/alignDB/alignDB.pl $HOME/bin/alignDB.pl
