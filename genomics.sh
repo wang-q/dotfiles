@@ -39,6 +39,9 @@ cd $HOME/share/trinityrnaseq-*
 make
 make plugins
 
+sed -i".bak" 's/::Bin/::RealBin/'
+ln -fs $HOME/share/trinityrnaseq-2.0.6/Trinity $HOME/bin/Trinity
+
 echo "==> gatk 3.5"
 # brew install maven
 
