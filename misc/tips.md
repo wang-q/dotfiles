@@ -253,6 +253,10 @@ independently, using "1" (tab title) and "2" (window title).
 echo -n -e "\033]0;In soviet russia, the title bar sets you\007"
 ```
 
+## a blank line at the very bottom of terminal tabs
+
+https://apple.stackexchange.com/questions/305462/terminal-leaving-a-blank-line-on-high-sierra-when-tabs-are-used
+
 ## 将 HOME 目录移动它其它硬盘
 
 https://www.lifewire.com/move-macs-home-folder-new-location-2260157
