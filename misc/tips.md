@@ -253,7 +253,7 @@ independently, using "1" (tab title) and "2" (window title).
 echo -n -e "\033]0;In soviet russia, the title bar sets you\007"
 ```
 
-## a blank line at the very bottom of terminal tabs
+## A blank line at the very bottom of terminal tabs
 
 https://apple.stackexchange.com/questions/305462/terminal-leaving-a-blank-line-on-high-sierra-when-tabs-are-used
 
@@ -593,7 +593,9 @@ docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
     > ikev2-vpn.mobileconfig
 ```
 
-# CentOS 6
+# CentOS 6.9
+
+For HPCC in NJU
 
 ## create a sudoer user
 
