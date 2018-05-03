@@ -40,7 +40,7 @@ else
     eval $PYTHON_3_PATH
 fi
 
-pip install --upgrade pip setuptools
+pip3 install --upgrade pip setuptools
 
 # r
 brew install r
