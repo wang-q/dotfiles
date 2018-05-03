@@ -15,6 +15,7 @@ brew linkapps mpv
 
 # casks
 brew tap caskroom/cask
+brew tap caskroom/versions
 
 # system
 brew cask install alfred caffeine disk-inventory-x hammerspoon scroll-reverser
@@ -33,6 +34,9 @@ brew cask install mysqlworkbench robo-3t sourcetree mongodb-compass
 
 # 163
 brew cask install neteasemusic youdaodict youdaonote
+
+# versions
+brew cask install microsoft-remote-desktop-beta
 
 # fonts
 brew tap caskroom/fonts
