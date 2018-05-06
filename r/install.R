@@ -19,10 +19,11 @@ for(library in c(basic_libraries, graphics_libraries, bio_libraries ) ) {
 }
 
 # bioconductor packages
-bioC_libraries <- c("biomaRt", "hthgu133a.db", "hgu133a2.db", "IlluminaHumanMethylation27k.db", "IlluminaHumanMethylation450k.db")
+bioC_libraries <- c("biomaRt", "GenomicDataCommons")
+bioC_anno <- c("hthgu133a.db", "hgu133a2.db", "IlluminaHumanMethylation27k.db", "IlluminaHumanMethylation450k.db")
 
 source("http://www.bioconductor.org/biocLite.R")
-for(library in bioC_libraries) {
+for(library in c( bioC_libraries, bioC_anno ) ) {
     if(!is_installed(library)) {
         biocLite(library)
     }
