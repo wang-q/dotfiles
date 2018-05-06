@@ -8,7 +8,7 @@ hash Rscript 2>/dev/null || {
 
 cd ${BASE_DIR}
 
-Rscript install.R
+Rscript packages.R
 
 cat <<EOF > .Rprofile
 # set R mirror
