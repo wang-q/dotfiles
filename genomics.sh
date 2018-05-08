@@ -27,20 +27,22 @@ brew install multiz faops
 
 mkdir -p $HOME/share/
 
-echo "==> trinity 2.0.6"
+echo "==> trinity 2.6.6"
+brew install salmon
+
 #brew install trinity
 cd /prepare/resource/
-wget -N https://github.com/trinityrnaseq/trinityrnaseq/archive/v2.0.6.tar.gz
+wget -N https://github.com/trinityrnaseq/trinityrnaseq/archive/Trinity-v2.6.6.tar.gz
 
 cd $HOME/share/
-tar xvfz /prepare/resource/v2.0.6.tar.gz
+tar xvfz /prepare/resource/Trinity-v2.6.6.tar.gz
 
-cd $HOME/share/trinityrnaseq-*
+cd $HOME/share/trinityrnaseq-Trinity-v2.6.6
 make
 make plugins
 
-sed -i".bak" 's/::Bin/::RealBin/' $HOME/share/trinityrnaseq-2.0.6/Trinity
-ln -fs $HOME/share/trinityrnaseq-2.0.6/Trinity $HOME/bin/Trinity
+sed -i".bak" 's/::Bin/::RealBin/' $HOME/share/trinityrnaseq-Trinity-v2.6.6/Trinity
+ln -fs $HOME/share/trinityrnaseq-Trinity-v2.6.6/Trinity $HOME/bin/Trinity
 
 echo "==> gatk 3.5"
 # brew install maven
