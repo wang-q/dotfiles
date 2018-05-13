@@ -593,6 +593,12 @@ docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
     > ikev2-vpn.mobileconfig
 ```
 
+## 查看内存类型
+
+```bash
+sudo dmidecode --type 17 | less
+```
+
 # CentOS 6.9
 
 For HPCC in NJU
