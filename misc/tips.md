@@ -339,6 +339,12 @@ http://stackoverflow.com/questions/8402281/github-push-error-permission-denied
 2. Reboot
 3. Remove `/private/var/vm/sleepimage` is present.
 
+## 下载的 App
+
+> The App is damaged
+
+`sudo spctl --master-disable`
+
 ## 微调音量
 
 按 `Option` + `Shift` + `Volume Up/Volume Down`, 以四分之一格调整音量.
