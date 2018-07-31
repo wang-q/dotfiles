@@ -11,7 +11,6 @@ brew install --with-x265 --with-theora --with-rtmpdump --with-openssl \
 # mpv
 brew install duti mvtools ffms2
 brew reinstall --with-vapoursynth --with-bundle mpv
-brew linkapps mpv
 
 # casks
 brew tap caskroom/cask
