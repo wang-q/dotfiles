@@ -34,8 +34,8 @@
     * `vim +PluginInstall +qall`
 
 * [`genomics.sh`](genomics.sh)
-    * Install bioinformatics apps via Homebrew science and my own homebrew-tap
-    * Install Trinity, GATK and picard manually
+    * Install bioinformatics apps via brewsci and my own homebrew-tap
+    * Install Trinity, GATK and circos manually
 
 ## macOS only
 
