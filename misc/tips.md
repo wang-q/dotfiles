@@ -261,6 +261,16 @@ https://apple.stackexchange.com/questions/305462/terminal-leaving-a-blank-line-o
 
 https://www.lifewire.com/move-macs-home-folder-new-location-2260157
 
+## 制作 High Sierra 安装盘
+
+```bash
+sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia \
+    --volume /Volumes/Untitled/ \
+    --applicationpath /Applications/Install\ macOS\ High\ Sierra.app/ \
+    --nointeraction
+
+```
+
 ## 稍微平滑字体
 
 默认值是 0 或 2
