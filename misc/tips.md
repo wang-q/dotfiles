@@ -347,7 +347,7 @@ http://stackoverflow.com/questions/8402281/github-push-error-permission-denied
 
 1. `sudo pmset -a hibernatemode 0`
 2. Reboot
-3. Remove `/private/var/vm/sleepimage` is present.
+3. Remove `/private/var/vm/sleepimage` if present.
 
 ## 下载的 App
 
