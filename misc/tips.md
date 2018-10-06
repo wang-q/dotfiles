@@ -71,6 +71,22 @@ rm dirs.tmp files.tmp
 
 ```
 
+## 使用 Xterm 控制序列改变终端大小
+
+https://apple.stackexchange.com/a/47841
+
+* Set the window to 100x30 characters:
+
+    ```bash
+    printf '\e[8;30;100t'
+    ```
+
+* Move the window to the top/left corner
+
+    ```bash
+    printf '\e[3;0;0t'
+    ```
+
 ## 找出占用空间最大的目录
 
 ```bash
