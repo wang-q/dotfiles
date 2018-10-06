@@ -92,6 +92,19 @@ youtube-dl \
 
 ```
 
+## List youtube playlist
+
+```bash
+youtube-dl -j --flat-playlist \
+    --proxy socks5://127.0.0.1:1080 \
+    'https://www.youtube.com/watch?v=QsBT5EQt348&list=PLFs4vir_WsTySi9F8v5pvCi6zQj7Cwneu' |
+    jq '{URL: ("https://www.youtube.com/watch?v=" + .url), original_title: .title}' |
+    jq '. + {category: "Kurzgesagt/Human-Stuff"}' |
+    jq -s '.' |
+    perl -MYAML -MJSON -0777 -e '$c = <>; print YAML::Dump(decode_json($c))'
+
+```
+
 ## Add subtitles to mp4
 
 ```bash
