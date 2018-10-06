@@ -124,7 +124,7 @@ ps ax | grep lastz | perl -anle 'print $F[0]' | xargs kill -9
 openssl sha1 ~/Documents/1024SecUpd2003-03-03.dmg
 ```
 
-sha256 need newer version of openssl
+`sha256` need a newer version of openssl
 
 ```bash
 openssl version # OpenSSL 0.9.8zh 14 Jan 2016
