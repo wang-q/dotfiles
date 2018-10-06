@@ -210,7 +210,7 @@ rsync -avP -e "ssh -T -c arcfour -o Compression=no -x" ~/data/anchr/col_0/3_pacb
 ## ssh-copy-id
 
 ```bash
-ssh-keygen -b 1024 -t rsa -q
+ssh-keygen -b 2048 -t rsa -q
 ssh-copy-id -i ~/.ssh/id_rsa.pub wangq@202.119.37.251
 ```
 
