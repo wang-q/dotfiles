@@ -65,7 +65,7 @@ brew install aria2 curl wget
 brew install gnu-sed gnu-tar
 
 # libs
-brew install berkeley-db gd gsl libffi libxml2 libxslt pcre readline yasm
+brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline yasm
 # brew link --force libffi
 
 # other tools
