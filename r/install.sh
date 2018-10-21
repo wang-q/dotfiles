@@ -12,9 +12,14 @@ Rscript packages.R
 
 cat <<EOF > .Rprofile
 # set R mirror
-local({r <- getOption("repos")
-   r["CRAN"] <- "https://mirrors.tuna.tsinghua.edu.cn/CRAN"
-   options(repos=r)
+local({
+    # Bioconductor mirror
+    options("BioC_mirror"="https://mirrors.ustc.edu.cn/bioc")
+
+    # CRAN mirror
+    r <- getOption("repos")
+    r["CRAN"] <- "https://mirrors.ustc.edu.cn/CRAN"
+    options(repos=r)
 })
 
 EOF
