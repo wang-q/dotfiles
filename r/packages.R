@@ -15,7 +15,7 @@ bio_libraries <- c("ape", "adephylo", "genetics", "poppr", "taxize", "brranching
 
 for(library in c(basic_libraries, graphics_libraries, stat_libraries, bio_libraries ) ) {
     if(!is_installed(library)) {
-        install.packages(library, repos="https://mirrors.ustc.edu.cn/CRAN")
+        install.packages(library, repos="https://mirrors.tuna.tsinghua.edu.cn/CRAN")
     }
 }
 
