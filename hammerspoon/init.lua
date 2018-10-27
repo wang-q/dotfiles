@@ -226,7 +226,7 @@ hs.hotkey.bind(hyper, "M", function()
     -- 4:3 window
     local basew = math.floor(max.h * 4 / 3)
     local baseh = max.h
-    local serials = { 1, 0.9, 0.7, 0.5, 0.3 }
+    local serials = { 1, 0.9, 0.7, 0.5 }
 
     f.x = max.x
     f.y = max.y
@@ -241,9 +241,6 @@ hs.hotkey.bind(hyper, "M", function()
         f.w = math.floor(basew * serials[4])
         f.h = math.floor(baseh * serials[4])
     elseif f.w == math.floor(basew * serials[4]) then
-        f.w = math.floor(basew * serials[5])
-        f.h = math.floor(baseh * serials[5])
-    elseif f.w == math.floor(basew * serials[5]) then
         f.w = math.floor(basew * serials[1])
         f.h = math.floor(baseh * serials[1])
     else
