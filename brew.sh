@@ -65,11 +65,12 @@ brew install aria2 curl wget
 brew install gnu-sed gnu-tar
 
 # libs
-brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline yasm
+brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline sqlite yasm
 # brew link --force libffi
 
 # other tools
-brew install cloc cmake htop pandoc parallel pigz sqlite tree
+brew install cloc cmake htop pandoc parallel pigz tree
+brew install jq jo datamash miller tsv-utils
 
 # Graphics
 brew install gnuplot graphviz imagemagick
