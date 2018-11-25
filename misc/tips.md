@@ -93,6 +93,32 @@ https://apple.stackexchange.com/a/47841
 find . -type d -print0 | xargs -0 du -s | sort -n | tail -20 | cut -f2 | xargs -I{} du -sh {}
 ```
 
+## tar & pigz
+
+```bash
+
+time tar -xzvf lav.tar.gz
+# real    0m21.428s
+# user    0m13.442s
+# sys     0m2.828s
+
+time tar -czvf lav1.tar.gz *.lav
+# real    4m42.678s
+# user    4m34.581s
+# sys     0m4.188s
+
+time tar -cvf - *.lav | gzip > lav2.tar.gz
+# real    4m36.802s
+# user    4m33.793s
+# sys     0m4.350s
+
+time tar -cvf - *.lav | pigz -p 4 > lav3.tar.gz
+# real    1m12.889s
+# user    4m47.680s
+# sys     0m7.042s
+
+```
+
 ## youtube-dl with socks proxy
 
 On May 10, 2016, youtube-dl supports socks proxy.
