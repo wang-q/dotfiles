@@ -19,7 +19,7 @@ fi
 BUNDLE_ID=$(mdls -name kMDItemCFBundleIdentifier -r $APP_FILE)
 echo "mpv id: ${BUNDLE_ID}"
 
-EXTS=( 3GP ASF AVI FLV M4V MKV MOV MP4 MPEG MPG MPG2 MPG4 RMVB WMV )
+EXTS=( 3GP ASF AVI FLV M4A M4V MKV MOV MP4 MPEG MPG MPG2 MPG4 RMVB WMV )
 
 for ext in ${EXTS[@]}
 do
