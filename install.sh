@@ -38,11 +38,9 @@ cd ${BASE_DIR}
 log_warn "Restow dotfiles"
 DIRS=( stow-ack stow-git stow-htop stow-latexmk stow-perltidy stow-screen stow-wget stow-vim stow-proxychains )
 
-for d in ${DIRS[@]}
-do
+for d in ${DIRS[@]}; do
     log_info "${d}"
-    for f in $(find ${d} -maxdepth 1 | cut -sd / -f 2- | grep .)
-    do
+    for f in $(find ${d} -maxdepth 1 | cut -sd / -f 2- | grep .); do
         homef="${HOME}/${f}"
         if [ -h ${homef} ] ; then
             log_debug "Symlink exists: [${homef}]"
