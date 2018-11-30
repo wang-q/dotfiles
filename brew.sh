@@ -79,4 +79,4 @@ brew install gnuplot graphviz imagemagick
 # brew install linuxbrew/xorg/libpthread-stubs linuxbrew/xorg/renderproto linuxbrew/xorg/kbproto linuxbrew/xorg/xextproto
 
 # gtk+3
-brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme
+brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme gobject-introspection
