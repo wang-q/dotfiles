@@ -26,7 +26,7 @@ brew cask install calibre free-download-manager netspot utorrent xmind
 brew cask install aegisub handbrake iina
 
 # sci
-brew cask install dendroscope figtree jabref
+brew cask install dendroscope figtree jabref mathpix-snipping-tool
 
 # development
 brew cask install mysqlworkbench mongodb-compass robo-3t sourcetree visual-studio-code
