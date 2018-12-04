@@ -12,7 +12,7 @@ brew tap brewsci/bio
 brew tap brewsci/science
 
 brew install mafft
-brew install bowtie bowtie2 igvtools
+brew install bowtie bowtie2 bwa igvtools
 brew install tophat cufflinks stringtie hisat2
 brew install sratoolkit
 brew install genometools --without-pangocairo
