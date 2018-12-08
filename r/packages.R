@@ -20,7 +20,7 @@ for(library in c(basic_libraries, graphics_libraries, stat_libraries, bio_librar
 }
 
 # bioconductor packages
-bioC_libraries <- c("biomaRt", "GenomicDataCommons")
+bioC_libraries <- c("biomaRt", "GenomicDataCommons", "DSS", "bsseq")
 bioC_anno <- c("hthgu133a.db", "hgu133a2.db", "IlluminaHumanMethylation27k.db", "IlluminaHumanMethylation450k.db")
 
 source("http://www.bioconductor.org/biocLite.R")
