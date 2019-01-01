@@ -91,6 +91,28 @@ rm -fr circos-tools
 tar xvfz /prepare/resource/circos-tools-0.22.tgz
 mv circos-tools-0.22 circos-tools
 
+echo "==> interproscan"
+cd /prepare/resource/
+
+wget -N ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.32-71.0/interproscan-5.32-71.0-64-bit.tar.gz
+wget -N ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.32-71.0/interproscan-5.32-71.0-64-bit.tar.gz.md5
+
+md5sum -c interproscan-5.32-71.0-64-bit.tar.gz.md5
+
+wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/data/panther-data-12.0.tar.gz
+wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/data/panther-data-12.0.tar.gz.md5
+
+md5sum -c panther-data-12.0.tar.gz.md5
+
+# wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.32-71.0.tar.gz
+# wget ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.32-71.0.tar.gz.md5
+
+# md5sum -c lookup_service_5.32-71.0.tar.gz.md5
+
+cd $HOME/share/
+rm -fr interproscan
+tar -pxvzf /prepare/resource/interproscan-5.32-71.0-64-bit.tar.gz.md5
+
 echo "==> clone or pull"
 mkdir -p $HOME/Scripts/
 
