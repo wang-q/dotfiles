@@ -47,7 +47,7 @@ ln -fs $HOME/share/trinityrnaseq-Trinity-v2.6.6/Trinity $HOME/bin/Trinity
 echo "==> gatk 3.5"
 # brew install maven
 
-if [ ! -e /prepare/resource/gatk-3.5.tar.gz ];
+if [[ ! -e /prepare/resource/gatk-3.5.tar.gz ]];
 then
     cd /prepare/resource/
     wget -N https://github.com/broadgsa/gatk-protected/archive/3.5.tar.gz
@@ -110,17 +110,40 @@ md5sum -c panther-data-12.0.tar.gz.md5
 # md5sum -c lookup_service_5.32-71.0.tar.gz.md5
 
 cd $HOME/share/
+
 rm -fr interproscan
-tar -pxvzf /prepare/resource/interproscan-5.32-71.0-64-bit.tar.gz.md5
+
+pigz -dc /prepare/resource/interproscan-5.32-71.0-64-bit.tar.gz | pv | tar -pxv -f -
+pigz -dc /prepare/resource/panther-data-12.0.tar.gz | pv | tar -pxv -f -
+
+mv interproscan-5.32-71.0 interproscan
+mv panther interproscan/data
+
+# turn off local pre-calculated match lookup service
+sed -i '/precalculated.match.lookup.service.url/s/^/#/g' interproscan/interproscan.properties
+
+ln -fs $HOME/share/interproscan/interproscan.sh $HOME/bin/interproscan.sh
+
+# Manually download SignalP, TMHMM
+tar -xvz -f /prepare/resource/signalp-4.1f.Linux.tar.gz
+mkdir -p interproscan/bin/signalp/4.1/
+cp -R signalp-4.1/* interproscan/bin/signalp/4.1/
+sed -i '/\$ENV{SIGNALP} =/c\'"\$ENV{SIGNALP} = 'bin/signalp/4.1';" interproscan/bin/signalp/4.1/signalp
+
+tar -xvz -f /prepare/resource/tmhmm-2.0c.Linux.tar.gz
+mkdir -p interproscan/bin/tmhmm/2.0c/
+cp tmhmm-2.0c/bin/decodeanhmm.Linux_x86_64 interproscan/bin/tmhmm/2.0c/decodeanhmm
+mkdir -p interproscan/data/tmhmm/2.0c/
+cp tmhmm-2.0c/lib/TMHMM2.0.model interproscan/data/tmhmm/2.0c/TMHMM2.0c.model
 
 echo "==> clone or pull"
 mkdir -p $HOME/Scripts/
 
 for OP in dotfiles alignDB withncbi; do
-    if [ ! -d "$HOME/Scripts/$OP/.git" ]; then
-        if [ ! -d "$HOME/Scripts/$OP" ]; then
+    if [[ ! -d "$HOME/Scripts/$OP/.git" ]]; then
+        if [[ ! -d "$HOME/Scripts/$OP" ]]; then
             echo "==> Clone $OP"
-            git clone https://github.com/wang-q/$OP.git "$HOME/Scripts/$OP"
+            git clone https://github.com/wang-q/${OP}.git "$HOME/Scripts/$OP"
         else
             echo "==> $OP exists"
         fi
