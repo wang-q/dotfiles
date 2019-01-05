@@ -71,12 +71,6 @@ rm dirs.tmp files.tmp
 
 ```
 
-## 找出占用空间最大的目录
-
-```bash
-find . -type d -print0 | xargs -0 du -s | sort -n | tail -20 | cut -f2 | xargs -I{} du -sh {}
-```
-
 ## tar & pigz
 
 ```bash
@@ -150,12 +144,6 @@ ffmpeg \
 
 s/([\u4e00-\u9fa5])([\w$\\}])/$1 $2/g
 s/([\w$\\}])([\u4e00-\u9fa5])/$1 $2/g
-
-## Kill all by names
-
-```bash
-ps ax | grep lastz | perl -anle 'print $F[0]' | xargs kill -9
-```
 
 ## sha1 sum
 
