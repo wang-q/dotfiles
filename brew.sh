@@ -69,8 +69,9 @@ brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline sql
 # brew link --force libffi
 
 # other tools
+brew install gpg2
 brew install cloc cmake htop pandoc parallel pigz tree
-brew install jq jo datamash miller tsv-utils
+brew install jq jo pup datamash miller tsv-utils
 
 # Graphics
 brew install gnuplot graphviz imagemagick
