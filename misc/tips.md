@@ -452,6 +452,8 @@ sudo apt-get -y install gnome-panel gnome-settings-daemon metacity nautilus gnom
 Create a customized `~/.vnc/xstartup`.
 
 ```bash
+mkdir -p ~/.vnc
+
 cat <<EOF > ~/.vnc/xstartup
 #!/bin/sh
 
@@ -471,6 +473,7 @@ nautilus &
 gnome-terminal &
 
 EOF
+
 ```
 
 Customized resolution.
