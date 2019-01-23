@@ -20,7 +20,7 @@ brew tap caskroom/versions
 brew cask install alfred caffeine disk-inventory-x hammerspoon scroll-reverser
 
 # utils
-brew cask install calibre free-download-manager netspot utorrent xmind
+brew cask install calibre netspot utorrent xmind
 
 # media
 brew cask install aegisub handbrake iina
@@ -32,7 +32,7 @@ brew cask install dendroscope figtree jabref mathpix-snipping-tool
 brew cask install mysqlworkbench mongodb-compass robo-3t sourcetree visual-studio-code
 
 # 163
-brew cask install neteasemusic youdaodict youdaonote
+brew cask install neteasemusic youdaodict
 
 # versions
 brew cask install microsoft-remote-desktop-beta
