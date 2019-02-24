@@ -17,7 +17,7 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 # system
-brew cask install alfred caffeine disk-inventory-x hammerspoon scroll-reverser
+brew cask install alfred caffeine disk-inventory-x ezip hammerspoon scroll-reverser
 
 # utils
 brew cask install calibre netspot utorrent xmind
