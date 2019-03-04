@@ -73,6 +73,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew cask install java
 else 
     brew install jdk
+    brew pin jdk
 fi
 brew install ant maven
 
@@ -80,7 +81,6 @@ brew install ant maven
 brew pin perl
 brew pin python
 brew pin r
-brew pin jdk
 
 # other programming languages
 brew install lua node
