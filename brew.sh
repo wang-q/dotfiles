@@ -1,5 +1,27 @@
 #!/bin/bash
 
+# # gcc
+# brew install gcc
+# brew install gcc@5
+
+# if [[ "$OSTYPE" == "darwin"* ]]; then
+#     echo "==> Create gcc symlinks..."
+#     GCC_POSTFIX=$(brew list gcc@5 | grep -E '/bin/gcc\-\d.*' | grep -E -o '\-\d.*$')
+#     GCC_BREW=$(brew --prefix)/Cellar/$(brew list --versions gcc@5 | sed 's/ /\//')
+#     BREW_BIN="$(brew --prefix)/bin"
+
+#     LN_APPS="c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gcov"
+#     for app in $LN_APPS; do
+#         LN_NAME=$BREW_BIN/$(echo $app)
+#         if [ -L $LN_NAME ]; then
+#             rm $LN_NAME
+#         fi
+#         ln -s "${GCC_BREW}/bin/${app}${GCC_POSTFIX}" $LN_NAME
+#     done
+
+#     ln -s "${BREW_BIN}/gcc" "${BREW_BIN}/cc"
+# fi
+
 # perl
 echo "==> Install Perl 5.28"
 brew install perl
@@ -73,7 +95,7 @@ brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline sql
 
 # other tools
 brew install gpg2
-brew install cloc cmake htop pandoc parallel pigz tree
+brew install cloc cmake htop pandoc parallel pigz tldr tree
 brew install jq jo pup datamash miller tsv-utils
 
 # Graphics
