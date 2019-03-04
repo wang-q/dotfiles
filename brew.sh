@@ -68,7 +68,12 @@ pip3 install --upgrade pip setuptools
 brew install r
 
 # java
-brew install jdk
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew tap caskroom/cask
+    brew cask install java
+else 
+    brew install jdk
+fi
 brew install ant maven
 
 # pin these
