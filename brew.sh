@@ -58,6 +58,9 @@ brew pin jdk
 # other programming languages
 brew install lua node
 
+# taps
+brew tap wang-q/tap
+
 # download tools
 brew install aria2 curl wget
 
