@@ -65,13 +65,17 @@ fi
 pip3 install --upgrade pip setuptools
 
 # r
-brew install r
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install r
+else
+    brew install r --without-xorg
+fi
 
 # java
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew tap caskroom/cask
     brew cask install java
-else 
+else
     brew install jdk
     brew pin jdk
 fi
