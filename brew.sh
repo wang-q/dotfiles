@@ -68,7 +68,7 @@ pip3 install --upgrade pip setuptools
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install r
 else
-    brew install r --without-xorg
+    brew install r #--without-xorg
 fi
 
 # java
