@@ -8,7 +8,7 @@ hash python 2>/dev/null || {
 
 cd ${BASE_DIR}
 
-PYPI_MIRROR=https://mirrors.ustc.edu.cn/pypi/web/simple
+PYPI_MIRROR=https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip3 install -i ${PYPI_MIRROR} --upgrade pip setuptools
 
