@@ -32,7 +32,7 @@ log_debug () {
 
 # enter BASE_DIR
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd ${BASE_DIR}
+cd "${BASE_DIR}" || exit
 
 # stow configurations
 log_warn "Restow dotfiles"
@@ -42,23 +42,23 @@ for d in ${DIRS[@]}; do
     log_info "${d}"
     for f in $(find ${d} -maxdepth 1 | cut -sd / -f 2- | grep .); do
         homef="${HOME}/${f}"
-        if [ -h ${homef} ] ; then
+        if [ -h "${homef}" ] ; then
             log_debug "Symlink exists: [${homef}]"
-        elif [ -f ${homef} ] ; then
+        elif [ -f "${homef}" ] ; then
             log_debug "Delete file: [${homef}]"
-            rm ${homef}
-        elif [ -d ${homef} ] ; then
+            rm "${homef}"
+        elif [ -d "${homef}" ] ; then
             log_debug "Delete dir: [${homef}]"
-            rm -fr ${homef}
+            rm -fr "${homef}"
         fi
     done
-	stow -t ${HOME} ${d} -v 2
+	stow -t "${HOME}" "${d}" -v 2
 done
 
 # don't ruin Ubuntu
 log_info "stwo-bash"
-stow -t ${HOME} stow-bash -v 2
+stow -t "${HOME}" stow-bash -v 2
 
 # don't ruin Ubuntu
 log_info "stow-htop2 to .config"
-stow -t ${HOME}/.config/htop stow-htop2 -v 2
+stow -t "${HOME}"/.config/htop stow-htop2 -v 2

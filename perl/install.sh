@@ -6,7 +6,7 @@ hash perl 2>/dev/null || {
     brew install perl
 }
 
-cd ${BASE_DIR}
+cd "${BASE_DIR}" || exit
 
 hash cpanm 2>/dev/null || {
     curl -L https://cpanmin.us | perl - App::cpanminus

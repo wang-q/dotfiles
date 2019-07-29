@@ -71,6 +71,18 @@ rm dirs.tmp files.tmp
 
 ```
 
+## ClickHouse
+
+```bash
+# start server instance
+mkdir $HOME/some_clickhouse_database
+docker run -d --name some-clickhouse-server --ulimit nofile=262144:262144 --volume=$HOME/some_clickhouse_database:/var/lib/clickhouse yandex/clickhouse-server
+
+# connect to it from a native client
+docker run -it --rm --link some-clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
+
+```
+
 ## tar & pigz
 
 ```bash

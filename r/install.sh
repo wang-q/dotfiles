@@ -6,7 +6,7 @@ hash Rscript 2>/dev/null || {
     brew install r
 }
 
-cd ${BASE_DIR}
+cd "${BASE_DIR}" || exit
 
 Rscript packages.R
 

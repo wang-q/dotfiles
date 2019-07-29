@@ -6,7 +6,7 @@ hash python 2>/dev/null || {
     brew install python
 }
 
-cd ${BASE_DIR}
+cd "${BASE_DIR}" || exit
 
 PYPI_MIRROR=https://pypi.tuna.tsinghua.edu.cn/simple
 
