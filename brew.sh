@@ -23,23 +23,23 @@
 # fi
 
 # perl
-echo "==> Install Perl 5.28"
+echo "==> Install Perl 5.30"
 brew install perl
 
-if grep -q -i PERL_528_PATH $HOME/.bashrc; then
-    echo "==> .bashrc already contains PERL_528_PATH"
+if grep -q -i PERL_530_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PERL_530_PATH"
 else
-    echo "==> Updating .bashrc with PERL_528_PATH..."
-    PERL_528_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl | sed 's/ /\//')
-    PERL_528_PATH="export PATH=\"$PERL_528_BREW/bin:\$PATH\""
+    echo "==> Updating .bashrc with PERL_530_PATH..."
+    PERL_530_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl | sed 's/ /\//')
+    PERL_530_PATH="export PATH=\"$PERL_530_BREW/bin:\$PATH\""
     BREW_SITE_PERL="export PERL5LIB=\"$(brew --prefix)/lib/perl5/site_perl:\$PERL5LIB\""
-    echo '# PERL_528_PATH' >> $HOME/.bashrc
-    echo $PERL_528_PATH    >> $HOME/.bashrc
+    echo '# PERL_530_PATH' >> $HOME/.bashrc
+    echo $PERL_530_PATH    >> $HOME/.bashrc
     echo $BREW_SITE_PERL   >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
-    eval $PERL_528_PATH
+    eval $PERL_530_PATH
     eval $BREW_SITE_PERL
 fi
 
