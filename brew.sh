@@ -22,6 +22,9 @@
 #     ln -s "${BREW_BIN}/gcc" "${BREW_BIN}/cc"
 # fi
 
+# Clear caches
+rm -f $(brew --cache)/*.incomplete
+
 # perl
 echo "==> Install Perl 5.30"
 brew install perl
@@ -65,13 +68,17 @@ fi
 pip3 install --upgrade pip setuptools
 
 # r
+echo "==> Install R"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install r
 else
     brew install r #--without-xorg
 fi
 
+cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest Statistics::R
+
 # java
+echo "==> Install Java"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew tap caskroom/cask
     brew cask install java

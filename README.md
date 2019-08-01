@@ -5,15 +5,15 @@
 ## Configurations managed by GNU stow
 
 * `bash install.sh`
-* [ack](stow-ack/.ackrc)
+* [ack](stow-ack/)
 * [bash](stow-bash/)
 * [htop](stow-htop/)
 * [git](stow-git/)
-* [perltidy](stow-perltidy/.perltidyrc)
+* [perltidy](stow-perltidy/)
 * [proxychains](stow-proxychains/)
-* [GNU screen](stow-screen/.screenrc)
-* [vim](stow-vim/.vimrc)
-* [wget](stow-wget/.wgetrc)
+* [GNU screen](stow-screen/)
+* [vim](stow-vim/)
+* [wget](stow-wget/)
 
 ## macOS and Ubuntu
 
