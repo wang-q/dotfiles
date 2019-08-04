@@ -1,8 +1,23 @@
 #!/usr/bin/env bash
 
-mkdir -p $HOME/share/
-
 echo "====> Building Genomics related tools <===="
+
+mkdir -p $HOME/bin
+mkdir -p $HOME/share
+
+# make sure $HOME/bin in your $PATH
+if grep -q -i homebin $HOME/.bashrc; then
+    echo "==> .bashrc already contains homebin"
+else
+    echo "==> Update .bashrc"
+
+    HOME_PATH='export PATH="$HOME/bin:$PATH"'
+    echo '# Homebin' >> $HOME/.bashrc
+    echo $HOME_PATH >> $HOME/.bashrc
+    echo >> $HOME/.bashrc
+
+    eval $HOME_PATH
+fi
 
 echo "==> anchr"
 curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/install_dep.sh | bash
