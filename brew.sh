@@ -115,10 +115,19 @@ brew install cloc cmake htop pandoc parallel pigz tldr tree
 brew install jq jo pup datamash miller tsv-utils
 
 # Graphics
-brew install gnuplot graphviz imagemagick
+brew install gnuplot
+
+hash dot 2>/dev/null || {
+    brew install graphviz
+}
+
+hash convert 2>/dev/null || {
+    brew install imagemagick
+}
+
 
 # weird dependancies by Cairo.pm
 # brew install linuxbrew/xorg/libpthread-stubs linuxbrew/xorg/renderproto linuxbrew/xorg/kbproto linuxbrew/xorg/xextproto
 
 # gtk+3
-brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme gobject-introspection
+# brew install gsettings-desktop-schemas gtk+3 adwaita-icon-theme gobject-introspection
