@@ -29,13 +29,17 @@
 * [`r`](r/)
     * `bash r/install.sh`
 
-* vim plugins
+* Vim plugins
     * `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
     * `vim +PluginInstall +qall`
 
-* [`genomics.sh`](genomics.sh)
-    * Install bioinformatics apps via brewsci and my own homebrew-tap
-    * Install Trinity, GATK and circos manually
+* Bioinformatics
+    * [`download.sh`](download.sh)
+        * My repos, jkbin and circos
+    * [`genomics.sh`](genomics.sh)
+        * Install apps from brewsci and my own homebrew-tap
+    * [`others.sh`](genomics.sh)
+        * Install Trinity, GATK and interproscan manually
 
 ## macOS only
 
