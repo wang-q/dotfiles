@@ -131,8 +131,7 @@ $HOME/share/mysql/bin/mysqld_safe &
 sleep 5
 
 echo "==> Securing mysql service"
-if [ "$(whoami)" == 'vagrant' ];
-then
+if [ "$(whoami)" == 'vagrant' ]; then
     cat <<EOF | mysql_secure_installation
 
 Y
@@ -147,12 +146,6 @@ EOF
 else
     mysql_secure_installation
 fi
-
-# cpanm --look DBD::mysql
-# mkdir -p /tmp/mysql-static && cp $HOME/share/mysql/lib/mysql/*.a /tmp/mysql-static
-# perl Makefile.PL --testuser alignDB --testpassword alignDB --cflags="-I${HOME}/share/mysql/include/mysql -fPIC -DUNIV_LINUX -DUNIV_LINUX" --libs="-L/tmp/mysql-static -lmysqlclient -lz -lcrypt -lnsl -lm"
-
-# cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest DBD::mysql
 
 rm -fr $HOME/share/mysql-*
 
@@ -169,5 +162,15 @@ mysql -uroot -p -e "GRANT ALL PRIVILEGES ON *.* TO 'alignDB'@'%' IDENTIFIED BY '
 
 # shutdown
 ~/share/mysql/bin/mysqladmin shutdown -uroot -p
+
+# DBD::mysql
+cpanm --notest DBD::mysql
+
+# If the above command failed, use the following
+cpanm --look DBD::mysql
+mkdir -p /tmp/mysql-static && cp $HOME/share/mysql/lib/mysql/*.a /tmp/mysql-static
+perl Makefile.PL --testuser alignDB --testpassword alignDB --cflags="-I${HOME}/share/mysql/include/mysql -fPIC -DUNIV_LINUX -DUNIV_LINUX" --libs="-L/tmp/mysql-static -lmysqlclient -lz -lcrypt -lnsl -lm"
+make test
+make install
 
 EOF
