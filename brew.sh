@@ -125,7 +125,6 @@ hash convert 2>/dev/null || {
     brew install imagemagick
 }
 
-
 # weird dependancies by Cairo.pm
 # brew install linuxbrew/xorg/libpthread-stubs linuxbrew/xorg/renderproto linuxbrew/xorg/kbproto linuxbrew/xorg/xextproto
 
