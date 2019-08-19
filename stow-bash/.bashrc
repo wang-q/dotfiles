@@ -51,3 +51,8 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/Cellar/perl/5.30.0/bin:$PATH"
 export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
 
+# RUST_PATH
+export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+export PATH="$HOME/.cargo/bin:$PATH"
+
