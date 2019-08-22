@@ -27,7 +27,7 @@ fi
 
 curl https://sh.rustup.rs -sSf | bash
 
-tee -a $HOME/.cargo/config <<EOF
+tee $HOME/.cargo/config <<EOF
 [source.crates-io]
 registry = "https://github.com/rust-lang/crates.io-index"
 replace-with = 'ustc'
