@@ -27,14 +27,14 @@ fi
 
 curl https://sh.rustup.rs -sSf | bash
 
-tee $HOME/.cargo/config <<EOF
-[source.crates-io]
-registry = "https://github.com/rust-lang/crates.io-index"
-replace-with = 'ustc'
-[source.ustc]
-registry = "git://mirrors.ustc.edu.cn/crates.io-index"
-
-EOF
+# tee $HOME/.cargo/config <<EOF
+# [source.crates-io]
+# registry = "https://github.com/rust-lang/crates.io-index"
+# replace-with = 'ustc'
+# [source.ustc]
+# registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+#
+# EOF
 
 rustup component add clippy rust-analysis rust-src rustfmt
 
