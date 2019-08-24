@@ -37,3 +37,6 @@ registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 EOF
 
 rustup component add clippy rust-analysis rust-src rustfmt
+
+cargo install cargo-expand
+cargo install cargo-release
