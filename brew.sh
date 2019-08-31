@@ -115,7 +115,9 @@ brew install cloc cmake htop pandoc parallel pigz tldr tree
 brew install jq jo pup datamash miller tsv-utils
 
 # Graphics
-brew install gnuplot
+hash gnuplot 2>/dev/null || {
+    brew install gnuplot
+}
 
 hash dot 2>/dev/null || {
     brew install graphviz
