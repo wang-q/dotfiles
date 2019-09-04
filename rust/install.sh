@@ -25,7 +25,7 @@ else
     eval $RUST_PATH
 fi
 
-curl https://sh.rustup.rs -sSf | bash
+curl https://sh.rustup.rs -sSf | bash -s -- -y
 
 # tee $HOME/.cargo/config <<EOF
 # [source.crates-io]
