@@ -33,7 +33,7 @@ if grep -q -i PERL_530_PATH $HOME/.bashrc; then
     echo "==> .bashrc already contains PERL_530_PATH"
 else
     echo "==> Updating .bashrc with PERL_530_PATH..."
-    PERL_530_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl | sed 's/ /\//')
+    PERL_530_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl | sed 's/ /\//' | head -n 1)
     PERL_530_PATH="export PATH=\"$PERL_530_BREW/bin:\$PATH\""
     BREW_SITE_PERL="export PERL5LIB=\"$(brew --prefix)/lib/perl5/site_perl:\$PERL5LIB\""
     echo '# PERL_530_PATH' >> $HOME/.bashrc
