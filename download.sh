@@ -44,14 +44,14 @@ ln -fs $HOME/Scripts/alignDB/alignDB.pl $HOME/bin/alignDB.pl
 echo "==> Jim Kent bin"
 cd $HOME/bin/
 if [[ $(uname) == 'Darwin' ]]; then
-    JKBIN_TAR_GZ=/tmp/jkbin-darwin-2011.tar.gz
+    JKBIN_TAR_GZ=/tmp/jkbin-egaz-darwin-2011.tar.gz
     if [ ! -e ${JKBIN_TAR_GZ} ]; then
-        wget -N -P /tmp https://github.com/egateam/egavm/releases/download/20170907/jkbin-darwin-2011.tar.gz
+        wget -N -P /tmp https://github.com/wang-q/ubuntu/releases/download/20190906/jkbin-egaz-darwin-2011.tar.gz
     fi
 else
-    JKBIN_TAR_GZ=/tmp/jkbin-ubuntu-1404-2011.tar.gz
+    JKBIN_TAR_GZ=/tmp/jkbin-egaz-ubuntu-1404-2011.tar.gz
     if [ ! -e ${JKBIN_TAR_GZ} ]; then
-        wget -N -P /tmp https://github.com/egateam/egavm/releases/download/20170907/jkbin-ubuntu-1404-2011.tar.gz
+        wget -N -P /tmp https://github.com/wang-q/ubuntu/releases/download/20190906/jkbin-egaz-ubuntu-1404-2011.tar.gz
     fi
 fi
 
