@@ -87,9 +87,13 @@ brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline sql
 # brew link --force libffi
 
 # other tools
-brew install gpg2 screen stow
+brew install screen stow
 brew install cloc cmake htop pandoc parallel pigz tldr tree
 brew install jq jo pup datamash miller tsv-utils
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew install gpg2
+fi
 
 # Graphics
 hash gnuplot 2>/dev/null || {
