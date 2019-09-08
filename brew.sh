@@ -1,27 +1,5 @@
 #!/bin/bash
 
-# # gcc
-# brew install gcc
-# brew install gcc@5
-
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#     echo "==> Create gcc symlinks..."
-#     GCC_POSTFIX=$(brew list gcc@5 | grep -E '/bin/gcc\-\d.*' | grep -E -o '\-\d.*$')
-#     GCC_BREW=$(brew --prefix)/Cellar/$(brew list --versions gcc@5 | sed 's/ /\//')
-#     BREW_BIN="$(brew --prefix)/bin"
-
-#     LN_APPS="c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gcov"
-#     for app in $LN_APPS; do
-#         LN_NAME=$BREW_BIN/$(echo $app)
-#         if [ -L $LN_NAME ]; then
-#             rm $LN_NAME
-#         fi
-#         ln -s "${GCC_BREW}/bin/${app}${GCC_POSTFIX}" $LN_NAME
-#     done
-
-#     ln -s "${BREW_BIN}/gcc" "${BREW_BIN}/cc"
-# fi
-
 # Clear caches
 rm -f $(brew --cache)/*.incomplete
 
