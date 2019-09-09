@@ -88,14 +88,18 @@ brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline sql
 
 # other tools
 brew install screen stow
-brew install cloc cmake htop pandoc parallel pigz tldr tree
+brew install cloc cmake htop parallel pigz tldr tree
 brew install jq jo pup datamash miller tsv-utils
 
+# large packages
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install gpg2
 fi
 
-# Graphics
+hash pandoc 2>/dev/null || {
+    brew install pandoc
+}
+
 hash gnuplot 2>/dev/null || {
     brew install gnuplot
 }
