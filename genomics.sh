@@ -27,7 +27,7 @@ brew install bcftools
 
 echo "==> Custom tap"
 brew tap wang-q/tap
-brew install faops multiz sparsemem
+brew install faops multiz sparsemem intspan
 brew install jrunlist jrange
 
 echo "==> RepeatMasker"

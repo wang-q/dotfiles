@@ -25,6 +25,7 @@ else
     eval $RUST_PATH
 fi
 
+echo "==> Install rustup"
 curl https://sh.rustup.rs -sSf | bash -s -- -y
 
 # tee $HOME/.cargo/config <<EOF
