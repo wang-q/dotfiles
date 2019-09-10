@@ -28,6 +28,9 @@ fi
 echo "==> Install rustup"
 curl https://sh.rustup.rs -sSf | bash -s -- -y
 
+rustup component add clippy rust-analysis rust-src rustfmt
+
+# This cargo mirror can't release crates
 # tee $HOME/.cargo/config <<EOF
 # [source.crates-io]
 # registry = "https://github.com/rust-lang/crates.io-index"
@@ -36,8 +39,6 @@ curl https://sh.rustup.rs -sSf | bash -s -- -y
 # registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 #
 # EOF
-
-rustup component add clippy rust-analysis rust-src rustfmt
 
 cargo install cargo-expand
 cargo install cargo-release
