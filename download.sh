@@ -72,8 +72,14 @@ tar xvfz ${JKBIN_TAR_GZ} x86_64/netFilter
 tar xvfz ${JKBIN_TAR_GZ} x86_64/netSplit
 tar xvfz ${JKBIN_TAR_GZ} x86_64/netSyntenic
 tar xvfz ${JKBIN_TAR_GZ} x86_64/netToAxt
+tar xvfz ${JKBIN_TAR_GZ} x86_64/pslToChain
 
 mv $HOME/bin/x86_64/* $HOME/bin/
+
+echo "==> TrimGalore"
+curl -O https://raw.githubusercontent.com/FelixKrueger/TrimGalore/master/trim_galore
+mv trim_galore $HOME/bin
+chmod +x $HOME/bin/trim_galore
 
 echo "==> circos"
 wget -N -P /tmp http://circos.ca/distribution/circos-0.69-6.tgz
