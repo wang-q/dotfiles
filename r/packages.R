@@ -25,6 +25,6 @@ bioC_anno <- c("AnnotationDbi", "org.Hs.eg.db", "org.Rn.eg.db", "hthgu133a.db", 
 
 for(library in c( bioC_libraries, bioC_anno ) ) {
     if(!is_installed(library)) {
-        BiocManager::install(library, update=FALSE, version = "3.8")
+        BiocManager::install(library, update=FALSE, version = "3.9")
     }
 }
