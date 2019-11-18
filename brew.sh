@@ -46,12 +46,11 @@ fi
 pip3 install --upgrade pip setuptools
 
 # r
-echo "==> Install R"
-if [[ "$OSTYPE" == "darwin"* ]]; then
+# brew install wang-q/tap/r@3.6.1
+hash Rscript 2>/dev/null || {
+    echo "==> Install R"
     brew install r
-else
-    brew install r #--without-xorg
-fi
+}
 
 cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest Statistics::R
 
