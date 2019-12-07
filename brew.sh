@@ -60,7 +60,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew tap caskroom/cask
     brew cask install java
 else
-    brew install openjdk@9
+    brew install adoptopenjdk
 fi
 brew install ant maven
 
