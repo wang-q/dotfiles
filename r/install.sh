@@ -15,7 +15,7 @@ cat <<EOF > .Rprofile
 # set R mirror
 local({
     # Bioconductor mirror
-    options("BioC_mirror"="https://mirrors.ustc.edu.cn/bioc")
+    options("BioC_mirror"="https://ipv4.mirrors.ustc.edu.cn/bioc")
     # CRAN mirror
     r <- getOption("repos")
     r["CRAN"] <- "https://mirrors.tuna.tsinghua.edu.cn/CRAN"

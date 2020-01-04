@@ -12,7 +12,7 @@ hash cpanm 2>/dev/null || {
     curl -L https://cpanmin.us | perl - App::cpanminus
 }
 
-CPAN_MIRROR=http://mirrors.ustc.edu.cn/CPAN/
+CPAN_MIRROR=http://ipv4.mirrors.ustc.edu.cn/CPAN/
 NO_TEST=--notest
 
 # basic modules

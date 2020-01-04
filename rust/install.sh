@@ -10,8 +10,8 @@ if grep -q -i RUST_PATH $HOME/.bashrc; then
     echo "==> .bashrc already contains RUST_PATH"
 else
     echo "==> Updating .bashrc with RUST_PATH..."
-    RUSTUP_DIST_SERVER="export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static"
-    RUSTUP_UPDATE_ROOT="export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup"
+    RUSTUP_DIST_SERVER="export RUSTUP_DIST_SERVER=https://ipv4.mirrors.ustc.edu.cn/rust-static"
+    RUSTUP_UPDATE_ROOT="export RUSTUP_UPDATE_ROOT=https://ipv4.mirrors.ustc.edu.cn/rust-static/rustup"
     RUST_PATH="export PATH=\"\$HOME/.cargo/bin:\$PATH\""
     echo '# RUST_PATH'       >> $HOME/.bashrc
     echo $RUSTUP_DIST_SERVER >> $HOME/.bashrc
@@ -36,7 +36,7 @@ rustup component add clippy rust-analysis rust-src rustfmt
 # registry = "https://github.com/rust-lang/crates.io-index"
 # replace-with = 'ustc'
 # [source.ustc]
-# registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+# registry = "git://ipv4.mirrors.ustc.edu.cn/crates.io-index"
 #
 # EOF
 
