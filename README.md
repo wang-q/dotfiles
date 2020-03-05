@@ -22,6 +22,7 @@
 
 * [`perl`](perl/)
     * `bash perl/install.sh`
+    * `bash perl/ensembl.sh`
 
 * [`python`](python/)
     * `bash python/install.sh`
@@ -41,7 +42,7 @@
         * My repos, jkbin and circos
     * [`genomics.sh`](genomics.sh)
         * Install apps from brewsci and my own homebrew-tap
-    * [`others.sh`](genomics.sh)
+    * [`others.sh`](others.sh)
         * Install Trinity, GATK and interproscan manually
 
 ## macOS only

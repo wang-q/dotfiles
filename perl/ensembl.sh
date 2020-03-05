@@ -28,10 +28,6 @@ tar xfz /tmp/ensembl-variation-${ENSEMBL_VERSION}.tar.gz \
     ensembl-variation-release-${ENSEMBL_VERSION}/modules/Bio/EnsEMBL
 cp -R ensembl-variation-release-${ENSEMBL_VERSION}/modules/Bio ${SITE_PERL}
 
-rm -fr ensembl-release-${ENSEMBL_VERSION}
-rm -fr ensembl-compara-release-${ENSEMBL_VERSION}
-rm -fr ensembl-variation-release-${ENSEMBL_VERSION}
-
 perl -MBio::EnsEMBL::ApiVersion -e 'print qq{If you see this, means ensembl installation successful.\n}'
 
 unset ENSEMBL_VERSION

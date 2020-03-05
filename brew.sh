@@ -13,15 +13,12 @@ else
     echo "==> Updating .bashrc with PERL_530_PATH..."
     PERL_530_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl | sed 's/ /\//' | head -n 1)
     PERL_530_PATH="export PATH=\"$PERL_530_BREW/bin:\$PATH\""
-    BREW_SITE_PERL="export PERL5LIB=\"$(brew --prefix)/lib/perl5/site_perl:\$PERL5LIB\""
     echo '# PERL_530_PATH' >> $HOME/.bashrc
     echo $PERL_530_PATH    >> $HOME/.bashrc
-    echo $BREW_SITE_PERL   >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
     eval $PERL_530_PATH
-    eval $BREW_SITE_PERL
 fi
 
 curl -L https://cpanmin.us | perl - App::cpanminus

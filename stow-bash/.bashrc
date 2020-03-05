@@ -57,5 +57,3 @@ export PATH="$HOME/bin:$PATH"
 
 # PERL_530_PATH
 export PATH="/usr/local/Cellar/perl/5.30.1/bin:$PATH"
-export PERL5LIB="/usr/local/lib/perl5/site_perl:$PERL5LIB"
-
