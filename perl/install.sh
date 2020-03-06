@@ -58,7 +58,7 @@ cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Test::Class Test::Roo Test::T
 cpanm --mirror-only --mirror $CPAN_MIRROR --notest MooX::Options MooseX::Storage
 
 # Develop
-cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST App::pmuninstall App::cpanoutdated Minilla
+cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST App::pmuninstall App::cpanoutdated Minilla Version::Next CPAN::Uploader
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Pod::POM::Web Search::Indexer PPI::XS
 
 # Others
