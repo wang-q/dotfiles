@@ -75,6 +75,14 @@ tar xvfz ${JKBIN_TAR_GZ} x86_64/netToAxt
 
 mv $HOME/bin/x86_64/* $HOME/bin/
 
+if [[ $(uname) == 'Darwin' ]]; then
+    wget -N http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/faToTwoBit
+    chmod +x faToTwoBit
+else
+    wget -N http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/faToTwoBit
+    chmod +x faToTwoBit
+fi
+
 echo "==> TrimGalore"
 curl -O https://raw.githubusercontent.com/FelixKrueger/TrimGalore/master/trim_galore
 mv trim_galore $HOME/bin
