@@ -43,15 +43,23 @@ ln -fs $HOME/Scripts/alignDB/alignDB.pl $HOME/bin/alignDB.pl
 
 echo "==> Jim Kent bin"
 cd $HOME/bin/
+RELEASE=$( ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 )
 if [[ $(uname) == 'Darwin' ]]; then
     JKBIN_TAR_GZ=/tmp/jkbin-egaz-darwin-2011.tar.gz
     if [ ! -e ${JKBIN_TAR_GZ} ]; then
         wget -N -P /tmp https://github.com/wang-q/ubuntu/releases/download/20190906/jkbin-egaz-darwin-2011.tar.gz
     fi
 else
-    JKBIN_TAR_GZ=/tmp/jkbin-egaz-ubuntu-1404-2011.tar.gz
-    if [ ! -e ${JKBIN_TAR_GZ} ]; then
-        wget -N -P /tmp https://github.com/wang-q/ubuntu/releases/download/20190906/jkbin-egaz-ubuntu-1404-2011.tar.gz
+    if echo ${RELEASE} | grep CentOS > /dev/null ; then
+        JKBIN_TAR_GZ=/tmp/jkbin-egaz-centos-7-2011.tar.gz
+        if [ ! -e ${JKBIN_TAR_GZ} ]; then
+            wget -N -P /tmp https://github.com/wang-q/ubuntu/releases/download/20190906/jkbin-egaz-centos-7-2011.tar.gz
+        fi
+    else
+        JKBIN_TAR_GZ=/tmp/jkbin-egaz-ubuntu-1404-2011.tar.gz
+        if [ ! -e ${JKBIN_TAR_GZ} ]; then
+            wget -N -P /tmp https://github.com/wang-q/ubuntu/releases/download/20190906/jkbin-egaz-ubuntu-1404-2011.tar.gz
+        fi
     fi
 fi
 
@@ -82,6 +90,7 @@ else
     wget -N http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/faToTwoBit
     chmod +x faToTwoBit
 fi
+mv faToTwoBit $HOME/bin/
 
 echo "==> TrimGalore"
 curl -O https://raw.githubusercontent.com/FelixKrueger/TrimGalore/master/trim_galore
