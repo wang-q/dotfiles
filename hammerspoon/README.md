@@ -8,23 +8,20 @@ Or `brew cask install hammerspoon`.
 
 ## Usage
 
-| Symbol  |   Key   |
-|:-------:|:-------:|
-| &#8984; | Command |
-| &#8963; | Control |
-| &#8997; | Option  |
-| &#8679; |  Shift  |
-| &#9650; |   Up    |
-| &#9660; |  Down   |
-| &#9668; |  Left   |
-| &#9658; |  Right  |
+| Symbol  |   Key   | Symbol  |  Key  |
+|:-------:|:-------:|:-------:|:-----:|
+| &#8984; | Command | &#9650; |  Up   |
+| &#8963; | Control | &#9660; | Down  |
+| &#8997; | Option  | &#9668; | Left  |
+| &#8679; |  Shift  | &#9658; | Right |
 
-`hyper`: &#8963; + &#8997; + &#8984;
-`hyperShift`: &#8963; + &#8997; + &#8984; + &#8679;
+
+`hyper`: &#8963; + &#8997; + &#8984; `hyperShift`: &#8963; + &#8997; + &#8984; + &#8679;
 
 * Center current window. `hyper` + `C`
 * Move current window to another monitor. `hyper` + `J` or `K`
-* Base size is 1.33x1 screen height (4:3 window). Loop through 1, 0.9, 0.7, 0.5 and 0.3. `hyper` + `M`
+* Base size is 1.33x1 screen height (4:3 window). Loop through 1, 0.9, 0.7, 0.5 and 0.3. `hyper` +
+  `M`
 * Maximize current window. `hyperShift` + `M`
 * Loop through 3/4, 3/5, 1/2, 2/5, 1/4 screen width. `hyper` + &#9668; or &#9658;
 * Vertical half screen size. `hyperShift` + &#9668; or &#9658;
