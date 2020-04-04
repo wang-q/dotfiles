@@ -33,9 +33,3 @@ brew cask install neteasemusic youdaodict
 
 # versions
 brew cask install microsoft-remote-desktop-beta
-
-# fonts
-brew tap homebrew/cask-fonts
-brew cask install font-fira-sans font-fira-mono font-charter
-
-brew cask install colindean/fonts-nonfree/font-microsoft-office
