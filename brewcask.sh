@@ -14,6 +14,7 @@ brew tap homebrew/cask
 brew tap homebrew/cask-versions
 
 # system
+brew cask install adoptopenjdk
 brew cask install alfred caffeine disk-inventory-x ezip hammerspoon scroll-reverser
 
 # utils
