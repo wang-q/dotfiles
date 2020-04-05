@@ -2,6 +2,10 @@
 
 ![Screenshot of a terminal window](images/screen.png)
 
+## Install `brew`
+
+[Homebrew](https://brew.sh/) or [Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux)
+
 ## Configurations managed by GNU stow
 
 * `bash install.sh`
