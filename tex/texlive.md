@@ -18,7 +18,7 @@ brew cask install jabref
 ## `tlmgr`
 
 ```bash
-sudo tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+sudo tlmgr option repository https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet/
 
 sudo tlmgr update --self
 sudo tlmgr update --all
