@@ -10,7 +10,7 @@ brew install duti mvtools ffms2
 brew reinstall mpv
 
 # casks
-brew tap homebrew/cask-cask
+brew tap homebrew/cask
 brew tap homebrew/cask-versions
 
 # system
