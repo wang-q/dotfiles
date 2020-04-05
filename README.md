@@ -52,7 +52,6 @@
 
 * [`brewcask.sh`](brewcask.sh)
     * Install GUI apps via Homebrew Cask
-    * install Fira fonts via Homebrew Cask fonts
 
 * [Hammerspoon](hammerspoon/)
     * Lua powered Mac window manager
@@ -61,3 +60,7 @@
 * [mpv](mpv/)
     * Video player I choose.
     * `bash mpv/install.sh`
+
+* [TexLive](tex/texlive.md)
+    * TexLive 2019
+    * Fonts

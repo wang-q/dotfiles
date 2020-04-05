@@ -21,7 +21,7 @@ brew cask install alfred caffeine disk-inventory-x ezip hammerspoon scroll-rever
 brew cask install calibre netspot utorrent xmind
 
 # media
-brew cask install aegisub handbrake iina
+brew cask install mpv aegisub handbrake iina
 
 # sci
 brew cask install dendroscope figtree jabref mathpix-snipping-tool
