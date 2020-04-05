@@ -416,8 +416,8 @@ Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用
 ```bash
 /Applications/Inkscape.app/Contents/Resources/script \
     ~/Downloads/textextract-good.pdf \
-    --export-plain-svg /dev/fd/1 \
-    | xmllint --format - \
+    --export-plain-svg /dev/fd/1 |
+    xmllint --format - \
     > ~/Downloads/textextract-good.svg
 ```
 
