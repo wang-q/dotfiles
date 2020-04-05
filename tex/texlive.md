@@ -21,7 +21,7 @@ brew cask install jabref
 sudo tlmgr option repository https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet/
 
 sudo tlmgr update --self
-sudo tlmgr update --all
+# sudo tlmgr update --all
 
 # tex utils
 # sudo tlmgr install latexmk
