@@ -10,8 +10,8 @@ brew install duti mvtools ffms2
 brew reinstall mpv
 
 # casks
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask-cask
+brew tap homebrew/cask-versions
 
 # system
 brew cask install alfred caffeine disk-inventory-x ezip hammerspoon scroll-reverser
