@@ -33,4 +33,4 @@ brew cask install mysqlworkbench mongodb-compass robo-3t sourcetree visual-studi
 brew cask install neteasemusic youdaodict
 
 # versions
-brew cask install microsoft-remote-desktop-beta
+brew cask install homebrew/cask-versions/microsoft-remote-desktop-beta
