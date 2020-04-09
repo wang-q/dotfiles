@@ -13,6 +13,10 @@ brew install pandoc imagemagick gifsicle
 # Optional
 brew cask install jabref
 
+# 
+brew install texlive
+tlmgr --verify-repo=none install scheme-medium
+
 ```
 
 ## `tlmgr`
