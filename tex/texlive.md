@@ -71,6 +71,8 @@ brew cask install font-source-han-mono
 # brew cask install colindean/fonts-nonfree/font-microsoft-office
 
 # https://github.com/mozilla/Fira/archive/4.202.tar.gz
+# https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKsc-hinted.zip
+# https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKsc-hinted.zip
 
 fc-cache -fsv
 
