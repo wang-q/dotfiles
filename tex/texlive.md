@@ -22,30 +22,28 @@ tlmgr --verify-repo=none install scheme-medium
 ## `tlmgr`
 
 ```bash
-sudo tlmgr option repository https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet/
+tlmgr option repository https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet/
 
-sudo tlmgr update --self
-# sudo tlmgr update --all
+tlmgr update --self --all
+tlmgr path add
+fmtutil-sys --all
 
-# tex utils
-# sudo tlmgr install latexmk
-# sudo tlmgr install pdfjam
-# sudo tlmgr install collection-binextra # arara, pdfcrop
-# sudo tlmgr install collection-latexextra # standalone
+# tlmgr search --global --file "/times.sty"
+
+tlmgr install latexmk pdfjam pdfcrop arara
+tlmgr install psnfss
+tlmgr install standalone
+tlmgr install was # upgreek
+tlmgr install xltxtra
+tlmgr install realscripts
+tlmgr install xecjk
+tlmgr install mhchem
+tlmgr install biblatex
+tlmgr install animate
+tlmgr install pgf
 
 # beamer template
 sudo tlmgr install beamertheme-metropolis
-
-# Some TeX packages
-# sudo tlmgr install tools # calc
-# sudo tlmgr install xecjk
-# sudo tlmgr install pgf # TikZ pgfpages
-# sudo tlmgr install graphics
-# sudo tlmgr install caption # subcaption
-# sudo tlmgr install animate
-# sudo tlmgr install mhchem
-# sudo tlmgr install biblatex
-# sudo tlmgr install hyperref
 
 ```
 
