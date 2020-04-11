@@ -40,7 +40,9 @@ tlmgr install xecjk
 tlmgr install mhchem
 tlmgr install biblatex
 tlmgr install animate
-tlmgr install pgf
+tlmgr install pgf pgfplots
+tlmgr install zref
+tlmgr install media9 ocgx2 xcolor
 
 # beamer template
 sudo tlmgr install beamertheme-metropolis
@@ -67,6 +69,8 @@ brew cask install font-source-han-serif
 brew cask install font-source-han-mono
 
 # brew cask install colindean/fonts-nonfree/font-microsoft-office
+
+# https://github.com/mozilla/Fira/archive/4.202.tar.gz
 
 fc-cache -fsv
 
