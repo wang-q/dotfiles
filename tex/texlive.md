@@ -1,21 +1,46 @@
-# Install TexLive
+# Install TexLive by TinyTex
 
-## TexLive and companions
+## [TinyTex](https://yihui.org/tinytex/)
+
+```r
+install.packages('tinytex')
+tinytex::install_tinytex()
+
+pkgs = readLines('https://yihui.name/gh/tinytex/tools/pkgs-yihui.txt') 
+tlmgr_install(pkgs) 
+
+```
+
+## Destination
+
+```text
+# Linux
+tlmgr path remove
+rm -r "~/.TinyTeX"
+
+# macOS
+tlmgr path remove
+rm -r "~/Library/TinyTeX"
+
+# Windows
+tlmgr path remove
+rd /s /q "%APPDATA%\TinyTeX"
+
+```
+
+
+## Companions
 
 ```bash
-brew cask install mactex-no-gui
 
-tex --version
-tlmgr --version
+brew install pandoc imagemagick gifsicle  
 
-brew install pandoc imagemagick gifsicle
+```
 
-# Optional
-brew cask install jabref
+```ps1
+scoop install pandoc imagemagick gifsicle
 
-# 
-brew install texlive
-tlmgr --verify-repo=none install scheme-medium
+scoop cache rm *; scoop uninstall pandoc; scoop install pandoc
 
 ```
 
