@@ -65,9 +65,12 @@ tlmgr install xecjk
 tlmgr install mhchem
 tlmgr install biblatex
 tlmgr install animate
-tlmgr install pgf pgfplots
+tlmgr install pgf pgfplots pgfopts
+tlmgr install translator
+tlmgr install silence
 tlmgr install zref
 tlmgr install media9 ocgx2 xcolor
+tlmgr install biblatex-nature
 
 # beamer template
 sudo tlmgr install beamertheme-metropolis
