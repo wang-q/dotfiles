@@ -6,8 +6,8 @@
 install.packages('tinytex')
 tinytex::install_tinytex()
 
-pkgs = readLines('https://yihui.name/gh/tinytex/tools/pkgs-yihui.txt') 
-tlmgr_install(pkgs) 
+pkgs = readLines('https://yihui.name/gh/tinytex/tools/pkgs-yihui.txt')
+tinytex::tlmgr_install(pkgs)
 
 ```
 
@@ -27,7 +27,6 @@ tlmgr path remove
 rd /s /q "%APPDATA%\TinyTeX"
 
 ```
-
 
 ## Companions
 
@@ -54,26 +53,34 @@ tlmgr path add
 fmtutil-sys --all
 
 # tlmgr search --global --file "/times.sty"
-
-tlmgr install latexmk pdfjam pdfcrop arara
-tlmgr install psnfss
+pdflscape.sty
+tlmgr install latexmk pdfjam pdfcrop arara latexindent
+tlmgr install pdflscape epstopdf-pkg # pdfjam
 tlmgr install standalone
 tlmgr install was # upgreek
 tlmgr install xltxtra
 tlmgr install realscripts
 tlmgr install xecjk
 tlmgr install mhchem
-tlmgr install biblatex
-tlmgr install animate
+tlmgr install biber biblatex biblatex-nature
 tlmgr install pgf pgfplots pgfopts
 tlmgr install translator
 tlmgr install silence
 tlmgr install zref
-tlmgr install media9 ocgx2 xcolor
-tlmgr install biblatex-nature
+tlmgr install animate media9 ocgx2 xcolor
 
 # beamer template
-sudo tlmgr install beamertheme-metropolis
+tlmgr install beamertheme-metropolis
+```
+
+## latexindent
+
+```bash
+cpanm --verbose YAML::Tiny File::HomeDir Unicode::GCString Log::Log4perl Log::Dispatch::File
+
+# curl -O https://raw.githubusercontent.com/cmhughes/latexindent.pl/master/defaultSettings.yaml
+cp -f ~/Scripts/dotfiles/tex/defaultSettings.yaml \
+    ~/Library/TinyTeX/texmf-dist/scripts/latexindent
 
 ```
 
@@ -86,15 +93,15 @@ brew cask install font-fira-sans
 brew cask install font-fira-mono
 brew cask install font-charter
 
-brew cask install font-noto-emoji
+# brew cask install font-noto-emoji
 
-brew cask install font-source-sans-pro
-brew cask install font-source-serif-pro
-brew cask install font-source-code-pro
+# brew cask install font-source-sans-pro
+# brew cask install font-source-serif-pro
+# brew cask install font-source-code-pro
 
-brew cask install font-source-han-sans
-brew cask install font-source-han-serif
-brew cask install font-source-han-mono
+# brew cask install font-source-han-sans
+# brew cask install font-source-han-serif
+# brew cask install font-source-han-mono
 
 # brew cask install colindean/fonts-nonfree/font-microsoft-office
 
