@@ -53,7 +53,7 @@ tlmgr path add
 fmtutil-sys --all
 
 # tlmgr search --global --file "/times.sty"
-pdflscape.sty
+
 tlmgr install latexmk pdfjam pdfcrop arara latexindent
 tlmgr install pdflscape epstopdf-pkg # pdfjam
 tlmgr install standalone
