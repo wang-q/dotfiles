@@ -99,9 +99,9 @@ brew cask install font-charter
 # brew cask install font-source-serif-pro
 # brew cask install font-source-code-pro
 
-# brew cask install font-source-han-sans
-# brew cask install font-source-han-serif
-# brew cask install font-source-han-mono
+brew cask install font-source-han-sans
+brew cask install font-source-han-serif
+brew cask install font-source-han-mono
 
 # brew cask install colindean/fonts-nonfree/font-microsoft-office
 
