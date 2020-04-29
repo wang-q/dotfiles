@@ -2,6 +2,8 @@
 
 ## [TinyTex](https://yihui.org/tinytex/)
 
+* Proxy for curl `export ALL_PROXY=socks5h://localhost:1080`
+
 ```r
 install.packages('tinytex')
 tinytex::install_tinytex()
