@@ -73,6 +73,9 @@ tlmgr install animate media9 ocgx2 xcolor
 
 # beamer template
 tlmgr install beamertheme-metropolis
+
+tlmgr path add
+
 ```
 
 ## latexindent
