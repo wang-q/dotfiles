@@ -32,13 +32,12 @@ rd /s /q "%APPDATA%\TinyTeX"
 
 ## Companions
 
-```bash
-
+```shell script
 brew install pandoc imagemagick gifsicle  
 
 ```
 
-```ps1
+```powershell
 scoop install pandoc imagemagick gifsicle
 
 scoop cache rm *; scoop uninstall pandoc; scoop install pandoc
@@ -47,7 +46,7 @@ scoop cache rm *; scoop uninstall pandoc; scoop install pandoc
 
 ## `tlmgr`
 
-```bash
+```shell script
 tlmgr option repository https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet/
 
 tlmgr update --self --all
@@ -80,7 +79,7 @@ tlmgr path add
 
 ## latexindent
 
-```bash
+```shell script
 cpanm --verbose YAML::Tiny File::HomeDir Unicode::GCString Log::Log4perl Log::Dispatch::File
 
 # curl -O https://raw.githubusercontent.com/cmhughes/latexindent.pl/master/defaultSettings.yaml
@@ -91,7 +90,7 @@ cp -f ~/Scripts/dotfiles/tex/defaultSettings.yaml \
 
 ## Fonts
 
-```bash
+```shell script
 brew tap homebrew/cask-fonts
 
 brew cask install font-fira-sans
