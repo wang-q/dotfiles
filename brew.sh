@@ -4,21 +4,21 @@
 rm -f $(brew --cache)/*.incomplete
 
 # perl
-echo "==> Install Perl 5.30"
+echo "==> Install Perl 5.32"
 brew install perl
 
-if grep -q -i PERL_530_PATH $HOME/.bashrc; then
-    echo "==> .bashrc already contains PERL_530_PATH"
+if grep -q -i PERL_532_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PERL_532_PATH"
 else
-    echo "==> Updating .bashrc with PERL_530_PATH..."
-    PERL_530_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl | sed 's/ /\//' | head -n 1)
-    PERL_530_PATH="export PATH=\"$PERL_530_BREW/bin:\$PATH\""
-    echo '# PERL_530_PATH' >> $HOME/.bashrc
-    echo $PERL_530_PATH    >> $HOME/.bashrc
+    echo "==> Updating .bashrc with PERL_532_PATH..."
+    PERL_532_BREW=$(brew --prefix)/Cellar/$(brew list --versions perl | sed 's/ /\//' | head -n 1)
+    PERL_532_PATH="export PATH=\"$PERL_532_BREW/bin:\$PATH\""
+    echo '# PERL_532_PATH' >> $HOME/.bashrc
+    echo $PERL_532_PATH    >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
-    eval $PERL_530_PATH
+    eval $PERL_532_PATH
 fi
 
 curl -L https://cpanmin.us | perl - App::cpanminus

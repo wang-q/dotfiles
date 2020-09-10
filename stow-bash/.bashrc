@@ -55,5 +55,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Homebin
 export PATH="$HOME/bin:$PATH"
 
-# PERL_530_PATH
-export PATH="/usr/local/Cellar/perl/5.30.1/bin:$PATH"
+# PERL_532_PATH
+export PATH="/usr/local/Cellar/perl/5.32.0/bin:$PATH"
+
