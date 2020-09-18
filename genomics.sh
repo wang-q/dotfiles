@@ -13,8 +13,8 @@ brew tap brewsci/bio
 brew tap brewsci/science
 
 brew install clustal-w mafft
-brew install --force-bottle blast
-brew install --force-bottle rmblast
+#brew install --force-bottle blast
+#brew install --force-bottle rmblast
 brew install hmmer lastz raxml fasttree
 brew install bowtie bowtie2 bwa igvtools
 brew install tophat cufflinks stringtie hisat2
@@ -31,6 +31,8 @@ brew install faops multiz sparsemem intspan
 brew install jrunlist jrange
 
 echo "==> RepeatMasker"
+brew install brewsci/bio/blast@2.2
+brew link brewsci/bio/blast@2.2 --force
 brew install repeatmasker --build-from-source # run config later
 
 echo "==> Config repeatmasker"
