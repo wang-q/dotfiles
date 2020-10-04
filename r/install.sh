@@ -18,7 +18,7 @@ local({
     options("BioC_mirror"="https://ipv4.mirrors.ustc.edu.cn/bioc")
     # CRAN mirror
     r <- getOption("repos")
-    r["CRAN"] <- "https://mirrors.nju.edu.cn/CRAN"
+    r["CRAN"] <- "https://mirrors4.tuna.tsinghua.edu.cn/CRAN"
     options(repos=r)
 })
 EOF

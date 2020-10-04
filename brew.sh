@@ -49,7 +49,7 @@ hash Rscript 2>/dev/null || {
     brew install r
 }
 
-cpanm --mirror-only --mirror http://mirrors.nju.edu.cn/CPAN/ --notest Statistics::R
+cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest Statistics::R
 
 # java
 echo "==> Install Java"

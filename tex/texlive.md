@@ -47,7 +47,7 @@ scoop cache rm *; scoop uninstall pandoc; scoop install pandoc
 ## `tlmgr`
 
 ```shell script
-tlmgr option repository https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet/
+tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
 
 tlmgr update --self --all
 tlmgr path add
