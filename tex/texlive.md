@@ -8,8 +8,7 @@
 install.packages('tinytex')
 tinytex::install_tinytex()
 
-pkgs = readLines('https://yihui.name/gh/tinytex/tools/pkgs-yihui.txt')
-tinytex::tlmgr_install(pkgs)
+tinytex:::install_yihui_pkgs()
 
 ```
 
@@ -33,7 +32,7 @@ rd /s /q "%APPDATA%\TinyTeX"
 ## Companions
 
 ```shell script
-brew install pandoc imagemagick gifsicle  
+brew install pandoc imagemagick gifsicle
 
 ```
 
