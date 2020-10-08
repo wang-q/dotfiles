@@ -57,7 +57,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew tap homebrew/cask
     brew cask install adoptopenjdk
 else
-    brew install adoptopenjdk
+    brew install adoptopenjdk@11
 fi
 brew install ant maven
 
