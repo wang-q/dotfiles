@@ -31,7 +31,7 @@ if grep -q -i PYTHON_3_PATH $HOME/.bashrc; then
     echo "==> .bashrc already contains PYTHON_3_PATH"
 else
     echo "==> Updating .bashrc with PYTHON_3_PATH..."
-    PYTHON_3_PATH="export PATH=\"$(brew --prefix)/opt/python/libexec/bin:\$PATH\""
+    PYTHON_3_PATH="export PATH=\"$(brew --prefix)/opt/python@3.8/libexec/bin:\$PATH\""
     echo '# PYTHON_3_PATH' >> $HOME/.bashrc
     echo $PYTHON_3_PATH    >> $HOME/.bashrc
     echo >> $HOME/.bashrc

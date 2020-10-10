@@ -15,10 +15,12 @@ brew tap homebrew/cask-versions
 
 # system
 brew cask install adoptopenjdk
-brew cask install alfred caffeine disk-inventory-x ezip hammerspoon scroll-reverser
+brew cask install caffeine disk-inventory-x ezip hammerspoon scroll-reverser
+#alfred
 
 # utils
-brew cask install calibre netspot utorrent xmind
+brew cask install calibre utorrent xmind
+#netspot
 
 # media
 brew cask install mpv aegisub handbrake iina

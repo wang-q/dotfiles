@@ -45,7 +45,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 # PYTHON_3_PATH
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python@3.8/libexec/bin:$PATH"
 
 # RUST_PATH
 export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
