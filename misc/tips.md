@@ -11,7 +11,7 @@ screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mo
 # screen -S op -x -X screen numactl --interleave=all ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
 
 screen -S op -x -X screen redis-server
-screen -S op -x -X screen ~/share/mysql/bin/mysqld_safe
+screen -S op -x -X screen mysqld_safe
 ```
 
 ## 列出所有子目录的 git 状态

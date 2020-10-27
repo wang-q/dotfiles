@@ -54,10 +54,9 @@ cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest Statistic
 # java
 echo "==> Install Java"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    brew tap homebrew/cask
-    brew cask install adoptopenjdk
+    brew install openjdk
 else
-    brew install adoptopenjdk@11
+    brew install openjdk
 fi
 brew install ant maven
 

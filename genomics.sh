@@ -31,8 +31,8 @@ brew install faops multiz sparsemem intspan
 brew install jrunlist jrange
 
 echo "==> RepeatMasker"
-brew install brewsci/bio/blast@2.2
-brew link brewsci/bio/blast@2.2 --force
+#brew install brewsci/bio/blast@2.2
+#brew link brewsci/bio/blast@2.2 --overwrite --force
 brew install repeatmasker --build-from-source # run config later
 
 echo "==> Config repeatmasker"
