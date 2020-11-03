@@ -21,7 +21,6 @@ brew install tophat cufflinks stringtie hisat2
 brew install sratoolkit
 brew install genometools
 brew install canu
-brew install kmergenie
 brew install snp-sites --build-from-source # macOS bottles broken
 brew install bcftools
 
