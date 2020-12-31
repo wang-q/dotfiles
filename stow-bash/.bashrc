@@ -58,3 +58,4 @@ export PATH="/usr/local/Cellar/perl/5.32.0/bin:$PATH"
 # PYTHON_3_PATH
 export PATH="/usr/local/opt/python@3.9/libexec/bin:$PATH"
 
+source "$HOME/.cargo/env"
