@@ -72,6 +72,9 @@ tlmgr install animate media9 ocgx2 xcolor
 # beamer template
 tlmgr install beamertheme-metropolis
 
+# forest
+tlmgr install forest inlinedef ctex
+
 tlmgr path add
 
 ```
