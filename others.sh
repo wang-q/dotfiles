@@ -18,31 +18,6 @@ make plugins
 sed -i".bak" 's/::Bin/::RealBin/' $HOME/share/trinityrnaseq-Trinity-v2.6.6/Trinity
 ln -fs $HOME/share/trinityrnaseq-Trinity-v2.6.6/Trinity $HOME/bin/Trinity
 
-echo "==> gatk 3.5"
-# brew install maven
-
-if [[ ! -e /tmp/gatk-3.5.tar.gz ]]; then
-    wget -N -P /tmp https://github.com/broadgsa/gatk-protected/archive/3.5.tar.gz
-
-    cd $HOME/share/
-    tar xvfz /tmp/3.5.tar.gz
-
-    cd $HOME/share/gatk-protected-*
-    # Compile the GATK but not Queue
-    mvn verify -P\!queue
-    mv target/executable $HOME/share/gatk
-
-    cd $HOME/share
-    tar cvfz gatk-3.5.tar.gz gatk
-    mv gatk-3.5.tar.gz /tmp/
-else
-    cd $HOME/share/
-    tar xvfz /tmp/gatk-3.5.tar.gz
-fi
-
-cd $HOME/share/
-java -jar java -jar gatk/GenomeAnalysisTK.jar --help
-
 echo "==> interproscan"
 cd /tmp/
 

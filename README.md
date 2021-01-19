@@ -47,7 +47,7 @@
   * [`genomics.sh`](genomics.sh)
     * Install apps from brewsci and my own homebrew-tap
   * [`others.sh`](others.sh)
-    * Install Trinity, GATK and interproscan manually
+    * Install Trinity and interproscan manually
 
 ## macOS only
 
