@@ -29,6 +29,9 @@ brew tap wang-q/tap
 brew install faops multiz sparsemem intspan
 brew install jrunlist jrange
 
+echo "==> circos"
+brew install wang-q/tap/circos@0.69.9
+
 echo "==> RepeatMasker"
 #brew install brewsci/bio/blast@2.2
 #brew link brewsci/bio/blast@2.2 --overwrite --force

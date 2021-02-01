@@ -97,19 +97,8 @@ curl -O https://raw.githubusercontent.com/FelixKrueger/TrimGalore/master/trim_ga
 mv trim_galore $HOME/bin
 chmod +x $HOME/bin/trim_galore
 
-echo "==> circos"
-wget -N -P /tmp http://circos.ca/distribution/circos-0.69-6.tgz
+echo "==> circos-tools"
 wget -N -P /tmp http://circos.ca/distribution/circos-tools-0.22.tgz
-
-cd $HOME/share/
-rm -fr circos
-tar xvfz /tmp/circos-0.69-6.tgz
-mv circos-0.69-6 circos
-
-perl -pi -e 's{^#!\/bin\/env}{#!\/usr\/bin\/env}g' $HOME/share/circos/bin/circos
-perl -pi -e 's{^#!\/bin\/env}{#!\/usr\/bin\/env}g' $HOME/share/circos/bin/gddiag
-
-ln -fs $HOME/share/circos/bin/circos $HOME/bin/circos
 
 cd $HOME/share/
 rm -fr circos-tools
