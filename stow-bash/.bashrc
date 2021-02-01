@@ -38,7 +38,7 @@ export PATH="$HOME/share/mongodb/bin:$PATH"
 # mysqlbin
 export PATH="$HOME/share/mysql/bin:$PATH"
 
-# ustc mirror of Homebrew bottles
+# USTC mirror of Homebrew bottles
 # https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -52,10 +52,11 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Homebin
 export PATH="$HOME/bin:$PATH"
 
-# PERL_532_PATH
-export PATH="/usr/local/Cellar/perl/5.32.0/bin:$PATH"
-
-# PYTHON_3_PATH
-export PATH="/usr/local/opt/python@3.9/libexec/bin:$PATH"
-
 source "$HOME/.cargo/env"
+
+# PYTHON_37_PATH
+export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+# PERL_532_PATH
+export PATH="/usr/local/Cellar/perl/5.32.1/bin:$PATH"
+

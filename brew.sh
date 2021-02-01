@@ -24,20 +24,21 @@ fi
 curl -L https://cpanmin.us | perl - App::cpanminus
 
 # python
-echo "==> Install Python 3"
-brew install python
+echo "==> Install Python 3.7"
+brew install python@3.7
+brew unlink python@3.7 && brew link --force python@3.7
 
-if grep -q -i PYTHON_3_PATH $HOME/.bashrc; then
-    echo "==> .bashrc already contains PYTHON_3_PATH"
+if grep -q -i PYTHON_37_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PYTHON_37_PATH"
 else
-    echo "==> Updating .bashrc with PYTHON_3_PATH..."
-    PYTHON_3_PATH="export PATH=\"$(brew --prefix)/opt/python@3.9/libexec/bin:\$PATH\""
-    echo '# PYTHON_3_PATH' >> $HOME/.bashrc
-    echo $PYTHON_3_PATH    >> $HOME/.bashrc
+    echo "==> Updating .bashrc with PYTHON_37_PATH..."
+    PYTHON_37_PATH="export PATH=\"$(brew --prefix)/opt/python@3.7/bin:$(brew --prefix)/opt/python@3.7/libexec/bin:\$PATH\""
+    echo '# PYTHON_37_PATH' >> $HOME/.bashrc
+    echo ${PYTHON_37_PATH}    >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
-    eval $PYTHON_3_PATH
+    eval ${PYTHON_37_PATH}
 fi
 
 pip3 install --upgrade pip setuptools
@@ -63,7 +64,7 @@ brew install ant maven
 
 # pin these
 brew pin perl
-brew pin python
+brew pin python@3.7
 brew pin r
 
 # other programming languages
