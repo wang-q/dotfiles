@@ -26,7 +26,7 @@ curl -L https://cpanmin.us | perl - App::cpanminus
 # python
 echo "==> Install Python 3.7"
 brew install python@3.7
-brew unlink python@3.7 && brew link --force python@3.7
+brew unlink python@3.7 && brew link --force --overwrite python@3.7
 
 if grep -q -i PYTHON_37_PATH $HOME/.bashrc; then
     echo "==> .bashrc already contains PYTHON_37_PATH"
@@ -34,14 +34,16 @@ else
     echo "==> Updating .bashrc with PYTHON_37_PATH..."
     PYTHON_37_PATH="export PATH=\"$(brew --prefix)/opt/python@3.7/bin:$(brew --prefix)/opt/python@3.7/libexec/bin:\$PATH\""
     echo '# PYTHON_37_PATH' >> $HOME/.bashrc
-    echo ${PYTHON_37_PATH}    >> $HOME/.bashrc
+    echo ${PYTHON_37_PATH} >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
     eval ${PYTHON_37_PATH}
 fi
 
-pip3 install --upgrade pip setuptools
+# https://github.com/Homebrew/homebrew-core/issues/43867
+# Upgrading pip breaks pip
+#pip3 install --upgrade pip setuptools wheel
 
 # r
 # brew install wang-q/tap/r@3.6.1

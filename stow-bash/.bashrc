@@ -54,9 +54,9 @@ export PATH="$HOME/bin:$PATH"
 
 source "$HOME/.cargo/env"
 
-# PYTHON_37_PATH
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-
 # PERL_532_PATH
 export PATH="/usr/local/Cellar/perl/5.32.1/bin:$PATH"
+
+# PYTHON_37_PATH
+export PATH="/usr/local/opt/python@3.7/bin:/usr/local/opt/python@3.7/libexec/bin:$PATH"
 
