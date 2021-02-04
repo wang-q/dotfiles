@@ -2,10 +2,6 @@
 
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-hash perl 2>/dev/null || {
-    brew install perl
-}
-
 cd "${BASE_DIR}" || exit
 
 hash cpanm 2>/dev/null || {
@@ -68,6 +64,10 @@ cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST DateTime::Format::Natural DBD
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST AlignDB::IntSpan AlignDB::Stopwatch
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST AlignDB::Codon AlignDB::DeltaG AlignDB::GC AlignDB::SQL AlignDB::Window AlignDB::ToXLSX
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST App::RL App::Fasops App::Rangeops
+
+# App::*
+cpanm -nq https://github.com/wang-q/App-Plotr.git
+cpanm -nq https://github.com/wang-q/App-Egaz.git
 
 # Gtk3 stuffs
 # cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Glib Cairo Cairo::GObject Glib::Object::Introspection Gtk3 Pango

@@ -33,7 +33,7 @@ brew install wang-q/tap/circos@0.69.9
 echo "==> RepeatMasker"
 brew install blast
 brew unlink blast
-brew install hmmer
+brew install hmmer easel
 
 brew install wang-q/tap/rmblast@2.10.0
 
