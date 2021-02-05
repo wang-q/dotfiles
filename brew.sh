@@ -87,7 +87,7 @@ brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline sql
 
 # other tools
 brew install screen stow
-brew install cloc cmake htop parallel pigz tldr tree
+brew install cloc cmake htop parallel pigz tldr tree pv
 brew install jq pup datamash miller tsv-utils
 brew install hyperfine ripgrep
 
