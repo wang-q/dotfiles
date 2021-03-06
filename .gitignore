@@ -3,5 +3,7 @@ mpv/tmp
 
 *.swp
 
+.Rprofile
+
 # IDE
 .idea
