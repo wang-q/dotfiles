@@ -21,7 +21,7 @@ for(library in c(basic_libraries, graphics_libraries, stat_libraries, bio_librar
 BiocManager::install(version = "3.12", ask = FALSE)
 
 # bioconductor packages
-bioC_libraries <- c("biomaRt", "GenomicDataCommons", "bsseq", "DSS", "scran", "scater", "edgeR", "pheatmap", "vcd", "monocle", "GenomeInfoDbData", "DESeq2", "clusterProfiler", "factoextra")
+bioC_libraries <- c("biomaRt", "GenomicDataCommons", "GEOquery", "bsseq", "DSS", "scran", "scater", "edgeR", "pheatmap", "vcd", "monocle", "GenomeInfoDbData", "DESeq2", "clusterProfiler", "factoextra")
 bioC_anno <- c("AnnotationDbi", "org.Hs.eg.db", "org.Rn.eg.db", "hthgu133a.db", "hgu133a2.db", "IlluminaHumanMethylation27k.db", "IlluminaHumanMethylation450k.db")
 
 for(library in c( bioC_libraries, bioC_anno ) ) {
