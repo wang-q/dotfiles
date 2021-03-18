@@ -43,6 +43,9 @@ sudo python installinstallmacos.py
 # 13      001-68446    10.15.7    19H15  2020-11-11  macOS Catalina
 
 hdiutil attach Install_*.dmg
+
+# cp to /Applications/
+# It will be much faster
 cp -pr /Volumes/Install\ macOS\ Catalina/Install\ macOS\ Catalina.app /Applications/
 
 hdiutil detach /Volumes/Install\ macOS\ Catalina
