@@ -62,22 +62,22 @@ chmod +x GenSMBIOS-master/GenSMBIOS.command
 
 ```
 
-### Format a USB disk via Disk Utility
+### `createinstallmedia`
+
+Format a USB disk via Disk Utility
 
 * Name - MyVolume
 * Format - Mac OS Extended (Journaled)
 * Scheme - GUID
-
-### `createinstallmedia`
 
 ```shell script
 cd ~/Downloads/hackintosh
 
 pip3 install xattr
 
-sudo python installinstallmacos.py
-# select
-# 13      001-68446    10.15.7    19H15  2020-11-11  macOS Catalina
+sudo python installinstallmacos.py --ignore-cache
+# select the first version of 10.15.7
+# 001-51042    10.15.7     19H2  2020-09-24  macOS Catalina
 
 hdiutil attach Install_*.dmg
 
@@ -90,7 +90,26 @@ hdiutil detach /Volumes/Install\ macOS\ Catalina
 sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
 # type Y
 
-./MountEFI-update/MountEFI.command
+```
+
+### `macrecovery.py`
+
+Format a USB disk via Disk Utility
+
+* Name - MyVolume
+* Format - FAT
+* Scheme - GUID
+
+```shell script
+cd ~/Downloads/hackintosh
+
+unzip OpenCore-0.6.7-RELEASE.zip Utilities/macrecovery/* 
+
+# Catalina(10.15)
+python ./Utilities/macrecovery/macrecovery.py -b Mac-00BE6ED71E35EB86 -m 00000000000000000 download
+
+mkdir -p /Volumes/MyVolume/com.apple.recovery.boot
+cp BaseSystem.* /Volumes/MyVolume/com.apple.recovery.boot
 
 ```
 
