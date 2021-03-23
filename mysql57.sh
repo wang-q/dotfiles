@@ -21,10 +21,11 @@ mysqld_safe &
 mysqladmin shutdown -uroot
 
 # DBD::mysql
-cpanm --notest DBD::mysql
+cpanm -v --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --installdeps DBD::mysql
+cpanm -v --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest DBD::mysql
 
 # If the above command failed, use the following
-cpanm --look DBD::mysql
+cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --look DBD::mysql
 mkdir -p /tmp/mysql-static && cp $(brew --prefix)/opt/mysql@5.7/lib/*.a /tmp/mysql-static
 perl Makefile.PL \
   --testuser alignDB \
