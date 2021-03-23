@@ -29,6 +29,9 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 alias ll='ls -alF'
 alias la='ls -A'
 
+# ASIS
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # for headless chrome
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
@@ -49,10 +52,10 @@ export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 export PATH="$HOME/.cargo/bin:$PATH"
 
+source "$HOME/.cargo/env"
+
 # Homebin
 export PATH="$HOME/bin:$PATH"
-
-source "$HOME/.cargo/env"
 
 # PERL_532_PATH
 export PATH="/usr/local/Cellar/perl/5.32.1/bin:$PATH"
