@@ -75,5 +75,5 @@ cpanm -nq https://github.com/wang-q/App-Egaz.git
 # Math
 # cpanm --mirror-only --mirror $CPAN_MIRROR --notest Math::Random::MT::Auto PDL Math::GSL
 
-# Statistics::R would be installed in `7-brew.sh`
-# DBD::mysql would be installed in `extra/7-mysql.sh`
+# Statistics::R would be installed in `brew.sh`
+# DBD::mysql would be installed in `mysql57.sh`
