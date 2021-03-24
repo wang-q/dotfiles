@@ -15,27 +15,29 @@ brew tap homebrew/cask-versions
 
 # system
 #brew cask install adoptopenjdk
-brew cask install caffeine disk-inventory-x ezip hammerspoon scroll-reverser
+brew install --cask caffeine disk-inventory-x maczip hammerspoon scroll-reverser
+brew install --cask v2rayu
 #alfred
 
 # utils
-brew cask install calibre utorrent xmind
-#netspot
+brew install --cask calibre xmind qbittorrent
+#netspot utorrent
 
 # media
-brew cask install mpv aegisub handbrake iina
+brew install --cask mpv iina aegisub handbrake
 
 # sci
-brew cask install dendroscope figtree jabref mathpix-snipping-tool
+brew install --cask dendroscope figtree jabref mathpix-snipping-tool
 
 # development
-brew cask install mysqlworkbench mongodb-compass robo-3t sourcetree visual-studio-code
+brew install --cask github sourcetree visual-studio-code
+brew install --cask mysqlworkbench mongodb-compass robo-3t
 
 # 163
-brew cask install neteasemusic youdaodict
+# brew cask install neteasemusic youdaodict
 
 # versions
-brew cask install homebrew/cask-versions/microsoft-remote-desktop-beta
+# brew cask install homebrew/cask-versions/microsoft-remote-desktop-beta
 
 # mas
 brew install mas
