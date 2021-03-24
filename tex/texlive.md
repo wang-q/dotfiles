@@ -95,9 +95,9 @@ cp -f ~/Scripts/dotfiles/tex/defaultSettings.yaml \
 ```shell script
 brew tap homebrew/cask-fonts
 
-brew cask install font-fira-sans
-brew cask install font-fira-mono
-brew cask install font-charter
+brew install --cask font-fira-sans
+brew install --cask font-fira-mono
+brew install --cask font-charter
 
 # brew cask install font-noto-emoji
 
@@ -105,9 +105,9 @@ brew cask install font-charter
 # brew cask install font-source-serif-pro
 # brew cask install font-source-code-pro
 
-brew cask install font-source-han-sans
-brew cask install font-source-han-serif
-brew cask install font-source-han-mono
+brew install --cask font-source-han-sans
+brew install --cask font-source-han-serif
+brew install --cask font-source-han-mono
 
 # brew cask install colindean/fonts-nonfree/font-microsoft-office
 
