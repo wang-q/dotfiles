@@ -45,6 +45,8 @@ brew install brewsci/bio/trf
 brew install wang-q/tap/repeatmasker@4.1.1
 
 # Config repeatmasker
+pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple h5py
+
 cd $(brew --prefix)/Cellar/repeatmasker@4.1.1/4.1.1/libexec
 perl configure \
     -hmmer_dir=$(brew --prefix)/bin \
