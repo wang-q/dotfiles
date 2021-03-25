@@ -21,7 +21,8 @@ else
     eval $PERL_532_PATH
 fi
 
-curl -L https://cpanmin.us | perl - App::cpanminus
+curl -L https://cpanmin.us |
+    perl - -v --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ App::cpanminus
 
 # python
 echo "==> Install Python 3.7"
