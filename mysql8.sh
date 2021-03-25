@@ -12,6 +12,7 @@ echo "==> Adjust mysql"
 mysql -uroot -e "CREATE USER 'alignDB'@'%' IDENTIFIED BY 'alignDB'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'alignDB'@'%'"
 mysql -uroot -e "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))"
+mysql -uroot -e "SET GLOBAL local_infile=1"
 
 cat <<EOF
 
