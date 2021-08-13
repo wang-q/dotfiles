@@ -31,14 +31,14 @@ curl https://sh.rustup.rs -sSf | bash -s -- -y
 rustup component add clippy rust-analysis rust-src rustfmt
 
 # This cargo mirror can't release crates
-# tee $HOME/.cargo/config <<EOF
-# [source.crates-io]
-# registry = "https://github.com/rust-lang/crates.io-index"
-# replace-with = 'ustc'
-# [source.ustc]
-# registry = "git://ipv4.mirrors.ustc.edu.cn/crates.io-index"
+#tee $HOME/.cargo/config <<EOF
+#[source.crates-io]
+#registry = "https://github.com/rust-lang/crates.io-index"
+#replace-with = 'ustc'
+#[source.ustc]
+#registry = "git://ipv4.mirrors.ustc.edu.cn/crates.io-index"
 #
-# EOF
+#EOF
 
 cargo install cargo-expand
 cargo install cargo-release
