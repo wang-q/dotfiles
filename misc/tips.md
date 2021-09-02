@@ -610,6 +610,26 @@ apt-cache show PACKAGE_NAME
 df -BG
 ```
 
+## vmess on linux
+
+```shell script
+brew install v2ray
+
+curl -LO https://raw.githubusercontent.com/boypt/vmess2json/master/vmess2json.py
+
+export vmess_url=vmess://your_secret_url
+python3 vmess2json.py --inbounds socks:1070 ${vmess_url} > config.json
+
+v2ray -config config.json &
+
+export ALL_PROXY=socks5h://localhost:1070
+
+curl google.com
+
+```
+
+
+
 ## Docker VPN
 
 * Install Docker
