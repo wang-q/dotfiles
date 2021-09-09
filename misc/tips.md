@@ -71,18 +71,6 @@ rm dirs.tmp files.tmp
 
 ```
 
-## ClickHouse
-
-```bash
-# start server instance
-mkdir $HOME/some_clickhouse_database
-docker run -d --name some-clickhouse-server --ulimit nofile=262144:262144 --volume=$HOME/some_clickhouse_database:/var/lib/clickhouse yandex/clickhouse-server
-
-# connect to it from a native client
-docker run -it --rm --link some-clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
-
-```
-
 ## tar & pigz
 
 ```bash
@@ -618,11 +606,11 @@ brew install v2ray
 curl -LO https://raw.githubusercontent.com/boypt/vmess2json/master/vmess2json.py
 
 export vmess_url=vmess://your_secret_url
-python3 vmess2json.py --inbounds socks:1070 ${vmess_url} > config.json
+python3 vmess2json.py --inbounds socks:1080 ${vmess_url} > config.json
 
 v2ray -config config.json &
 
-export ALL_PROXY=socks5h://localhost:1070
+export ALL_PROXY=socks5h://localhost:1080
 
 curl google.com
 
