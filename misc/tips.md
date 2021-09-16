@@ -125,6 +125,23 @@ youtube-dl -j --flat-playlist \
 
 ```
 
+## parallel youtube-dl
+
+
+```bash
+youtube-dl -j --flat-playlist \
+    --proxy socks5://127.0.0.1:1080 \
+    'https://www.youtube.com/watch?v=QsBT5EQt348&list=PLFs4vir_WsTySi9F8v5pvCi6zQj7Cwneu' |
+    jq -r '"https://www.youtube.com/watch?v=" + .url' \
+    > list.txt
+
+cat list.txt |
+    parallel -j 3 --progress '
+        youtube-dl --proxy socks5://127.0.0.1:1080 --embed-thumbnail --add-metadata {}
+    '
+
+``
+
 ## Add subtitles to mp4
 
 ```bash
