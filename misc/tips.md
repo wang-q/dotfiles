@@ -449,7 +449,7 @@ rsvg-convert ~/Scripts/alignDB/doc/alignDB.svg -z 2 -f png -o ~/Scripts/alignDB/
 ```
 sudo apt-get -y update
 sudo apt-get -y install ttf-mscorefonts-installer
-sudo fc-cache
+sudo fc-cache -fsv
 ```
 
 ## ssh for ubuntu-desktop
