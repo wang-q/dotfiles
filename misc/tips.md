@@ -447,6 +447,7 @@ rsvg-convert ~/Scripts/alignDB/doc/alignDB.svg -z 2 -f png -o ~/Scripts/alignDB/
 ## how to install arial font in ubuntu
 
 ```
+sudo apt-get -y update
 sudo apt-get -y install ttf-mscorefonts-installer
 sudo fc-cache
 ```
