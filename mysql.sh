@@ -18,8 +18,8 @@ if [[ `uname` == 'Darwin' ]]; then
     export CC=gcc-5
     export CXX=gcc-5
 else
-    export CC=gcc
-    export CXX=gcc
+    export CC=gcc-5
+    export CXX=gcc-5
 fi
 
 CFLAGS="-O3 -fPIC" CXXFLAGS="-O3 -fPIC -felide-constructors -fno-exceptions -fno-rtti" \
