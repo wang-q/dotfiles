@@ -32,10 +32,11 @@ brew install wang-q/tap/circos@0.69.9
 
 echo "==> RepeatMasker"
 brew install blast
-brew unlink blast
+# brew unlink blast
 brew install hmmer easel
 
 brew install wang-q/tap/rmblast@2.10.0
+brew link rmblast@2.10.0 --overwrite
 
 # https://stackoverflow.com/questions/57629010/linuxbrew-curl-certificate-issue
 export HOMEBREW_CURLRC=1
