@@ -3,7 +3,7 @@
 mkdir -p $HOME/share/
 
 echo "==> Download mysql"
-wget -N -P /tmp http://mysql.mirrors.pair.com/Downloads/MySQL-5.1/mysql-5.1.73.tar.gz
+wget -N -P /tmp https://mirrors.ustc.edu.cn/mysql-ftp/Downloads/MySQL-5.1/mysql-5.1.73.tar.gz
 
 echo "==> compile mysql"
 cd $HOME/share/
