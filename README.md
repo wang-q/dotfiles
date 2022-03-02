@@ -70,3 +70,22 @@
   * TexLive 2019
   * Fonts
 
+## Plugins for cross-platform applications
+
+* Firefox
+  * fire-drag
+  * Surfingkeys
+  * Tampermonkey
+  * uBlock Origin
+* CLion
+  * .ignore
+  * CSV
+  * EditorConfig
+  * ini
+  * Perl
+  * Template Toolkit Support
+  * Rust
+  * Toml
+  * PowerShell
+  * R Language for IntelliJ
+  * TeXiFy IDEA
