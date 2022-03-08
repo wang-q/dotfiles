@@ -248,6 +248,13 @@ ssh-keygen -b 2048 -t rsa -q
 ssh-copy-id -i ~/.ssh/id_rsa.pub wangq@202.119.37.251
 ```
 
+## `htop`
+
+```shell
+ssh c55n08 -t 'htop'
+
+```
+
 ## 去掉 PDF 中的水印
 
 ```bash
