@@ -42,7 +42,8 @@ curl -LO https://github.com/jlegewie/zotfile/releases/download/v5.1.0/zotfile-5.
 * 点击这个 collection, 将 PDF 从文件管理器拖到主界面中间空白的地方; 或者将 PDF 拖到 collection 名字上
 * 这时右上角同步按钮边上会出现一个 PDF 图标, 表明 zotero 在自动获取 metadata
 * 等几秒, 刚拖进来的 PDF 就会被归化到一条记录下面了
-* 对于近十几年的 PDF, 一般都能自动获取成功; 如果不行, 可以点功能样的魔按钮, 用 DOI 或 PMID 新建记录, 再将 PDF 拖进去
+* 对于近十几年的 PDF, 一般都能自动获取成功; 如果不行, 可以点魔杖按钮, 用 DOI 或 PMID 新建记录, 再将 PDF 拖进去
+* 中间栏显示的是记录信息, 最上面右侧一个小按钮可以来调整显示的项目
 * 有的记录里会用 `<i>...</i>` 表示斜体, 不太好看, 可以手动修改记录
 * 双击记录, 会打开 PDF; 右键点记录, `show file`, 会打开 PDF 所在的目录
 * 要删除记录, 不要按 `Delete`, 这只是从 Collection 移除. 右键点记录, `Move item to Trash`
@@ -73,6 +74,6 @@ curl -LO https://github.com/jlegewie/zotfile/releases/download/v5.1.0/zotfile-5.
     * Tick `Remove special...`
 
 回到 zotero, 右键点刚新建的记录 (可以选多个), `Manage Attachments -> Rename and move`. ZotFile
-会将文件移动到 `iCloudDrive/zotero/collection_XXX`, 在记录下留下链接. 
+会将文件移动到 `iCloudDrive/zotero/collection_XXX`, 在记录下留下链接.
 
 这样手机或其它设备不用装专门的程序, 一个 collection 占一个子目录, 可以方便地找到文献.
