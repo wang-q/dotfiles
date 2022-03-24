@@ -692,3 +692,31 @@ docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
 ```bash
 sudo dmidecode --type 17 | less
 ```
+
+# WSL
+
+## 减少空间占用
+
+* 找到虚拟磁盘位置
+
+```powershell
+Get-AppxPackage -Name "*Ubuntu*" | Select PackageFamilyName
+
+explorer.exe $env:LOCALAPPDATA\Packages\<PackageFamilyName>\LocalState\
+
+```
+
+* https://github.com/microsoft/WSL/issues/4699#issuecomment-627133168
+
+```powershell
+wsl --shutdown
+
+diskpart
+# open window Diskpart
+select vdisk file="C:\Users\wangq\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState"
+attach vdisk readonly
+compact vdisk
+detach vdisk
+exit
+
+```
