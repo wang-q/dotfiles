@@ -3,7 +3,9 @@
 ## 用 screen 启动几个常用后台程序
 
 ```bash
-screen -dmS op htop
+screen -wipe # Remove dead screens
+screen -dmS op htop # Start a screen named `op` and run `htop`
+
 screen -S op -x -X screen perl -MPod::POM::Web -e "server 8088"
 rm ~/share/mongodb/data/mongod.lock
 screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
@@ -12,6 +14,9 @@ screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mo
 
 screen -S op -x -X screen redis-server
 screen -S op -x -X screen mysqld_safe
+
+screen -S op -x -X screen v2ray -config ~/config.json
+
 ```
 
 ## 列出所有子目录的 git 状态
