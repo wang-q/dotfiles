@@ -9,6 +9,15 @@ brew install ffmpeg
 brew install duti mvtools ffms2
 brew reinstall mpv
 
+# Quick look
+# https://github.com/sindresorhus/quick-look-plugins
+xattr -r ~/Library/QuickLook
+xattr -d -r com.apple.quarantine ~/Library/QuickLook
+
+brew install qlstephen # Preview plain text files
+# https://github.com/whomwah/qlstephen/issues/87#issuecomment-773573894
+qlmanage -r
+
 # casks
 brew tap homebrew/cask
 brew tap homebrew/cask-versions
