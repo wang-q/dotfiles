@@ -68,3 +68,31 @@ cp tmhmm-2.0c/lib/TMHMM2.0.model interproscan/data/tmhmm/2.0c/TMHMM2.0c.model
 
 cd $HOME/share/interproscan
 python3 initial_setup.py
+
+# PPanGGOLiN
+# Python 3.7
+pip3 install tqdm
+pip3 install tables
+pip3 install networkx
+pip3 install dataclasses
+pip3 install scipy
+pip3 install plotly
+pip3 install gmpy2
+pip3 install pandas
+pip3 install colorlover
+pip3 install numpy
+pip3 install bokeh
+
+brew install prodigal
+brew install brewsci/bio/aragorn
+brew install brewsci/bio/infernal
+brew install mmseqs2
+brew install mafft
+
+pip3 install git+https://github.com/labgem/netsyn.git
+https://github.com/labgem/PPanGGOLiN.git
+
+cd $HOME/share/
+rm -fr PPanGGOLiN
+
+git clone https://github.com/labgem/PPanGGOLiN.git
