@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export ENSEMBL_VERSION='98'
+export ENSEMBL_VERSION='105'
 
 cd /tmp
 
