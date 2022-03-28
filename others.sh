@@ -71,6 +71,7 @@ python3 initial_setup.py
 
 # PPanGGOLiN
 # Python 3.7
+# We need the testing dataset in the source repo
 pip3 install tqdm
 pip3 install tables
 pip3 install networkx
@@ -96,3 +97,11 @@ cd $HOME/share/
 rm -fr PPanGGOLiN
 
 git clone https://github.com/labgem/PPanGGOLiN.git
+
+cd PPanGGOLiN
+python3 setup.py install
+
+cd testingDataset
+ppanggolin workflow --fasta organisms.fasta.list
+
+ppanggolin workflow --anno organisms.gbff.list
