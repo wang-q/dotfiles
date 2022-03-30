@@ -90,8 +90,7 @@ brew install brewsci/bio/infernal
 brew install mmseqs2
 brew install mafft
 
-pip3 install git+https://github.com/labgem/netsyn.git
-https://github.com/labgem/PPanGGOLiN.git
+# pip3 install git+https://github.com/labgem/netsyn.git
 
 cd $HOME/share/
 rm -fr PPanGGOLiN
