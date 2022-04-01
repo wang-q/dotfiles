@@ -127,7 +127,7 @@ fc-cache -fsv
 
 ```
 
-### Ubuntu
+### Linux
 
 ```shell
 mkdir -p ~/.fonts
@@ -163,5 +163,7 @@ unzip -j SourceHanSansSC.zip -d ~/.fonts '*.otf'
 curl -LO https://github.com/adobe-fonts/source-han-serif/releases/download/2.001R/09_SourceHanSerifSC.zip
 
 unzip -j 09_SourceHanSerifSC.zip -d ~/.fonts '*.otf'
+
+fc-cache -fv .fonts
 
 ```
