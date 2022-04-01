@@ -31,7 +31,7 @@ rd /s /q "%APPDATA%\TinyTeX"
 
 ## Companions
 
-```shell script
+```shell
 brew install pandoc imagemagick gifsicle
 
 ```
@@ -45,7 +45,7 @@ scoop cache rm *; scoop uninstall pandoc; scoop install pandoc
 
 ## `tlmgr`
 
-```shell script
+```shell
 tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
 
 tlmgr update --self --all
@@ -81,18 +81,26 @@ tlmgr path add
 
 ## latexindent
 
-```shell script
+```shell
 cpanm --verbose YAML::Tiny File::HomeDir Unicode::GCString Log::Log4perl Log::Dispatch::File
 
 # curl -O https://raw.githubusercontent.com/cmhughes/latexindent.pl/master/defaultSettings.yaml
+
+# macOS
 cp -f ~/Scripts/dotfiles/tex/defaultSettings.yaml \
     ~/Library/TinyTeX/texmf-dist/scripts/latexindent
+
+# Linux
+cp -f ~/Scripts/dotfiles/tex/defaultSettings.yaml \
+    ~/.TinyTeX/texmf-dist/scripts/latexindent
 
 ```
 
 ## Fonts
 
-```shell script
+### macOS
+
+```shell
 brew tap homebrew/cask-fonts
 
 brew install --cask font-fira-sans
@@ -116,5 +124,44 @@ brew install --cask font-source-han-mono
 # https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKsc-hinted.zip
 
 fc-cache -fsv
+
+```
+
+### Ubuntu
+
+```shell
+mkdir -p ~/.fonts
+
+# brew install linuxbrew/fonts/font-inconsolata --HEAD
+
+brew install cabextract
+
+# Arial
+curl -LO 'https://downloads.sourceforge.net/corefonts/arial32.exe'
+
+cabextract --list arial32.exe
+cabextract --filter='*.TTF' arial32.exe --directory ~/.fonts
+
+# Fira Sans and Mono
+curl -L 'https://github.com/mozilla/Fira/archive/4.202.tar.gz' > Fira.tar.gz
+
+tar -xvzf Fira.tar.gz --wildcards "Fira-4.202/ttf/*.ttf"
+mv Fira-4.202/ttf/* ~/.fonts
+
+rm -fr Fira-4.202
+
+curl -L 'https://practicaltypography.com/fonts/Charter%20210112.zip' > Charter.zip
+
+unzip -j Charter.zip -d ~/.fonts '*.ttf'
+
+# Source Han 思源黑体
+curl -LO https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
+
+unzip -j SourceHanSansSC.zip -d ~/.fonts '*.otf'
+
+# Source Han Serif 思源宋体
+curl -LO https://github.com/adobe-fonts/source-han-serif/releases/download/2.001R/09_SourceHanSerifSC.zip
+
+unzip -j 09_SourceHanSerifSC.zip -d ~/.fonts '*.otf'
 
 ```
