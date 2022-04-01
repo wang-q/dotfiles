@@ -87,6 +87,8 @@ The dir [packages](packages) stores installed packages managed by various packag
 
 * VSCode `vscode_list.txt`
 
+I'm writing them down here to make it easier to compare them between different machines and see if there are any missing or something.
+
 ```shell
 mkdir -p $HOME/Scripts/dotfiles/packages
 WHERE="$HOME/Scripts/dotfiles/packages"
