@@ -2,8 +2,8 @@
 
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-hash Rscript 2>/dev/null || {
-    brew install r
+hash node 2>/dev/null || {
+    brew install node
 }
 
 cd "${BASE_DIR}" || exit
