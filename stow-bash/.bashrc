@@ -64,3 +64,4 @@ export PATH="/usr/local/Cellar/perl/5.32.1_1/bin:$PATH"
 # PYTHON_37_PATH
 export PATH="/usr/local/opt/python@3.7/bin:/usr/local/opt/python@3.7/libexec/bin:$PATH"
 
+export BLASTDB="$HOME/share/blast/db/"
