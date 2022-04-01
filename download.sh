@@ -3,6 +3,7 @@
 echo "====> Download Genomics related tools <===="
 
 mkdir -p $HOME/bin
+mkdir -p $HOME/.local/bin
 mkdir -p $HOME/share
 mkdir -p $HOME/Scripts
 
@@ -12,7 +13,7 @@ if grep -q -i homebin $HOME/.bashrc; then
 else
     echo "==> Update .bashrc"
 
-    HOME_PATH='export PATH="$HOME/bin:$PATH"'
+    HOME_PATH='export PATH="$HOME/bin:$HOME/.local/bin:$PATH"'
     echo '# Homebin' >> $HOME/.bashrc
     echo $HOME_PATH >> $HOME/.bashrc
     echo >> $HOME/.bashrc

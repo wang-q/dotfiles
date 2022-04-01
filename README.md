@@ -79,17 +79,13 @@ The dir [packages](packages) stores installed packages managed by various packag
     * `brew_list.txt`
     * `brew_cask.txt`
 
-* Python
-    * `pip_list.txt`
+* Python `pip_list.txt`
 
-* R
-    * `r_list.txt`
+* R `r_list.txt`
 
-* node.js
-    * `npm_list.txt`
+* node.js `npm_list.txt`
 
-* VSCode
-    * `vscode_list.txt`
+* VSCode `vscode_list.txt`
 
 ```shell
 mkdir -p $HOME/Scripts/dotfiles/packages
