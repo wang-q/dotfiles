@@ -9,6 +9,7 @@ PYPI_MIRROR=https://pypi.tuna.tsinghua.edu.cn/simple
 
 #pip3 install -i ${PYPI_MIRROR} --upgrade pip setuptools
 
+pip3 install -i ${PYPI_MIRROR} pysocks
 pip3 install -i ${PYPI_MIRROR} numpy matplotlib
 pip3 install -i ${PYPI_MIRROR} pandas sympy
 pip3 install -i ${PYPI_MIRROR} jupyter scipy

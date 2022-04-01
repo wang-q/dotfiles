@@ -70,6 +70,52 @@
   * TexLive 2019
   * Fonts
 
+## Packages
+
+The dir [packages](packages) stores installed packages managed by various package managers.
+
+* Homebrew
+    * `brew_tap.txt`
+    * `brew_list.txt`
+    * `brew_cask.txt`
+
+* Python
+    * `pip_list.txt`
+
+* R
+    * `r_list.txt`
+
+* node.js
+    * `npm_list.txt`
+
+* VSCode
+    * `vscode_list.txt`
+
+```shell
+mkdir -p $HOME/Scripts/dotfiles/packages
+WHERE="$HOME/Scripts/dotfiles/packages"
+
+# store
+brew tap            | sort > ${WHERE}/brew_tap.txt
+brew list --formula | sort > ${WHERE}/brew_list.txt
+brew list --cask    | sort > ${WHERE}/brew_cask_list.txt
+
+pip3 freeze > ${WHERE}/pip_list.txt
+
+npm list -g --depth=0 > ${WHERE}/npm_list.txt
+
+Rscript -e 'cat(.Library, "\n"); cat(.Library.site, "\n");' |
+  xargs ls |
+  sort -u \
+  > ${WHERE}/r_list.txt
+
+code --list-extensions > $HOME/Scripts/dotfiles/packages/vscode_list.txt
+
+# restore
+pip install -r ${WHERE}/pip_list.txt
+
+```
+
 ## Plugins for cross-platform applications
 
 * Firefox
