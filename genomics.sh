@@ -12,10 +12,11 @@ echo "==> Install bioinformatics softwares"
 brew tap brewsci/bio
 brew tap brewsci/science
 
-brew install clustal-w mafft
+brew install clustal-w mafft muscle
 brew install lastz raxml fasttree
-brew install bowtie bowtie2 bwa igvtools
+brew install bowtie bowtie2 bwa samtools igvtools
 brew install tophat cufflinks stringtie hisat2
+brew install seqtk minimap2 gfatools 
 brew install sratoolkit
 brew install genometools
 brew install canu
