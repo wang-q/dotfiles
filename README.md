@@ -49,6 +49,10 @@
   * [`others.sh`](others.sh)
     * Install Trinity and interproscan manually
 
+* [TexLive](tex/texlive.md)
+  * TinyTex
+  * Fonts
+
 ## macOS only
 
 * [`macos.sh`](macos.sh)
@@ -66,13 +70,9 @@
   * Video player I choose.
   * `bash mpv/install.sh`
 
-* [TexLive](tex/texlive.md)
-  * TexLive 2019
-  * Fonts
-
 ## Packages
 
-The dir [packages](packages) stores installed packages managed by various package managers.
+The dir [packages/](packages/) stores installed packages managed by various package managers.
 
 * Homebrew
     * `brew_tap.txt`
@@ -87,7 +87,7 @@ The dir [packages](packages) stores installed packages managed by various packag
 
 * VSCode `vscode_list.txt`
 
-I'm writing them down here to make it easier to compare them between different machines and see if there are any missing or something.
+I'm writing them down here to make it easier to compare them between different machines and see if there are something missing.
 
 ```shell
 mkdir -p $HOME/Scripts/dotfiles/packages
@@ -121,6 +121,7 @@ pip install -r ${WHERE}/pip_list.txt
   * Surfingkeys
   * Tampermonkey
   * uBlock Origin
+
 * CLion
   * .ignore
   * CSV
