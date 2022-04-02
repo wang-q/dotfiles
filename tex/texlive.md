@@ -154,7 +154,7 @@ curl -L 'https://practicaltypography.com/fonts/Charter%20210112.zip' > Charter.z
 
 unzip -j Charter.zip -d ~/.fonts '*.ttf'
 
-# Source Han 思源黑体
+# Source Han Sans 思源黑体
 curl -LO https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
 
 unzip -j SourceHanSansSC.zip -d ~/.fonts '*.otf'
