@@ -3,6 +3,21 @@
 # Clear caches
 rm -f $(brew --cache)/*.incomplete
 
+# Some building tools
+echo "==> Building tools"
+brew install m4
+brew install gpatch pkg-config
+brew install bison flex byacc
+brew install autoconf autogen automake libtool
+brew install bats
+
+# libs
+brew install berkeley-db fftw gd gsl jemalloc boost
+brew install libffi libgit2 libxml2 libgcrypt libxslt
+brew install pcre libedit readline sqlite nasm yasm
+brew install bzip2 gzip libarchive libzip xz
+# brew link --force libffi
+
 # perl
 echo "==> Install Perl 5.34"
 brew install perl
@@ -50,10 +65,8 @@ fi
 
 # r
 # brew install wang-q/tap/r@3.6.1
-hash Rscript 2>/dev/null || {
-    echo "==> Install R"
-    brew install r
-}
+echo "==> Install R"
+brew install r
 
 cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest Statistics::R
 
@@ -84,15 +97,13 @@ brew install aria2 curl wget
 # gnu
 brew install gnu-sed gnu-tar
 
-# libs
-brew install berkeley-db gd gsl libffi libgit2 libxml2 libxslt pcre readline sqlite yasm
-# brew link --force libffi
-
 # other tools
 brew install screen stow htop parallel pigz
 brew install cloc cmake tree pv
 brew install jq pup datamash miller tsv-utils
+brew install bat exa
 brew install hyperfine ripgrep # tiv
+brew install librsvg
 
 # large packages
 if [[ "$OSTYPE" == "darwin"* ]]; then
