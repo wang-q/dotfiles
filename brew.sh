@@ -104,6 +104,7 @@ brew install jq pup datamash miller tsv-utils
 brew install bat exa
 brew install hyperfine ripgrep # tiv
 brew install librsvg
+brew install proxychains-ng
 
 # large packages
 if [[ "$OSTYPE" == "darwin"* ]]; then

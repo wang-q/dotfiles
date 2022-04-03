@@ -12,7 +12,7 @@ echo "==> Install bioinformatics softwares"
 brew tap brewsci/bio
 brew tap brewsci/science
 
-brew install clustal-w mafft muscle
+brew install clustal-w mafft muscle trimal
 brew install lastz diamond paml # raxml
 brew install raxml --without-open-mpi 
 brew install fasttree newick-utils trimal
