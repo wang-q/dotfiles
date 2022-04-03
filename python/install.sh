@@ -11,10 +11,14 @@ PYPI_MIRROR=https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip3 install -i ${PYPI_MIRROR} pysocks cryptography
 pip3 install -i ${PYPI_MIRROR} numpy matplotlib
+pip3 install -i ${PYPI_MIRROR} tqdm tables networkx dataclasses
+pip3 install -i ${PYPI_MIRROR} plotly gmpy2 colorlover bokeh
 pip3 install -i ${PYPI_MIRROR} pandas sympy
 pip3 install -i ${PYPI_MIRROR} jupyter scipy
 pip3 install -i ${PYPI_MIRROR} lxml statsmodels patsy
 pip3 install -i ${PYPI_MIRROR} beautifulsoup4 scikit-learn seaborn
+
+pip3 install -i ${PYPI_MIRROR} cutadapt dnaio
 
 # poetry can search packages
 curl -sSL https://install.python-poetry.org | python3 -
