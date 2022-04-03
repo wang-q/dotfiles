@@ -107,6 +107,8 @@ Rscript -e 'cat(.Library, "\n"); cat(.Library.site, "\n");' |
   sort -u \
   > ${WHERE}/r_list.txt
 
+tlmgr list --only-installed --data 'name' > ${WHERE}/tlmgr_list.txt
+
 code --list-extensions > $HOME/Scripts/dotfiles/packages/vscode_list.txt
 
 # restore
