@@ -1,5 +1,6 @@
-/home/linuxbrew/.linuxbrew/lib
+/usr/local/lib
 ├── markdown-toc@1.2.0
-├── npm@8.5.5
+├── npm@8.6.0
+├── prettier@2.6.2
 └── tldr@3.3.7
 
