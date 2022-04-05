@@ -7,9 +7,8 @@ rm -f $(brew --cache)/*.incomplete
 echo "==> Building tools"
 brew install m4
 brew install gpatch pkg-config
-brew install bison flex byacc
 brew install autoconf autogen automake libtool
-brew install bats
+brew install bison flex byacc
 
 # libs
 brew install berkeley-db fftw gd gsl jemalloc boost
