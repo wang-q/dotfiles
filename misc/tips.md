@@ -16,7 +16,7 @@ screen -S op -x -X screen redis-server
 screen -S op -x -X screen mysqld_safe
 
 screen -S op -x -X screen v2ray -config ~/config.json
-# screen -S op -x -X screen ~/v2ray/v2ray -config ~/config.json
+# screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
 
 ```
 
@@ -52,6 +52,13 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" |
         print "\n==> Untrack\n";
         print for grep {/Untracked files/} @sections;
     '
+
+```
+
+## `brew update` failed
+
+```shell
+ brew update-reset
 
 ```
 
@@ -639,7 +646,7 @@ curl -LO https://raw.githubusercontent.com/boypt/vmess2json/master/vmess2json.py
 export vmess_url=vmess://your_secret_url
 python3 vmess2json.py --inbounds socks:1080 ${vmess_url} > config.json
 
-v2ray -config config.json &
+v2ray run -config config.json &
 
 export ALL_PROXY=socks5h://localhost:1080
 
