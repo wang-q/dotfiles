@@ -10,3 +10,4 @@ cd "${BASE_DIR}" || exit
 
 npm install -g markdown-toc
 npm install -g tldr
+npm install -g prettier
