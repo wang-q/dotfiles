@@ -6,4 +6,5 @@ if [ -f ~/.bashrc ]; then
 fi
 
 source "$HOME/.cargo/env"
+
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
