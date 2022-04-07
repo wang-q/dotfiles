@@ -9,7 +9,8 @@ PYPI_MIRROR=https://pypi.tuna.tsinghua.edu.cn/simple
 
 #pip3 install -i ${PYPI_MIRROR} --upgrade pip setuptools
 
-pip3 install -i ${PYPI_MIRROR} pysocks cryptography
+pip3 install -i ${PYPI_MIRROR} pysocks cryptography 
+pip3 install -i ${PYPI_MIRROR} more-itertools zipp setuptools-scm
 pip3 install -i ${PYPI_MIRROR} numpy matplotlib
 pip3 install -i ${PYPI_MIRROR} tqdm tables networkx dataclasses
 pip3 install -i ${PYPI_MIRROR} plotly gmpy2 colorlover bokeh
