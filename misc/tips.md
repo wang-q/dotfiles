@@ -550,7 +550,16 @@ http://www.howtogeek.com/127246/linux-sysadmin-how-to-manage-lvms-with-a-gui/
 
 ```bash
 lsb_release -a
+
 ```
+
+## Kernel version
+
+```shell
+uname -srm
+
+```
+
 
 ## virtualbox
 
