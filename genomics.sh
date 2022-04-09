@@ -26,6 +26,13 @@ brew install --build-from-source snp-sites # macOS bottles broken
 brew install bcftools
 brew install sratoolkit
 
+# less used
+brew install augustus prodigal
+brew install megahit spades sga
+brew install quast
+brew install ntcard
+brew install gatk freebayes
+
 # brew unlink proj
 brew install --force-bottle blast
 
