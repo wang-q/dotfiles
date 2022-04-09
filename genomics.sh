@@ -15,18 +15,19 @@ brew tap brewsci/science
 brew install clustal-w mafft muscle trimal
 brew install lastz diamond paml fasttree # raxml
 brew install raxml --without-open-mpi
-brew install --build-from-source newick-utils
+brew install --force-bottle newick-utils
 brew install bowtie bowtie2 bwa samtools
 brew install stringtie hisat2 # tophat cufflinks
 brew install seqtk minimap2 minigraph # gfatools
-brew install sratoolkit edirect
+brew install edirect
 brew install genometools # igvtools
 brew install canu fastqc picard-tools kat
 brew install --build-from-source snp-sites # macOS bottles broken
 brew install bcftools
+brew install sratoolkit
 
 # brew unlink proj
-brew install blast
+brew install --force-bottle blast
 
 echo "==> Custom tap"
 brew tap wang-q/tap
@@ -56,6 +57,8 @@ perl configure \
     -libdir=$(brew --prefix)/Cellar/repeatmasker@4.1.1/4.1.1/libexec/Libraries \
     -trf_prgm=$(brew --prefix)/bin/trf \
     -default_search_engine=rmblast
+
+cd -
 
 #echo "==> Config repeatmasker"
 #wget -N -P /tmp https://github.com/egateam/egavm/releases/download/20170907/repeatmaskerlibraries-20140131.tar.gz

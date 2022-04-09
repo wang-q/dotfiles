@@ -15,8 +15,7 @@ screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mo
 screen -S op -x -X screen redis-server
 screen -S op -x -X screen mysqld_safe
 
-screen -S op -x -X screen v2ray -config ~/config.json
-# screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
+screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
 # export ALL_PROXY=socks5h://localhost:1080
 
 ```

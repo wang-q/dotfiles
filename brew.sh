@@ -8,10 +8,10 @@ echo "==> Building tools"
 brew install m4
 brew install gpatch pkg-config
 brew install autoconf autogen automake libtool
-brew install bison flex byacc
+brew install bison flex
 
 # libs
-brew install berkeley-db fftw gd gsl jemalloc boost
+brew install berkeley-db gd gsl jemalloc boost # fftw
 brew install libffi libgit2 libxml2 libgcrypt libxslt
 brew install pcre libedit readline sqlite nasm yasm
 brew install bzip2 gzip libarchive libzip xz
