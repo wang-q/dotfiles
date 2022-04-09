@@ -12,7 +12,7 @@ basic_libs <- c("devtools", "tidyverse", "reshape2", "getopt", "foreach", "doPar
 graphics_libs <- c("scales", "gridExtra", "knitr", "rmarkdown", "kableExtra", "extrafont", "ggplot2", "tikzDevice", "pander")
 stat_libs <- c("survival", "randomForestSRC", "pROC", "verification", "timeROC", "survminer", "VennDiagram")
 bio_libs <- c("BiocManager", "ape", "adephylo", "genetics", "poppr", "taxize", "brranching")
-misc_libs <- c("conquer", "covr", "deldir", "gmodels", "LearnBayes", "openxlsx", "raster", "rio", "rvcheck", "units")
+misc_libs <- c("conquer", "covr", "deldir", "gmodels", "LearnBayes", "openxlsx", "raster", "rio", "rvcheck", "spData", "units")
 
 for(library in c(basic_libs, graphics_libs, stat_libs, bio_libs ) ) {
     if(!is_installed(library)) {
