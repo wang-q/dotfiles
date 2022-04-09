@@ -8,8 +8,7 @@
 
 ## Configurations managed by GNU stow
 
-* `mkdir -p ~/.config; bash install.sh`
-  * [ack](stow-ack/)
+* `bash install.sh`
   * [bash](stow-bash/)
   * [htop](stow-htop/)
   * [git](stow-git/)

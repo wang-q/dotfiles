@@ -35,6 +35,8 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${BASE_DIR}" || exit
 
 # stow configurations
+mkdir -p ~/.config
+
 log_warn "Restow dotfiles"
 DIRS=( stow-ack stow-git stow-htop stow-latexmk stow-perltidy stow-screen stow-wget stow-vim stow-proxychains )
 
