@@ -14,10 +14,6 @@ hash udunits2 2>/dev/null || {
     brew install udunits
 }
 
-hash gdal-config 2>/dev/null || {
-    brew install gdal
-}
-
 cd "${BASE_DIR}" || exit
 
 # font_install() doesn't provide the repo argument
