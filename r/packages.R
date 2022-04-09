@@ -8,12 +8,13 @@ is_installed <- function(package) {
 }
 
 # CRAN packages
-basic_libraries <- c("devtools", "tidyverse", "reshape2", "getopt", "foreach", "doParallel")
-graphics_libraries <- c("scales", "gridExtra", "knitr", "rmarkdown", "kableExtra", "extrafont", "ggplot2", "tikzDevice", "pander")
-stat_libraries <- c("survival", "randomForestSRC", "pROC", "verification", "timeROC", "survminer", "VennDiagram")
-bio_libraries <- c("BiocManager", "ape", "adephylo", "genetics", "poppr", "taxize", "brranching")
+basic_libs <- c("devtools", "tidyverse", "reshape2", "getopt", "foreach", "doParallel")
+graphics_libs <- c("scales", "gridExtra", "knitr", "rmarkdown", "kableExtra", "extrafont", "ggplot2", "tikzDevice", "pander")
+stat_libs <- c("survival", "randomForestSRC", "pROC", "verification", "timeROC", "survminer", "VennDiagram")
+bio_libs <- c("BiocManager", "ape", "adephylo", "genetics", "poppr", "taxize", "brranching")
+misc_libs <- c("conquer", "covr", "deldir", "gmodels", "LearnBayes", "openxlsx", "raster", "rio", "rvcheck", "units")
 
-for(library in c(basic_libraries, graphics_libraries, stat_libraries, bio_libraries ) ) {
+for(library in c(basic_libs, graphics_libs, stat_libs, bio_libs ) ) {
     if(!is_installed(library)) {
         install.packages(library, repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
     }
@@ -21,10 +22,10 @@ for(library in c(basic_libraries, graphics_libraries, stat_libraries, bio_librar
 BiocManager::install(version = "3.14", ask = FALSE)
 
 # bioconductor packages
-bioC_libraries <- c("biomaRt", "GenomicDataCommons", "GEOquery", "bsseq", "DSS", "scran", "scater", "edgeR", "pheatmap", "vcd", "monocle", "GenomeInfoDbData", "DESeq2", "clusterProfiler", "factoextra")
+bioC_libs <- c("biomaRt", "GenomicDataCommons", "GEOquery", "bsseq", "DSS", "scran", "scater", "edgeR", "pheatmap", "vcd", "monocle", "GenomeInfoDbData", "DESeq2", "clusterProfiler", "factoextra")
 bioC_anno <- c("AnnotationDbi", "org.Hs.eg.db")
 
-for(library in c( bioC_libraries, bioC_anno ) ) {
+for(library in c( bioC_libs, bioC_anno ) ) {
     if(!is_installed(library)) {
         BiocManager::install(library, update=FALSE, version = "3.14")
     }
