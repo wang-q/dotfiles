@@ -2,6 +2,21 @@
 
 mkdir -p $HOME/share/
 
+echo "==> TrimGalore"
+curl -LO https://raw.githubusercontent.com/FelixKrueger/TrimGalore/master/trim_galore
+mv trim_galore $HOME/bin
+chmod +x $HOME/bin/trim_galore
+
+echo "==> circos-tools"
+cd $HOME/share/
+curl -LO http://circos.ca/distribution/circos-tools-0.22.tgz
+
+rm -fr circos-tools
+tar xvfz circos-tools-0.22.tgz
+mv circos-tools-0.22 circos-tools
+
+rm circos-tools-0.22.tgz
+
 echo "==> trinity 2.6.6"
 brew install salmon
 
