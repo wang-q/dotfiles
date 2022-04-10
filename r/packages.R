@@ -8,8 +8,8 @@ is_installed <- function(package) {
 }
 
 # CRAN packages
-basic_libs <- c("devtools", "tidyverse", "reshape2", "getopt", "foreach", "doParallel")
-graphics_libs <- c("scales", "gridExtra", "knitr", "rmarkdown", "kableExtra", "extrafont", "ggplot2", "tikzDevice", "pander")
+basic_libs <- c("devtools", "tidyverse", "reshape2", "getopt", "foreach", "doParallel", "tidyverse")
+graphics_libs <- c("scales", "gridExtra", "knitr", "rmarkdown", "kableExtra", "extrafont", "tikzDevice", "pander")
 stat_libs <- c("survival", "randomForestSRC", "pROC", "verification", "timeROC", "survminer", "VennDiagram", "vcd")
 bio_libs <- c("BiocManager", "ape", "adephylo", "genetics", "poppr", "taxize", "brranching")
 misc_libs <- c("conquer", "covr", "deldir", "gmodels", "LearnBayes", "openxlsx", "rio", "rvcheck", "units")
