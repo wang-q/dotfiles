@@ -16,7 +16,7 @@ misc_libs <- c("conquer", "covr", "deldir", "gmodels", "LearnBayes", "openxlsx",
 
 for(library in c(basic_libs, graphics_libs, stat_libs, bio_libs, misc_libs ) ) {
     if(!is_installed(library)) {
-        install.packages(library, repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
+        install.packages(library, repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN", Ncpus = 6)
     }
 }
 BiocManager::install(version = "3.14", ask = FALSE)
