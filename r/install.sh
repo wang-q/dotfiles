@@ -6,13 +6,13 @@ hash Rscript 2>/dev/null || {
     brew install r
 }
 
-hash gcc-5 2>/dev/null || {
-    brew install gcc@5
-}
+# hash gcc-5 2>/dev/null || {
+#     brew install gcc@5
+# }
 
-hash udunits2 2>/dev/null || {
-    brew install udunits
-}
+# hash udunits2 2>/dev/null || {
+#     brew install udunits
+# }
 
 cd "${BASE_DIR}" || exit
 
