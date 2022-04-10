@@ -14,7 +14,7 @@ stat_libs <- c("survival", "randomForestSRC", "pROC", "verification", "timeROC",
 bio_libs <- c("BiocManager", "ape", "adephylo", "genetics", "poppr", "taxize", "brranching")
 misc_libs <- c("conquer", "covr", "deldir", "gmodels", "LearnBayes", "openxlsx", "rio", "rvcheck", "units")
 
-for(library in c(basic_libs, graphics_libs, stat_libs, bio_libs ) ) {
+for(library in c(basic_libs, graphics_libs, stat_libs, bio_libs, misc_libs ) ) {
     if(!is_installed(library)) {
         install.packages(library, repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
     }
