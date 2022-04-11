@@ -4,12 +4,12 @@
 
 * Proxy for curl `export ALL_PROXY=socks5h://localhost:1080`
 
-```r
-install.packages('tinytex')
-tinytex::install_tinytex()
-
-tinytex:::install_yihui_pkgs()
-
+```shell
+Rscript -e '
+    install.packages("tinytex", repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
+    tinytex::install_tinytex()
+    tinytex:::install_yihui_pkgs()
+    '
 ```
 
 ## Destination
@@ -142,6 +142,8 @@ curl -LO 'https://downloads.sourceforge.net/corefonts/arial32.exe'
 cabextract --list arial32.exe
 cabextract --filter='*.TTF' arial32.exe --directory ~/.fonts
 
+rm arial32.exe
+
 # Fira Sans and Mono
 curl -L 'https://github.com/mozilla/Fira/archive/4.202.tar.gz' > Fira.tar.gz
 
@@ -149,20 +151,27 @@ tar -xvzf Fira.tar.gz --wildcards "Fira-4.202/ttf/*.ttf"
 mv Fira-4.202/ttf/* ~/.fonts
 
 rm -fr Fira-4.202
+rm Fira.tar.gz
 
 curl -L 'https://practicaltypography.com/fonts/Charter%20210112.zip' > Charter.zip
 
 unzip -j Charter.zip -d ~/.fonts '*.ttf'
+
+rm Charter.zip
 
 # Source Han Sans 思源黑体
 curl -LO https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
 
 unzip -j SourceHanSansSC.zip -d ~/.fonts '*.otf'
 
+rm SourceHanSansSC.zip
+
 # Source Han Serif 思源宋体
 curl -LO https://github.com/adobe-fonts/source-han-serif/releases/download/2.001R/09_SourceHanSerifSC.zip
 
 unzip -j 09_SourceHanSerifSC.zip -d ~/.fonts '*.otf'
+
+rm 09_SourceHanSerifSC.zip
 
 fc-cache -fv .fonts
 
