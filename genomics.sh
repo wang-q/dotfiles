@@ -19,11 +19,12 @@ brew install --force-bottle newick-utils
 brew install bowtie bowtie2 bwa samtools
 brew install stringtie hisat2 # tophat cufflinks
 brew install seqtk minimap2 minigraph # gfatools
-brew install edirect
 brew install genometools # igvtools
 brew install canu fastqc picard-tools kat
 brew install --build-from-source snp-sites # macOS bottles broken
 brew install bcftools
+
+brew install edirect
 brew install sratoolkit
 
 # less used
