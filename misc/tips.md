@@ -6,9 +6,9 @@
 screen -wipe # Remove dead screens
 screen -dmS op htop # Start a screen named `op` and run `htop`
 
-screen -S op -x -X screen perl -MPod::POM::Web -e "server 8088"
-rm ~/share/mongodb/data/mongod.lock
-screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
+# screen -S op -x -X screen perl -MPod::POM::Web -e "server 8088"
+# rm ~/share/mongodb/data/mongod.lock
+# screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
 
 # screen -S op -x -X screen numactl --interleave=all ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
 
@@ -16,7 +16,26 @@ screen -S op -x -X screen redis-server
 screen -S op -x -X screen mysqld_safe
 
 screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
-# export ALL_PROXY=socks5h://localhost:1080
+
+```
+
+## v2ray and vmess
+
+```shell script
+# brew install v2ray
+
+aria2c -c https://github.com/v2fly/v2ray-core/releases/download/v5.0.3/v2ray-linux-64.zip
+
+curl -LO https://raw.githubusercontent.com/boypt/vmess2json/master/vmess2json.py
+
+export vmess_url=vmess://your_secret_url
+python3 vmess2json.py --inbounds socks:1080 ${vmess_url} > config.json
+
+v2ray run -config config.json &
+
+export ALL_PROXY=socks5h://localhost:1080
+
+curl google.com
 
 ```
 
@@ -644,26 +663,6 @@ apt-cache show PACKAGE_NAME
 ```bash
 df -BG
 ```
-
-## vmess on linux
-
-```shell script
-brew install v2ray
-
-curl -LO https://raw.githubusercontent.com/boypt/vmess2json/master/vmess2json.py
-
-export vmess_url=vmess://your_secret_url
-python3 vmess2json.py --inbounds socks:1080 ${vmess_url} > config.json
-
-v2ray run -config config.json &
-
-export ALL_PROXY=socks5h://localhost:1080
-
-curl google.com
-
-```
-
-
 
 ## Docker VPN
 
