@@ -9,5 +9,5 @@ hash node 2>/dev/null || {
 cd "${BASE_DIR}" || exit
 
 npm install -g markdown-toc
-npm install -g tldr
 npm install -g prettier
+#npm install -g tldr # use tealdeer instead

@@ -100,8 +100,7 @@ brew install gnu-sed gnu-tar
 brew install screen stow htop parallel pigz
 brew install cloc cmake tree pv
 brew install jq pup datamash miller tsv-utils
-brew install bat exa
-brew install hyperfine ripgrep # tiv
+brew install bat exa hyperfine ripgrep tealdeer # tiv
 brew install librsvg
 brew install proxychains-ng
 
