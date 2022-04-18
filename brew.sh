@@ -3,19 +3,9 @@
 # Clear caches
 rm -f $(brew --cache)/*.incomplete
 
-# Some building tools
-echo "==> Building tools"
-brew install m4
+echo "==> gcc"
+brew install gcc
 brew install gpatch pkg-config
-brew install autoconf autogen automake libtool
-brew install bison flex
-
-# libs
-brew install berkeley-db gd gsl jemalloc boost # fftw
-brew install libffi libgit2 libxml2 libgcrypt libxslt
-brew install pcre libedit readline sqlite nasm yasm
-brew install bzip2 gzip libarchive libzip xz
-# brew link --force libffi
 
 # perl
 echo "==> Install Perl 5.34"
@@ -40,22 +30,33 @@ hash cpanm 2>/dev/null || {
         perl - -v --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ App::cpanminus
 }
 
-# python
-echo "==> Install Python 3.7"
-brew install python@3.7
-brew unlink python@3.7 && brew link --force --overwrite python@3.7
+# Some building tools
+echo "==> Building tools"
+brew install autoconf libtool autogen automake
+brew install cmake
+brew install bison flex
 
-if grep -q -i PYTHON_37_PATH $HOME/.bashrc; then
-    echo "==> .bashrc already contains PYTHON_37_PATH"
+# libs
+brew install gd gsl jemalloc boost # fftw
+brew install libffi libgit2 libxml2 libgcrypt libxslt
+brew install pcre libedit readline sqlite nasm yasm
+brew install bzip2 gzip libarchive libzip xz
+# brew link --force libffi
+
+# python
+brew install python@3.9
+
+if grep -q -i PYTHON_39_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PYTHON_39_PATH"
 else
-    echo "==> Updating .bashrc with PYTHON_37_PATH..."
-    PYTHON_37_PATH="export PATH=\"$(brew --prefix)/opt/python@3.7/bin:$(brew --prefix)/opt/python@3.7/libexec/bin:\$PATH\""
-    echo '# PYTHON_37_PATH' >> $HOME/.bashrc
-    echo ${PYTHON_37_PATH} >> $HOME/.bashrc
+    echo "==> Updating .bashrc with PYTHON_39_PATH..."
+    PYTHON_39_PATH="export PATH=\"$(brew --prefix)/opt/python@3.9/bin:$(brew --prefix)/opt/python@3.9/libexec/bin:\$PATH\""
+    echo '# PYTHON_39_PATH' >> $HOME/.bashrc
+    echo ${PYTHON_39_PATH} >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
-    eval ${PYTHON_37_PATH}
+    eval ${PYTHON_39_PATH}
 fi
 
 # https://github.com/Homebrew/homebrew-core/issues/43867
@@ -80,8 +81,8 @@ fi
 brew install ant maven
 
 # pin these
-brew pin perl
-brew pin python@3.7
+# brew pin perl
+# brew pin python@3.9
 brew pin r
 
 # other programming languages
@@ -98,10 +99,10 @@ brew install gnu-sed gnu-tar
 
 # other tools
 brew install screen stow htop parallel pigz
-brew install cloc cmake tree pv
+brew install cloc tree pv
 brew install jq pup datamash miller tsv-utils
 brew install bat exa hyperfine ripgrep tealdeer # tiv
-brew install librsvg
+brew install librsvg udunits
 brew install proxychains-ng
 
 # large packages

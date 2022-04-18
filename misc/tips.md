@@ -591,7 +591,11 @@ sudo apt-get install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-gue
 http://askubuntu.com/questions/433609/how-can-i-list-all-applications-installed-in-my-system
 
 ```bash
-for app in /usr/share/applications/*.desktop ~/.local/share/applications/*.desktop; do app="${app##/*/}"; echo "${app::-8}"; done
+for app in /usr/share/applications/*.desktop ~/.local/share/applications/*.desktop; do
+    app="${app##/*/}";
+    echo "${app::-8}";
+done
+
 ```
 
 ## Change hostname
