@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+# export ALL_PROXY=socks5h://localhost:1080
+
 # Clear caches
 rm -f $(brew --cache)/*.incomplete
 

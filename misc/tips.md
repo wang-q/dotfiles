@@ -495,6 +495,7 @@ sudo fc-cache -fsv
 
 ```bash
 sudo apt-get install openssh-server
+sudo apt-get install net-tools
 sudo vi /etc/ssh/sshd_config
 sudo /etc/init.d/ssh restart
 ```
