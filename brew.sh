@@ -102,11 +102,13 @@ brew install gnu-sed gnu-tar
 
 # other tools
 brew install screen stow htop parallel pigz
-brew install cloc tree pv
+brew install tree pv
 brew install jq pup datamash miller tsv-utils
-brew install bat exa hyperfine ripgrep tealdeer # tiv
 brew install librsvg udunits
 brew install proxychains-ng
+brew install bat exa tealdeer # tiv
+brew install hyperfine ripgrep tokei
+brew install zellij bottom
 
 # large packages
 if [[ "$OSTYPE" == "darwin"* ]]; then
