@@ -39,6 +39,17 @@ curl google.com
 
 ```
 
+## 滚轮
+
+Disable mouse scrolling through terminal command history on Mac terminal
+
+https://unix.stackexchange.com/questions/511740/disable-mouse-scrolling-through-terminal-command-history-on-mac-terminal
+
+```shell
+tput rmcup
+
+```
+
 ## 列出所有子目录的 git 状态
 
 Ideas from this
