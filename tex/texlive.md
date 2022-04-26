@@ -142,7 +142,7 @@ curl -LO 'https://downloads.sourceforge.net/corefonts/arial32.exe'
 cabextract --list arial32.exe
 cabextract --filter='*.TTF' arial32.exe --directory ~/.fonts
 
-rm arial32.exe
+rm -f arial32.exe
 
 # Fira Sans and Mono
 curl -L 'https://github.com/mozilla/Fira/archive/4.202.tar.gz' > Fira.tar.gz
