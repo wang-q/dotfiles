@@ -4,7 +4,7 @@
 
 ```bash
 screen -wipe # Remove dead screens
-screen -dmS op htop # Start a screen named `op` and run `htop`
+screen -dmS op btm # Start a screen named `op` and run `btm`
 
 # screen -S op -x -X screen perl -MPod::POM::Web -e "server 8088"
 # rm ~/share/mongodb/data/mongod.lock

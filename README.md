@@ -10,7 +10,6 @@
 
 * `bash install.sh`
   * [bash](stow-bash/)
-  * [htop](stow-htop/)
   * [git](stow-git/)
   * [perltidy](stow-perltidy/)
   * [proxychains](stow-proxychains/)

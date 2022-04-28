@@ -38,7 +38,7 @@ cd "${BASE_DIR}" || exit
 mkdir -p ~/.config
 
 log_warn "Restow dotfiles"
-DIRS=( stow-git stow-htop stow-latexmk stow-perltidy stow-screen stow-wget stow-vim stow-proxychains )
+DIRS=( stow-git stow-latexmk stow-perltidy stow-screen stow-wget stow-vim stow-proxychains )
 
 for d in ${DIRS[@]}; do
     log_info "${d}"
@@ -60,7 +60,3 @@ done
 # don't ruin Ubuntu
 log_info "stwo-bash"
 stow -t "${HOME}" stow-bash -v 2
-
-# don't ruin Ubuntu
-log_info "stow-htop2 to .config"
-stow -t "${HOME}"/.config/htop stow-htop2 -v 2
