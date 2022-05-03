@@ -20,7 +20,7 @@ brew install bowtie bowtie2 bwa samtools
 brew install stringtie hisat2 # tophat cufflinks
 brew install seqtk minimap2 minigraph # gfatools
 brew install genometools # igvtools
-brew install canu fastqc picard-tools kat
+brew install canu fastqc picard-tools # kat
 brew install --build-from-source snp-sites # macOS bottles broken
 brew install bcftools
 
