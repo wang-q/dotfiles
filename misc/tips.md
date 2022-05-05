@@ -505,8 +505,8 @@ sudo fc-cache -fsv
 ## ssh for ubuntu-desktop
 
 ```bash
-sudo apt-get install openssh-server
-sudo apt-get install net-tools
+sudo apt-get install -y openssh-server
+sudo apt-get install -y net-tools
 sudo vi /etc/ssh/sshd_config
 sudo /etc/init.d/ssh restart
 ```

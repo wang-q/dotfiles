@@ -7,6 +7,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 rm -f $(brew --cache)/*.incomplete
 
 echo "==> gcc"
+brew install gcc@5
 brew install gcc
 brew install gpatch pkg-config
 
@@ -35,7 +36,7 @@ hash cpanm 2>/dev/null || {
 
 # Some building tools
 echo "==> Building tools"
-brew install autoconf libtool autogen automake
+brew install autoconf libtool automake # autogen
 brew install cmake
 brew install bison flex
 
