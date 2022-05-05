@@ -13,14 +13,14 @@ brew tap brewsci/bio
 brew tap brewsci/science
 
 brew install clustal-w mafft muscle trimal
-brew install lastz diamond paml fasttree # raxml
+brew install lastz diamond paml fasttree iqtree # raxml
 brew install raxml --without-open-mpi
 brew install --force-bottle newick-utils
 brew install bowtie bowtie2 bwa samtools
 brew install stringtie hisat2 # tophat cufflinks
 brew install seqtk minimap2 minigraph # gfatools
 brew install genometools # igvtools
-brew install canu fastqc picard-tools kat
+brew install canu fastqc picard-tools # kat
 brew install --build-from-source snp-sites # macOS bottles broken
 brew install bcftools
 
@@ -30,7 +30,7 @@ brew install sratoolkit
 # less used
 brew install augustus prodigal
 brew install megahit spades sga
-brew install quast
+brew install quast --HEAD
 brew install ntcard
 brew install gatk freebayes
 
