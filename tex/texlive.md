@@ -115,7 +115,7 @@ brew install --cask font-charter
 
 brew install --cask font-source-han-sans
 brew install --cask font-source-han-serif
-brew install --cask font-source-han-mono
+# brew install --cask font-source-han-mono
 
 # brew cask install colindean/fonts-nonfree/font-microsoft-office
 
