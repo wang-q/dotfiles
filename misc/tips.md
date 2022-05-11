@@ -15,7 +15,11 @@ screen -dmS op btm # Start a screen named `op` and run `btm`
 screen -S op -x -X screen redis-server
 screen -S op -x -X screen mysqld_safe
 
+# linux
 screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
+
+# mac
+screen -S op -x -X screen v2ray run -config ~/config.json
 
 ```
 
