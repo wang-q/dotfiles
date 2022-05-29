@@ -4,7 +4,7 @@
 
 ```bash
 screen -wipe # Remove dead screens
-screen -dmS op btm # Start a screen named `op` and run `btm`
+screen -dmS op htop # Start a screen named `op` and run `htop`
 
 # screen -S op -x -X screen perl -MPod::POM::Web -e "server 8088"
 # rm ~/share/mongodb/data/mongod.lock
@@ -16,7 +16,7 @@ screen -S op -x -X screen redis-server
 screen -S op -x -X screen mysqld_safe
 
 # linux
-screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
+screen -S op -x -X screen ~/v2ray/v2ray -config ~/config.json
 
 # mac
 screen -S op -x -X screen v2ray run -config ~/config.json
@@ -759,5 +759,18 @@ attach vdisk readonly
 compact vdisk
 detach vdisk
 exit
+
+```
+
+* 创建符号链接
+
+```shell
+cd
+
+rm -fr Script data
+
+ln -s /mnt/c/Users/wangq/Scripts/ ~/Scripts
+
+ln -s /mnt/d/data/ ~/data
 
 ```
