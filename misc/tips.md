@@ -19,7 +19,7 @@ screen -S op -x -X screen mysqld_safe
 screen -S op -x -X screen ~/v2ray/v2ray -config ~/config.json
 
 # mac
-screen -S op -x -X screen v2ray run -config ~/config.json
+screen -S op -x -X screen v2ray -config ~/config.json
 
 ```
 
