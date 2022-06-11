@@ -21,5 +21,7 @@ pip3 install -i ${PYPI_MIRROR} beautifulsoup4 scikit-learn seaborn
 
 pip3 install -i ${PYPI_MIRROR} Circle-Map cutadapt importlib-metadata
 
+pip3 install -i ${PYPI_MIRROR} py2bit pyBigWig pysam deeptools
+
 # poetry can search packages
 # curl -sSL https://install.python-poetry.org | python3 -
