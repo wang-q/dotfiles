@@ -761,16 +761,3 @@ detach vdisk
 exit
 
 ```
-
-* 创建符号链接
-
-```shell
-cd
-
-rm -fr Script data
-
-ln -s /mnt/c/Users/wangq/Scripts/ ~/Scripts
-
-ln -s /mnt/d/data/ ~/data
-
-```
