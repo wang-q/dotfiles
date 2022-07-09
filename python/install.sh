@@ -23,5 +23,7 @@ pip3 install -i ${PYPI_MIRROR} Circle-Map cutadapt importlib-metadata
 
 pip3 install -i ${PYPI_MIRROR} py2bit pyBigWig pysam deeptools
 
+pip3 install -i ${PYPI_MIRROR} h5py TBB bcbio-gff
+
 # poetry can search packages
 # curl -sSL https://install.python-poetry.org | python3 -
