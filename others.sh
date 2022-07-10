@@ -87,17 +87,15 @@ python3 initial_setup.py
 # PPanGGOLiN
 # Python 3.7
 # We need the testing dataset in the source repo
-pip3 install tqdm
-pip3 install tables
-pip3 install networkx
-pip3 install dataclasses
-pip3 install scipy
-pip3 install plotly
-pip3 install gmpy2
-pip3 install pandas
-pip3 install colorlover
-pip3 install numpy
-pip3 install bokeh
+parallel -j 1 -k --line-buffer '
+    pip3 install \
+        --trusted-host mirror.nju.edu.cn \
+        -i https://mirror.nju.edu.cn/pypi/web/simple/ \
+        {}
+    ' ::: \
+        tqdm tables networkx dataclasses \
+        numpy pandas scipy plotly \
+        gmpy2 colorlover bokeh
 
 brew install prodigal
 brew install brewsci/bio/aragorn
@@ -119,3 +117,33 @@ cd testingDataset
 ppanggolin workflow --fasta organisms.fasta.list
 
 ppanggolin workflow --anno organisms.gbff.list
+
+# antismash
+echo "==> antismash"
+
+brew install openjdk
+brew install blast diamond fasttree muscle hmmer
+brew install brewsci/science/glimmerhmm
+brew install wang-q/tap/hmmer@2 # rename
+brew install wang-q/tap/meme@4.11 # 4.11.2
+
+pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ virtualenv
+# pip3 install numpy matplotlib scipy scikit-learn
+# pip3 install helperlibs jinja2 joblib jsonschema markupsafe pysvg pyscss
+# pip3 install biopython bcbio-gff
+
+aria2c -c https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz
+tar xvzf antismash-*.tar.gz
+
+virtualenv -p $(which python3) ~/share/asenv
+source ~/share/asenv/bin/activate
+
+pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ ./antismash-6.1.1
+
+download-antismash-databases # 9G
+
+antismash --check-prereqs
+
+# Later, if you want to run antiSMASH, simply call
+source ~/share/asenv/bin/activate
+antismash my_input.gbk
