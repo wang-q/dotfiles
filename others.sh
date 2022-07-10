@@ -124,8 +124,8 @@ echo "==> antismash"
 brew install openjdk
 brew install blast diamond fasttree muscle hmmer
 brew install brewsci/science/glimmerhmm
-brew install wang-q/tap/hmmer@2 # rename
-brew install wang-q/tap/meme@4.11 # 4.11.2
+brew install wang-q/tap/hmmer@2 # append a 2 to all executables
+brew install wang-q/tap/meme@4 # 4.11.2_2
 
 pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ virtualenv
 # pip3 install numpy matplotlib scipy scikit-learn
