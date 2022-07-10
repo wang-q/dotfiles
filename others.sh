@@ -90,7 +90,7 @@ python3 initial_setup.py
 parallel -j 1 -k --line-buffer '
     pip3 install \
         --trusted-host mirror.nju.edu.cn \
-        -i https://mirror.nju.edu.cn/pypi/web/simple/ \
+        -i http://mirror.nju.edu.cn/pypi/web/simple/ \
         {}
     ' ::: \
         tqdm tables networkx dataclasses \
