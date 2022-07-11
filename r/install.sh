@@ -27,6 +27,6 @@ EOF
 
 Rscript packages.R
 
-Rscript extrafont.R
+# Rscript extrafont.R
 
 rm .Rprofile
