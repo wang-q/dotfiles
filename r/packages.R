@@ -24,9 +24,8 @@ BiocManager::install(version = "3.15", ask = FALSE)
 
 # bioconductor packages
 bioC_libs <- c("biomaRt", "GenomicDataCommons", "GEOquery", "bsseq", "DSS", "scran", "scater", "edgeR", "pheatmap", "monocle", "DESeq2", "clusterProfiler", "factoextra")
-bioC_anno <- c("AnnotationDbi", "org.Hs.eg.db")
 
-for(library in c( bioC_libs, bioC_anno ) ) {
+for(library in c( bioC_libs ) ) {
     if(!is_installed(library)) {
         BiocManager::install(library, update=FALSE, version = "3.15")
     }
