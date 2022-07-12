@@ -125,6 +125,9 @@ brew install openjdk
 brew install blast diamond fasttree muscle hmmer
 brew install brewsci/science/glimmerhmm
 brew install wang-q/tap/hmmer@2 # append a 2 to all executables
+sudo apt install aptitude
+sudo aptitude update
+sudo aptitude install  libxml2 libxml2-dev libxslt1-dev libxslt-dev 
 brew install wang-q/tap/meme@4 # 4.11.2_2
 
 pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ virtualenv
@@ -140,6 +143,7 @@ source ~/share/asenv/bin/activate
 
 pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ ./antismash-6.1.1
 
+#the site of database:~/share/asenv/lib/python3.9/site-packages/antismash/database
 download-antismash-databases # 9G
 
 antismash --check-prereqs
