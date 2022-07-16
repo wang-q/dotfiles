@@ -69,8 +69,10 @@ fi
 
 # r
 # brew install wang-q/tap/r@3.6.1
-echo "==> Install R"
-brew install r
+hash R 2>/dev/null || {
+    echo "==> Install R"
+    brew install r
+}
 
 cpanm --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ --notest Statistics::R
 
@@ -80,14 +82,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install openjdk
 else
     brew install openjdk
-    brew link openjdk --force
+    # brew link openjdk --force
 fi
 brew install ant maven
 
 # pin these
 # brew pin perl
 # brew pin python@3.9
-brew pin r
+# brew pin r
 
 # other programming languages
 brew install lua node
