@@ -11,10 +11,10 @@ sudo apt -y update
 
 sudo apt -y build-dep r-base
 
-sudo apt -y install udunits-bin libudunits2-dev
-sudo apt -y install cmake gdal-bin libgdal-dev
-
 # udunit2, gdal
+sudo apt -y install cmake
+sudo apt -y install udunits-bin libudunits2-dev
+sudo apt -y install gdal-bin libgdal-dev
 
 mkdir -p $HOME/share/R
 
