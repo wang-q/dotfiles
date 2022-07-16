@@ -12,7 +12,7 @@ sudo apt -y update
 sudo apt -y build-dep r-base
 
 sudo apt -y install udunits-bin libudunits2-dev
-sudo apt -y install gdal-bin libgdal-dev
+sudo apt -y install cmake gdal-bin libgdal-dev
 
 # udunit2, gdal
 
@@ -24,7 +24,7 @@ curl -L https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.2.1.tar.gz |
 cd R-4.2.1
 
 # brewed binaries confuse configure
-hash brew 2>/dev/null || {
+hash brew 2>/dev/null && {
     brew unlink pkg-config
 }
 
