@@ -140,6 +140,7 @@ source ~/share/asenv/bin/activate
 
 pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ ./antismash-6.1.1
 
+#the site of database:~/share/asenv/lib/python3.9/site-packages/antismash/database
 download-antismash-databases # 9G
 
 antismash --check-prereqs
