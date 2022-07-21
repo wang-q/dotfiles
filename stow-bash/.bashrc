@@ -58,10 +58,10 @@ source "$HOME/.cargo/env"
 # Homebin
 export PATH="$HOME/bin:$PATH"
 
-# PERL_532_PATH
-export PATH="/usr/local/Cellar/perl/5.32.1_1/bin:$PATH"
-
-# PYTHON_37_PATH
-export PATH="/usr/local/opt/python@3.7/bin:/usr/local/opt/python@3.7/libexec/bin:$PATH"
-
 export BLASTDB="$HOME/share/blast/db/"
+
+# PERL_534_PATH
+export PATH="/usr/local/Cellar/perl/5.34.0/bin:$PATH"
+
+# PYTHON_39_PATH
+export PATH="/usr/local/opt/python@3.9/bin:/usr/local/opt/python@3.9/libexec/bin:$PATH"
