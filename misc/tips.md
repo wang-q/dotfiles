@@ -444,6 +444,13 @@ http://stackoverflow.com/questions/8402281/github-push-error-permission-denied
 4. Click the Change All button
 5. Confirm your decision
 
+## 鼠标加速
+
+```shell
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+```
+
 ## 禁止深度睡眠
 
 1. `sudo pmset -a hibernatemode 0`
