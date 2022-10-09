@@ -28,7 +28,7 @@ screen -S op -x -X screen v2ray -config ~/config.json
 ```shell script
 # brew install v2ray
 
-aria2c -c https://github.com/v2fly/v2ray-core/releases/download/v5.0.7/v2ray-linux-64.zip
+aria2c -c https://github.com/v2fly/v2ray-core/releases/download/v5.0.8/v2ray-linux-64.zip
 
 curl -LO https://raw.githubusercontent.com/boypt/vmess2json/master/vmess2json.py
 
