@@ -9,7 +9,22 @@ sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 sudo apt -y update
 
-sudo apt -y build-dep r-base
+# This command will install texlive
+# sudo apt -y build-dep r-base
+
+sudo apt -y install build-essential
+sudo apt -y install gfortran
+
+# sudo apt install apt-rdepends
+# apt-rdepends --build-depends --print-state --follow=DEPENDS r-base
+
+sudo apt -y install groff-base libxml2-dev gettext
+sudo apt -y install libblas-dev liblapack-dev
+sudo apt -y install libcurl4-openssl-dev libncurses5-dev libreadline-dev
+sudo apt -y install libcairo2-dev libjpeg-dev libpango1.0-dev libpng-dev libtiff5-dev
+sudo apt -y install libbz2-dev liblzma-dev zlib1g-dev
+
+sudo apt -y install ghostscript libfreetype-dev fontconfig
 
 # udunit2, gdal
 sudo apt -y install cmake
