@@ -153,6 +153,7 @@ mv Fira-4.202/ttf/* ~/.fonts
 rm -fr Fira-4.202
 rm Fira.tar.gz
 
+# Charter
 curl -L 'https://practicaltypography.com/fonts/Charter%20210112.zip' > Charter.zip
 
 unzip -j Charter.zip -d ~/.fonts '*.ttf'
