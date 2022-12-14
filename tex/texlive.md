@@ -7,7 +7,7 @@
 ```shell
 Rscript -e '
     install.packages("tinytex", repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
-    tinytex::install_tinytex()
+    tinytex::install_tinytex(force = TRUE)
     tinytex:::install_yihui_pkgs()
     '
 ```
