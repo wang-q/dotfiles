@@ -2,9 +2,9 @@
 
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-hash Rscript 2>/dev/null || {
-    brew install r
-}
+#hash Rscript 2>/dev/null || {
+#    brew install r
+#}
 
 # hash gcc-5 2>/dev/null || {
 #     brew install gcc@5
