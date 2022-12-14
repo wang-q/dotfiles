@@ -513,6 +513,15 @@ sudo apt-get -y install ttf-mscorefonts-installer
 sudo fc-cache -fsv
 ```
 
+## `build-dep`
+
+```shell
+sudo apt build-dep <packagename>
+
+sudo apt install apt-rdepends
+apt-rdepends --build-depends --print-state --follow=DEPENDS <packagename>
+```
+
 ## ssh for ubuntu-desktop
 
 ```bash
