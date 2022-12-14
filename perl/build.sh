@@ -9,9 +9,15 @@ sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 sudo apt -y update
 
-sudo apt -y build-dep perl
+#sudo apt -y build-dep perl
 
-sudo apt -y install libgdbm-dev libssl-dev libexpat1
+# sudo apt install apt-rdepends
+# apt-rdepends --build-depends --print-state --follow=DEPENDS perl
+
+sudo apt -y install build-essential
+sudo apt -y install file netbase procps
+sudo apt -y install cpio libbz2-dev libz-dev zlib1g-dev
+sudo apt -y install libdb-dev libgdbm-dev libssl-dev libexpat1
 
 mkdir -p $HOME/share/Perl
 
@@ -48,4 +54,4 @@ fi
 source ~/.bashrc
 
 curl -L https://cpanmin.us |
-    perl - -v --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ App::cpanminus
+    $HOME/share/Perl/bin/perl - -v --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ App::cpanminus
