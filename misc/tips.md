@@ -15,10 +15,10 @@ screen -dmS op htop # Start a screen named `op` and run `htop`
 screen -S op -x -X screen redis-server
 screen -S op -x -X screen mysqld_safe
 
-# linux
+# linux, v2ray 5
 screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
 
-# mac
+# mac, v2ray 4
 screen -S op -x -X screen v2ray -config ~/config.json
 
 ```
