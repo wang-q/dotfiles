@@ -295,6 +295,17 @@ ssh-keygen -b 2048 -t rsa -q
 ssh-copy-id -i ~/.ssh/id_rsa.pub wangq@202.119.37.251
 ```
 
+## 使用 Windows 下的 `.ssh`
+
+```shell
+cp -R /mnt/c/Users/wangq/.ssh/ ~/
+
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa.pub
+
+```
+
 ## `htop`
 
 ```shell
