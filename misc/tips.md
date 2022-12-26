@@ -267,6 +267,17 @@ nc -l -p 7777 | pv | tar -x             # on the destination machine
 tar -c . | pv | nc wq.nju.edu.cn 7777   # on the source machine
 ```
 
+## 列出 ssh 支持的加密方式
+
+```shell
+# local
+ssh -Q cipher
+
+# remote
+nmap --script ssh2-enum-algos -sV -p 22 202.119.37.251
+
+```
+
 ## 使用 `rsync` 传送文件
 
 * rsync
@@ -285,7 +296,7 @@ tar -c . | pv | nc wq.nju.edu.cn 7777   # on the source machine
 前一个目录后要跟上 `/`, 后一个不要.
 
 ```bash
-rsync -avP -e "ssh -T -c arcfour -o Compression=no -x" ~/data/anchr/col_0/3_pacbio/ wangq@wq.nju.edu.cn:data/anchr/col_0/3_pacbio
+rsync -avP -e "ssh -T -c chacha20-poly1305@openssh.com -o Compression=no -x" ~/data/anchr/col_0/3_pacbio/ wangq@wq.nju.edu.cn:data/anchr/col_0/3_pacbio
 ```
 
 ## ssh-copy-id
