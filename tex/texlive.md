@@ -174,6 +174,13 @@ unzip -j 09_SourceHanSerifSC.zip -d ~/.fonts '*.otf'
 
 rm 09_SourceHanSerifSC.zip
 
+# LXGW WenKai GB 霞鹜文楷 GB
+curl -LO https://github.com/lxgw/LxgwWenKai/releases/download/v1.250/lxgw-wenkai-v1.250.zip
+
+unzip -j lxgw-wenkai-v1.250.zip -d ~/.fonts '*.ttf'
+
+rm lxgw-wenkai-*.zip
+
 fc-cache -fv .fonts
 
 ```
