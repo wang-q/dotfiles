@@ -33,6 +33,7 @@ make plugins
 sed -i".bak" 's/::Bin/::RealBin/' $HOME/share/trinityrnaseq-Trinity-v2.6.6/Trinity
 ln -fs $HOME/share/trinityrnaseq-Trinity-v2.6.6/Trinity $HOME/bin/Trinity
 
+# https://interproscan-docs.readthedocs.io/en/latest/HowToDownload.html
 echo "==> interproscan"
 mkdir -p $HOME/software/interproscan
 cd $HOME/software/interproscan
