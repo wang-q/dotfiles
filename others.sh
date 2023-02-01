@@ -79,6 +79,42 @@ ln -fs $HOME/share/interproscan/interproscan.sh $HOME/bin/interproscan.sh
 # https://github.com/ebi-pf-team/interproscan/issues/114
 echo "==> cddblast"
 
+mkdir -p $HOME/software/cddblast
+cd $HOME/software/cddblast
+
+aria2c -x 4 -s 2 -c https://ftp.ncbi.nih.gov/blast/executables/blast+/2.9.0/ncbi-blast-2.9.0+-src.tar.gz
+wget https://ftp.ncbi.nih.gov/blast/executables/blast+/2.9.0/ncbi-blast-2.9.0+-src.tar.gz.md5
+
+md5sum -c ncbi-blast-2.9.0+-src.tar.gz.md5
+
+wget https://ftp.ncbi.nih.gov/pub/mmdb/cdd/rpsbproc/RpsbProc-src.tar.gz 
+
+tar xvzf ncbi-blast-2.9.0+-src.tar.gz
+tar xvzf RpsbProc-src.tar.gz
+
+mkdir -p ncbi-blast-2.9.0+-src/c++/src/app/RpsbProc
+cp -rf RpsbProc/src/* ncbi-blast-2.9.0+-src/c++/src/app/RpsbProc/
+
+# edit Makefile.in
+cat <<EOF > ncbi-blast-2.9.0+-src/c++/src/app/Makefile.in
+SUB_PROJ = blast RpsbProc
+
+EXPENDABLE_SUB_PROJ = split_cache wig2table netcache rmblastn dblb tls idfetch pubseq_gateway
+
+REQUIRES = app
+
+srcdir = @srcdir@
+include @builddir@/Makefile.meta
+
+EOF
+
+cd ncbi-blast-2.9.0+-src/c++
+CC=gcc-4.8 CXX=g++-4.8 ./configure
+make -k -j 8
+
+#after compilation is complete
+cp ReleaseMT/bin/rpsblast $HOME/share/interproscan/bin/blast/
+cp ReleaseMT/bin/rpsbproc $HOME/share/interproscan/bin/blast/
 
 # PPanGGOLiN
 # Python 3.7
