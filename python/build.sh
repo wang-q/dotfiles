@@ -11,7 +11,7 @@ sudo apt -y update
 
 sudo apt -y build-dep python3-dev
 
-sudo apt -y install libgdbm-dev sqlite3 libsqlite3-dev libssl-dev
+sudo apt -y install libgdbm-dev sqlite3 libsqlite3-dev libssl-dev libffi-dev
 
 mkdir -p $HOME/share/Python
 
