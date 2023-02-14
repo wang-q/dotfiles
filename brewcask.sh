@@ -30,7 +30,7 @@ brew install --cask v2rayu
 
 # utils
 brew install --cask calibre xmind qbittorrent
-#netspot utorrent
+#netspot utorrent OnyX Shottr 
 
 # media
 brew install --cask mpv iina aegisub handbrake

@@ -39,6 +39,8 @@ v2ray run -config config.json &
 
 export ALL_PROXY=socks5h://localhost:1080
 
+# export ALL_PROXY=socks5h://192.168.31.116:10808
+
 curl google.com
 
 ```
