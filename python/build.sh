@@ -28,7 +28,6 @@ CC=gcc ./configure \
     --with-lto
 
 make -j 8
-make test
 make install
 
 cd

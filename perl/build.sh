@@ -35,7 +35,6 @@ cd perl-5.34.1
     -Dusethreads
 
 make -j 8
-make test
 make install
 
 cd

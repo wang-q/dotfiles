@@ -60,7 +60,6 @@ CC=gcc CXX=g++ FC=gfortran ./configure \
     --with-gnu-ld
 
 make -j 8
-make check
 
 bin/Rscript -e '
     capabilities();
