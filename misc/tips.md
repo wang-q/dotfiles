@@ -39,8 +39,6 @@ v2ray run -config config.json &
 
 export ALL_PROXY=socks5h://localhost:1080
 
-# export ALL_PROXY=socks5h://192.168.31.116:10808
-
 curl google.com
 
 ```
@@ -799,5 +797,31 @@ attach vdisk readonly
 compact vdisk
 detach vdisk
 exit
+
+```
+
+## Host v2ray
+
+```shell
+WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
+
+export ALL_PROXY="socks5h://${WINDOWS_HOST}:10808"
+
+```
+
+The following may be needed
+
+```powershell
+New-NetFirewallRule -DisplayName "WSL" -Direction Inbound -InterfaceAlias "vEthernet (WSL)" -Action Allow
+
+```
+
+## Export and import WSL images
+
+https://4sysops.com/archives/export-and-import-windows-subsystem-for-linux-wsl/
+
+https://winaero.com/export-import-wsl-linux-distro-windows-10/
+
+```powershell
 
 ```
