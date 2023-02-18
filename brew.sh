@@ -97,7 +97,7 @@ brew install lua node
 # taps
 brew tap wang-q/tap
 
-# download tools
+# downloading tools
 brew install aria2 curl wget
 
 # gnu
@@ -106,9 +106,11 @@ brew install gnu-sed gnu-tar
 # other tools
 brew install screen stow htop parallel pigz
 brew install tree pv
-brew install jq pup datamash miller tsv-utils
+brew install jq jid pup 
+brew install datamash miller tsv-utils
 brew install librsvg udunits
 brew install proxychains-ng
+
 brew install bat exa tealdeer # tiv
 brew install hyperfine ripgrep tokei
 brew install zellij bottom
