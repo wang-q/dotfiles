@@ -823,5 +823,7 @@ https://4sysops.com/archives/export-and-import-windows-subsystem-for-linux-wsl/
 https://winaero.com/export-import-wsl-linux-distro-windows-10/
 
 ```powershell
+wsl --export Ubuntu Ubuntu2004.tar
+gzip Ubuntu2004.tar
 
 ```
