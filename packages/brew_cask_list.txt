@@ -1,13 +1,7 @@
 caffeine
-cakebrew
 dendroscope
 disk-inventory-x
 figtree
-font-fira-mono
-font-fira-sans
-font-source-han-mono
-font-source-han-sans
-font-source-han-serif
 github
 hammerspoon
 iina
@@ -16,11 +10,7 @@ mathpix-snipping-tool
 mpv
 qbittorrent
 qlstephen
-quicklook-json
 redisinsight
 scroll-reverser
-sourcetree
-temurin
-v2rayu
 visual-studio-code
 zotero
