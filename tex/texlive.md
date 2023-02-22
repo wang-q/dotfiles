@@ -10,6 +10,7 @@ Rscript -e '
     tinytex::install_tinytex(force = TRUE)
     tinytex:::install_yihui_pkgs()
     '
+
 ```
 
 ## Destination
@@ -98,41 +99,14 @@ cp -f ~/Scripts/dotfiles/tex/defaultSettings.yaml \
 
 ## Fonts
 
-### macOS
-
 ```shell
-brew tap homebrew/cask-fonts
-
-brew install --cask font-fira-sans
-brew install --cask font-fira-mono
-brew install --cask font-charter
-
-# brew cask install font-noto-emoji
-
-# brew cask install font-source-sans-pro
-# brew cask install font-source-serif-pro
-# brew cask install font-source-code-pro
-
-brew install --cask font-source-han-sans
-brew install --cask font-source-han-serif
-# brew install --cask font-source-han-mono
-
-# brew cask install colindean/fonts-nonfree/font-microsoft-office
-
-# https://github.com/mozilla/Fira/archive/4.202.tar.gz
-# https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKsc-hinted.zip
-# https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKsc-hinted.zip
-
-fc-cache -fsv
-
-```
-
-### Linux
-
-```shell
-mkdir -p ~/.fonts
-
-# brew install linuxbrew/fonts/font-inconsolata --HEAD
+if [[ $(uname) == 'Darwin' ]]; then
+    FONT_DIR="$HOME/Library/Fonts"
+else
+    FONT_DIR="$HOME/.fonts"
+fi
+mkdir -p ${FONT_DIR}
+echo ${FONT_DIR}
 
 brew install cabextract
 
@@ -140,15 +114,20 @@ brew install cabextract
 curl -LO 'https://downloads.sourceforge.net/corefonts/arial32.exe'
 
 cabextract --list arial32.exe
-cabextract --filter='*.TTF' arial32.exe --directory ~/.fonts
+cabextract --filter='*.TTF' arial32.exe --directory ${FONT_DIR}
 
 rm -f arial32.exe
 
 # Fira Sans and Mono
 curl -L 'https://github.com/mozilla/Fira/archive/4.202.tar.gz' > Fira.tar.gz
 
-tar -xvzf Fira.tar.gz --wildcards "Fira-4.202/ttf/*.ttf"
-mv Fira-4.202/ttf/* ~/.fonts
+if [[ $(uname) == 'Darwin' ]]; then
+    gtar -xvzf Fira.tar.gz --wildcards "Fira-4.202/ttf/*.ttf"
+else
+    tar -xvzf Fira.tar.gz --wildcards "Fira-4.202/ttf/*.ttf"
+fi
+
+mv Fira-4.202/ttf/* ${FONT_DIR}
 
 rm -fr Fira-4.202
 rm Fira.tar.gz
@@ -156,31 +135,31 @@ rm Fira.tar.gz
 # Charter
 curl -L 'https://practicaltypography.com/fonts/Charter%20210112.zip' > Charter.zip
 
-unzip -j Charter.zip -d ~/.fonts '*.ttf'
+unzip -j Charter.zip -d ${FONT_DIR} '*.ttf'
 
 rm Charter.zip
 
 # Source Han Sans 思源黑体
 curl -LO https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
 
-unzip -j SourceHanSansSC.zip -d ~/.fonts '*.otf'
+unzip -j SourceHanSansSC.zip -d ${FONT_DIR} '*.otf'
 
 rm SourceHanSansSC.zip
 
 # Source Han Serif 思源宋体
 curl -LO https://github.com/adobe-fonts/source-han-serif/releases/download/2.001R/09_SourceHanSerifSC.zip
 
-unzip -j 09_SourceHanSerifSC.zip -d ~/.fonts '*.otf'
+unzip -j 09_SourceHanSerifSC.zip -d ${FONT_DIR} '*.otf'
 
 rm 09_SourceHanSerifSC.zip
 
 # LXGW WenKai GB 霞鹜文楷 GB
 curl -LO https://github.com/lxgw/LxgwWenKai/releases/download/v1.250/lxgw-wenkai-v1.250.zip
 
-unzip -j lxgw-wenkai-v1.250.zip -d ~/.fonts '*.ttf'
+unzip -j lxgw-wenkai-v1.250.zip -d ${FONT_DIR} '*.ttf'
 
 rm lxgw-wenkai-*.zip
 
-fc-cache -fv .fonts
+fc-cache -fv ${FONT_DIR}
 
 ```
