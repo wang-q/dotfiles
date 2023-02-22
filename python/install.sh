@@ -14,8 +14,12 @@ pip3 install -i ${PYPI_MIRROR} virtualenv
 pip3 install -i ${PYPI_MIRROR} more-itertools zipp setuptools-scm
 pip3 install -i ${PYPI_MIRROR} numpy matplotlib
 pip3 install -i ${PYPI_MIRROR} pandas scipy jupyter sympy
-pip3 install -i ${PYPI_MIRROR} lxml statsmodels patsy
+pip3 install -i ${PYPI_MIRROR} lxml statsmodels patsy h5py
 pip3 install -i ${PYPI_MIRROR} beautifulsoup4 scikit-learn seaborn
+
+#HDF5_DIR=$(brew --prefix hdf5) pip install h5py tables
+
+pip3 install -i ${PYPI_MIRROR} h5py tabulate # TBB
 
 # PPanGGOLiN
 pip3 install -i ${PYPI_MIRROR} tqdm tables networkx dataclasses
@@ -29,7 +33,6 @@ pip3 install -i ${PYPI_MIRROR} Circle-Map cutadapt importlib-metadata
 
 pip3 install -i ${PYPI_MIRROR} py2bit pyBigWig pysam deeptools
 
-pip3 install -i ${PYPI_MIRROR} h5py TBB tabulate
 
 # poetry can search packages
 # curl -sSL https://install.python-poetry.org | python3 -
