@@ -2,14 +2,27 @@
 
 ## [TinyTex](https://yihui.org/tinytex/)
 
-* Proxy for curl `export ALL_PROXY=socks5h://localhost:1080`
-
 ```shell
+# Proxy for Rcurl `export ALL_PROXY=socks5h://localhost:1080`
 Rscript -e '
     install.packages("tinytex", repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
     tinytex::install_tinytex(force = TRUE)
+    '
+
+# or
+curl -LO https://github.com/rstudio/tinytex-releases/releases/download/v2023.05/TinyTeX-1-v2023.05.tar.gz
+
+Rscript -e '
+    install.packages("tinytex", repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
+    tinytex:::install_prebuilt("TinyTeX-1-v2023.05.tar.gz")
+    '
+
+# packages
+Rscript -e '
+    tinytex::tlmgr_repo("http://mirrors4.tuna.tsinghua.edu.cn/CTAN/")
     tinytex:::install_yihui_pkgs()
     '
+
 ```
 
 ## Destination
@@ -33,6 +46,8 @@ rd /s /q "%APPDATA%\TinyTeX"
 
 ```shell
 brew install pandoc imagemagick gifsicle
+
+apt install imagemagick gifsicle
 
 ```
 
@@ -181,6 +196,6 @@ unzip -j lxgw-wenkai-v1.250.zip -d ~/.fonts '*.ttf'
 
 rm lxgw-wenkai-*.zip
 
-fc-cache -fv .fonts
+fc-cache -fv ~/.fonts
 
 ```
