@@ -7,9 +7,20 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 rm -f $(brew --cache)/*.incomplete
 
 echo "==> gcc"
-brew install gcc@5
-brew install gcc
-brew install gpatch pkg-config
+RELEASE=$( ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 )
+if [[ $(uname) == 'Darwin' ]]; then
+    brew install pkg-config
+else
+    if echo ${RELEASE} | grep CentOS > /dev/null ; then
+        brew install gcc
+        brew install pkg-config
+        brew unlink pkg-config
+    else
+        brew install gcc
+        brew install pkg-config
+        brew unlink pkg-config
+    fi
+fi
 
 # perl
 echo "==> Install Perl 5.34"
@@ -106,14 +117,14 @@ brew install gnu-sed gnu-tar
 # other tools
 brew install screen stow htop parallel pigz
 brew install tree pv
-brew install jq jid pup 
+brew install jq jid pup
 brew install datamash miller tsv-utils
 brew install librsvg udunits
 brew install proxychains-ng
 
 brew install bat exa tealdeer # tiv
 brew install hyperfine ripgrep tokei
-brew install zellij bottom
+brew install bottom # zellij
 
 # large packages
 if [[ "$OSTYPE" == "darwin"* ]]; then
