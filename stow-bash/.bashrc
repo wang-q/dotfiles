@@ -7,9 +7,6 @@ fi
 
 # User specific aliases and functions
 
-export PATH=/Library/TeX/texbin:$HOME/bin:$PATH
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig/:$PKG_CONFIG_PATH
-
 # Make vim the default editor.
 export EDITOR='vim'
 
@@ -69,4 +66,7 @@ export PATH="$HOME/share/Python/bin:$PATH"
 
 # PERL_534_PATH
 export PATH="$HOME/share/Perl/bin:$PATH"
+
+# R_42_PATH
+export PATH="/usr/local/bin:$PATH"
 
