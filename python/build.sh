@@ -4,7 +4,7 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 RELEASE=$( ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | head -n1 )
 if [[ $(uname) == 'Darwin' ]]; then
-    # Perl itself
+    # Python itself
     brew install pkg-config
     brew install mpdecimal
     brew install openssl@1.1
@@ -12,6 +12,7 @@ if [[ $(uname) == 'Darwin' ]]; then
     brew install xz
 
     # pip
+    brew install hdf5
 else
     if echo ${RELEASE} | grep CentOS > /dev/null ; then
         # Manually
