@@ -805,7 +805,7 @@ exit
 ```shell
 WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 
-export ALL_PROXY="socks5h://${WINDOWS_HOST}:10808"
+export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890"
 
 ```
 
