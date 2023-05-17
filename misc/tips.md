@@ -806,6 +806,10 @@ exit
 WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 
 export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890"
+export HTTP_PROXY="http://${WINDOWS_HOST}:7890"
+export HTTPS_PROXY="http://${WINDOWS_HOST}:7890"
+
+sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 7890/" ~/.proxychains/proxychains.conf
 
 ```
 
