@@ -21,7 +21,7 @@ Cons:
 brew install --cask zotero
 
 # Windows
-winget install -e --id Zotero.Zotero
+winget install -e --id DigitalScholar.Zotero
 
 # the ZotFile plugin
 curl -LO https://github.com/jlegewie/zotfile/releases/download/v5.1.0/zotfile-5.1.0-fx.xpi
@@ -34,7 +34,9 @@ curl -LO https://github.com/jlegewie/zotfile/releases/download/v5.1.0/zotfile-5.
 * `Preference -> Sync` 登录注册的账号, 以后就可以点主界面右上的绿色按钮同步了
 * `Preference -> Advanced`
     * `General` 设置语言为 English, 中文有时会出现奇怪的问题
-    * `Files and Folders -> Linked... -> Base directory` 设置到你要放文献的目录, 我放到同步网盘里 `iCloudDrive/zotero`
+    * `Files and Folders`
+        * `Linked... -> Base directory` 设置到你要放文献的目录, 我放到同步网盘里 `iCloudDrive/zotero`
+        * `Data Directory Location` 不用管, 由自动同步处理
 
 ## 导入 PDF
 
@@ -61,7 +63,7 @@ curl -LO https://github.com/jlegewie/zotfile/releases/download/v5.1.0/zotfile-5.
 
 * `General Settings`
     * ZotFile 可以监控新下载的文件并导入 zotero, 如果想用这个功能, 就设置下 `Source Folder...`. 这个功能过于灵敏, 我一般不用
-    * `location of Files -> Custom Location` 是保存 PDF 的地方, `iCloudDrive/zotero`
+    * `Location of Files -> Custom Location` 是保存 PDF 的地方, `iCloudDrive/zotero`
     * `Use subfolder...` `/%c`
 * `Tablet Settings` 空着
 * `Renaming Rules`
