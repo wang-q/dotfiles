@@ -17,7 +17,6 @@ else
     if echo ${RELEASE} | grep CentOS > /dev/null ; then
         # Manually
         echo "You should build all items manually under CentOS"
-        exit
     else
         # source URI
         sudo cp /etc/apt/sources.list /etc/apt/sources.list~
