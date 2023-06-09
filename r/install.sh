@@ -8,7 +8,7 @@ cd "${BASE_DIR}" || exit
 cat <<EOF > .Rprofile
 # set R mirror
 # Bioconductor mirror
-options(BioC_mirror="https://mirrors.ustc.edu.cn/bioconductor")
+options(BioC_mirror="https://mirrors.ustc.edu.cn/bioc")
 # CRAN mirror
 options("repos" = c(CRAN="https://mirrors.ustc.edu.cn/CRAN/"))
 EOF

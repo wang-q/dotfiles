@@ -20,13 +20,13 @@ for(library in c(basic_libs, graphics_libs, stat_libs, clust_libs, bio_libs, mis
         install.packages(library, repos="https://mirrors.ustc.edu.cn/CRAN")
     }
 }
-BiocManager::install(version = "3.15", ask = FALSE)
+BiocManager::install(version = "3.17", ask = FALSE)
 
 # bioconductor packages
 bioC_libs <- c("biomaRt", "GenomicDataCommons", "GEOquery", "bsseq", "DSS", "scran", "scater", "edgeR", "pheatmap", "monocle", "DESeq2", "clusterProfiler", "factoextra")
 
 for(library in c( bioC_libs ) ) {
     if(!is_installed(library)) {
-        BiocManager::install(library, update=FALSE, version = "3.15")
+        BiocManager::install(library, update=FALSE, version = "3.17")
     }
 }
