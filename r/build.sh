@@ -59,9 +59,9 @@ fi
 mkdir -p $HOME/share/R
 
 cd
-curl -L https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.2.1.tar.gz |
+curl -L https://mirrors.ustc.edu.cn/CRAN/src/base/R-4/R-4.3.0.tar.gz |
     tar xvz
-cd R-4.2.1
+cd R-4.3.0
 
 CC=gcc CXX=g++ FC=gfortran \
 ./configure \
@@ -92,18 +92,18 @@ bin/Rscript -e '
 make install
 
 cd
-rm -fr ~/R-4.2.1
+rm -fr ~/R-4.3.0
 
-if grep -q -i R_42_PATH $HOME/.bashrc; then
-    echo "==> .bashrc already contains R_42_PATH"
+if grep -q -i R_4_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains R_4_PATH"
 else
-    echo "==> Updating .bashrc with R_42_PATH..."
-    R_42_PATH="export PATH=\"\$HOME/share/R/bin:\$PATH\""
-    echo '# R_42_PATH' >> $HOME/.bashrc
-    echo $R_42_PATH    >> $HOME/.bashrc
+    echo "==> Updating .bashrc with R_4_PATH..."
+    R_4_PATH="export PATH=\"\$HOME/share/R/bin:\$PATH\""
+    echo '# R_4_PATH' >> $HOME/.bashrc
+    echo $R_4_PATH    >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
-    eval $R_42_PATH
+    eval $R_4_PATH
 fi
 
 source ~/.bashrc
