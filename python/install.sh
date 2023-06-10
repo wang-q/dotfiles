@@ -5,7 +5,7 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${BASE_DIR}" || exit
 
 # pip
-PYPI_MIRROR=https://pypi.tuna.tsinghua.edu.cn/simple
+PYPI_MIRROR=https://mirrors.bfsu.edu.cn/pypi/web/simple
 
 #pip3 install -i ${PYPI_MIRROR} --upgrade pip setuptools
 
@@ -31,7 +31,7 @@ pip3 install -i ${PYPI_MIRROR} biopython bcbio-gff
 
 pip3 install -i ${PYPI_MIRROR} Circle-Map cutadapt importlib-metadata
 
-pip3 install -i ${PYPI_MIRROR} py2bit pyBigWig pysam deeptools
+pip3 install -i ${PYPI_MIRROR} deeptools
 
 
 # poetry can search packages
