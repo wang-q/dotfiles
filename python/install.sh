@@ -5,7 +5,7 @@ BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${BASE_DIR}" || exit
 
 # pip
-PYPI_MIRROR=https://mirrors.bfsu.edu.cn/pypi/web/simple
+PYPI_MIRROR=https://mirrors.nju.edu.cn/pypi/web/simple
 
 #pip3 install -i ${PYPI_MIRROR} --upgrade pip setuptools
 
