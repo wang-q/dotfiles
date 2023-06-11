@@ -63,7 +63,17 @@ curl -L https://mirrors.ustc.edu.cn/CRAN/src/base/R-4/R-4.3.0.tar.gz |
     tar xvz
 cd R-4.3.0
 
-CC=gcc CXX=g++ FC=gfortran \
+hash gcc-9 2>/dev/null
+if [ $? == '0' ]; then
+    export CC=gcc-9
+    export CXX=g++-9
+    export FC=gfortran-9
+else
+    export CC=gcc
+    export CXX=g++
+    export FC=gfortran
+fi
+
 ./configure \
     --prefix="$HOME/share/R" \
     --enable-memory-profiling \
