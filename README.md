@@ -134,3 +134,10 @@ pip install -r ${WHERE}/pip_list.txt
   * PowerShell
   * R Language for IntelliJ
   * TeXiFy IDEA
+
+* VS Code
+    * EditorConfig.EditorConfig
+    * OrangeX4.latex-sympy-calculator
+    * ms-vscode.powershell
+    * mechatroner.rainbow-csv
+    * ms-vscode-remote.remote-wsl
