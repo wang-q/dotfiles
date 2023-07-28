@@ -22,7 +22,7 @@ else
 fi
 
 # Clone or pull other repos
-for OP in dotfiles withncbi; do
+for OP in dotfiles; do
     if [[ ! -d "$HOME/Scripts/$OP/.git" ]]; then
         if [[ ! -d "$HOME/Scripts/$OP" ]]; then
             echo "==> Clone $OP"
