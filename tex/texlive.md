@@ -3,7 +3,7 @@
 ## [TinyTex](https://yihui.org/tinytex/)
 
 ```shell
-# Proxy for Rcurl `export ALL_PROXY=socks5h://localhost:1080`
+# Proxy for Rcurl `export ALL_PROXY=socks5h://localhost:10808`
 Rscript -e '
     install.packages("tinytex", repos="https://mirrors4.tuna.tsinghua.edu.cn/CRAN")
     tinytex::install_tinytex(force = TRUE)
