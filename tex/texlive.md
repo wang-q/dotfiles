@@ -73,6 +73,7 @@ tlmgr install latexmk pdfjam pdfcrop arara latexindent
 tlmgr install pdflscape epstopdf-pkg # pdfjam
 tlmgr install standalone
 tlmgr install was # upgreek
+tlmgr install fontawesome5
 tlmgr install xltxtra
 tlmgr install realscripts
 tlmgr install xecjk
