@@ -60,14 +60,6 @@
 * [`brewcask.sh`](brewcask.sh)
   * Install GUI apps via Homebrew Cask
 
-* [Hammerspoon](hammerspoon/)
-  * Lua powered Mac window manager
-  * `bash hammerspoon/install.sh`
-
-* [mpv](mpv/)
-  * Video player I choose.
-  * `bash mpv/install.sh`
-
 ## Packages
 
 The dir [packages/](packages/) stores installed packages managed by various package managers.
