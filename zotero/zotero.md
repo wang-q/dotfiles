@@ -18,7 +18,7 @@ Cons:
 
 ```shell
 # mac
-brew install --cask zotero
+brew install zotero
 
 # Windows
 winget install -e --id DigitalScholar.Zotero
