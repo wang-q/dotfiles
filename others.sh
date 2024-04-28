@@ -186,9 +186,22 @@ echo "==> orthofinder"
 
 brew install bzip2
 brew install blast diamond
-brew install fastme fasttree iqtree
+brew install fastme brewsci/bio/fasttree brewsci/bio/iqtree
 brew install mafft
 brew install brewsci/bio/mcl mmseqs2
 brew install brewsci/bio/raxml brewsci/bio/raxml-ng
 
 pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ scipy
+
+cd $HOME/share/
+rm -fr OrthoFinder
+
+# can't use compiled version
+# GLIBC_2.35
+#curl -LO https://github.com/davidemms/OrthoFinder/releases/download/2.5.5/OrthoFinder.tar.gz
+#tar xvzf OrthoFinder*.tar.gz
+
+curl -LO https://github.com/davidemms/OrthoFinder/releases/download/2.5.5/OrthoFinder_source.tar.gz
+tar xvzf OrthoFinder_source*.tar.gz
+
+mv OrthoFinder_source OrthoFinder
