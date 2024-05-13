@@ -118,6 +118,20 @@ rm dirs.tmp files.tmp
 
 ```
 
+## tokei
+
+```shell
+git ls-files |
+    tokei |
+    grep -v '==' |
+    grep -v '\-\-' |
+    grep -v ' (' |
+    grep -v ' |' |
+    perl -nlp -e 's/ {2,}/\t/g' |
+    mlr --itsv --omd cat
+
+```
+
 ## tar & pigz
 
 ```bash
