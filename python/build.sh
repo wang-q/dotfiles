@@ -35,9 +35,9 @@ fi
 mkdir -p $HOME/share/Python
 
 cd
-curl -L https://mirrors.huaweicloud.com/python/3.9.13/Python-3.9.13.tgz |
+curl -L https://mirrors.huaweicloud.com/python/3.10.10/Python-3.10.10.tgz |
     tar xvz
-cd Python-3.9.13
+cd Python-3.10.10
 
 if [[ $(uname) == 'Darwin' ]]; then
     CC=gcc \
@@ -66,18 +66,18 @@ make -j 8
 make install
 
 cd
-rm -fr ~/Python-3.9.13
+rm -fr ~/Python-3.10.10
 
-if grep -q -i PYTHON_39_PATH $HOME/.bashrc; then
-    echo "==> .bashrc already contains PYTHON_39_PATH"
+if grep -q -i PYTHON_310_PATH $HOME/.bashrc; then
+    echo "==> .bashrc already contains PYTHON_310_PATH"
 else
-    echo "==> Updating .bashrc with PYTHON_39_PATH..."
-    PYTHON_39_PATH="export PATH=\"\$HOME/share/Python/bin:\$PATH\""
-    echo '# PYTHON_39_PATH' >> $HOME/.bashrc
-    echo $PYTHON_39_PATH    >> $HOME/.bashrc
+    echo "==> Updating .bashrc with PYTHON_310_PATH..."
+    PYTHON_310_PATH="export PATH=\"\$HOME/share/Python/bin:\$PATH\""
+    echo '# PYTHON_310_PATH' >> $HOME/.bashrc
+    echo $PYTHON_310_PATH    >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
-    eval $PYTHON_39_PATH
+    eval $PYTHON_310_PATH
 fi
 
 source ~/.bashrc
