@@ -165,7 +165,7 @@ pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ virtualenv
 # pip3 install biopython bcbio-gff
 
 aria2c -c https://dl.secondarymetabolites.org/releases/6.1.1/antismash-6.1.1.tar.gz
-tar xvzf antismash-*.tar.gz
+tar xvzf antismash-6.tar.gz
 
 virtualenv -p $(which python3) ~/share/asenv
 source ~/share/asenv/bin/activate
@@ -180,6 +180,22 @@ antismash --check-prereqs
 # Later, if you want to run antiSMASH, simply call
 source ~/share/asenv/bin/activate
 antismash my_input.gbk
+
+# antismash 7
+echo "==> antismash 7"
+
+cd $HOME/share/
+
+rm -fr antismash-7*
+
+curl -LO https://dl.secondarymetabolites.org/releases/7.1.0/antismash-7.1.0.tar.gz
+tar xvzf antismash-7*.tar.gz
+
+virtualenv -p $(which python3) ~/share/as7env
+source ~/share/as7env/bin/activate
+
+pip3 install -i https://mirror.nju.edu.cn/pypi/web/simple/ ./antismash-7.1.0
+download-antismash-databases # 9.7G
 
 # orthofinder
 echo "==> orthofinder"
