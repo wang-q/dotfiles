@@ -65,7 +65,7 @@ pip3 install h5py
 cd $(brew --prefix)/Cellar/repeatmasker@4.1.1/4.1.1/libexec
 perl configure \
     -hmmer_dir=$(brew --prefix)/bin \
-    -rmblast_dir=$(brew --prefix)/Cellar/rmblast@2.10.0/2.10.0/bin \
+    -rmblast_dir=$(brew --prefix)/Cellar/rmblast@2.14.1/2.14.1/bin \
     -libdir=$(brew --prefix)/Cellar/repeatmasker@4.1.1/4.1.1/libexec/Libraries \
     -trf_prgm=$(brew --prefix)/bin/trf \
     -default_search_engine=rmblast
