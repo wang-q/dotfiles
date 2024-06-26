@@ -52,8 +52,8 @@ brew install wang-q/tap/circos@0.69.9
 echo "==> RepeatMasker"
 brew install hmmer easel
 
-brew install wang-q/tap/rmblast@2.10.0
-# brew link rmblast@2.10.0 --overwrite
+brew install wang-q/tap/rmblast@2.14.1
+# brew link rmblast@2.14.1 --overwrite
 
 brew install wang-q/tap/trf@4
 

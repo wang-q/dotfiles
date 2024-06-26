@@ -827,7 +827,7 @@ export HTTP_PROXY="http://${WINDOWS_HOST}:10809"
 export HTTPS_PROXY="http://${WINDOWS_HOST}:10809"
 export RSYNC_PROXY="${WINDOWS_HOST}:10809"
 
-sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 10808/" ~/.proxychains/proxychains.conf
+# sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 10808/" ~/.proxychains/proxychains.conf
 
 ```
 
