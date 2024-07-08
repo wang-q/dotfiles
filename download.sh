@@ -77,11 +77,11 @@ tar xvfz jkbin.tar.gz x86_64/netToAxt
 mv $HOME/bin/x86_64/* $HOME/bin/
 rm jkbin.tar.gz
 
-if [[ $(uname) == 'Darwin' ]]; then
-    curl -L http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/faToTwoBit
-else
-    curl -L http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/faToTwoBit
-fi \
-    > faToTwoBit
-mv faToTwoBit $HOME/bin/
-chmod +x $HOME/bin/faToTwoBit
+# if [[ $(uname) == 'Darwin' ]]; then
+#     curl -L http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/faToTwoBit
+# else
+#     curl -L http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/faToTwoBit
+# fi \
+#     > faToTwoBit
+# mv faToTwoBit $HOME/bin/
+# chmod +x $HOME/bin/faToTwoBit
