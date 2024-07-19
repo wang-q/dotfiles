@@ -221,3 +221,35 @@ curl -LO https://github.com/davidemms/OrthoFinder/releases/download/2.5.5/OrthoF
 tar xvzf OrthoFinder_source*.tar.gz
 
 mv OrthoFinder_source OrthoFinder
+
+# poy 5
+
+brew install gcc@11
+brew install ocaml
+brew install open-mpi
+brew install open-blas
+
+yum install openmpi
+module load mpich/3.3.1
+
+bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
+
+bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
+# /share/home/wangq/bin
+
+opam init --disable-sandboxing --compiler=3.10.0
+# 5 eval $(opam env)
+
+sudo yum install Lmod # module
+sudo yum install openmpi
+sudo yum install blas
+sudo yum install openmpi-devel
+
+module load mpi/openmpi-x86_64
+
+curl -LO https://www.amnh.org/content/download/67796/1174582/file/poy-5.1.1-source.gz
+tar xvfz poy-5.1.1-source.gz
+cd poy_5.1.1/src
+eval $(opam env)
+CC=mpicc ./configure --enable-interface=flat --enable-mpi --prefix=/share/home/wangq/share/poy
+make OCAMLPARAM=safe-string=0,_
