@@ -122,7 +122,7 @@ brew install datamash miller tsv-utils
 brew install librsvg udunits
 brew install proxychains-ng
 
-brew install bat exa tealdeer # tiv
+brew install bat tealdeer # exa tiv
 brew install hyperfine ripgrep tokei
 brew install bottom # zellij
 

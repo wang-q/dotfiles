@@ -10,18 +10,12 @@ if grep -q -i RUST_PATH $HOME/.bashrc; then
     echo "==> .bashrc already contains RUST_PATH"
 else
     echo "==> Updating .bashrc with RUST_PATH..."
-    RUSTUP_DIST_SERVER="export RUSTUP_DIST_SERVER=https://ipv4.mirrors.ustc.edu.cn/rust-static"
-    RUSTUP_UPDATE_ROOT="export RUSTUP_UPDATE_ROOT=https://ipv4.mirrors.ustc.edu.cn/rust-static/rustup"
     RUST_PATH="export PATH=\"\$HOME/.cargo/bin:\$PATH\""
     echo '# RUST_PATH'       >> $HOME/.bashrc
-    echo $RUSTUP_DIST_SERVER >> $HOME/.bashrc
-    echo $RUSTUP_UPDATE_ROOT >> $HOME/.bashrc
     echo $RUST_PATH          >> $HOME/.bashrc
     echo >> $HOME/.bashrc
 
     # make the above environment variables available for the rest of this script
-    eval $RUSTUP_DIST_SERVER
-    eval $RUSTUP_UPDATE_ROOT
     eval $RUST_PATH
 fi
 
