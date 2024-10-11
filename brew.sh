@@ -119,7 +119,6 @@ brew install screen stow htop parallel pigz
 brew install tree pv
 brew install jq jid pup
 brew install datamash miller tsv-utils
-brew install librsvg udunits
 brew install proxychains-ng
 
 brew install bat tealdeer # exa tiv
@@ -145,6 +144,14 @@ hash dot 2>/dev/null || {
 
 hash convert 2>/dev/null || {
     brew install imagemagick
+}
+
+hash rsvg-converter 2>/dev/null || {
+    brew install librsvg
+}
+
+hash udunits2 2>/dev/null || {
+    brew install udunits
 }
 
 # weird dependancies by Cairo.pm
