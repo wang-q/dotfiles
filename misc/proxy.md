@@ -14,11 +14,7 @@ $ENV:HTTPS_PROXY='http://localhost:10809'
 ```shell
 WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 
-export ALL_PROXY="socks5h://${WINDOWS_HOST}:10808"
-
-export HTTP_PROXY="http://${WINDOWS_HOST}:10809"
-export HTTPS_PROXY="http://${WINDOWS_HOST}:10809"
-export RSYNC_PROXY="${WINDOWS_HOST}:10809"
+export ALL_PROXY="socks5h://${WINDOWS_HOST}:10808" HTTP_PROXY="http://${WINDOWS_HOST}:10809" HTTPS_PROXY="http://${WINDOWS_HOST}:10809" RSYNC_PROXY="${WINDOWS_HOST}:10809"
 
 # sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 10808/" ~/.proxychains/proxychains.conf
 
