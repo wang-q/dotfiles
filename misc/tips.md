@@ -12,14 +12,14 @@ screen -dmS op htop # Start a screen named `op` and run `htop`
 
 # screen -S op -x -X screen numactl --interleave=all ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
 
-screen -S op -x -X screen redis-server
-screen -S op -x -X screen mysqld_safe
+# screen -S op -x -X screen redis-server
+# screen -S op -x -X screen mysqld_safe
 
 # linux, v2ray 5
 screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
 
 # mac, v2ray 4
-screen -S op -x -X screen v2ray -config ~/config.json
+# screen -S op -x -X screen v2ray -config ~/config.json
 
 ```
 
