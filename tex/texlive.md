@@ -29,7 +29,7 @@ rd /s /q "%APPDATA%\TinyTeX"
 ```shell
 brew install pandoc imagemagick gifsicle
 
-apt install imagemagick gifsicle
+sudo apt install pandoc imagemagick gifsicle
 
 ```
 
