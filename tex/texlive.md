@@ -52,7 +52,7 @@ fmtutil-sys --all
 # tlmgr search --global --file "/times.sty"
 
 tlmgr install $(curl -L https://yihui.org/gh/tinytex/tools/pkgs-custom.txt | tr '\n' ' ')
-tlmgr install $(curl -L https://yihui.org/gh/tinytex/tools/pkgs-custom.txt | tr '\n' ' ')
+tlmgr install $(curl -L https://yihui.org/gh/tinytex/tools/pkgs-yihui.txt | tr '\n' ' ')
 
 tlmgr install latexmk pdfjam pdfcrop arara latexindent
 tlmgr install pdflscape epstopdf-pkg # pdfjam
