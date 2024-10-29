@@ -3,8 +3,8 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [user]
-	name = wang-q
-	email = wang-q@outlook.com
+	name = Qiang Wang
+	email = wang-q@users.noreply.github.com
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
@@ -19,3 +19,5 @@
 	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
+[credential]
+	helper = cache
