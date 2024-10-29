@@ -29,7 +29,7 @@ rd /s /q "%APPDATA%\TinyTeX"
 ```shell
 brew install pandoc imagemagick gifsicle
 
-apt install imagemagick gifsicle
+sudo apt install pandoc imagemagick gifsicle
 
 ```
 
@@ -51,6 +51,9 @@ fmtutil-sys --all
 
 # tlmgr search --global --file "/times.sty"
 
+tlmgr install $(curl -L https://yihui.org/gh/tinytex/tools/pkgs-custom.txt | tr '\n' ' ')
+tlmgr install $(curl -L https://yihui.org/gh/tinytex/tools/pkgs-yihui.txt | tr '\n' ' ')
+
 tlmgr install latexmk pdfjam pdfcrop arara latexindent
 tlmgr install pdflscape epstopdf-pkg # pdfjam
 tlmgr install standalone
@@ -66,6 +69,7 @@ tlmgr install translator
 tlmgr install silence
 tlmgr install zref
 tlmgr install animate media9 ocgx2 xcolor
+tlmgr install makecell grffile caption
 
 # beamer template
 tlmgr install beamertheme-metropolis
