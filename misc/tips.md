@@ -172,6 +172,14 @@ youtube-dl \
     --proxy socks5://127.0.0.1:1080 \
     https://www.youtube.com/watch?v=1t1OL2zN0LQ
 
+yt-dlp \
+    -o "%(title)s.%(ext)s" --recode-video mp4 \
+    --format bestvideo[ext!=webm]+bestaudio[ext!=webm]/best[ext!=webm] \
+    --restrict-filenames --continue --ignore-errors --no-call-home --no-mtime \
+    --write-sub --embed-subs --sub-lang en \
+    --proxy socks5://127.0.0.1:7890 \
+    https://www.youtube.com/watch?v=EK_LN3XEcnw
+
 ```
 
 ## List youtube playlist
