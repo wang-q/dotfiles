@@ -4,8 +4,22 @@
 
 ```bash
 screen -wipe # Remove dead screens
+
+# window 0
 screen -dmS op htop # Start a screen named `op` and run `htop`
-screen -S op -x -X screen btm
+
+# Create two or three windows manually by C-a c
+screen -S op -p 1 -X title "Scripts"
+screen -S op -p 1 -X stuff "cd $HOME/Scripts/\n"
+
+screen -S op -p 2 -X title "data"
+screen -S op -p 2 -X stuff "cd $HOME/data/\n"
+
+screen -S op -p 3 -X title "download"
+screen -S op -p 3 -X stuff "cd $HOME/data/\n"
+
+# The following command will create a window without colored Bash prompts.
+# screen -S op -x -X eval "chdir $HOME/Scripts" screen
 
 # screen -S op -x -X screen perl -MPod::POM::Web -e "server 8088"
 # rm ~/share/mongodb/data/mongod.lock
