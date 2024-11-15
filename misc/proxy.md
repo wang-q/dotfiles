@@ -31,7 +31,7 @@ New-NetFirewallRule -DisplayName "WSL" -Direction Inbound -InterfaceAlias "vEthe
 
 ```
 
-## macOS with Clash
+## macOS/Linux with Clash
 
 ```shell
 export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 ALL_PROXY=socks5://127.0.0.1:7890 RSYNC_PROXY=127.0.0.1:7890
