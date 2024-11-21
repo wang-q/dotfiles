@@ -3,9 +3,7 @@
 ## Powershell
 
 ```powershell
-$ENV:ALL_PROXY='socks5h://localhost:10808'
-$ENV:HTTP_PROXY='http://localhost:10809'
-$ENV:HTTPS_PROXY='http://localhost:10809'
+$ENV:ALL_PROXY='socks5h://localhost:7890'; $ENV:HTTP_PROXY='http://localhost:7890'; $ENV:HTTPS_PROXY='http://localhost:7890'
 
 ```
 
@@ -14,9 +12,9 @@ $ENV:HTTPS_PROXY='http://localhost:10809'
 ```shell
 WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 
-export ALL_PROXY="socks5h://${WINDOWS_HOST}:10808" HTTP_PROXY="http://${WINDOWS_HOST}:10809" HTTPS_PROXY="http://${WINDOWS_HOST}:10809" RSYNC_PROXY="${WINDOWS_HOST}:10809"
+export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890" HTTP_PROXY="http://${WINDOWS_HOST}:7890" HTTPS_PROXY="http://${WINDOWS_HOST}:7890" RSYNC_PROXY="${WINDOWS_HOST}:7890"
 
-# sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 10808/" ~/.proxychains/proxychains.conf
+# sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 7890/" ~/.proxychains/proxychains.conf
 
 ```
 
@@ -34,6 +32,6 @@ New-NetFirewallRule -DisplayName "WSL" -Direction Inbound -InterfaceAlias "vEthe
 ## macOS/Linux with Clash
 
 ```shell
-export HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 ALL_PROXY=socks5://127.0.0.1:7890 RSYNC_PROXY=127.0.0.1:7890
+export ALL_PROXY=socks5://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 RSYNC_PROXY=127.0.0.1:7890
 
 ```
