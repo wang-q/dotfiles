@@ -35,12 +35,18 @@ curl -LO https://github.com/wileyyugioh/zotmoov/releases/download/1.2.5/zotmoov-
 * `Edit -> Settings -> General`
     * 设置语言为 English, 中文有时会出现奇怪的问题
     * `Customize Filename Format...`
+        * 根据是否有期刊缩写, 选择使用出版物标题或期刊缩写, 长度分别限制为 18 个字符
+        * 并在后面添加年份和标题，标题长度限制为 40 个字符
 
 ```text
-{{publicationTitle suffix=" - "}}
+{{ if journalAbbreviation == "" }}
+{{publicationTitle truncate="18" suffix=" - "}}
+{{ else }}
+{{journalAbbreviation replaceFrom="\." replaceTo="" regexOpts="g" truncate="18" suffix=" - "}}
+{{endif}}
 {{ year suffix=" - " }}
-{{authors max="1" name="family" suffix=" - " }}
 {{ title truncate="40" }}
+
 ```
 
 * `Edit -> Settings -> Advanced`
