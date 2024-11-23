@@ -239,6 +239,20 @@ ffmpeg \
 
 ```
 
+```powershell
+# 获取所有视频文件
+$videoFiles = Get-ChildItem -Path . -File | Where-Object { $_.Extension -match '\.mp4|\.m4v|\.mkv|\.avi|\.mov|\.flv|\.wmv' }
+
+# 遍历每个视频文件并获取编码格式
+foreach ($file in $videoFiles) {
+    # 使用 ffprobe 获取视频编码格式
+    $codec = & ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 $file.FullName
+    # 打印文件名和编码格式
+    Write-Output "$($file.Name): $codec"
+}
+
+```
+
 ## 中英文中间加空格
 
 ```perl5
