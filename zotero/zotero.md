@@ -1,4 +1,4 @@
-# `zotero` and `ZotFile`
+# `zotero` and `ZotMoov`
 
 为什么要用它俩?
 
@@ -23,20 +23,29 @@ brew install zotero
 # Windows
 winget install -e --id DigitalScholar.Zotero
 
-# the ZotFile plugin
-curl -LO https://github.com/jlegewie/zotfile/releases/download/v5.1.0/zotfile-5.1.0-fx.xpi
+# the zotmoov plugin
+curl -LO https://github.com/wileyyugioh/zotmoov/releases/download/1.2.5/zotmoov-1.2.5-fx.xpi
 
 ```
 
 ## 登录
 
 * 去 zotero [官网](https://www.zotero.org/) 注册个账号
-* `Preference -> Sync` 登录注册的账号, 以后就可以点主界面右上的绿色按钮同步了
-* `Preference -> Advanced`
-    * `General` 设置语言为 English, 中文有时会出现奇怪的问题
-    * `Files and Folders`
-        * `Linked... -> Base directory` 设置到你要放文献的目录, 我放到同步网盘里 `iCloudDrive/zotero`
-        * `Data Directory Location` 不用管, 由自动同步处理
+* `Edit -> Settings -> Sync` 登录注册的账号, 以后就可以点主界面右上的绿色按钮同步了
+* `Edit -> Settings -> General`
+    * 设置语言为 English, 中文有时会出现奇怪的问题
+    * `Customize Filename Format...`
+
+```text
+{{publicationTitle suffix=" - "}}
+{{ year suffix=" - " }}
+{{authors max="1" name="family" suffix=" - " }}
+{{ title truncate="40" }}
+```
+
+* `Edit -> Settings -> Advanced`
+    * `Linked Attachment Base Directory` 设置到你要放文献的目录, 我放到同步网盘里 `iCloudDrive/zotero`
+    * `Data Directory Location` 不用管, 由自动同步处理
 
 ## 导入 PDF
 
@@ -54,29 +63,19 @@ curl -LO https://github.com/jlegewie/zotfile/releases/download/v5.1.0/zotfile-5.
     * 一个记录占了一个子目录, 在没有 zotero 时找文件不方便
     * 同步一大堆 PDF 很慢, 如果它占用了太多的空间, zotero 要收费
 
-## ZotFile
+## ZotMoov
 
-* `Tools -> Add-ons -> 右上角的齿轮按钮 Tools for all Add-ons -> Install Add-on From File`
+* `Tools -> Plugins -> 右上角的齿轮按钮 -> Install Plugin From File`
 * 重新运行 zotero
 
-设置 ZotFile `Tools -> ZotFile Preferences`
+设置 ZotMoov `Edit -> Settings -> ZotMoov`
 
-* `General Settings`
-    * ZotFile 可以监控新下载的文件并导入 zotero, 如果想用这个功能, 就设置下 `Source Folder...`. 这个功能过于灵敏, 我一般不用
-    * `Location of Files -> Custom Location` 是保存 PDF 的地方, `iCloudDrive/zotero`
-    * `Use subfolder...` `/%c`
-* `Tablet Settings` 空着
-* `Renaming Rules`
-    * `Format for all Item...` 设为 `{%s|%j}{ - %y}{ - %a}{ - %t}`
-    * Untick `Add user...`, `Change to...`, and `Replace blanks`
-    * Tick `Truncate title...`
-    * `Maximum length of title` 40
-    * `Maximum number of authors` 1
-    * Untick `Add suffix...`
-* `Advanced Settings`
-    * Tick `Remove special...`
+* `Directory to Move Files to` 是保存 PDF 的地方, `iCloudDrive/zotero`
+* `Other Settings`
+    * Tick all
+    * `Subdirectory String` 设为 `{%c}`
 
-回到 zotero, 右键点刚新建的记录 (可以选多个), `Manage Attachments -> Rename and move`. ZotFile
-会将文件移动到 `iCloudDrive/zotero/collection_XXX`, 在记录下留下链接.
+回到 zotero, 右键点刚新建的记录 (可以选多个), `ZotMoov: Move Selected to Directory`. ZotMoov
+会将文件移动到 `iCloudDrive/zotero/collection_XXX`, 在原来的记录下留下链接.
 
 这样手机或其它设备不用装专门的程序, 一个 collection 占一个子目录, 可以方便地找到文献.
