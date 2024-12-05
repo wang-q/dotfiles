@@ -8,8 +8,8 @@ mkdir -p $HOME/share
 mkdir -p $HOME/Scripts
 
 # make sure $HOME/bin in your $PATH
-if grep -q -i homebin $HOME/.bashrc; then
-    echo "==> .bashrc already contains homebin"
+if grep -q -i Homebin $HOME/.bashrc; then
+    echo "==> .bashrc already contains Homebin"
 else
     echo "==> Update .bashrc"
 
@@ -85,3 +85,17 @@ rm jkbin.tar.gz
 #     > faToTwoBit
 # mv faToTwoBit $HOME/bin/
 # chmod +x $HOME/bin/faToTwoBit
+
+echo "==> Prebuilt binaries"
+if [[ $(uname) == 'Darwin' ]]; then
+    echo "    Absent"
+else
+    curl -fsSL \
+        https://api.github.com/repos/wang-q/builds/git/trees/master?recursive=1 |
+        jq -r '.tree[] | select( .path | startswith("tar/") ) | .path' |
+        parallel -j 1 "
+            echo >&2 '==> {}'
+            curl -fsSL https://raw.githubusercontent.com/wang-q/builds/master/{} |
+            tar xvz --directory=$HOME/bin/
+        "
+fi
