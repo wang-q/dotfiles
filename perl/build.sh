@@ -34,7 +34,7 @@ fi
 
 #sudo apt -y build-dep perl
 
-# sudo apt install apt-rdepends
+# sudo apt -y install apt-rdepends
 # apt-rdepends --build-depends --print-state --follow=DEPENDS perl
 
 mkdir -p $HOME/share/Perl
