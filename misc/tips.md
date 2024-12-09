@@ -825,6 +825,15 @@ docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
 sudo dmidecode --type 17 | less
 ```
 
+## 同步目录
+
+```shell
+rsync -avP /home/wangq/data/ /media/wangq/nwr \
+    --exclude=".Trash*" \
+    --exclude="lost+found"
+
+```
+
 # WSL
 
 ## 减少空间占用
