@@ -36,5 +36,3 @@ rustup component add clippy rust-analysis rust-src rustfmt
 
 cargo install cargo-expand
 cargo install cargo-release
-
-cargo install intspan
