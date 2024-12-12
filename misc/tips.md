@@ -830,7 +830,8 @@ sudo dmidecode --type 17 | less
 ```shell
 rsync -avP /home/wangq/data/ /media/wangq/nwr \
     --exclude=".Trash*" \
-    --exclude="lost+found"
+    --exclude="lost+found" \
+    --exclude="Plants/ASSEMBLY/*"
 
 ```
 
