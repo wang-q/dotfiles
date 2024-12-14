@@ -828,7 +828,7 @@ sudo dmidecode --type 17 | less
 ## 同步目录
 
 ```shell
-rsync -avP /home/wangq/data/ /media/wangq/nwr \
+rsync -avP /home/wangq/data2/ /media/wangq/nwr \
     --exclude=".Trash*" \
     --exclude="lost+found" \
     --exclude="Plants/ASSEMBLY/*"
