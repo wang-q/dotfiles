@@ -50,7 +50,7 @@ curl -LO https://github.com/wileyyugioh/zotmoov/releases/download/1.2.5/zotmoov-
 ```
 
 * `Edit -> Settings -> Advanced`
-    * `Linked Attachment Base Directory` 设置到你要放文献的目录, 我放到同步网盘里 `iCloudDrive/zotero`
+    * `Linked Attachment Base Directory` 设置到你要放文献的目录, 我放到同步网盘里 `~/OneDrive - 南京大学/zotero`
     * `Data Directory Location` 不用管, 由自动同步处理
 
 ## 导入 PDF
@@ -76,12 +76,12 @@ curl -LO https://github.com/wileyyugioh/zotmoov/releases/download/1.2.5/zotmoov-
 
 设置 ZotMoov `Edit -> Settings -> ZotMoov`
 
-* `Directory to Move Files to` 是保存 PDF 的地方, `iCloudDrive/zotero`
+* `Directory to Move Files to` 是保存 PDF 的地方, `~/OneDrive - 南京大学/zotero`
 * `Other Settings`
     * Tick all
     * `Subdirectory String` 设为 `{%c}`
 
 回到 zotero, 右键点刚新建的记录 (可以选多个), `ZotMoov: Move Selected to Directory`. ZotMoov
-会将文件移动到 `iCloudDrive/zotero/collection_XXX`, 在原来的记录下留下链接.
+会将文件移动到 `~/OneDrive - 南京大学/zotero/collection_XXX`, 在原来的记录下留下链接.
 
 这样手机或其它设备不用装专门的程序, 一个 collection 占一个子目录, 可以方便地找到文献.
