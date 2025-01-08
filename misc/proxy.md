@@ -1,19 +1,28 @@
-# Command line proxies for each platform
+# Command Line Proxy Settings for Different Platforms
 
-## Powershell
+This file provides proxy configuration examples for:
+- Windows (Powershell)
+- WSL using Host Clash
+- macOS/Linux with Clash
+
+## Windows (Powershell)
 
 ```powershell
+# Set proxy for all protocols (socks5h), HTTP and HTTPS
 $ENV:ALL_PROXY='socks5h://localhost:7890'; $ENV:HTTP_PROXY='http://localhost:7890'; $ENV:HTTPS_PROXY='http://localhost:7890'
 
 ```
 
-## WSL using Host v2ray
+## WSL using Host Clash
 
 ```shell
+# Get Windows host IP address
 WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 
+# Set proxy environment variables
 export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890" HTTP_PROXY="http://${WINDOWS_HOST}:7890" HTTPS_PROXY="http://${WINDOWS_HOST}:7890" RSYNC_PROXY="${WINDOWS_HOST}:7890"
 
+# Optional: Update proxychains configuration
 # sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 7890/" ~/.proxychains/proxychains.conf
 
 ```
@@ -32,6 +41,16 @@ New-NetFirewallRule -DisplayName "WSL" -Direction Inbound -InterfaceAlias "vEthe
 ## macOS/Linux with Clash
 
 ```shell
-export ALL_PROXY=socks5://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 RSYNC_PROXY=127.0.0.1:7890
+# Set proxy environment variables for Clash
+export ALL_PROXY=socks5://127.0.0.1:7890 \
+       HTTPS_PROXY=http://127.0.0.1:7890 \
+       HTTP_PROXY=http://127.0.0.1:7890 \
+       RSYNC_PROXY=127.0.0.1:7890
+
+# Test proxy connection
+curl -I https://www.google.com
+
+# Unset proxy
+unset ALL_PROXY HTTPS_PROXY HTTP_PROXY RSYNC_PROXY
 
 ```
