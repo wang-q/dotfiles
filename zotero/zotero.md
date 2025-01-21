@@ -16,7 +16,7 @@ Cons:
 
 ## 安装
 
-```shell
+```bash
 # mac
 brew install zotero
 
