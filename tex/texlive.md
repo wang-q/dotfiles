@@ -133,6 +133,13 @@ mv Fira-4.202/ttf/* ${FONT_DIR}
 rm -fr Fira-4.202
 rm Fira.tar.gz
 
+# JetBrains Mono
+curl -L 'https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip' > JetBrainsMono.zip
+
+unzip -j JetBrainsMono.zip -d ${FONT_DIR} '*.ttf'
+
+rm JetBrainsMono.zip
+
 # Charter
 curl -L 'https://practicaltypography.com/fonts/Charter%20210112.zip' > Charter.zip
 
