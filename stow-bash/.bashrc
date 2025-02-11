@@ -42,16 +42,10 @@ export PATH="$HOME/share/mysql/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 
 # USTC mirror of Homebrew bottles
-# https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles
 export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # RUST_PATH
-export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
 export PATH="$HOME/.cargo/bin:$PATH"
 
 source "$HOME/.cargo/env"
@@ -59,14 +53,13 @@ source "$HOME/.cargo/env"
 # Homebin
 export PATH="$HOME/bin:$PATH"
 
-export BLASTDB="$HOME/share/blast/db/"
-
-# PYTHON_39_PATH
-export PATH="$HOME/share/Python/bin:$PATH"
-
 # PERL_534_PATH
 export PATH="$HOME/share/Perl/bin:$PATH"
 
 # R_42_PATH
 export PATH="/usr/local/bin:$PATH"
 
+# PYTHON_310_PATH
+export PATH="$HOME/share/Python/bin:$PATH"
+
+. "$HOME/.cargo/env"
