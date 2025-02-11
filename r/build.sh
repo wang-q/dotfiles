@@ -6,7 +6,7 @@ RELEASE=$( ( lsb_release -ds || cat /etc/*release || uname -om ) 2>/dev/null | h
 if [[ $(uname) == 'Darwin' ]]; then
     # R itself
     echo "Use the official build"
-    echo "https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/base/R-4.2.2-arm64.pkg"
+    echo "https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/base/R-4.4.2-arm64.pkg"
 
     # packages
     brew install cmake
@@ -19,9 +19,9 @@ else
         echo "You should build all items manually under CentOS"
     else
         # source URI
-        sudo cp /etc/apt/sources.list /etc/apt/sources.list~
-        sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-        sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+        # sudo cp /etc/apt/sources.list /etc/apt/sources.list~
+        # sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+        # sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
         sudo apt -y update
 
@@ -59,9 +59,9 @@ fi
 mkdir -p $HOME/share/R
 
 cd
-curl -L https://mirrors.ustc.edu.cn/CRAN/src/base/R-4/R-4.3.0.tar.gz |
+curl -L https://mirrors.ustc.edu.cn/CRAN/src/base/R-4/R-4.4.2.tar.gz |
     tar xvz
-cd R-4.3.0
+cd R-4.4.2
 
 hash gcc-9 2>/dev/null
 if [ $? == '0' ]; then
@@ -102,7 +102,7 @@ bin/Rscript -e '
 make install
 
 cd
-rm -fr ~/R-4.3.0
+rm -fr ~/R-4.4.2
 
 if grep -q -i R_4_PATH $HOME/.bashrc; then
     echo "==> .bashrc already contains R_4_PATH"
