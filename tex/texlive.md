@@ -136,35 +136,35 @@ rm Fira.tar.gz
 # JetBrains Mono
 curl -L 'https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip' > JetBrainsMono.zip
 
-unzip -j JetBrainsMono.zip -d ${FONT_DIR} '*.ttf'
+unzip -j -o JetBrainsMono.zip -d ${FONT_DIR} '*.ttf'
 
 rm JetBrainsMono.zip
 
 # Charter
 curl -L 'https://practicaltypography.com/fonts/Charter%20210112.zip' > Charter.zip
 
-unzip -j Charter.zip -d ${FONT_DIR} '*.ttf'
+unzip -j -o Charter.zip -d ${FONT_DIR} '*.ttf'
 
 rm Charter.zip
 
 # Source Han Sans 思源黑体
 curl -LO https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSansSC.zip
 
-unzip -j SourceHanSansSC.zip -d ${FONT_DIR} '*.otf'
+unzip -j -o SourceHanSansSC.zip -d ${FONT_DIR} '*.otf'
 
 rm SourceHanSansSC.zip
 
 # Source Han Serif 思源宋体
 curl -LO https://github.com/adobe-fonts/source-han-serif/releases/download/2.001R/09_SourceHanSerifSC.zip
 
-unzip -j 09_SourceHanSerifSC.zip -d ${FONT_DIR} '*.otf'
+unzip -j -o 09_SourceHanSerifSC.zip -d ${FONT_DIR} '*.otf'
 
 rm 09_SourceHanSerifSC.zip
 
 # LXGW WenKai GB 霞鹜文楷 GB
 curl -LO https://github.com/lxgw/LxgwWenKai/releases/download/v1.330/lxgw-wenkai-v1.330.zip
 
-unzip -j lxgw-wenkai-v1.330.zip -d ${FONT_DIR} '*.ttf'
+unzip -j -o lxgw-wenkai-v1.330.zip -d ${FONT_DIR} '*.ttf'
 
 rm lxgw-wenkai-*.zip
 
