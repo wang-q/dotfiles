@@ -15,7 +15,7 @@ $ENV:ALL_PROXY='socks5h://localhost:7890'; $ENV:HTTP_PROXY='http://localhost:789
 
 ## WSL using Host Clash
 
-```shell
+```bash
 # Get Windows host IP address
 WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 
@@ -40,7 +40,7 @@ New-NetFirewallRule -DisplayName "WSL" -Direction Inbound -InterfaceAlias "vEthe
 
 ## macOS/Linux with Clash
 
-```shell
+```bash
 # Set proxy environment variables for Clash
 export ALL_PROXY=socks5://127.0.0.1:7890 \
        HTTPS_PROXY=http://127.0.0.1:7890 \

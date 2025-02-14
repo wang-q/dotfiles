@@ -2,7 +2,7 @@
 
 ## [TinyTex](https://yihui.org/tinytex/)
 
-```shell
+```bash
 curl -sL "https://yihui.org/tinytex/install-bin-unix.sh" | sh
 
 ```
@@ -26,7 +26,7 @@ rd /s /q "%APPDATA%\TinyTeX"
 
 ## Companions
 
-```shell
+```bash
 brew install pandoc imagemagick gifsicle
 
 sudo apt install pandoc imagemagick gifsicle
@@ -42,7 +42,7 @@ scoop cache rm *; scoop uninstall pandoc; scoop install pandoc
 
 ## `tlmgr`
 
-```shell
+```bash
 tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
 
 tlmgr update --self --all
@@ -83,7 +83,7 @@ tlmgr path add
 
 ## latexindent
 
-```shell
+```bash
 cpanm --verbose YAML::Tiny File::HomeDir Unicode::GCString Log::Log4perl Log::Dispatch::File
 
 # curl -O https://raw.githubusercontent.com/cmhughes/latexindent.pl/master/defaultSettings.yaml
@@ -100,7 +100,7 @@ cp -f ~/Scripts/dotfiles/tex/defaultSettings.yaml \
 
 ## Fonts
 
-```shell
+```bash
 if [[ $(uname) == 'Darwin' ]]; then
     FONT_DIR="$HOME/Library/Fonts"
 else
