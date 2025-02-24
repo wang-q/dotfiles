@@ -18,11 +18,6 @@ else
         # Manually
         echo "You should build all items manually under CentOS"
     else
-        # source URI
-        # sudo cp /etc/apt/sources.list /etc/apt/sources.list~
-        # sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-        # sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-
         sudo apt -y update
 
         sudo apt -y install build-essential
