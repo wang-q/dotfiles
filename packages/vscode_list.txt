@@ -1,2 +1,9 @@
-EditorConfig.EditorConfig
+editorconfig.editorconfig
+mark-wiemer.vscode-autohotkey-plus-plus
 mechatroner.rainbow-csv
+ms-python.python
+ms-python.vscode-pylance
+ms-vscode-remote.remote-wsl
+ms-vscode.powershell
+orangex4.latex-sympy-calculator
+saoudrizwan.claude-dev
