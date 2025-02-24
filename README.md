@@ -12,7 +12,6 @@
   * [bash](stow-bash/)
   * [git](stow-git/)
   * [perltidy](stow-perltidy/)
-  * [proxychains](stow-proxychains/)
   * [GNU screen](stow-screen/)
   * [vim](stow-vim/)
   * [wget](stow-wget/)
@@ -79,7 +78,7 @@ The dir [packages/](packages/) stores installed packages managed by various pack
 
 I'm writing them down here to make it easier to compare them between different machines and see if there are something missing.
 
-```shell
+```bash
 mkdir -p $HOME/Scripts/dotfiles/packages
 WHERE="$HOME/Scripts/dotfiles/packages"
 

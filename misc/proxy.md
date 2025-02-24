@@ -22,9 +22,6 @@ WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 # Set proxy environment variables
 export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890" HTTP_PROXY="http://${WINDOWS_HOST}:7890" HTTPS_PROXY="http://${WINDOWS_HOST}:7890" RSYNC_PROXY="${WINDOWS_HOST}:7890"
 
-# Optional: Update proxychains configuration
-# sed -Ei "s/^socks5.+$/socks5 ${WINDOWS_HOST} 7890/" ~/.proxychains/proxychains.conf
-
 ```
 
 The following may be needed

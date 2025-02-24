@@ -231,7 +231,6 @@ poppler-qt5
 popt
 proj
 proj@7
-proxychains-ng
 pulseaudio
 pup
 pv

@@ -119,7 +119,6 @@ brew install screen stow htop parallel pigz
 brew install tree pv
 brew install jq jid pup
 brew install datamash miller tsv-utils
-brew install proxychains-ng
 
 brew install bat tealdeer # exa tiv
 brew install hyperfine ripgrep tokei
