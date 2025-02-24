@@ -31,7 +31,7 @@ pip3 install -i ${PYPI_MIRROR} biopython bcbio-gff
 
 pip3 install -i ${PYPI_MIRROR} Circle-Map cutadapt importlib-metadata
 
-pip3 install -i ${PYPI_MIRROR} deeptools
+pip3 install -i ${PYPI_MIRROR} deeptools DendroPy ete3
 
 
 # poetry can search packages
