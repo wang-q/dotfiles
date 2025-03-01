@@ -63,3 +63,5 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/share/Python/bin:$PATH"
 
 . "$HOME/.cargo/env"
+# .cbp
+export PATH="$HOME/.cbp/bin:$PATH"
