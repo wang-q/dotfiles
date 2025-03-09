@@ -7,7 +7,7 @@ if [[ $(uname) == 'Darwin' ]]; then
     # Python itself
     brew install pkg-config
     brew install mpdecimal
-    brew install openssl@1.1
+    brew install openssl@3
     brew install sqlite
     brew install xz
 
@@ -42,7 +42,7 @@ if [[ $(uname) == 'Darwin' ]]; then
         --prefix=$HOME/share/Python \
         --enable-optimizations \
         --enable-ipv6 \
-        --with-openssl=$(brew --prefix openssl@1.1) \
+        --with-openssl=$(brew --prefix openssl@3) \
         --enable-loadable-sqlite-extensions \
         --with-lto
 
