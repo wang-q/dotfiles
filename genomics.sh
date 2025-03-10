@@ -6,23 +6,27 @@
 #curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/install_dep.sh | bash
 
 echo "====> Genomics related tools <===="
-cbp install clustalo muscle spoa trimal
-cbp install lastz diamond paml
-cbp install iqtree2 raxml-ng phylip newick-utils aster
-cbp install bwa
-cbp install bcalm
-cbp install minimap2 miniprot
-cbp install mash
-cbp install hmmer hmmer2
-cbp install trf
-cbp install fastqc picard
-cbp install blast sratoolkit
+cbp install clustalo muscle spoa trimal # alignments
+cbp install lastz mummer # genomes
+cbp install diamond
+cbp install iqtree2 raxml-ng phylip newick-utils # phylogeny
+cbp install aster paml # evolution
+cbp install sickle # short reads trimming
+cbp install bwa # short reads mapping
+cbp install bcalm # unitigs
+cbp install minimap2 miniprot # Heng Li
+cbp install mash # ANI
+cbp install hmmer hmmer2 # domains
+cbp install mmseqs # clustering
+cbp install trf # repeats
+cbp install dazzdb daligner merquryfk fastga fastk # thegenemyers
+cbp install fastqc picard # java
+cbp install blast sratoolkit # ncbi
 
 cbp install faops multiz
 cbp install intspan
 
 brew tap brewsci/bio
-brew tap brewsci/science
 
 brew install mafft
 brew install fasttree
