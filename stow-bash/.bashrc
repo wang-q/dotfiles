@@ -32,15 +32,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # for headless chrome
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
-# mongodbbin
-export PATH="$HOME/share/mongodb/bin:$PATH"
-
-# mysqlbin
-export PATH="$HOME/share/mysql/bin:$PATH"
-
-# sqlite
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-
 # USTC mirror of Homebrew bottles
 export HOMEBREW_NO_ANALYTICS=1
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -57,11 +48,10 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/share/Perl/bin:$PATH"
 
 # R_42_PATH
-export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/share/R/bin:$PATH"
 
 # PYTHON_310_PATH
 export PATH="$HOME/share/Python/bin:$PATH"
 
-. "$HOME/.cargo/env"
 # .cbp
 export PATH="$HOME/.cbp/bin:$PATH"
