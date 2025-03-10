@@ -10,10 +10,10 @@ cbp install clustalo muscle spoa trimal # alignments
 cbp install lastz mummer # genomes
 cbp install diamond
 cbp install iqtree2 raxml-ng phylip newick-utils # phylogeny
-cbp install aster paml # evolution
+cbp install aster paml consel # evolution
 cbp install sickle # short reads trimming
 cbp install bwa # short reads mapping
-cbp install bcalm # unitigs
+cbp install bcalm bifrost # unitigs
 cbp install minimap2 miniprot # Heng Li
 cbp install mash # ANI
 cbp install hmmer hmmer2 # domains
