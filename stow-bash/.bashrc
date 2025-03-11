@@ -57,11 +57,12 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/share/Perl/bin:$PATH"
 
 # R_42_PATH
-export PATH="/usr/local/bin:$PATH"
 
 # PYTHON_310_PATH
 export PATH="$HOME/share/Python/bin:$PATH"
 
 . "$HOME/.cargo/env"
-# .cbp
+
+# .cbp start
 export PATH="$HOME/.cbp/bin:$PATH"
+# .cbp end

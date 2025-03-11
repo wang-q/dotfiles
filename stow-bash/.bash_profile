@@ -4,5 +4,7 @@
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
-# .cbp
+
+# .cbp start
 export PATH="$HOME/.cbp/bin:$PATH"
+# .cbp end
