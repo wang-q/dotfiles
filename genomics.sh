@@ -1,50 +1,56 @@
 #!/usr/bin/env bash
 
-echo "====> Building Genomics related tools <===="
-
-echo "==> Anchr"
 # TODO: superreads can't find `jellyfish/circular_buffer.hpp`
 #   `include/jellyfish-2.2.4/`
 
 #curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/install_dep.sh | bash
 
-echo "==> Install bioinformatics softwares"
-brew tap brewsci/bio
-brew tap brewsci/science
+echo "====> Genomics related tools <===="
+cbp install clustalo muscle spoa trimal # alignments
+cbp install lastz mummer # genomes
+cbp install diamond
+cbp install iqtree2 raxml-ng phylip newick-utils # phylogeny
+cbp install aster paml consel # evolution
+cbp install sickle # short reads trimming
+cbp install bwa # short reads mapping
+cbp install bcalm bifrost # unitigs
+cbp install minimap2 miniprot # Heng Li
+cbp install mash # ANI
+cbp install hmmer hmmer2 # domains
+cbp install mmseqs # clustering
+cbp install trf # repeats
+cbp install dazzdb daligner merquryfk fastga fastk # thegenemyers
+cbp install fastqc picard # java
+cbp install blast sratoolkit # ncbi
 
-brew install clustal-w mafft muscle trimal
-brew install lastz diamond paml fasttree iqtree # raxml
-brew install fastani mash
-brew install raxml --without-open-mpi
-brew install --force-bottle newick-utils
-brew install fastqc # kat
-brew install bowtie bowtie2 bwa
-brew install samtools picard-tools
+cbp install faops multiz
+cbp install intspan
+
+brew tap brewsci/bio
+
+brew install mafft
+brew install fasttree
+brew install fastani
+brew install bowtie bowtie2
+brew install samtools
 brew install stringtie hisat2 # tophat cufflinks
-brew install seqtk minimap2 minigraph # gfatools
+brew install seqtk # gfatools
 brew install genometools # igvtools
 brew install --build-from-source snp-sites # macOS bottles broken
 brew install bcftools
 
 brew install edirect
-brew install sratoolkit
 
 # less used
 brew install augustus prodigal prokka
-brew install megahit spades sga
+brew install spades sga
 brew install canu
 brew install quast --HEAD
 brew install ntcard
 brew install gatk freebayes
 
-# brew unlink proj
-brew install --force-bottle blast
-
 echo "==> Custom tap"
 brew tap wang-q/tap
-brew install faops multiz sparsemem intspan
-# brew install multiz --cc=gcc
-# brew install jrunlist jrange
 
 echo "==> circos"
 brew install wang-q/tap/circos@0.69.9
