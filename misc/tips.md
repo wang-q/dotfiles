@@ -31,7 +31,7 @@ screen -S op -p 3 -X stuff "cd $HOME/data/\n"
 # screen -S op -x -X screen mysqld_safe
 
 # linux, v2ray 5
-screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
+# screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
 
 # mac, v2ray 4
 # screen -S op -x -X screen v2ray -config ~/config.json
@@ -77,7 +77,7 @@ Ideas from this
 * Status of all repos
 
 ```shell
-find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" |
+find ~/Scripts -mindepth 1 -maxdepth 3 -type d -name ".git" |
     sort |
     parallel -r -k -j 1 "echo {//}; git -C {//} status; echo ===="
 
@@ -86,7 +86,7 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" |
 * Only show repos needing attentions
 
 ```bash
-find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" |
+find ~/Scripts -mindepth 1 -maxdepth 3 -type d -name ".git" |
     sort |
     parallel -r -k -j 1 "echo {//}; git -C {//} status; echo ====" |
     perl -e '
@@ -101,13 +101,6 @@ find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" |
         print "\n==> Untrack\n";
         print for grep {/Untracked files/} @sections;
     '
-
-```
-
-## `brew update` failed
-
-```shell
- brew update-reset
 
 ```
 
@@ -255,7 +248,7 @@ foreach ($file in $videoFiles) {
 
 ## 中英文中间加空格
 
-```perl5
+```perl
 m/[\u4e00-\u9fa5]/; # 中文
 
 s/([\u4e00-\u9fa5])([\w$\\}])/$1 $2/g;
