@@ -41,7 +41,9 @@ New-NetFirewallRule -DisplayName "WSL" -Direction Inbound -InterfaceAlias "vEthe
 # Set proxy environment variables for Clash
 export ALL_PROXY=socks5://127.0.0.1:7890 \
        HTTPS_PROXY=http://127.0.0.1:7890 \
+       https_proxy=http://127.0.0.1:7890 \
        HTTP_PROXY=http://127.0.0.1:7890 \
+       http_proxy=http://127.0.0.1:7890 \
        RSYNC_PROXY=127.0.0.1:7890
 
 # Test proxy connection
