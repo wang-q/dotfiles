@@ -9,11 +9,12 @@ echo "====> Genomics related tools <===="
 cbp install clustalo muscle spoa trimal # alignments
 cbp install lastz mummer # genomes
 cbp install diamond
-cbp install iqtree2 raxml-ng phylip newick-utils # phylogeny trees
+cbp install fasttree iqtree2 raxml-ng phylip newick-utils # phylogeny trees
 cbp install aster paml consel # evolution
-cbp install sickle # short reads trimming
+cbp install fastqc sickle # fastq
 cbp install bwa bowtie2 # short reads mapping
-cbp install freebayes bcftools # vcf
+cbp install picard samtools # bam
+cbp install bcftools freebayes # vcf
 cbp install bcalm bifrost # unitigs
 cbp install minimap2 miniprot # Heng Li
 cbp install mash # ANI
@@ -21,7 +22,6 @@ cbp install hmmer hmmer2 # domains
 cbp install mmseqs # clustering
 cbp install trf # repeats
 cbp install dazzdb daligner merquryfk fastga fastk # thegenemyers
-cbp install fastqc picard # java
 cbp install blast sratoolkit # ncbi
 
 cbp install faops multiz
@@ -30,9 +30,7 @@ cbp install intspan
 brew tap brewsci/bio
 
 brew install mafft
-brew install fasttree
 brew install fastani
-brew install samtools
 brew install stringtie hisat2 # tophat cufflinks
 brew install seqtk # gfatools
 brew install genometools # igvtools
