@@ -58,3 +58,8 @@ export PATH="$HOME/share/Python/bin:$PATH"
 # .cbp start
 export PATH="$HOME/.cbp/bin:$PATH"
 # .cbp end
+
+# ZVM
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$PATH:$HOME/.zvm/bin"
+export PATH="$PATH:$ZVM_INSTALL/"
