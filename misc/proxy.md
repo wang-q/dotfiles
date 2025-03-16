@@ -50,6 +50,6 @@ export ALL_PROXY=socks5://127.0.0.1:7890 \
 curl -I https://www.google.com
 
 # Unset proxy
-unset ALL_PROXY HTTPS_PROXY HTTP_PROXY RSYNC_PROXY
+unset ALL_PROXY HTTPS_PROXY https_proxy HTTP_PROXY http_proxy RSYNC_PROXY
 
 ```

@@ -80,4 +80,4 @@ source ~/.bashrc
 ALL_PROXY= ~/share/Python/bin/python3 -m pip install \
     --trusted-host mirror.nju.edu.cn \
     -i http://mirror.nju.edu.cn/pypi/web/simple/ \
-    --upgrade pip setuptools wheel pysocks meson
+    --upgrade pip setuptools wheel
