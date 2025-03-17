@@ -13,7 +13,7 @@ NO_TEST=--notest
 
 # basic modules
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Archive::Extract Config::Tiny File::Find::Rule Getopt::Long::Descriptive JSON JSON::XS Text::CSV_XS YAML::Syck
-cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST App::Ack App::Cmd DBI MCE Moo Moose Perl::Tidy Template WWW::Mechanize XML::Parser
+cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST App::Cmd DBI MCE Moo Moose Perl::Tidy Template XML::Parser
 
 # RepeatMasker need this
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST Text::Soundex
@@ -57,7 +57,7 @@ cpanm --mirror-only --mirror $CPAN_MIRROR --notest MooX::Options MooseX::Storage
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST App::pmuninstall App::cpanoutdated Minilla Version::Next CPAN::Uploader
 
 # Others
-cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST DateTime::Format::Natural DBD::CSV String::Compare Sereal PerlIO::gzip
+cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST DateTime::Format::Natural DBD::CSV String::Compare PerlIO::gzip
 
 # AlignDB::*
 cpanm --mirror-only --mirror $CPAN_MIRROR $NO_TEST AlignDB::IntSpan AlignDB::Stopwatch
@@ -74,5 +74,5 @@ cpanm -nq https://github.com/wang-q/App-Egaz.git
 # Math
 # cpanm --mirror-only --mirror $CPAN_MIRROR --notest Math::Random::MT::Auto PDL Math::GSL
 
-# Statistics::R would be installed in `brew.sh`
+# Statistics::R
 # DBD::mysql would be installed in `mysql8.sh`
