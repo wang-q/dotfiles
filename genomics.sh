@@ -16,41 +16,41 @@ cbp install bwa bowtie2 # short reads mapping
 cbp install picard samtools # bam
 cbp install bcftools freebayes # vcf
 cbp install bcalm bifrost # unitigs
-cbp install minimap2 miniprot # Heng Li
+cbp install stringtie # rna-seq
+cbp install prodigal # gene prediction
 cbp install mash # ANI
-cbp install hmmer hmmer2 # domains
+cbp install hmmer easel hmmer2 # domains
 cbp install mmseqs # clustering
 cbp install trf # repeats
+cbp install minimap2 miniprot # Heng Li
 cbp install dazzdb daligner merquryfk fastga fastk # thegenemyers
 cbp install blast sratoolkit # ncbi
 
 cbp install faops multiz
 cbp install intspan
 
+# uv
+uv pip install --system quast
+
+# brew
 brew tap brewsci/bio
 
 brew install mafft
 brew install fastani
-brew install stringtie hisat2 # tophat cufflinks
+brew install hisat2 # tophat cufflinks
 brew install seqtk # gfatools
 brew install genometools # igvtools
 brew install --build-from-source snp-sites # macOS bottles broken
 
-brew install edirect
-
 # less used
-brew install augustus prodigal prokka
+brew install augustus prokka
 brew install spades sga
 brew install canu
-brew install quast --HEAD
 brew install ntcard
 brew install gatk
 
 echo "==> circos"
 brew install wang-q/tap/circos@0.69.9
-
-echo "==> RepeatMasker"
-brew install easel
 
 #echo "==> Config repeatmasker"
 #wget -N -P /tmp https://github.com/egateam/egavm/releases/download/20170907/repeatmaskerlibraries-20140131.tar.gz
