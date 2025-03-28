@@ -3,18 +3,17 @@
 # TODO: superreads can't find `jellyfish/circular_buffer.hpp`
 #   `include/jellyfish-2.2.4/`
 
-#curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/install_dep.sh | bash
-
-echo "====> Genomics related tools <===="
-cbp install clustalo muscle spoa trimal # alignments
-cbp install lastz mummer # genomes
+echo "==> Genomics related tools"
+cbp install clustalo mafft muscle spoa trimal # alignments
+cbp install lastz multiz mummer # genomes
 cbp install diamond
+cbp install faops seqtk
 cbp install fasttree iqtree2 raxml-ng phylip newick-utils # phylogeny trees
 cbp install aster paml consel # evolution
 cbp install fastqc sickle # fastq
 cbp install bwa bowtie2 # short reads mapping
 cbp install picard samtools # bam
-cbp install bcftools freebayes # vcf
+cbp install bcftools freebayes snp-sites # vcf
 cbp install bcalm bifrost # unitigs
 cbp install stringtie # rna-seq
 cbp install prodigal # gene prediction
@@ -26,7 +25,6 @@ cbp install minimap2 miniprot # Heng Li
 cbp install dazzdb daligner merquryfk fastga fastk # thegenemyers
 cbp install blast sratoolkit # ncbi
 
-cbp install faops multiz
 cbp install intspan
 
 # uv
@@ -35,16 +33,13 @@ uv pip install --system quast
 # brew
 brew tap brewsci/bio
 
-brew install mafft
 brew install fastani
-brew install hisat2 # tophat cufflinks
-brew install seqtk # gfatools
-brew install genometools # igvtools
-brew install --build-from-source snp-sites # macOS bottles broken
+brew install hisat2
+brew install genometools
 
 # less used
 brew install augustus prokka
-brew install spades sga
+brew install spades
 brew install canu
 brew install ntcard
 brew install gatk
