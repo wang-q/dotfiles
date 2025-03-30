@@ -12,7 +12,7 @@ cbp install fasttree iqtree2 raxml-ng phylip newick-utils # phylogeny trees
 cbp install aster paml consel # evolution
 cbp install fastqc sickle # fastq
 cbp install bwa bowtie2 # short reads mapping
-cbp install picard samtools # bam
+cbp install picard samtools bedtools # bam
 cbp install bcftools freebayes snp-sites # vcf
 cbp install bcalm bifrost # unitigs
 cbp install stringtie # rna-seq
@@ -34,7 +34,7 @@ uv pip install --system quast
 brew tap brewsci/bio
 
 brew install fastani
-brew install hisat2
+brew install hisat2 bbtools
 brew install genometools
 
 # less used
