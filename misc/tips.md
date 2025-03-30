@@ -38,26 +38,6 @@ screen -S op -p 3 -X stuff "cd $HOME/data/\n"
 
 ```
 
-## v2ray and vmess
-
-```shell script
-# brew install v2ray
-
-aria2c -c https://github.com/v2fly/v2ray-core/releases/download/v5.0.8/v2ray-linux-64.zip
-
-curl -LO https://raw.githubusercontent.com/boypt/vmess2json/master/vmess2json.py
-
-export vmess_url=vmess://your_secret_url
-python3 vmess2json.py --inbounds socks:1080 ${vmess_url} > config.json
-
-v2ray run -config config.json &
-
-export ALL_PROXY=socks5h://localhost:1080
-
-curl google.com
-
-```
-
 ## 滚轮
 
 Disable mouse scrolling through terminal command history on Mac terminal
@@ -123,20 +103,6 @@ cat dirs.tmp \
 cloc --list-file files.tmp --exclude-lang HTML,YAML,RobotFramework
 
 rm dirs.tmp files.tmp
-
-```
-
-## tokei
-
-```shell
-git ls-files |
-    tokei |
-    grep -v '==' |
-    grep -v '\-\-' |
-    grep -v ' (' |
-    grep -v ' |' |
-    perl -nlp -e 's/ {2,}/\t/g' |
-    mlr --itsv --omd cat
 
 ```
 
@@ -562,14 +528,6 @@ Inkscape 支持标准输入输出, 但要使用 `/dev/stdout` 来代替更常用
 
 > Some systems provide the pathnames /dev/stdin, /dev/stdout, and /dev/stderr. These pathnames are
 > equivalent to /dev/fd/0, /dev/fd/1, and /dev/fd/2.
-
-## librsvg
-
-简单的 SVG 可以使用 `rsvg-converter` 来转换
-
-```bash
-rsvg-convert ~/Scripts/alignDB/doc/alignDB.svg -z 2 -f png -o ~/Scripts/alignDB/doc/alignDB.png
-```
 
 # Ubuntu
 
