@@ -8,22 +8,8 @@ rm -f $(brew --cache)/*.incomplete
 
 # Some building tools
 echo "==> Building tools"
-brew install autoconf libtool automake # autogen
-brew install cmake
+brew install autoconf libtool automake
 brew install bison flex
-
-# java
-echo "==> Install Java"
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install openjdk
-else
-    brew install openjdk
-    # brew link openjdk --force
-fi
-brew install ant maven
-
-# other programming languages
-brew install lua node
 
 # downloading tools
 brew install aria2 wget
@@ -32,8 +18,7 @@ brew install aria2 wget
 brew install gnu-sed gnu-tar
 
 # other tools
-brew install screen stow htop parallel
-brew install pup
+brew install screen htop
 
 # large packages
 if [[ "$OSTYPE" == "darwin"* ]]; then
