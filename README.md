@@ -11,10 +11,10 @@
 * `bash install.sh`
   * [bash](stow-bash/)
   * [git](stow-git/)
-  * [perltidy](stow-perltidy/)
-  * [GNU screen](stow-screen/)
+  * [tmux](stow-tmux/)
   * [vim](stow-vim/)
   * [wget](stow-wget/)
+  * [perltidy](stow-perltidy/)
 
 ## macOS and Ubuntu
 

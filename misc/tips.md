@@ -1,40 +1,18 @@
 # Common
 
-## 用 screen 启动几个常用后台程序
+## 用 tmux 启动常用后台程序和工作目录
 
 ```bash
-screen -wipe # Remove dead screens
+tmux new-session -d -s op -n htop htop
 
-# window 0
-screen -dmS op htop # Start a screen named `op` and run `htop`
+tmux new-window -t op -n Scripts 'cd ~/Scripts/ && bash'
+tmux new-window -t op -n data 'cd ~/share/ && bash'
+tmux new-window -t op -n download 'cd ~/share/ && exec bash -l'
 
-# Create two or three windows manually by C-a c
-screen -S op -p 1 -X title "Scripts"
-screen -S op -p 1 -X stuff "cd $HOME/Scripts/\n"
+tmux send-keys -t op:3 'echo "hello"' Enter
+tmux send-keys -t op:download 'echo "hello, again"' Enter
 
-screen -S op -p 2 -X title "data"
-screen -S op -p 2 -X stuff "cd $HOME/data/\n"
-
-screen -S op -p 3 -X title "download"
-screen -S op -p 3 -X stuff "cd $HOME/data/\n"
-
-# The following command will create a window without colored Bash prompts.
-# screen -S op -x -X eval "chdir $HOME/Scripts" screen
-
-# screen -S op -x -X screen perl -MPod::POM::Web -e "server 8088"
-# rm ~/share/mongodb/data/mongod.lock
-# screen -S op -x -X screen ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
-
-# screen -S op -x -X screen numactl --interleave=all ~/share/mongodb/bin/mongod --config ~/share/mongodb/mongod.cnf
-
-# screen -S op -x -X screen redis-server
-# screen -S op -x -X screen mysqld_safe
-
-# linux, v2ray 5
-# screen -S op -x -X screen ~/v2ray/v2ray run -config ~/config.json
-
-# mac, v2ray 4
-# screen -S op -x -X screen v2ray -config ~/config.json
+tmux a
 
 ```
 
