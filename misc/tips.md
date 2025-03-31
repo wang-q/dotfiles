@@ -9,9 +9,11 @@ tmux new-window -t op -n Scripts 'cd ~/Scripts/ && bash'
 tmux new-window -t op -n data 'cd ~/data/ && bash'
 tmux new-window -t op -n download 'cd ~/data/ && exec bash -l'
 
-tmux send-keys -t op:3 'echo "hello"' Enter
-tmux send-keys -t op:download 'echo "hello, again"' Enter
+tmux send-keys -t op:2 'echo "hello"' Enter
+tmux send-keys -t op:Scripts 'echo "hello, again"' Enter
 
+# common tmux commands
+tmux source-file ~/.tmux.conf
 tmux a
 
 ```
