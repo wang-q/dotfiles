@@ -25,10 +25,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install gpg2
 fi
 
-hash gnuplot 2>/dev/null || {
-    brew install gnuplot
-}
-
 hash convert 2>/dev/null || {
     brew install imagemagick
 }

@@ -6,5 +6,8 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # .cbp start
-export PATH="$HOME/.cbp/bin:$PATH"
+export PATH="/Users/wangq/.cbp/bin:$PATH"
 # .cbp end
+
+
+export PATH="$HOME/.elan/bin:$PATH"

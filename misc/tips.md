@@ -6,8 +6,8 @@
 tmux new-session -d -s op -n htop htop
 
 tmux new-window -t op -n Scripts 'cd ~/Scripts/ && bash'
-tmux new-window -t op -n data 'cd ~/share/ && bash'
-tmux new-window -t op -n download 'cd ~/share/ && exec bash -l'
+tmux new-window -t op -n data 'cd ~/data/ && bash'
+tmux new-window -t op -n download 'cd ~/data/ && exec bash -l'
 
 tmux send-keys -t op:3 'echo "hello"' Enter
 tmux send-keys -t op:download 'echo "hello, again"' Enter
