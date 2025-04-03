@@ -129,11 +129,11 @@ parallel -j 1 -k --line-buffer '
         numpy pandas scipy plotly \
         gmpy2 colorlover bokeh
 
-brew install prodigal
-brew install brewsci/bio/aragorn
+cbp install aragorn prodigal
+cbp install mmseqs2
+cbp install mafft
+
 brew install brewsci/bio/infernal
-brew install mmseqs2
-brew install mafft
 
 # pip3 install git+https://github.com/labgem/netsyn.git
 
