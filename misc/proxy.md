@@ -20,7 +20,12 @@ $ENV:ALL_PROXY='socks5h://localhost:7890'; $ENV:HTTP_PROXY='http://localhost:789
 WINDOWS_HOST=$(ip --json route show default | jq -re '.[].gateway')
 
 # Set proxy environment variables
-export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890" HTTP_PROXY="http://${WINDOWS_HOST}:7890" HTTPS_PROXY="http://${WINDOWS_HOST}:7890" RSYNC_PROXY="${WINDOWS_HOST}:7890"
+export ALL_PROXY=socks5://${WINDOWS_HOST}:7890 \
+       HTTPS_PROXY=http://${WINDOWS_HOST}:7890 \
+       https_proxy=http://${WINDOWS_HOST}:7890 \
+       HTTP_PROXY=http://${WINDOWS_HOST}:7890 \
+       http_proxy=http:/${WINDOWS_HOST}:7890 \
+       RSYNC_PROXY=${WINDOWS_HOST}:7890
 
 ```
 
