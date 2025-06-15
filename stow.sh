@@ -38,7 +38,7 @@ cd "${BASE_DIR}" || exit
 mkdir -p ~/.config
 
 log_warn "Restow dotfiles"
-DIRS=( stow-git stow-latexmk stow-tmux stow-wget stow-vim stow-perltidy )
+DIRS=( stow-git stow-tmux stow-vim stow-wget stow-latexmk stow-perltidy )
 
 for d in ${DIRS[@]}; do
     log_info "${d}"

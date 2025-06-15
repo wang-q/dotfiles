@@ -8,7 +8,7 @@
 
 ## Configurations managed by GNU stow
 
-* `bash install.sh`
+* `bash stow.sh`
   * [bash](stow-bash/)
   * [git](stow-git/)
   * [tmux](stow-tmux/)
