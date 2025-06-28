@@ -13,8 +13,7 @@
   * [git](stow-git/)
   * [tmux](stow-tmux/)
   * [vim](stow-vim/)
-  * [wget](stow-wget/)
-  * [perltidy](stow-perltidy/)
+  * ...
 
 ## macOS and Ubuntu
 
@@ -23,7 +22,6 @@
 
 * [`perl`](perl/)
   * `bash perl/install.sh`
-  * `bash perl/ensembl.sh`
 
 * [`python`](python/)
   * `bash python/install.sh`
