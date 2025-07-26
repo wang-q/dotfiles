@@ -3,7 +3,7 @@
 ## 用 tmux 启动常用后台程序和工作目录
 
 ```bash
-tmux new-session -d -s op -n htop htop
+tmux new-session -d -s op -n zenith zenith
 
 tmux new-window -t op -n Scripts 'cd ~/Scripts/ && bash'
 tmux new-window -t op -n data 'cd ~/data/ && bash'
