@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: superreads can't find `jellyfish/circular_buffer.hpp`
-#   `include/jellyfish-2.2.4/`
-
 echo "==> Genomics related tools"
 cbp install clustalo mafft muscle spoa trimal # alignments
 cbp install lastz multiz mummer # genomes
@@ -25,6 +22,10 @@ cbp install minimap2 miniprot # Heng Li
 cbp install dazzdb daligner merquryfk fastga fastk # thegenemyers
 cbp install blast sratoolkit # ncbi
 
+cbp install bbtools
+cbp install spades
+cbp install gatk
+
 cbp install intspan
 
 # uv
@@ -34,15 +35,13 @@ uv pip install --system quast
 brew tap brewsci/bio
 
 brew install fastani
-brew install hisat2 bbtools
+brew install hisat2
 brew install genometools
 
 # less used
 brew install augustus prokka
-brew install spades
 brew install canu
 brew install ntcard
-brew install gatk
 
 echo "==> circos"
 brew install wang-q/tap/circos@0.69.9
