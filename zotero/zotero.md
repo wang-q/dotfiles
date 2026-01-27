@@ -50,7 +50,7 @@ curl -LO https://github.com/wileyyugioh/zotmoov/releases/download/1.2.5/zotmoov-
 ```
 
 * `Edit -> Settings -> Advanced`
-    * `Linked Attachment Base Directory` 设置到你要放文献的目录, 我放到同步网盘里 `~/OneDrive - 南京大学/zotero`
+    * `Linked Attachment Base Directory` 设置到你要放文献的目录, 我放到同步网盘里 `~/iCloudDrive/zotero`
     * `Data Directory Location` 不用管, 由自动同步处理
 
 ## 导入 PDF
