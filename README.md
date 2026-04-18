@@ -12,9 +12,6 @@
 
 ## macOS and Ubuntu
 
-* [`brew.sh`](brew.sh)
-  * Install CLI apps via Homebrew/Linuxbrew
-
 * [`perl`](perl/)
   * `bash perl/install.sh`
 
@@ -48,11 +45,11 @@
 
 ## macOS only
 
-* [`macos.sh`](macos.sh)
+* [`macos.sh`](macos/macos.sh)
   * Extracted from
     [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
 
-* [`brewcask.sh`](brewcask.sh)
+* [`brewcask.sh`](macos/brewcask.sh)
   * Install GUI apps via Homebrew Cask
 
 ## Packages
