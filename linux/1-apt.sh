@@ -14,10 +14,10 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install build-essential curl file git
 sudo apt-get -y install pkg-config libbz2-dev zlib1g-dev liblzma-dev libzstd-dev libexpat1-dev unzip
-# sudo apt-get -y install libcurl4-openssl-dev libncurses-dev
 
 echo "==> Install other software"
-sudo apt-get -y install aptitude net-tools parallel vim xsltproc numactl pigz plocate fontconfig fontconfig-config
+sudo apt-get -y install aptitude net-tools parallel vim xsltproc numactl pigz fontconfig fontconfig-config
+sudo apt-get -y install plocate
 
 echo "==> Install develop libraries"
 # sudo apt-get -y install libreadline-dev libedit-dev
