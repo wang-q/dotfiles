@@ -99,6 +99,16 @@ bash $HOME/Scripts/dotfiles/r/install.sh
 
 ```
 
+## cbp
+
+```bash script
+curl -LO https://github.com/wang-q/cbp/releases/latest/download/cbp.linux
+chmod +x cbp.linux
+./cbp.linux init --dev
+source ~/.bashrc
+
+```
+
 ## Bioinformatics Apps
 
 ```shell script
