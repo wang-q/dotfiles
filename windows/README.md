@@ -441,3 +441,18 @@ cbp install -t font source-han-serif
 cbp install -t font lxgw-wenkai
 
 ```
+
+## 30 Rounds of R15
+
+<https://www.zhihu.com/question/384773491>
+
+Save the following code as a batch file in the Cinebench R15 folder.
+
+```bat
+for /l %%x in (1, 1, 30) do (
+"CINEBENCH Windows 64 Bit.exe" -cb_cpux >> "cpu_output.txt"
+)
+
+```
+
+[Convert](https://api.1996wz.cn/html/test) the `cpu_output.txt` file.
