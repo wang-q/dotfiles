@@ -1,4 +1,4 @@
-# Ubuntu 24.04
+# Ubuntu 26.04
 
 ## Distro
 
@@ -6,34 +6,34 @@ https://learn.microsoft.com/en-us/windows/wsl/use-custom-distro
 
 
 ```powershell
-# Pull the Ubuntu 24.04 image from Docker Hub
-docker pull ubuntu:24.04
+# Pull the Ubuntu 26.04 image from Docker Hub
+docker pull ubuntu:26.04
 
-# Run a temporary Ubuntu 24.04 container and execute 'ls /' to list the root directory contents
-docker run -t --name wsl_export ubuntu:24.04 ls /
+# Run a temporary Ubuntu 26.04 container and execute 'ls /' to list the root directory contents
+docker run -t --name wsl_export ubuntu:26.04 ls /
 
 # Create a directory to store the exported container file
 mkdir -p $HOME\VM
 
 # Export the specified container and save it as a tar file
-docker export wsl_export > $HOME\VM\noble.tar
+docker export wsl_export > $HOME\VM\resolute.tar
 
 docker rm wsl_export
 
-# Import the exported container tar file into WSL, creating a WSL instance named noble
-wsl --import noble $HOME\VM\noble $HOME\VM\noble.tar
+# Import the exported container tar file into WSL, creating a WSL instance named resolute
+wsl --import resolute $HOME\VM\resolute $HOME\VM\resolute.tar
 
 # List all WSL instances and their version information
 wsl -l -v
 
-# Start the WSL instance named noble
-wsl -d noble
+# Start the WSL instance named resolute
+wsl -d resolute
 
 # To refresh the wsl.conf configuration file (if needed)
-# Terminate the noble instance to achieve this
-# wsl --terminate noble
+# Terminate the resolute instance to achieve this
+# wsl --terminate resolute
 
-# wsl --unregister noble
+# wsl --unregister resolute --force
 
 ```
 
