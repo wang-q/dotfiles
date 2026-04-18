@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# check gnu stow is installed
-hash stow 2>/dev/null || {
-    echo >&2 "GNU stow is required but it's not installed.";
-    echo >&2 "Install with homebrew: brew install stow";
-    exit 1;
-}
-
 # colors in term
 # http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 GREEN=
@@ -54,7 +47,3 @@ cbp dot -a cbp_dot/dot_tmux.conf
 
 log_info "wget"
 cbp dot -a cbp_dot/dot_wgetrc
-
-# don't ruin Ubuntu
-log_info "stwo-bash"
-stow -t "${HOME}" stow-bash -v 2
