@@ -55,10 +55,6 @@ cbp dot -a cbp_dot/dot_tmux.conf
 log_info "wget"
 cbp dot -a cbp_dot/dot_wgetrc
 
-log_info "vim"
-# cargo run --bin cbp dot ~/.vim ~/.vimrc --tar vim.tar.gz
-cbp dot -a cbp_dot_tar/vim.tar.gz
-
 # don't ruin Ubuntu
 log_info "stwo-bash"
 stow -t "${HOME}" stow-bash -v 2
