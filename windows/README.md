@@ -3,30 +3,28 @@
 This document provides step-by-step instructions for setting up a new Windows 11 system, including
 essential configurations, development environment setup, and recommended software installations.
 
-<!-- TOC -->
-- [Setting-up scripts for Windows 11](#setting-up-scripts-for-windows-11)
-  - [Get ISO](#get-iso)
-  - [Install, active and update Windows](#install-active-and-update-windows)
-  - [Enable some optional features of Windows](#enable-some-optional-features-of-windows)
-  - [WSL 2](#wsl-2)
-  - [Ubuntu 20.04](#ubuntu-2004)
-    - [`systemd`](#systemd)
-    - [Symlinks](#symlinks)
-  - [`winget` and `Windows Terminal`](#winget-and-windows-terminal)
-  - [Optional: Adjusting Windows](#optional-adjusting-windows)
-    - [Disable MPO](#disable-mpo)
-    - [Windows Defender exclusions](#windows-defender-exclusions)
-  - [Optional: Packages Managements](#optional-packages-managements)
-    - [Built-in Package Manager (winget)](#built-in-package-manager-winget)
-    - [Cross-platform Binary Package manager (cbp)](#cross-platform-binary-package-manager-cbp)
-    - [Alternative Package Managers](#alternative-package-managers)
-  - [Optional: Python](#optional-python)
-  - [Optional: Rust and C/C++](#optional-rust-and-cc)
-  - [Optional: sysinternals](#optional-sysinternals)
-  - [Optional: QuickLook Plugins](#optional-quicklook-plugins)
-  - [Optional: Fonts](#optional-fonts)
-  - [Directory Organization](#directory-organization)
-<!-- TOC -->
+[TOC levels=2-3]: # ""
+- [Get ISO](#get-iso)
+- [Install, active and update Windows](#install-active-and-update-windows)
+- [Enable some optional features of Windows](#enable-some-optional-features-of-windows)
+- [WSL 2](#wsl-2)
+- [Ubuntu 20.04](#ubuntu-2004)
+  - [`systemd`](#systemd)
+  - [Symlinks](#symlinks)
+- [`winget` and `Windows Terminal`](#winget-and-windows-terminal)
+- [Optional: Adjusting Windows](#optional-adjusting-windows)
+  - [Disable MPO](#disable-mpo)
+  - [Windows Defender exclusions](#windows-defender-exclusions)
+- [Optional: Packages Managements](#optional-packages-managements)
+  - [Built-in Package Manager (winget)](#built-in-package-manager-winget)
+  - [Cross-platform Binary Package manager (cbp)](#cross-platform-binary-package-manager-cbp)
+  - [Alternative Package Managers](#alternative-package-managers)
+- [Optional: Python](#optional-python)
+- [Optional: Rust and C/C++](#optional-rust-and-cc)
+- [Optional: sysinternals](#optional-sysinternals)
+- [Optional: QuickLook Plugins](#optional-quicklook-plugins)
+- [Optional: Fonts](#optional-fonts)
+- [Directory Organization](#directory-organization)
 
 
 Most commands in this document should be executed in `PowerShell`.
@@ -196,18 +194,6 @@ powershell.exe -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.c
 # Use default preset (recommended)
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "Setup-Windows.ps1"
 
-# Or with custom tweaks
-# powershell.exe -NoProfile -ExecutionPolicy Bypass -File "Setup-Windows.ps1" -Tweaks "DisableTelemetry,DisableAppSuggestions"
-
-# List all available tweaks
-# powershell.exe -NoProfile -ExecutionPolicy Bypass -File "Setup-Windows.ps1" -List
-```
-
-Or if you already have the repository cloned:
-
-```powershell
-cd ~/Scripts/windows/setup
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "Setup-Windows.ps1"
 ```
 
 Log in to the Microsoft Store and get updates from there.
@@ -288,11 +274,10 @@ winget install -s winget -e --id ByteDance.Trae
 
 # winget install -e --id Docker.DockerDesktop
 # winget install -e --id VMware.WorkstationPlayer
-# winget install -s winget -e --id Canonical.Multipass
 
 # utils
 winget install -s winget -e --id voidtools.Everything
-winget install -s msstore --accept-package-agreements Bandizip
+# winget install -s msstore --accept-package-agreements Bandizip
 # winget install -s msstore --accept-package-agreements NanaZip
 winget install -s msstore --accept-package-agreements Rufus # need v3.18 or higher
 winget install -s winget -e --id QL-Win.QuickLook
@@ -310,8 +295,6 @@ winget install --id RustDesk.RustDesk
 # winget install -s winget -e --id NetEase.CloudMusic
 winget install -s winget -e --id HandBrake.HandBrake
 winget install -s winget -e --id mpv.net
-#winget install -s msstore --accept-package-agreements "iQIYI Windows client app"
-# winget install -s winget -e --id IrfanSkiljan.IrfanView
 
 # apps
 # winget install -s winget -e --id Mozilla.Firefox
@@ -365,7 +348,7 @@ cbp remove fd           # remove package
 
 ### Alternative Package Managers
 
-* [scoop.md](setup/scoop.md):
+* [scoop.md](scoop.md):
   > Scoop is an installer.
   >
   > The goal of Scoop is to let you use Unix-y programs in a normal Windows environment.
@@ -377,11 +360,11 @@ cbp remove fd           # remove package
 ## Optional: Python
 
 The Microsoft Store version of Python has many permission restrictions.
-Download the Python Install Manager from the [official website](https://www.python.org/downloads/windows/) and install it.
+Download the *Python Install Manager* from the [official website](https://www.python.org/downloads/windows/) and install it.
 
 ## Optional: Rust and C/C++
 
-* [rust.md](setup/rust.md)
+* [rust.md](../rust/windows.md)
 
 ## Optional: sysinternals
 
@@ -458,9 +441,3 @@ cbp install -t font source-han-serif
 cbp install -t font lxgw-wenkai
 
 ```
-
-## Directory Organization
-
-* [`packer/`](packer/): Scripts for building a Windows 10 box for Parallels.
-
-* [`setup/`](setup/): Scripts for setting-up Windows.

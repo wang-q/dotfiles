@@ -32,8 +32,6 @@ scoop config aria2-enabled false
 scoop install gzip unzip grep
 scoop install sed
 
-scoop install pup
-
 # extra
 scoop install sqlitestudio
 

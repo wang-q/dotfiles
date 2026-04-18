@@ -1,4 +1,4 @@
-# My configuration files on macOS
+# My configuration files
 
 ![Screenshot of a terminal window](images/screen.png)
 
