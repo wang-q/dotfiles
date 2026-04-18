@@ -49,6 +49,8 @@ apt-get -y install sudo vim
 # ip ping ifconfig ps
 apt-get -y install iproute2 iputils-ping net-tools procps
 
+# systemd
+apt-get -y install systemd systemd-sysv
 ```
 
 ## Add user
@@ -64,6 +66,17 @@ echo -e "[user]\ndefault=$myUsername" >> /etc/wsl.conf
 echo -e "[interop]\nappendWindowsPath=false" >> /etc/wsl.conf
 
 passwd $myUsername
+
+# systemd
+echo -e "[boot]\nsystemd=true" >> /etc/wsl.conf
+
+```
+
+Restart the trixie instance
+
+```bash
+# Check if systemd is running, pid 1
+ps -p 1 -o comm=
 
 ```
 
