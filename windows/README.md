@@ -137,10 +137,6 @@ wsl -l -v
 
 ```
 
-### `systemd`
-
-https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/
-
 ### Symlinks
 
 * WSL: reduce the space occupied by virtual disks
@@ -153,6 +149,7 @@ rm -fr Script data
 ln -s /mnt/c/Users/wangq/Scripts/ ~/Scripts
 
 ln -s /mnt/d/data/ ~/data
+# ln -s /mnt/c/Users/wangq/data/ ~/data
 
 ```
 

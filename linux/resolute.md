@@ -15,6 +15,9 @@ docker run -t --name wsl_export ubuntu:26.04 ls /
 # Create a directory to store the exported container file
 mkdir -p $HOME\VM
 
+# Add VM directory to Windows Defender exclusions for better performance (elevates to Administrator)
+Start-Process powershell -ArgumentList "-Command Add-MpPreference -ExclusionPath '$HOME\VM'" -Verb RunAs -Wait
+
 # Export the specified container and save it as a tar file
 docker export wsl_export > $HOME\VM\resolute.tar
 
@@ -45,12 +48,25 @@ As `root`
 apt-get -y update
 apt-get -y upgrade
 
+# Pre-configure timezone to avoid interactive prompts
+apt-get -y install debconf-utils
+echo "tzdata tzdata/Areas select Asia" | debconf-set-selections
+echo "tzdata tzdata/Zones/Asia select Shanghai" | debconf-set-selections
+apt-get -y install tzdata
+
+# Install plocate for fast file searching; initialize DB early as the system is still minimal
+# It takes about 7 minutes to initialize the DB.
+# apt-get -y install plocate
+
+# Install sudo and vim
 apt-get -y install sudo vim
-# ip ping ifconfig ps
+
+# Network and process tools: ip, ping, ifconfig, ps
 apt-get -y install iproute2 iputils-ping net-tools procps
 
 # systemd
 apt-get -y install systemd systemd-sysv
+
 ```
 
 ## Add user
@@ -62,17 +78,17 @@ myUsername=wangq
 
 useradd -s /bin/bash -m -G sudo $myUsername
 
-echo -e "[user]\ndefault=$myUsername" >> /etc/wsl.conf
-echo -e "[interop]\nappendWindowsPath=false" >> /etc/wsl.conf
-
 passwd $myUsername
 
-# systemd
+# Set default user for WSL
+echo -e "[user]\ndefault=$myUsername" >> /etc/wsl.conf
+# Disable Windows PATH interop
+echo -e "[interop]\nappendWindowsPath=false" >> /etc/wsl.conf
+# Enable systemd
 echo -e "[boot]\nsystemd=true" >> /etc/wsl.conf
-
 ```
 
-Restart the trixie instance
+Restart the resolute instance
 
 ```bash
 # Check if systemd is running, pid 1
@@ -103,6 +119,17 @@ https://superuser.com/questions/1747549/alternative-to-ssh-copy-id-on-windows
 
 ```powershell
 type $HOME\.ssh\id_rsa.pub | ssh wangq@ser5 "cat >> .ssh/authorized_keys"
+
+```
+
+## deb-src and apt-rdepends
+
+```bash
+sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+sudo apt-get -y update
+
+sudo apt-get -y install apt-rdepends
+apt-rdepends --build-depends --print-state --follow=DEPEND gnuplot
 
 ```
 
@@ -185,6 +212,9 @@ sudo ufw reload
 ### Gnome shell
 
 ```bash
+# WSL
+# sudo apt -y install ubuntu-desktop-minimal
+
 # quicklook
 sudo apt -y install gnome-sushi
 

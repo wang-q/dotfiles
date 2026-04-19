@@ -17,7 +17,6 @@ sudo apt-get -y install pkg-config libbz2-dev zlib1g-dev liblzma-dev libzstd-dev
 
 echo "==> Install other software"
 sudo apt-get -y install aptitude net-tools parallel vim xsltproc numactl pigz fontconfig fontconfig-config
-sudo apt-get -y install plocate
 
 echo "==> Install develop libraries"
 # sudo apt-get -y install libreadline-dev libedit-dev
@@ -37,8 +36,8 @@ sudo apt-get -y install wamerican
 # echo "==> Install gtk3 related tools"
 # sudo apt-get -y install xvfb glade
 
-echo "==> Install graphics tools"
-sudo apt-get -y install gnuplot graphviz imagemagick
+# echo "==> Install graphics tools"
+# sudo apt-get -y install gnuplot graphviz imagemagick
 
 #echo "==> Install nautilus plugins"
 #sudo apt-get -y install nautilus-open-terminal nautilus-actions
