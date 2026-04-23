@@ -4,27 +4,27 @@ This document provides step-by-step instructions for setting up a new Windows 11
 essential configurations, development environment setup, and recommended software installations.
 
 [TOC levels=2-3]: # ""
-- [Get ISO](#get-iso)
-- [Install, active and update Windows](#install-active-and-update-windows)
-- [Enable some optional features of Windows](#enable-some-optional-features-of-windows)
-- [WSL 2](#wsl-2)
-- [Ubuntu 20.04](#ubuntu-2004)
-  - [`systemd`](#systemd)
-  - [Symlinks](#symlinks)
-- [`winget` and `Windows Terminal`](#winget-and-windows-terminal)
-- [Optional: Adjusting Windows](#optional-adjusting-windows)
-  - [Disable MPO](#disable-mpo)
-  - [Windows Defender exclusions](#windows-defender-exclusions)
-- [Optional: Packages Managements](#optional-packages-managements)
-  - [Built-in Package Manager (winget)](#built-in-package-manager-winget)
-  - [Cross-platform Binary Package manager (cbp)](#cross-platform-binary-package-manager-cbp)
-  - [Alternative Package Managers](#alternative-package-managers)
-- [Optional: Python](#optional-python)
-- [Optional: Rust and C/C++](#optional-rust-and-cc)
-- [Optional: sysinternals](#optional-sysinternals)
-- [Optional: QuickLook Plugins](#optional-quicklook-plugins)
-- [Optional: Fonts](#optional-fonts)
-- [Directory Organization](#directory-organization)
+- [Setting-up scripts for Windows 11](#setting-up-scripts-for-windows-11)
+  - [Get ISO](#get-iso)
+  - [Install, active and update Windows](#install-active-and-update-windows)
+  - [Enable some optional features of Windows](#enable-some-optional-features-of-windows)
+  - [WSL 2](#wsl-2)
+  - [Ubuntu 20.04/24.04](#ubuntu-20042404)
+    - [Symlinks](#symlinks)
+  - [`winget` and `Windows Terminal`](#winget-and-windows-terminal)
+  - [Optional: Adjusting Windows](#optional-adjusting-windows)
+    - [Disable MPO](#disable-mpo)
+    - [Windows Defender exclusions](#windows-defender-exclusions)
+  - [Optional: Packages Managements](#optional-packages-managements)
+    - [Built-in Package Manager (winget)](#built-in-package-manager-winget)
+    - [Cross-platform Binary Package manager (cbp)](#cross-platform-binary-package-manager-cbp)
+    - [Alternative Package Managers](#alternative-package-managers)
+  - [Optional: Python](#optional-python)
+  - [Optional: Rust and C/C++](#optional-rust-and-cc)
+  - [Optional: sysinternals](#optional-sysinternals)
+  - [Optional: QuickLook Plugins](#optional-quicklook-plugins)
+  - [Optional: Fonts](#optional-fonts)
+  - [30 Rounds of R15](#30-rounds-of-r15)
 
 
 Most commands in this document should be executed in `PowerShell`.
@@ -292,6 +292,7 @@ winget install --id RustDesk.RustDesk
 # winget install -s winget -e --id NetEase.CloudMusic
 winget install -s winget -e --id HandBrake.HandBrake
 winget install -s winget -e --id mpv.net
+winget install voidtools.voidImageViewer
 
 # apps
 # winget install -s winget -e --id Mozilla.Firefox
