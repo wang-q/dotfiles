@@ -1,4 +1,4 @@
-# My configuration files on macOS
+# My configuration files
 
 ![Screenshot of a terminal window](images/screen.png)
 
@@ -6,19 +6,11 @@
 
 [Homebrew](https://brew.sh/) or [Linuxbrew](https://docs.brew.sh/Homebrew-on-Linux)
 
-## Configurations managed by GNU stow
+## Configurations managed by `cbp dot`
 
-* `bash stow.sh`
-  * [bash](stow-bash/)
-  * [git](stow-git/)
-  * [tmux](stow-tmux/)
-  * [vim](stow-vim/)
-  * ...
+* `bash cbp_dot.sh`
 
 ## macOS and Ubuntu
-
-* [`brew.sh`](brew.sh)
-  * Install CLI apps via Homebrew/Linuxbrew
 
 * [`perl`](perl/)
   * `bash perl/install.sh`
@@ -33,12 +25,15 @@
   * `bash rust/install.sh`
 
 * Vim plugins
-  * `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-  * `vim +PluginInstall +qall`
+  ```bash
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
+
+  # cargo run --bin cbp dot ~/.vim ~/.vimrc --tar vim.tar.gz
+  cbp dot -a cbp_dot_tar/vim.tar.gz
+  ```
 
 * Bioinformatics
-  * [`download.sh`](download.sh)
-    * My repos, jkbin and circos
   * [`genomics.sh`](genomics.sh)
     * Install apps from brewsci and my own homebrew-tap
   * [`others.sh`](others.sh)
@@ -50,11 +45,11 @@
 
 ## macOS only
 
-* [`macos.sh`](macos.sh)
+* [`macos.sh`](macos/macos.sh)
   * Extracted from
     [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles/blob/master/.macos)
 
-* [`brewcask.sh`](brewcask.sh)
+* [`brewcask.sh`](macos/brewcask.sh)
   * Install GUI apps via Homebrew Cask
 
 ## Packages

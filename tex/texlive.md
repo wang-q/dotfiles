@@ -5,6 +5,8 @@
 ```bash
 curl -sL "https://yihui.org/tinytex/install-bin-unix.sh" | sh
 
+# export PATH="/home/wangq/bin:$PATH"
+
 ```
 
 ## Destination
@@ -43,6 +45,7 @@ scoop cache rm *; scoop uninstall pandoc; scoop install pandoc
 ## `tlmgr`
 
 ```bash
+# tlmgr option repository ctan
 tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
 
 tlmgr update --self --all
@@ -110,5 +113,7 @@ cbp install -t font jetbrains-mono
 cbp install -t font source-han-sans
 cbp install -t font source-han-serif
 cbp install -t font lxgw-wenkai
+
+cbp install -t font twemoji
 
 ```

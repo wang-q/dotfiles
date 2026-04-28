@@ -64,28 +64,6 @@ find ~/Scripts -mindepth 1 -maxdepth 3 -type d -name ".git" |
 
 ```
 
-## cloc of tracked files
-
-```bash
-cloc $(git ls-files)
-```
-
-```bash
-find ~/Scripts -type d -mindepth 1 -maxdepth 3 -name ".git" \
-    | sort > dirs.tmp
-
-cat dirs.tmp \
-    | parallel -r -k -j 1 "
-    	cd {//}; git ls-files | perl -MCwd -nle 'print Cwd::realpath(\$_)'
-    " \
-    > files.tmp
-
-cloc --list-file files.tmp --exclude-lang HTML,YAML,RobotFramework
-
-rm dirs.tmp files.tmp
-
-```
-
 ## tar & pigz
 
 ```bash
@@ -192,16 +170,6 @@ foreach ($file in $videoFiles) {
 
 ```
 
-## 中英文中间加空格
-
-```perl
-m/[\u4e00-\u9fa5]/; # 中文
-
-s/([\u4e00-\u9fa5])([\w$\\}])/$1 $2/g;
-s/([\w$\\}])([\u4e00-\u9fa5])/$1 $2/g;
-
-````
-
 ## sha1 sum
 
 ```bash
@@ -228,8 +196,8 @@ openssl rand 3 | od -DAn
 ```bash
 echo '#!/usr/bin/env bash' > file.md.sh
 
-cat file.md \
-    | perl -e '
+cat file.md |
+    perl -e '
         @lines = <>;
         $content = join "", @lines;
         while ($content =~ /^`{3,}bash\s*\n(.*?)^`{3,}\s*\n/msg) {
@@ -296,6 +264,15 @@ ssh-keygen -b 2048 -t rsa -q
 ssh-copy-id -i ~/.ssh/id_rsa.pub wangq@202.119.37.251
 ```
 
+```powershell
+ssh-keygen -f $env:USERPROFILE/.ssh/id_rsa
+
+type $env:USERPROFILE/.ssh/id_rsa.pub | ssh wangq@202.119.37.251 "cat >> .ssh/authorized_keys"
+
+```
+
+<https://github.com/beautifulcode/ssh-copy-id-for-OSX>
+
 ## 使用 Windows 下的 `.ssh`
 
 ```shell
@@ -309,13 +286,6 @@ chmod 600 ~/.ssh/known_hosts
 
 ```
 
-## `htop`
-
-```shell
-ssh c55n08 -t 'htop'
-
-```
-
 ## 去掉 PDF 中的水印
 
 ```bash
@@ -324,29 +294,12 @@ cat Graphing\ Data\ with\ R.pdf | grep -v "it\-ebooks" > Graphing_Data_with_R.pd
 
 用Acrobat打开并保存.
 
-## valgrind
-
-```bash
-valgrind --tool=memcheck --leak-check=full --track-fds=yes ./faops
-```
-
 # Mac
 
 ## 修改 macOS 系统的 hostname
 
 ```bash
 sudo scutil --set HostName yourname
-```
-
-## ssh-copy-id
-
-https://github.com/beautifulcode/ssh-copy-id-for-OSX
-
-## dos2unix
-
-```bash
-find . -type f  -not -iname ".*" -not -path "*.git*" \
-    | parallel -j 1 "perl -pi -e 's/\r\n|\n|\r/\n/g' {}"
 ```
 
 ## Make Hidden Apps “Hidden” in Dock
@@ -376,16 +329,6 @@ https://apple.stackexchange.com/questions/305462/terminal-leaving-a-blank-line-o
 
 https://www.lifewire.com/move-macs-home-folder-new-location-2260157
 
-## 制作 High Sierra 安装盘
-
-```bash
-sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia \
-    --volume /Volumes/Untitled/ \
-    --applicationpath /Applications/Install\ macOS\ High\ Sierra.app/ \
-    --nointeraction
-
-```
-
 ## 稍微平滑字体
 
 默认值是 0 或 2
@@ -403,7 +346,7 @@ rm "${HOME}/Library/Application Support/Beyond Compare/registry.dat"
 
 ## Local Backup
 
-因为你把Time Machine打开但太久没有把备份硬盘插回去导致的, 他会继续备份然后储存在本机 等你接上备份硬盘再传过去.
+因为你把 Time Machine 打开但太久没有把备份硬盘插回去导致的, 他会继续备份然后储存在本机 等你接上备份硬盘再传过去.
 
 永远不要用这个功能的话就在终端机输入`sudo tmutil disablelocal`
 
@@ -445,10 +388,6 @@ Bring it back
 ```bash
 sudo /sbin/ifconfig en0 up
 ```
-
-## Add public key to github
-
-http://stackoverflow.com/questions/8402281/github-push-error-permission-denied
 
 ## Change the default app that opens all the files of one particular file type.
 
@@ -528,15 +467,6 @@ sudo apt install apt-rdepends
 apt-rdepends --build-depends --print-state --follow=DEPENDS <packagename>
 ```
 
-## ssh for ubuntu-desktop
-
-```bash
-sudo apt-get install -y openssh-server
-sudo apt-get install -y net-tools
-sudo vi /etc/ssh/sshd_config
-sudo /etc/init.d/ssh restart
-```
-
 ## vnc for ubuntu-desktop
 
 http://askubuntu.com/questions/518041/unity-doesnt-work-on-vnc-server-under-14-04-lts
@@ -580,12 +510,6 @@ Customized resolution.
 vncserver -geometry 1200x900
 ```
 
-## Install desktop for ubuntu-server
-
-```bash
-# sudo apt-get install --no-install-recommends ubuntu-desktop
-```
-
 ## Remove libreoffice from ubuntu-desktop
 
 ```bash
@@ -603,20 +527,12 @@ sudo apt-get install system-config-lvm
 
 http://www.howtogeek.com/127246/linux-sysadmin-how-to-manage-lvms-with-a-gui/
 
-## Checking your Ubuntu Version
-
-```bash
-lsb_release -a
-
-```
-
 ## Kernel version
 
 ```shell
 uname -srm
 
 ```
-
 
 ## virtualbox
 
@@ -650,12 +566,6 @@ sudo adduser wangq users
 sudo adduser wangq sudo
 ```
 
-## delete a user
-
-```bash
-sudo deluser --remove-home newuser
-```
-
 ## use root account
 
 Switch to root account with `su` command to set root account's password.
@@ -673,97 +583,10 @@ http://askubuntu.com/questions/289335/kernel-update-breaks-oracle-virtual-box-fr
 /etc/init.d/vboxdrv setup
 ```
 
-## socks proxy for apt
-
-When GFW going on a rampage, let apt use host's shadowsocks
-
-```bash
-sudo vim /etc/apt/apt.conf
-Acquire::socks::proxy "socks5://10.0.1.5:1080/";
-```
-
-## mongodb from apt-get
-
-http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
-
-```bash
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-sudo apt-get -y update
-sudo apt-get install -y mongodb-org
-```
-
-## search for a package
-
-```bash
-apt-cache search PACKAGE_NAME
-apt-cache show PACKAGE_NAME
-```
-
-## Disk usages
-
-```bash
-df -BG
-```
-
-## Docker VPN
-
-* Install Docker
-
-```bash
-# Recommended extra packages for Trusty 14.04
-sudo apt-get update -y
-sudo apt-get install -y --no-install-recommends linux-image-extra-virtual
-sudo apt-get install -y --no-install-recommends linux-image-extra-$(uname -r)
-
-# Set up the repository
-sudo apt-get install -y --no-install-recommends \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common
-
-curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
-apt-key fingerprint 58118E89F3A912897C070ADBF76221572C52609D
-
-sudo add-apt-repository \
-    "deb https://apt.dockerproject.org/repo/ \
-    ubuntu-$(lsb_release -cs) \
-    main"
-
-# Install Docker
-sudo apt-get update
-sudo apt-get -y install docker-engine
-sudo docker run hello-world
-```
-
-* VPN
-
-    as root
-
-```bash
-docker run --privileged -d --name ikev2-vpn-server \
-    --restart=always -p 500:500/udp -p 4500:4500/udp gaomd/ikev2-vpn-server:0.3.0
-
-docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server \
-    -e "HOST=$(hostname -I | cut -d\  -f1)" gaomd/ikev2-vpn-server:0.3.0 generate-mobileconfig \
-    > ikev2-vpn.mobileconfig
-```
-
 ## 查看内存类型
 
 ```bash
 sudo dmidecode --type 17 | less
-```
-
-## 同步目录
-
-```shell
-rsync -avP /home/wangq/data2/ /media/wangq/nwr \
-    --exclude=".Trash*" \
-    --exclude="lost+found" \
-    --exclude="Plants/ASSEMBLY/*"
-
 ```
 
 # WSL
@@ -791,17 +614,5 @@ attach vdisk readonly
 compact vdisk
 detach vdisk
 exit
-
-```
-
-## Export and import WSL images
-
-https://4sysops.com/archives/export-and-import-windows-subsystem-for-linux-wsl/
-
-https://winaero.com/export-import-wsl-linux-distro-windows-10/
-
-```powershell
-wsl --export Ubuntu Ubuntu2004.tar
-gzip Ubuntu2004.tar
 
 ```
