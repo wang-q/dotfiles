@@ -275,7 +275,8 @@ Accepts system proxy
 
 ```bash
 sudo snap install ghostty --classic
-sudo snap install github-desktop --beta --classic
+sudo snap install rustrover --classic
+sudo snap install gitpeach-desktop --classic
 
 ```
 
@@ -296,47 +297,28 @@ flatpak install launcher.moe moe.launcher.the-honkers-railway-launcher
 # flatpak install --user flathub io.mpv.Mpv
 # flatpak install --user flathub info.smplayer.SMPlayer
 # flatpak install --user flathub io.github.celluloid_player.Celluloid
-flatpak install --user flathub org.videolan.VLC
+# flatpak install --user flathub org.videolan.VLC
 
 # flatpak install --user flathub io.github.shiftey.Desktop
-# flatpak install --user flathub com.visualstudio.code
+flatpak install -y --user flathub com.visualstudio.code
 
-flatpak install --user flathub org.qbittorrent.qBittorrent
-flatpak install --user fr.handbrake.ghb
-flatpak install --user flathub org.zotero.Zotero
-flatpak install --user flathub com.tencent.WeChat
-flatpak install --user flathub com.tencent.wemeet
-flatpak install --user flathub cn.wps.wps_365
+flatpak install -y --user flathub org.qbittorrent.qBittorrent
+flatpak install -y --user fr.handbrake.ghb
+flatpak install -y --user flathub org.zotero.Zotero
+flatpak install -y --user flathub com.tencent.WeChat
+flatpak install -y --user flathub com.tencent.wemeet
+flatpak install -y --user flathub cn.wps.wps_365
 
 # Edge is a little blurry at 200% scaling via https://packages.microsoft.com/repos/edge
-flatpak install --user flathub com.microsoft.Edge
+flatpak install -y --user flathub com.microsoft.Edge
 
-flatpak install --user flathub com.jetbrains.RustRover
+# flatpak install -y --user flathub com.jetbrains.RustRover
 
 # https://itsfoss.com/gpu-usage-linux/
-flatpak install --user flathub io.missioncenter.MissionCenter
+# flatpak install -y --user flathub io.missioncenter.MissionCenter
 
 # Remove unused packages
 flatpak uninstall --unused
-
-```
-
-## pggb
-
-```bash
-sudo apt -y install singularity-container
-
-singularity version
-#4.1.1
-
-singularity pull docker://ghcr.io/pangenome/pggb:latest
-mv pggb_latest.sif ~/share/
-
-cd ~/data
-git clone --recursive https://github.com/pangenome/pggb.git
-cd pggb
-
-singularity run -B ${PWD}/data:/data ~/share/pggb_latest.sif pggb -i /data/HLA/DRB1-3123.fa.gz -p 70 -s 3000 -n 10 -t 8 -o /data/out
 
 ```
 
