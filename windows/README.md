@@ -440,6 +440,14 @@ cbp install -t font lxgw-wenkai
 
 ```
 
+## 去除文件资源管理器里的网盘链接
+
+按 Win+R 输入 regedit 打开注册表编辑器
+
+```
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace
+```
+
 ## 30 Rounds of R15
 
 <https://www.zhihu.com/question/384773491>
