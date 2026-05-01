@@ -6,34 +6,37 @@ https://learn.microsoft.com/en-us/windows/wsl/use-custom-distro
 
 
 ```powershell
-# Pull the Ubuntu 26.04 image from Docker Hub
+# Pull Ubuntu 26.04 image
 docker pull ubuntu:26.04
 
-# Run a temporary Ubuntu 26.04 container and execute 'ls /' to list the root directory contents
+# Create a temp container (ls / just starts it)
 docker run -t --name wsl_export ubuntu:26.04 ls /
 
-# Create a directory to store the exported container file
+# Directory for the exported tar
 mkdir -p $HOME\VM
 
-# Add VM directory to Windows Defender exclusions for better performance (elevates to Administrator)
+# Exclude from Windows Defender — needed for I/O performance (requires admin)
 Start-Process powershell -ArgumentList "-Command Add-MpPreference -ExclusionPath '$HOME\VM'" -Verb RunAs -Wait
 
-# Export the specified container and save it as a tar file
+# Export container to tar
 docker export wsl_export > $HOME\VM\resolute.tar
 
 docker rm wsl_export
 
-# Import the exported container tar file into WSL, creating a WSL instance named resolute
+# Import tar into WSL as instance "resolute"
 wsl --import resolute $HOME\VM\resolute $HOME\VM\resolute.tar
 
-# List all WSL instances and their version information
+# List all WSL instances
 wsl -l -v
 
-# Start the WSL instance named resolute
+# Requires WSL 2.6.2+
+wsl --version 
+# wsl --update
+
+# Start the resolute instance
 wsl -d resolute
 
-# To refresh the wsl.conf configuration file (if needed)
-# Terminate the resolute instance to achieve this
+# After editing wsl.conf, restart the instance to apply
 # wsl --terminate resolute
 
 # wsl --unregister resolute --force
@@ -48,23 +51,22 @@ As `root`
 apt-get -y update
 apt-get -y upgrade
 
-# Pre-configure timezone to avoid interactive prompts
+# Pre-set timezone to avoid interactive prompts during install
 apt-get -y install debconf-utils
 echo "tzdata tzdata/Areas select Asia" | debconf-set-selections
 echo "tzdata tzdata/Zones/Asia select Shanghai" | debconf-set-selections
 apt-get -y install tzdata
 
-# Install plocate for fast file searching; initialize DB early as the system is still minimal
-# It takes about 7 minutes to initialize the DB.
+# plocate: fast file search; build DB early while the system is small (~7 min)
 # apt-get -y install plocate
 
-# Install sudo and vim
+# sudo and vim
 apt-get -y install sudo vim
 
-# Network and process tools: ip, ping, ifconfig, ps
+# Network tools (ip, ping, ifconfig) and process tools (ps)
 apt-get -y install iproute2 iputils-ping net-tools procps
 
-# systemd
+# systemd as init
 apt-get -y install systemd systemd-sysv
 
 ```
@@ -80,18 +82,19 @@ useradd -s /bin/bash -m -G sudo $myUsername
 
 passwd $myUsername
 
-# Set default user for WSL
+# WSL default user
 echo -e "[user]\ndefault=$myUsername" >> /etc/wsl.conf
-# Disable Windows PATH interop
+# Don't mix Windows PATH into Linux
 echo -e "[interop]\nappendWindowsPath=false" >> /etc/wsl.conf
 # Enable systemd
 echo -e "[boot]\nsystemd=true" >> /etc/wsl.conf
+echo -e "[automount]\ncgroups=v2" >> /etc/wsl.conf
 ```
 
 Restart the resolute instance
 
 ```bash
-# Check if systemd is running, pid 1
+# Verify systemd is running as pid 1
 ps -p 1 -o comm=
 
 ```
@@ -144,7 +147,7 @@ sudo apt -y upgrade
 
 sudo apt -y install samba
 
-# Setting up Samba
+# Add shared folder config
 sudo bash -c 'cat >> /etc/samba/smb.conf <<EOF
 [wangq]
     comment = Home Directory of wangq
@@ -156,7 +159,7 @@ EOF'
 sudo service smbd restart
 sudo ufw allow samba
 
-# Setting up User Accounts
+# Set Samba password for user
 sudo smbpasswd -a wangq
 
 # client
@@ -188,6 +191,7 @@ sudo apt -y install nfs-common
 
 mkdir -p /home/wangq/nfs
 
+# Mount QNAP NFS share
 sudo mount -t nfs 192.168.31.209:/share/data /home/wangq/nfs
 sudo umount /home/wangq/nfs
 
@@ -215,10 +219,10 @@ sudo ufw reload
 # WSL
 # sudo apt -y install ubuntu-desktop-minimal
 
-# quicklook
+# Space to preview files (like macOS Quick Look)
 sudo apt -y install gnome-sushi
 
-# extensions
+# Extension Manager + system monitor dependencies
 sudo apt -y install gnome-shell-extension-manager gir1.2-gtop-2.0 lm-sensors
 
 # Open the Extension Manager (installed above), search for
@@ -250,6 +254,7 @@ gnome-extensions disable ding@rastersoft.com
 
 ```bash
 sudo apt -y install curl
+# AppImage runtime dependency
 sudo apt -y install libfuse2t64
 
 mkdir -p ~/bin
@@ -261,6 +266,7 @@ mkdir -p ~/bin
 mkdir -p ~/bin
 
 sudo apt update
+# Qt/X11 dependencies for AppImages
 sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-0
 
 ```
@@ -288,14 +294,14 @@ sudo snap install gitpeach-desktop --classic
 ## Flatpak
 
 ```bash
-# flatpak
+# Flatpak setup
 sudo apt -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# railway
+# Honkai Star Rail launcher
 flatpak remote-add --if-not-exists --user launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
-# --user can't download wine and dxvk
+# --user can't download wine and dxvk, so install runtime at system level
 sudo flatpak install org.gnome.Platform//47
 flatpak install launcher.moe moe.launcher.the-honkers-railway-launcher
 
@@ -314,7 +320,7 @@ flatpak install -y --user flathub com.tencent.WeChat
 flatpak install -y --user flathub com.tencent.wemeet
 flatpak install -y --user flathub cn.wps.wps_365
 
-# Edge is a little blurry at 200% scaling via https://packages.microsoft.com/repos/edge
+# Edge is blurry at 200% scaling via apt; Flatpak version is sharper
 flatpak install -y --user flathub com.microsoft.Edge
 
 # flatpak install -y --user flathub com.jetbrains.RustRover
@@ -322,7 +328,7 @@ flatpak install -y --user flathub com.microsoft.Edge
 # https://itsfoss.com/gpu-usage-linux/
 # flatpak install -y --user flathub io.missioncenter.MissionCenter
 
-# Remove unused packages
+# Clean up unused packages
 flatpak uninstall --unused
 
 ```
@@ -334,13 +340,14 @@ sudo apt -y install curl ca-certificates
 curl -s https://repo.waydro.id | sudo bash
 sudo apt -y install waydroid
 
+# Set resolution and fake WiFi
 waydroid prop set persist.waydroid.width "1280"
 waydroid prop set persist.waydroid.height "720"
 waydroid prop set persist.waydroid.fake_wifi '*'
 
 sudo waydroid container restart
 
-# remove waydroid default app
+# Remove pre-installed Android apps
 sudo waydroid shell
 pm uninstall --user 0 com.android.calculator2
 pm uninstall --user 0 org.lineageos.etar
@@ -349,7 +356,7 @@ pm uninstall --user 0 org.lineageos.eleven
 pm uninstall --user 0 org.lineageos.recorder
 pm uninstall --user 0 com.android.contacts
 
-# firewall
+# Firewall rules for Waydroid networking
 sudo waydroid session stop
 sudo waydroid container stop
 
@@ -357,7 +364,7 @@ sudo ufw allow 67
 sudo ufw allow 53
 sudo ufw default allow FORWARD
 
-# arm translate
+# ARM translation layer (run ARM apps on x86)
 sudo apt install lzip
 
 git clone https://github.com/casualsnek/waydroid_script
@@ -367,8 +374,7 @@ venv/bin/pip install -r requirements.txt
 sudo venv/bin/python3 main.py install libndk
 sudo venv/bin/python3 main.py install libhoudini
 
-# go to www.apkmirror.com
-
+# Download APKs from apkmirror.com
 waydroid app install ~/Download/com.
 
 ```
