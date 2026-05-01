@@ -60,7 +60,7 @@ https://learn.microsoft.com/en-us/windows/wsl/use-custom-distro
 ```bash
 docker pull wangq/centos:master
 
-# An arbitrary command to generate a container
+# Any command works; just need to create a container
 docker run -t wangq/centos:master bash -c 'ls -l /'
 
 dockerContainerID=$(docker container ls -a | grep -i centos | awk '{print $1}')
@@ -73,13 +73,14 @@ docker export $dockerContainerID > /mnt/c/Users/wangq/VM/centos.tar
 ```powershell
 wsl --import CentOS $HOME\VM\CentOS $HOME\VM\centos.tar
 
-# list all VMs
+# List all WSL instances
 wsl -l -v
 
 # Start CentOS
 wsl -d CentOS
 
-# wsl --terminate CentOS # To refresh wsl.conf
+# After editing wsl.conf, restart the instance to apply
+# wsl --terminate CentOS
 
 ```
 
@@ -90,15 +91,15 @@ wget -N https://mirrors.nju.edu.cn/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-2207
 
 ```
 
-In VMware/Parallels, Customize the VM hardware before installation as 4 or more cores, 4GB RAM, 80G
-disk, 800x600 screen and Bridged Network (Default Adapter). Remove all unnecessary devices, e.g.
-printer, camera, or sound card.
+In VMware/Parallels, customize VM hardware before installation: 4+ cores, 4 GB RAM, 80 GB disk,
+800x600 screen, bridged network (default adapter). Remove unnecessary devices (printer, camera,
+sound card).
 
 Settings at installation:
 
-* Asia/Shanghai
-* Minimal installation
-* Don't use LVM and don't set the `/home` mount point
+* Asia/Shanghai timezone
+* Minimal install
+* Don't use LVM; don't set a separate `/home` mount point
 
 ## As `root`
 
@@ -106,7 +107,7 @@ Settings at installation:
 
 SSH in as `root`.
 
-Present in the HPCC, `yum list installed | grep XXX`
+Packages present on the HPCC (`yum list installed | grep XXX`):
 
 * blas, lapack
 * bzip2-devel
@@ -123,7 +124,7 @@ Present in the HPCC, `yum list installed | grep XXX`
 * ghostscript
 * `/usr/bin/java -version` openjdk version "1.8.0_222-ea"
 
-Absent:
+Absent on the HPCC:
 
 * pcre2-devel
 * cairo-devel
@@ -133,20 +134,19 @@ Absent:
 * gnuplot
 
 ```bash
-# Most required basic packages are already installed in the docker image
+# Most packages are already in the docker image
 yum -y upgrade
 
-# Install newer versions of git and curl
-# Linuxbrew need git 2.7.0 and cURL 7.41.0
+# Linuxbrew requires git >= 2.7.0 and curl >= 7.41.0
 git --version
 # git version 2.41.0
 
-# R
+# R dependencies
 yum install -y ghostscript
-yum install -y cairo-devel pango-devel # HPCC has no -devel
+yum install -y cairo-devel pango-devel # HPCC has no -devel packages
 yum install -y gd gd-devel
 
-# locate
+# File search
 yum install -y mlocate
 updatedb
 
@@ -154,9 +154,7 @@ updatedb
 
 ### Change the Home directory
 
-`usermod` is the command to edit an existing user. `-d` (abbreviation for `--home`) will change the
-user's home directory. Adding `-m` (abbreviation for `--move-home` will also move the content from
-the user's current directory to the new directory.
+`usermod -d` changes the home directory; add `-m` to move existing contents.
 
 ```bash
 yum install -y passwd sudo
@@ -173,7 +171,7 @@ echo -e "[interop]\nappendWindowsPath=false" >> /etc/wsl.conf
 ```bash
 pkill -KILL -u wangq
 
-# Change the Home directory
+# Change home to /share/home/wangq
 mkdir -p /share/home
 usermod -m -d /share/home/wangq wangq
 
@@ -181,9 +179,7 @@ usermod -m -d /share/home/wangq wangq
 
 ### Sudo
 
-We *must* install Homebrew as a non-sudoer.
-
-This is *not* a necessary step.
+Homebrew must be installed as a non-sudoer. This step is optional.
 
 ```bash
 usermod -aG wheel wangq
@@ -200,15 +196,15 @@ wsl --terminate CentOS
 
 wsl --export CentOS $HOME\VM\centos.root.tar
 
-# Totally remove CentOS
+# Totally remove the WSL instance
 # wsl --unregister CentOS
 
 ```
 
 ## CentS
 
-We will build the VM (almost all in share/) with system gcc and yum packages, linked to the system
-libc
+We will build the VM (mostly in share/) with system gcc and yum packages, linked to the system
+libc.
 
 ```powershell
 wsl --import CentS $HOME\VM\CentS $HOME\VM\centos.root.tar
@@ -220,34 +216,41 @@ wsl -d CentS
 ### cbp
 
 ```bash
+# Proxy via Windows host
 WINDOWS_HOST=192.168.32.1
 export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890" HTTP_PROXY="http://${WINDOWS_HOST}:7890" HTTPS_PROXY="http://${WINDOWS_HOST}:7890" RSYNC_PROXY="${WINDOWS_HOST}:7890"
 
 cd
 
-# Install cbp
+# Install cbp (static binary package manager)
 curl -LO https://github.com/wang-q/cbp/releases/latest/download/cbp.linux
 chmod +x cbp.linux
 ./cbp.linux init
 source ~/.bashrc
 rm cbp.linux
 
-# curl
+# curl with CA bundle
 cbp install curl
 curl -k -o $(cbp prefix)/share/cacert.pem -L https://curl.se/ca/cacert-2025-02-25.pem
 echo "cacert $(cbp prefix)/share/cacert.pem" > $HOME/.curlrc
 
-# CLI tools
+# Build tools
 cbp install cmake ninja
+# Compression
 cbp install pigz pv
+# Database
 cbp install sqlite3
+# Data processing
 cbp install datamash tsv-utils
+# JSON/HTML parsing
 cbp install jq pup
+# Document conversion
 cbp install pandoc
+# Modern CLI replacements
 cbp install bat dust eza fd ripgrep
 cbp install hyperfine tealdeer tokei
 
-# gnuplot and graphviz
+# Plotting
 cbp install gnuplot
 gnuplot <<- EOF
     set term png
@@ -258,10 +261,10 @@ EOF
 cbp install graphviz
 dot -Tpdf -o sample.pdf <(echo "digraph G { a -> b }")
 
-# blast and sratoolkit
+# Bioinformatics: BLAST and SRA Toolkit
 cbp install blast sratoolkit
 
-# ngs
+# NGS: alignment and variant calling
 cbp install bwa samtools bcftools
 cbp install picard fastqc
 
@@ -275,7 +278,7 @@ cbp install perl5.34
 
 curl -L https://cpanmin.us | perl - App::cpanminus
 
-# Python
+# Python with uv package manager
 cbp install python3.11 uv
 
 # python3 -m ensurepip --upgrade
@@ -322,7 +325,7 @@ curl -fsSL https://raw.githubusercontent.com/wang-q/App-Plotr/master/share/check
 ```bash
 mkdir ~/.nwr
 
-# Put the files of appropriate time into this directory
+# Put the species database files into this directory
 cp /mnt/c/Users/wangq/.nwr/* ~/.nwr/
 
 ```
@@ -351,6 +354,7 @@ wsl -d CentH
 ```
 
 ```bash
+# Proxy via Windows host
 WINDOWS_HOST=192.168.32.1
 export ALL_PROXY="socks5h://${WINDOWS_HOST}:7890" HTTP_PROXY="http://${WINDOWS_HOST}:7890" HTTPS_PROXY="http://${WINDOWS_HOST}:7890" RSYNC_PROXY="${WINDOWS_HOST}:7890"
 
@@ -382,7 +386,7 @@ source $HOME/.bashrc
 
 ### gcc and commonly used libraries
 
-* Homebrew 4.0 brings glibc-bootstrap, which makes installing glibc and gcc much easier.
+Homebrew 4.0 provides glibc-bootstrap, making glibc and gcc installation much easier.
 
 ```bash
 export HOMEBREW_NO_AUTO_UPDATE=1
@@ -390,6 +394,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 brew install glibc
 brew link glibc --force
 
+# Add glibc to PATH
 if grep -q -i BREW_GLIBC $HOME/.bashrc; then
     echo "==> .bashrc already contains BREW_GLIBC"
 else
@@ -405,7 +410,7 @@ else
 fi
 source ~/.bashrc
 
-brew install gcc # now as gcc@14
+brew install gcc # installs gcc@14
 
 brew install binutils
 brew link binutils --force
@@ -414,7 +419,7 @@ brew test gcc
 
 brew install perl
 
-# Downloads
+# Parallel downloads; suppress citation prompt
 brew install parallel
 echo "will cite" | parallel --citation
 
@@ -429,6 +434,7 @@ rm -rf homebrew-core
 git clone --depth=1 https://github.com/Homebrew/homebrew-core.git
 
 # brew tap --force --shallow homebrew/core
+# Rebuild openssl without running tests (saves time)
 brew edit openssl@3
 # comment out the line of `make test`
 brew reinstall openssl@3 -s
@@ -436,7 +442,7 @@ brew reinstall openssl@3 -s
 brew install cmake
 
 # python
-brew install python # is now python@3.13
+brew install python # installs python@3.13
 
 ```
 
@@ -446,6 +452,7 @@ brew install python # is now python@3.13
 brew install r
 brew pin r
 
+# R dependencies that need extra system libraries
 # raster, classInt and spData need gdal
 # units needs udunits2
 # ranger, survminer might need a high version of gcc
@@ -461,6 +468,7 @@ brew install libgit2
 cd
 ln -s /mnt/c/Users/wangq/Scripts/ Scripts
 
+# Core R packages
 parallel -j 1 -k --line-buffer '
     Rscript -e '\'' if (!requireNamespace("{}", quietly = FALSE)) { install.packages("{}", repos="http://mirrors.ustc.edu.cn/CRAN") } '\''
     ' ::: \
@@ -468,6 +476,7 @@ parallel -j 1 -k --line-buffer '
 
 bash ~/Scripts/dotfiles/r/install.sh
 
+# Additional CRAN packages
 parallel -j 1 -k --line-buffer '
     Rscript -e '\'' if (!requireNamespace("{}", quietly = FALSE)) { install.packages("{}", repos="http://mirrors.ustc.edu.cn/CRAN") } '\''
     ' ::: \
@@ -478,7 +487,7 @@ parallel -j 1 -k --line-buffer '
         phylocomr phytools proto qlcMatrix reshape \
         shadowtext sparsesvd sqldf webshot
 
-# fonts
+# Font import for extrafont
 Rscript -e 'library(remotes); options(repos = c(CRAN = "http://mirrors.ustc.edu.cn/CRAN")); remotes::install_version("Rttf2pt1", version = "1.3.8")'
 Rscript -e '
     library(extrafont);
@@ -487,14 +496,14 @@ Rscript -e '
     fonts();
     '
 
-# anchr
+# anchr R dependencies
 parallel -j 1 -k --line-buffer '
     Rscript -e '\'' if (!requireNamespace("{}", quietly = FALSE)) { install.packages("{}", repos="http://mirrors.ustc.edu.cn/CRAN") } '\''
     ' ::: \
         argparse minpack.lm \
         ggplot2 scales viridis
 
-# bmr
+# bmr R dependencies
 parallel -j 1 -k --line-buffer '
     Rscript -e '\'' if (!requireNamespace("{}", quietly = TRUE)) { install.packages("{}", repos="http://mirrors.ustc.edu.cn/CRAN") } '\''
     ' ::: \
@@ -504,7 +513,7 @@ parallel -j 1 -k --line-buffer '
         timeROC pROC verification \
         tidyverse devtools BiocManager
 
-# BioC packages
+# Bioconductor packages
 Rscript -e 'BiocManager::install(version = "3.20", ask = FALSE)'
 parallel -j 1 -k --line-buffer '
     Rscript -e '\'' if (!requireNamespace("{}", quietly = TRUE)) { BiocManager::install("{}", version = "3.20") } '\''
@@ -513,10 +522,10 @@ parallel -j 1 -k --line-buffer '
         biomaRt bsseq DSS scran scater edgeR pheatmap monocle DESeq2 clusterProfiler factoextra \
         DO.db genefilter geneplotter
 
-# not available
+# Packages not available on this platform
 # bold brranching maptools
 
-# cellranger
+# Single-cell analysis (Seurat + Bioconductor)
 parallel -j 1 -k --line-buffer '
     Rscript -e '\'' if (!requireNamespace("{}", quietly = TRUE)) { install.packages("{}", repos="http://mirrors.ustc.edu.cn/CRAN") } '\''
     ' ::: \
@@ -532,9 +541,9 @@ parallel -j 1 -k --line-buffer '
         org.Hs.eg.db GSEABase biomaRt \
         DoubletFinder presto \
         monocle slingshot clusterProfiler GSVA  rtracklayer  harmony infercnv
-Rscript -e 'devtools::install_github("cole-trapnell-lab/monocle3")'  #monocle3
-Rscript -e 'devtools::install_github("chris-mcginnis-ucsf/DoubletFinder")' #DoubleFinder
-Rscript -e 'devtools::install_github("immunogenomics/presto")' #presto
+Rscript -e 'devtools::install_github("cole-trapnell-lab/monocle3")'
+Rscript -e 'devtools::install_github("chris-mcginnis-ucsf/DoubletFinder")'
+Rscript -e 'devtools::install_github("immunogenomics/presto")'
 
 ```
 
@@ -567,16 +576,16 @@ brew install spades
 spades.py --test
 rm -fr spades_test
 
-# quast, assembly quality assessment
+# Assembly quality assessment
 # https://github.com/ablab/quast/issues/140
 brew install brewsci/bio/quast --HEAD
 quast --test
 
 rm -fr test_data quast_test_output
 
-# Reinstall R modules missing from the previous steps
+# Reinstall R packages that failed earlier
 
-# can be built by gcc-4
+# These can be built by gcc-4
 Rscript -e 'library(remotes); options(repos = c(CRAN = "http://mirrors.ustc.edu.cn/CRAN")); remotes::install_version("ranger", version = "0.14.1")'
 Rscript -e 'library(remotes); options(repos = c(CRAN = "http://mirrors.ustc.edu.cn/CRAN")); remotes::install_version("RcppTOML", version = "0.1.7")'
 
@@ -585,6 +594,7 @@ Rscript -e 'library(remotes); options(repos = c(CRAN = "http://mirrors.ustc.edu.
 ## .ssh
 
 ```bash
+# Copy SSH keys from Windows and fix permissions
 cp -R /mnt/c/Users/wangq/.ssh/ ~/
 
 chmod 700 ~/.ssh
@@ -604,7 +614,7 @@ export PORT=22
 export HPCC=58.213.64.36
 export PORT=8804
 
-# ssh-copy-id
+# Sync local directories to remote HPCC
 
 # CentS
 rsync -avP -e "ssh -p ${PORT}" ~/bin/ wangq@${HPCC}:bin
