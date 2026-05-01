@@ -246,17 +246,22 @@ gnome-extensions disable ding@rastersoft.com
 
 ```
 
-### Clash
+### AppImage
 
 ```bash
 sudo apt -y install curl
 sudo apt -y install libfuse2t64
 
-curl -LO https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v1.6.1/clash-nyanpasu_1.6.1_amd64.AppImage
-chmod +x clash-nyanpasu_1.6.1_amd64.AppImage
+mkdir -p ~/bin
+
+# curl -LO https://github.com/libnyanpasu/clash-nyanpasu/releases/download/v1.6.1/clash-nyanpasu_1.6.1_amd64.AppImage
+# chmod +x clash-nyanpasu_1.6.1_amd64.AppImage
+# mv clash-nyanpasu_1.6.1_amd64.AppImage ~/bin
 
 mkdir -p ~/bin
-mv clash-nyanpasu_1.6.1_amd64.AppImage ~/bin
+
+sudo apt update
+sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-0
 
 ```
 
