@@ -225,7 +225,7 @@ cd
 # Install cbp (static binary package manager)
 curl -LO https://github.com/wang-q/cbp/releases/latest/download/cbp.linux
 chmod +x cbp.linux
-./cbp.linux init
+./cbp.linux init --dev
 source ~/.bashrc
 rm cbp.linux
 
