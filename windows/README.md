@@ -195,14 +195,23 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "Setup-Windows.ps1"
 
 Log in to the Microsoft Store and get updates from there.
 
-* Remove "Home" (主文件夹) from Explorer in Windows 11
+* Remove "Home" (主文件夹)/(图库) from Explorer in Windows 11
 
 ```cmd
 reg add "HKCU\Software\Classes\CLSID\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}" /v System.IsPinnedToNameSpaceTree /d 0 /t REG_DWORD /f
 
+reg add "HKCU\Software\Classes\CLSID\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}" /v System.IsPinnedToNameSpaceTree /d 0 /t REG_DWORD /f
+
 # manually accessing that view is still possible
 explorer.exe shell:::{f874310e-b6b7-47dc-bc84-b9e6b38f5903}
 
+```
+
+* 去除文件资源管理器里的网盘链接.
+  按 Win+R 输入 regedit 打开注册表编辑器
+
+```
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace
 ```
 
 ### Disable MPO
@@ -438,14 +447,6 @@ cbp install -t font source-han-sans
 cbp install -t font source-han-serif
 cbp install -t font lxgw-wenkai
 
-```
-
-## 去除文件资源管理器里的网盘链接
-
-按 Win+R 输入 regedit 打开注册表编辑器
-
-```
-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace
 ```
 
 ## 30 Rounds of R15
