@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# http://superuser.com/questions/244189/bashrc-how-to-know-x-window-is-available-or-not
 # https://unix.stackexchange.com/questions/313338/gnome3-how-do-i-remove-favorites-from-dash-via-terminal
-if [ -n "$DISPLAY" ]; then
-    # gsettings get com.canonical.Unity.Launcher favorites
+# Works under both X11 and Wayland
+if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
+    # gsettings get org.gnome.shell favorite-apps
     echo "==> Set favorites"
-    gsettings set org.gnome.shell favorite-apps "['ubiquity.desktop', 'org.gnome.Nautilus.desktop', 'gnome-terminal.desktop', 'firefox.desktop', 'gnome-system-monitor.desktop']"
+    gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Ptyxis.desktop', 'firefox_firefox.desktop', 'gnome-system-monitor.desktop']"
 
     # http://askubuntu.com/questions/177348/how-do-i-disable-the-screensaver-lock
     echo "==> Disable lock screen"
