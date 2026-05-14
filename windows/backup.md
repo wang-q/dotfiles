@@ -7,6 +7,4 @@ cbp snap save "$env:APPDATA/Scooter Software" -x "*.bak" -o beyondcompare.snap.t
 
 cbp snap save "$env:APPDATA/com.bilingify.readest" -x "*.bak" -o readest.snap.tar.gz
 
-
-C:\Users\wangq\AppData\Roaming\
 ```
