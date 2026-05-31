@@ -1,33 +1,28 @@
 # CentOS 7
 
 [TOC levels=2-3]: # ""
-  * [Install the system](#install-the-system)
-    * [In WSL](#in-wsl)
-    * [In VMware/Parallels](#in-vmwareparallels)
-  * [As `root`](#as-root)
-    * [Install libraries](#install-libraries)
-    * [Change the Home directory](#change-the-home-directory)
-    * [Sudo](#sudo)
-    * [Backup WSL](#backup-wsl)
-  * [CentS](#cents)
-    * [cbp](#cbp)
-    * [Perl, Python, and Java](#perl-python-and-java)
-    * [Perl modules](#perl-modules)
-    * [spades](#spades)
-    * [nwr](#nwr)
-    * [Backup WSL](#backup-wsl-1)
-  * [CentH](#centh)
-    * [gcc and commonly used libraries](#gcc-and-commonly-used-libraries)
-    * [R Packages](#r-packages)
-    * [Backup WSL](#backup-wsl-2)
-  * [My modules](#my-modules)
-  * [.ssh](#ssh)
-  * [Mirror to remote server](#mirror-to-remote-server)
-  * [Old codes](#old-codes)
-    * [curl](#curl)
-    * [Change the hostname](#change-the-hostname)
-    * [R with system `libc`](#r-with-system-libc)
-    * [Old R](#old-r)
+- [CentOS 7](#centos-7)
+  - [Install the system](#install-the-system)
+    - [In WSL](#in-wsl)
+    - [In VMware/Parallels](#in-vmwareparallels)
+  - [As `root`](#as-root)
+    - [Install libraries](#install-libraries)
+    - [Change the Home directory](#change-the-home-directory)
+    - [Sudo](#sudo)
+    - [Backup WSL](#backup-wsl)
+  - [CentS](#cents)
+    - [cbp](#cbp)
+    - [Perl, Python, and Java](#perl-python-and-java)
+    - [Perl modules](#perl-modules)
+    - [nwr](#nwr)
+    - [Backup WSL](#backup-wsl-1)
+  - [CentH](#centh)
+    - [gcc and commonly used libraries](#gcc-and-commonly-used-libraries)
+    - [R Packages](#r-packages)
+    - [Backup WSL](#backup-wsl-2)
+  - [My modules](#my-modules)
+  - [.ssh](#ssh)
+  - [Mirror to remote server](#mirror-to-remote-server)
 
 We will build several VMs here:
 
@@ -276,7 +271,7 @@ cbp install picard fastqc
 # Perl
 cbp install perl5.34
 
-curl -L https://cpanmin.us | perl - App::cpanminus
+curl -L https://cpanmin.us | $(cbp prefix bin)/perl - App::cpanminus
 
 # Python with uv package manager
 cbp install python3.11 uv
