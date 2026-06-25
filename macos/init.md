@@ -11,6 +11,8 @@ sudo vim /etc/fstab
 # noeject: 系统禁用推出功能
 # UUID=365E2F47-DB0F-4DB5-8D61-2511E3B86749 none apfs ro,nobrowse,noeject 0 0
 
+sudo ditto /Users/wangq/Applications /Volumes/ExtHome/Applications &&
+    sudo rm -rf /Users/wangq/Applications
 sudo ditto /Users/wangq/Downloads /Volumes/ExtHome/Downloads &&
     sudo rm -rf /Users/wangq/Downloads
 sudo ditto /Users/wangq/Movies /Volumes/ExtHome/Movies &&
@@ -29,6 +31,7 @@ sudo ditto /Users/wangq/Scripts /Volumes/ExtHome/Scripts &&
 sudo ditto /Users/wangq/share /Volumes/ExtHome/share &&
     sudo rm -rf /Users/wangq/share
 
+ln -s /Volumes/ExtHome/Applications /Users/wangq/Applications
 ln -s /Volumes/ExtHome/Downloads /Users/wangq/Downloads
 ln -s /Volumes/ExtHome/Movies /Users/wangq/Movies
 ln -s /Volumes/ExtHome/Music /Users/wangq/Music
