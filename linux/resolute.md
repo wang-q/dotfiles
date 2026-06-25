@@ -30,7 +30,7 @@ wsl --import resolute $HOME\VM\resolute $HOME\VM\resolute.tar
 wsl -l -v
 
 # Requires WSL 2.6.2+
-wsl --version 
+wsl --version
 # wsl --update
 
 # Start the resolute instance
@@ -241,6 +241,7 @@ sudo apt -y install gnome-shell-extension-manager gir1.2-gtop-2.0 lm-sensors
 # Open the Extension Manager (installed above), search for
 # * Vitals
 # * Allow Locked Remote Desktop
+# * Dash to Panel
 
 # https://askubuntu.com/questions/1515740/swap-memory-really-leak-on-freshish-install-of-24-04
 gnome-extensions disable ding@rastersoft.com

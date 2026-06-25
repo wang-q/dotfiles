@@ -2,7 +2,7 @@
 
 ## ExtHome
 
-```shell
+```bash
 diskutil info /Volumes/ExtHome |
     grep "Volume UUID"
 
@@ -40,13 +40,14 @@ ln -s /Volumes/ExtHome/Pictures /Users/wangq/Pictures
 ln -s /Volumes/ExtHome/data /Users/wangq/data
 ln -s /Volumes/ExtHome/material /Users/wangq/material
 ln -s /Volumes/ExtHome/Scripts /Users/wangq/Scripts
-ln -s /Volumes/ExtHome/share /Users/wangq/share 
+ln -s /Volumes/ExtHome/share /Users/wangq/share
+ln -s /Volumes/ExtHome/sync /Users/wangq/sync
 
 ```
 
 ## nfs
 
-```shell
+```bash
 sudo mkdir -p /Volumes/NAS-NFS
 sudo chown $USER:staff /Volumes/NAS-NFS
 
