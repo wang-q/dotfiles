@@ -202,16 +202,17 @@ Qnap
 sudo apt -y update
 sudo apt -y install nfs-common
 
-mkdir -p /home/wangq/nfs
+mkdir -p /home/wangq/data
 
 # Mount QNAP NFS share
-sudo mount -t nfs 192.168.31.209:/share/data /home/wangq/nfs
-sudo umount /home/wangq/nfs
+sudo mount -t nfs 192.168.31.209:/share/data /home/wangq/data
+sudo umount /home/wangq/data
 
 # /etc/fstab
-192.168.31.209:/share/data /home/wangq/nfs nfs rsize=8192,wsize=8192,timeo=14,intr
+192.168.31.209:/share/data    /home/wangq/data    nfs    defaults,_netdev,rsize=65536,wsize=65536,timeo=100    0    0
 
 sudo systemctl daemon-reload
+sudo mount -a
 
 ```
 
