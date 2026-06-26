@@ -267,15 +267,6 @@ sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 li
 
 ```
 
-### Apps
-
-```bash
-
-# zed
-curl -f https://zed.dev/install.sh | sh
-
-```
-
 ## Snap
 
 Accepts system proxy
@@ -311,6 +302,8 @@ flatpak install launcher.moe moe.launcher.the-honkers-railway-launcher
 
 # flatpak install --user flathub io.github.shiftey.Desktop
 # flatpak install -y --user flathub com.visualstudio.code
+
+flatpak install -y --user flathub dev.zed.Zed
 
 flatpak install -y --user flathub org.qbittorrent.qBittorrent
 flatpak install -y --user fr.handbrake.ghb
@@ -370,5 +363,14 @@ sudo venv/bin/python3 main.py install libhoudini
 
 # Download APKs from apkmirror.com
 waydroid app install ~/Download/com.
+
+```
+
+## AMD Drivers
+
+```bash
+sudo amdgpu-install --usecase=graphics,opencl --vulkan=pro
+
+sudo usermod -aG render,video $USER
 
 ```
