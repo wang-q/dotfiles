@@ -19,7 +19,7 @@ if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
 
     # http://askubuntu.com/questions/79150/how-to-remove-bookmarks-from-the-nautilus-sidebar/152540#152540
     echo "==> Remove nautilus bookmarks"
-    echo "enabled=false" > "$HOME/.config/user-dirs.conf"
+    # echo "enabled=false" > "$HOME/.config/user-dirs.conf"
 
 #    sed -i 's/\Documents//' "$HOME/.config/user-dirs.dirs"
 #    sed -i 's/\Downloads//' "$HOME/.config/user-dirs.dirs"
