@@ -375,3 +375,17 @@ sudo amdgpu-install --usecase=graphics,opencl --vulkan=pro
 sudo usermod -aG render,video $USER
 
 ```
+
+## Steam
+
+```bash
+# 开启32位架构（Steam必须）
+sudo dpkg --add-architecture i386
+sudo apt update
+
+# 安装AMD Vulkan全套驱动（32+64位，Proton核心依赖）
+sudo apt install mesa-vulkan-drivers vulkan-tools
+
+# 验证Vulkan是否正常
+vulkaninfo
+```
