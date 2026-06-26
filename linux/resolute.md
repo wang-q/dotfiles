@@ -261,8 +261,6 @@ mkdir -p ~/bin
 # chmod +x clash-nyanpasu_1.6.1_amd64.AppImage
 # mv clash-nyanpasu_1.6.1_amd64.AppImage ~/bin
 
-mkdir -p ~/bin
-
 sudo apt update
 # Qt/X11 dependencies for AppImages
 sudo apt install -y libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-0
@@ -285,7 +283,7 @@ Accepts system proxy
 ```bash
 sudo snap install ghostty --classic
 sudo snap install rustrover --classic
-sudo snap install gitpeach-desktop --classic
+# sudo snap install gitpeach-desktop --classic
 
 ```
 
@@ -296,6 +294,9 @@ sudo snap install gitpeach-desktop --classic
 sudo apt -y install flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Edge is blurry at 200% scaling via apt; Flatpak version is sharper
+flatpak install -y --user flathub com.microsoft.Edge
 
 # Honkai Star Rail launcher
 flatpak remote-add --if-not-exists --user launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
@@ -309,19 +310,14 @@ flatpak install launcher.moe moe.launcher.the-honkers-railway-launcher
 # flatpak install --user flathub org.videolan.VLC
 
 # flatpak install --user flathub io.github.shiftey.Desktop
-flatpak install -y --user flathub com.visualstudio.code
+# flatpak install -y --user flathub com.visualstudio.code
 
 flatpak install -y --user flathub org.qbittorrent.qBittorrent
 flatpak install -y --user fr.handbrake.ghb
 flatpak install -y --user flathub org.zotero.Zotero
-flatpak install -y --user flathub com.tencent.WeChat
-flatpak install -y --user flathub com.tencent.wemeet
+# flatpak install -y --user flathub com.tencent.WeChat
+# flatpak install -y --user flathub com.tencent.wemeet
 flatpak install -y --user flathub cn.wps.wps_365
-
-# Edge is blurry at 200% scaling via apt; Flatpak version is sharper
-flatpak install -y --user flathub com.microsoft.Edge
-
-# flatpak install -y --user flathub com.jetbrains.RustRover
 
 # https://itsfoss.com/gpu-usage-linux/
 # flatpak install -y --user flathub io.missioncenter.MissionCenter
