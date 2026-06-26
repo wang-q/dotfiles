@@ -290,10 +290,11 @@ flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flath
 flatpak install -y --user flathub com.microsoft.Edge
 
 # Honkai Star Rail launcher
-flatpak remote-add --if-not-exists --user launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
+# flatpak remote-add --if-not-exists --user launcher.moe https://gol.launcher.moe/gol.launcher.moe.flatpakrepo
 # --user can't download wine and dxvk, so install runtime at system level
-sudo flatpak install org.gnome.Platform//47
-flatpak install launcher.moe moe.launcher.the-honkers-railway-launcher
+# sudo flatpak install org.gnome.Platform//47
+# flatpak install launcher.moe moe.launcher.the-honkers-railway-launcher
+flatpak install moe.launcher.the-honkers-railway-launcher
 
 # flatpak install --user flathub io.mpv.Mpv
 # flatpak install --user flathub info.smplayer.SMPlayer
