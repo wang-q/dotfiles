@@ -177,7 +177,7 @@ sudo smbpasswd -a wangq
 
 # client
 sudo apt -y update
-sudo apt -y install cifs-utils
+sudo apt -y install cifs-utils smbclient winbind
 
 ```
 
@@ -275,7 +275,7 @@ Accepts system proxy
 ```bash
 sudo snap install ghostty --classic
 sudo snap install rustrover --classic
-# sudo snap install gitpeach-desktop --classic
+sudo snap install gitpeach-desktop --classic
 
 ```
 
@@ -320,6 +320,12 @@ flatpak install -y --user flathub cn.wps.wps_365
 # Clean up unused packages
 flatpak uninstall --unused
 
+```
+
+## Other Apps
+
+```bash
+curl -f https://zed.dev/install.sh | sh
 ```
 
 ## Waydroid
