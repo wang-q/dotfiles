@@ -11,7 +11,8 @@ agent-browser install
 
 ## 配置 DeepSeek 环境变量
 
-Linux / Mac 用户执行以下命令配置 DeepSeek Anthropic API 环境变量，其中 API Key 在 DeepSeek Platform 获取：
+Linux/Mac 用户执行以下命令配置 DeepSeek Anthropic API 环境变量，其中 API Key 在
+DeepSeek Platform 获取：
 
 ```bash
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
@@ -59,9 +60,9 @@ Inside Claude code, run the following commands:
 /reload-plugins
 
 # 简化代码，其实是一个 review 功能
-# 注意这个会消耗极大量的token，同时因为CC的行为会把历史的背景全部上传，
-# 而DeepSeek新版有1M的上下文容量，就会造成资源的极大量消耗。
-# 在做完这一步之后应该要执行下面的clear命令，清理历史的背景。
+# 注意这个会消耗极大量的 token，同时因为 CC 的行为会把历史的背景全部上传，
+# 而 DeepSeek 新版有 1M 的上下文容量，就会造成资源的极大量消耗。
+# 在做完这一步之后应该要执行下面的 clear 命令，清理历史的背景。
 /simplify
 
 # 清理历史的背景
@@ -75,3 +76,4 @@ Inside Claude code, run the following commands:
 
 继续你没完成的任务
 ```
+
