@@ -272,6 +272,7 @@ cbp install picard fastqc
 cbp install perl5.34
 
 curl -L https://cpanmin.us | $(cbp prefix bin)/perl - App::cpanminus
+cpanm Path::Tiny
 
 # Python with uv package manager
 cbp install python3.11 uv
