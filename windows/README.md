@@ -257,22 +257,24 @@ winget install -s winget -e --id Posit.RStudio
 winget install -s winget -e --id Microsoft.PowerShell
 
 # development
-winget install -s winget -e --id Kitware.CMake
-winget install -s winget -e --id GitHub.GitHubDesktop
-winget install -s winget -e --id GitHub.cli
-winget install -s winget -e --id WinSCP.WinSCP
-winget install -s winget -e --id Microsoft.VisualStudioCode
+winget install -e --id Microsoft.Coreutils
+winget install -e --id Kitware.CMake
+winget install -e --id GitHub.GitHubDesktop
+winget install -e --id GitHub.cli
+winget install -e --id WinSCP.WinSCP
+winget install -e --id ZedIndustries.Zed
+winget install -e --id Microsoft.VisualStudioCode
 # winget install -s msstore --accept-package-agreements "Visual Studio Code"
-winget install -s winget -e --id ScooterSoftware.BeyondCompare.4
-# winget install -s winget -e --id ScooterSoftware.BeyondCompare.5
+winget install -e --id ScooterSoftware.BeyondCompare.4
+# winget install -e --id ScooterSoftware.BeyondCompare.5
 # winget install -s winget -e --id JetBrains.Toolbox
 # winget install -s winget -e --id RealVNC.VNCViewer
 # winget install -s msstore --accept-package-agreements "Redis Insight"
 winget install qishibo.AnotherRedisDesktopManager
-winget install -s winget -e --id  Memurai.MemuraiDeveloper # Windows port of Redis
+# winget install -s winget -e --id  Memurai.MemuraiDeveloper # Windows port of Redis
 # memurai.exe --service-uninstall # I don't need this service
 winget install -s winget -e --id Mobatek.MobaXterm
-winget install -s winget -e --id ByteDance.Trae
+winget install -s winget -e --id ByteDance.Trae.CN
 
 # winget install -e --id WinFsp.WinFsp
 # winget install -e --id SSHFS-Win.SSHFS-Win
