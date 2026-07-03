@@ -249,6 +249,14 @@ gnome-extensions disable ding@rastersoft.com
 
 ```
 
+### Apt
+
+```bash
+sudo apt -y update
+sudo apt -y install
+sudo apt -y install mpv
+```
+
 ### AppImage
 
 ```bash
