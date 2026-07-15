@@ -313,7 +313,7 @@ flatpak install moe.launcher.the-honkers-railway-launcher
 # flatpak install --user flathub io.github.shiftey.Desktop
 # flatpak install -y --user flathub com.visualstudio.code
 
-flatpak install -y --user flathub dev.zed.Zed
+# flatpak install -y --user flathub dev.zed.Zed
 
 flatpak install -y --user flathub org.qbittorrent.qBittorrent
 flatpak install -y --user fr.handbrake.ghb
