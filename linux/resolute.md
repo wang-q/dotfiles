@@ -382,25 +382,66 @@ waydroid app install ~/Download/com.
 
 ```
 
-## AMD Drivers
-
-```bash
-sudo amdgpu-install --usecase=graphics,opencl --vulkan=pro
-
-sudo usermod -aG render,video $USER
-
-```
-
 ## Steam
 
+From App Center
+
+## Chinese input
+
+### IBus + Rime
+
 ```bash
-# 开启32位架构（Steam必须）
-sudo dpkg --add-architecture i386
-sudo apt update
+sudo apt -y install ibus ibus-rime librime-data-wubi librime-data-pinyin-simp
 
-# 安装AMD Vulkan全套驱动（32+64位，Proton核心依赖）
-sudo apt install mesa-vulkan-drivers vulkan-tools
+# Ensure IBus autostarts
+cat >> ~/.bashrc <<'EOF'
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+EOF
+```
 
-# 验证Vulkan是否正常
-vulkaninfo
+Log out and log back in, then:
+
+```bash
+ibus-daemon -drx
+```
+
+Add Rime as an input source in **Settings > Keyboard > Input Sources > Chinese (Rime)**.
+
+Switch input methods with `Super` + `Space`.
+
+### Wubi86 + Pinyin mixed input
+
+Create `~/.config/ibus/rime/default.custom.yaml`:
+
+```yaml
+patch:
+  schema_list:
+    - schema: wubi86
+    - schema: pinyin_simp
+```
+
+Create `~/.config/ibus/rime/wubi86.custom.yaml`:
+
+```yaml
+patch:
+  schema/dependencies:
+    - pinyin_simp
+  engine/translators/+:
+    - script_translator@pinyin
+  pinyin:
+    dictionary: pinyin_simp
+```
+
+Deploy the configuration:
+
+```bash
+ibus restart
+```
+
+Or deploy from the command line:
+
+```bash
+rime_deployer --build ~/.config/ibus/rime /usr/share/rime-data ~/.config/ibus/rime/build
 ```
