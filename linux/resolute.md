@@ -411,37 +411,27 @@ Add Rime as an input source in **Settings > Keyboard > Input Sources > Chinese (
 
 Switch input methods with `Super` + `Space`.
 
-### Wubi86 + Pinyin mixed input
+### Wubi + Pinyin mixed input
+
+`librime-data-wubi` already ships a dedicated mixed schema: `wubi_pinyin`.
 
 Create `~/.config/ibus/rime/default.custom.yaml`:
 
 ```yaml
 patch:
   schema_list:
-    - schema: wubi86
+    - schema: wubi_pinyin
     - schema: pinyin_simp
-```
-
-Create `~/.config/ibus/rime/wubi86.custom.yaml`:
-
-```yaml
-patch:
-  schema/dependencies:
-    - pinyin_simp
-  engine/translators/+:
-    - script_translator@pinyin
-  pinyin:
-    dictionary: pinyin_simp
 ```
 
 Deploy the configuration:
 
 ```bash
+rm -rf ~/.config/ibus/rime/build
+rime_deployer --build ~/.config/ibus/rime /usr/share/rime-data ~/.config/ibus/rime/build
 ibus restart
 ```
 
-Or deploy from the command line:
+Make sure the active schema is **wubi_pinyin** (press `F4` in Rime to switch schemas).
 
-```bash
-rime_deployer --build ~/.config/ibus/rime /usr/share/rime-data ~/.config/ibus/rime/build
-```
+Reference: [rime/rime-wubi](https://github.com/rime/rime-wubi) — official schema data, includes `wubi_pinyin`.
