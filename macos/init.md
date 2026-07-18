@@ -26,8 +26,6 @@ sudo ditto /Users/wangq/data /Volumes/ExtHome/data &&
     sudo rm -rf /Users/wangq/data
 sudo ditto /Users/wangq/material /Volumes/ExtHome/material &&
     sudo rm -rf /Users/wangq/material
-sudo ditto /Users/wangq/Scripts /Volumes/ExtHome/Scripts &&
-    sudo rm -rf /Users/wangq/Scripts
 sudo ditto /Users/wangq/share /Volumes/ExtHome/share &&
     sudo rm -rf /Users/wangq/share
 
@@ -39,7 +37,6 @@ ln -s /Volumes/ExtHome/Pictures /Users/wangq/Pictures
 
 ln -s /Volumes/ExtHome/data /Users/wangq/data
 ln -s /Volumes/ExtHome/material /Users/wangq/material
-ln -s /Volumes/ExtHome/Scripts /Users/wangq/Scripts
 ln -s /Volumes/ExtHome/share /Users/wangq/share
 ln -s /Volumes/ExtHome/sync /Users/wangq/sync
 
