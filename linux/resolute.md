@@ -285,6 +285,8 @@ sudo snap install ghostty --classic
 sudo snap install rustrover --classic
 sudo snap install gitpeach-desktop --classic
 
+# From App Center
+# Steam
 ```
 
 ## Flatpak
@@ -334,6 +336,11 @@ flatpak uninstall --unused
 
 ```bash
 curl -f https://zed.dev/install.sh | sh
+
+# Manually download debs
+# Clash V Ninja
+# Beyond compare
+# Trae cn
 ```
 
 ## Waydroid
@@ -381,10 +388,6 @@ sudo venv/bin/python3 main.py install libhoudini
 waydroid app install ~/Download/com.
 
 ```
-
-## Steam
-
-From App Center
 
 ## Chinese input
 
