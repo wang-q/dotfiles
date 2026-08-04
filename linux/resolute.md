@@ -216,6 +216,24 @@ sudo mount -a
 
 ```
 
+## 解锁 perf
+
+```bash
+# 默认的 kernel.perf_event_paranoid = 4，用户态采样被禁止。需要 sudo 降级
+sudo sysctl kernel.perf_event_paranoid=1
+
+# 持久化（重启后仍生效）：
+echo 'kernel.perf_event_paranoid=1' | sudo tee /etc/sysctl.d/99-perf.conf
+sudo sysctl --system
+
+## 装火焰图渲染工具（任选一）
+
+# 调用 perf + Brendan Gregg 的 FlameGraph 脚本
+cargo install flamegraph
+# 纯 Rust 的 stackcollapse/flamegraph，不依赖 perl
+cargo install inferno
+```
+
 ## Desktop
 
 ### Gnome remote desktop
