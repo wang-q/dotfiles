@@ -206,13 +206,18 @@ mkdir -p /home/wangq/data
 
 # Mount QNAP NFS share
 sudo mount -t nfs 192.168.31.209:/share/data /home/wangq/data
-sudo umount /home/wangq/data
 
 # /etc/fstab
 192.168.31.209:/share/data    /home/wangq/data    nfs    defaults,_netdev,rsize=65536,wsize=65536,timeo=100    0    0
 
 sudo systemctl daemon-reload
 sudo mount -a
+
+# SMB
+sudo mount -t cifs //192.168.31.209/sync /home/wangq/sync -o username=wangq,uid=1000,gid=1000,vers=3.0
+
+# fstab
+//192.168.31.209/sync    /home/wangq/sync    cifs    credentials=/home/wangq/.smbcredentials,uid=1000,gid=1000,iocharset=utf8,file_mode=0644,dir_mode=0755,_netdev,nofail,x-systemd.automount,x-systemd.idle-timeout=100,vers=3.0    0    0
 
 ```
 
