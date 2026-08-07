@@ -208,7 +208,7 @@ mkdir -p /home/wangq/data
 sudo mount -t nfs 192.168.31.209:/share/data /home/wangq/data
 
 # /etc/fstab
-192.168.31.209:/share/data    /home/wangq/data    nfs    defaults,_netdev,rsize=65536,wsize=65536,timeo=100    0    0
+192.168.31.209:/share/data    /home/wangq/data    nfs    defaults,_netdev,nofail,x-systemd.automount,rsize=65536,wsize=65536,timeo=100    0    0
 
 sudo systemctl daemon-reload
 sudo mount -a
