@@ -32,6 +32,9 @@ curl -LO https://github.com/wileyyugioh/zotmoov/releases/download/1.2.5/zotmoov-
 
 * 去 zotero [官网](https://www.zotero.org/) 注册个账号
 * `Edit -> Settings -> Sync` 登录注册的账号, 以后就可以点主界面右上的绿色按钮同步了
+
+## 配置
+
 * `Edit -> Settings -> General`
     * 设置语言为 English, 中文有时会出现奇怪的问题
     * `Customize Filename Format...`
