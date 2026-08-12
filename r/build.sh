@@ -69,6 +69,10 @@ else
     export FC=gfortran
 fi
 
+# GCC 15 defaults to C23, which breaks R 4.4.2's [[noreturn]] usage in
+# sys-std.c ("noreturn attribute ignored" + syntax error). Force C17.
+export CFLAGS="-std=gnu17 -g -O2"
+
 ./configure \
     --prefix="$HOME/share/R" \
     --enable-memory-profiling \
