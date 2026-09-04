@@ -742,7 +742,7 @@ Function EnableAccessibilityKeys {
 Function ShowTaskManagerDetails {
 	Write-Output "Showing task manager details..."
 	$taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
-	$timeout = 30000
+	$timeout = 10000
 	$sleep = 100
 	Do {
 		Start-Sleep -Milliseconds $sleep
@@ -1525,8 +1525,15 @@ $TweakList | ForEach-Object {
 Write-Host ""
 Write-Host "Done! A system restart is recommended to apply all changes." -ForegroundColor Green
 
-# Press any key to restart, Ctrl+C to exit
+# Press any key to restart; close the window or Ctrl+C to exit without restarting
 Write-Host ""
-Write-Host "Press any key to restart the computer, or Ctrl+C to exit." -ForegroundColor Yellow
-[Console]::ReadKey($true) | Out-Null
+Write-Host "Press any key to RESTART the computer." -ForegroundColor Yellow
+Write-Host "To exit without restarting, close this window or press Ctrl+C." -ForegroundColor Yellow
+[Console]::TreatControlCAsInput = $true
+try {
+    $key = [Console]::ReadKey($true)
+    if ($key.Modifiers -band [ConsoleModifiers]::Control -and $key.Key -eq 'C') { exit }
+} finally {
+    [Console]::TreatControlCAsInput = $false
+}
 Restart
