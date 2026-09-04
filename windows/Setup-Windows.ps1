@@ -170,101 +170,10 @@ RemoveFaxPrinter                # AddFaxPrinter
 # UninstallFaxAndScan           # InstallFaxAndScan
 
 ### Auxiliary Functions ###
-WaitForKey
-Restart
+# WaitForKey
+# Restart
 "@
 
-# List all available tweaks
-if ($List) {
-    Write-Host "Available tweaks:" -ForegroundColor Green
-    Write-Host ""
-
-    $categories = @{
-        "Privacy" = @("Telemetry", "AppSuggestions", "Feedback", "TailoredExperiences", "AdvertisingID", "WebLangList", "ErrorReporting", "DiagTrack", "WAPPush", "ClearRecentFiles", "RecentFiles")
-        "Security" = @("AccountProtectionWarn", "DownloadBlocking", "DEPOptOut", "DEPOptIn")
-        "Network" = @("CurrentNetworkPrivate", "CurrentNetworkPublic", "UnknownNetworksPrivate", "UnknownNetworksPublic", "ConnectionSharing", "RemoteAssistance", "RemoteDesktop")
-        "Service" = @("UpdateMSProducts", "UpdateRestart", "MaintenanceWakeUp", "AutoRestartSignOn", "SharedExperiences", "Autoplay", "Autorun", "RestorePoints", "NTFSLongPaths", "BIOSTimeUTC", "BIOSTimeLocal", "Hibernation", "SleepButton")
-        "UI" = @("AccessibilityKeys", "TaskManagerDetails", "FileOperationsDetails", "SearchAppInStore", "NewAppPrompt", "ShortcutInName", "ENKeyboard", "Numlock", "EnhPointerPrecision", "F1HelpKey")
-        "Explorer" = @("KnownExtensions", "HiddenFiles", "SuperHiddenFiles", "EmptyDrives", "NavPaneExpand", "RecentShortcuts", "ExplorerThisPC", "ExplorerQuickAccess", "QuickAccess", "RecycleBinOnDesktop", "RecycleBinFromDesktop", "ThisPCOnDesktop", "ThisPCFromDesktop", "DesktopFromThisPC", "DesktopInThisPC", "DesktopFromExplorer", "DesktopInExplorer", "DocumentsFromThisPC", "DocumentsInThisPC", "DocumentsFromExplorer", "DocumentsInExplorer", "DownloadsFromThisPC", "DownloadsInThisPC", "DownloadsFromExplorer", "DownloadsInExplorer", "MusicFromThisPC", "MusicInThisPC", "MusicFromExplorer", "MusicInExplorer", "PicturesFromThisPC", "PicturesInThisPC", "PicturesFromExplorer", "PicturesInExplorer", "VideosFromThisPC", "VideosInThisPC", "VideosFromExplorer", "VideosInExplorer", "ThumbnailCache", "ThumbsDBOnNetwork")
-        "Application" = @("MsftBloat", "ThirdPartyBloat", "XPSPrinter", "FaxPrinter", "FaxAndScan")
-    }
-
-    foreach ($cat in $categories.Keys) {
-        Write-Host "[$cat]" -ForegroundColor Yellow
-        $items = $categories[$cat] | Sort-Object
-        foreach ($item in $items) {
-            $enable = "Enable$item"
-            $disable = "Disable$item"
-            $show = "Show$item"
-            $hide = "Hide$item"
-            $set1 = "Set$item"
-            $set2 = "Set${item}In"
-            $set3 = "Set${item}Out"
-            $uninstall = "Uninstall$item"
-            $install = "Install$item"
-            $remove = "Remove$item"
-            $add = "Add$item"
-
-            $variants = @()
-            if (Get-Command $disable -ErrorAction SilentlyContinue) { $variants += $disable }
-            if (Get-Command $enable -ErrorAction SilentlyContinue) { $variants += $enable }
-            if (Get-Command $hide -ErrorAction SilentlyContinue) { $variants += $hide }
-            if (Get-Command $show -ErrorAction SilentlyContinue) { $variants += $show }
-            if (Get-Command $set1 -ErrorAction SilentlyContinue) { $variants += $set1 }
-            if (Get-Command $set2 -ErrorAction SilentlyContinue) { $variants += $set2 }
-            if (Get-Command $set3 -ErrorAction SilentlyContinue) { $variants += $set3 }
-            if (Get-Command $uninstall -ErrorAction SilentlyContinue) { $variants += $uninstall }
-            if (Get-Command $install -ErrorAction SilentlyContinue) { $variants += $install }
-            if (Get-Command $remove -ErrorAction SilentlyContinue) { $variants += $remove }
-            if (Get-Command $add -ErrorAction SilentlyContinue) { $variants += $add }
-
-            if ($variants.Count -gt 0) {
-                Write-Host "  $($variants -join ', ')"
-            }
-        }
-        Write-Host ""
-    }
-    exit
-}
-
-# Load tweaks
-if ($Tweaks -ne "") {
-    # Use custom tweaks
-    $Tweaks.Split(",") | ForEach-Object { AddOrRemoveTweak($_) }
-} else {
-    # Use default preset
-    $parsed = Parse-Preset $PresetTexts["Default"]
-    $parsed | ForEach-Object { AddOrRemoveTweak($_) }
-}
-
-Write-Host "The following tweaks will be applied:" -ForegroundColor Green
-$TweakList | ForEach-Object { Write-Host "  - $_" }
-Write-Host ""
-
-# Confirm execution
-$confirm = Read-Host "Continue? (Y/n)"
-if ($confirm -eq "n" -or $confirm -eq "N") {
-    Write-Host "Cancelled"
-    exit
-}
-
-# Request admin privileges
-RequireAdmin
-
-Write-Host "Applying tweaks..." -ForegroundColor Green
-Write-Host ""
-
-# Execute tweaks
-$TweakList | ForEach-Object {
-    try {
-        Invoke-Expression $_
-    } catch {
-        Write-Warning "Error executing $_ : $($_.Exception.Message)"
-    }
-}
-
-Write-Host ""
-Write-Host "Done! A system restart is recommended to apply all changes." -ForegroundColor Green
 
 ##########
 # Function definitions below
@@ -1523,3 +1432,101 @@ Function Restart {
 ##########
 #endregion Auxiliary Functions
 ##########
+
+# List all available tweaks
+if ($List) {
+    Write-Host "Available tweaks:" -ForegroundColor Green
+    Write-Host ""
+
+    $categories = @{
+        "Privacy" = @("Telemetry", "AppSuggestions", "Feedback", "TailoredExperiences", "AdvertisingID", "WebLangList", "ErrorReporting", "DiagTrack", "WAPPush", "ClearRecentFiles", "RecentFiles")
+        "Security" = @("AccountProtectionWarn", "DownloadBlocking", "DEPOptOut", "DEPOptIn")
+        "Network" = @("CurrentNetworkPrivate", "CurrentNetworkPublic", "UnknownNetworksPrivate", "UnknownNetworksPublic", "ConnectionSharing", "RemoteAssistance", "RemoteDesktop")
+        "Service" = @("UpdateMSProducts", "UpdateRestart", "MaintenanceWakeUp", "AutoRestartSignOn", "SharedExperiences", "Autoplay", "Autorun", "RestorePoints", "NTFSLongPaths", "BIOSTimeUTC", "BIOSTimeLocal", "Hibernation", "SleepButton")
+        "UI" = @("AccessibilityKeys", "TaskManagerDetails", "FileOperationsDetails", "SearchAppInStore", "NewAppPrompt", "ShortcutInName", "ENKeyboard", "Numlock", "EnhPointerPrecision", "F1HelpKey")
+        "Explorer" = @("KnownExtensions", "HiddenFiles", "SuperHiddenFiles", "EmptyDrives", "NavPaneExpand", "RecentShortcuts", "ExplorerThisPC", "ExplorerQuickAccess", "QuickAccess", "RecycleBinOnDesktop", "RecycleBinFromDesktop", "ThisPCOnDesktop", "ThisPCFromDesktop", "DesktopFromThisPC", "DesktopInThisPC", "DesktopFromExplorer", "DesktopInExplorer", "DocumentsFromThisPC", "DocumentsInThisPC", "DocumentsFromExplorer", "DocumentsInExplorer", "DownloadsFromThisPC", "DownloadsInThisPC", "DownloadsFromExplorer", "DownloadsInExplorer", "MusicFromThisPC", "MusicInThisPC", "MusicFromExplorer", "MusicInExplorer", "PicturesFromThisPC", "PicturesInThisPC", "PicturesFromExplorer", "PicturesInExplorer", "VideosFromThisPC", "VideosInThisPC", "VideosFromExplorer", "VideosInExplorer", "ThumbnailCache", "ThumbsDBOnNetwork")
+        "Application" = @("MsftBloat", "ThirdPartyBloat", "XPSPrinter", "FaxPrinter", "FaxAndScan")
+    }
+
+    foreach ($cat in $categories.Keys) {
+        Write-Host "[$cat]" -ForegroundColor Yellow
+        $items = $categories[$cat] | Sort-Object
+        foreach ($item in $items) {
+            $enable = "Enable$item"
+            $disable = "Disable$item"
+            $show = "Show$item"
+            $hide = "Hide$item"
+            $set1 = "Set$item"
+            $set2 = "Set${item}In"
+            $set3 = "Set${item}Out"
+            $uninstall = "Uninstall$item"
+            $install = "Install$item"
+            $remove = "Remove$item"
+            $add = "Add$item"
+
+            $variants = @()
+            if (Get-Command $disable -ErrorAction SilentlyContinue) { $variants += $disable }
+            if (Get-Command $enable -ErrorAction SilentlyContinue) { $variants += $enable }
+            if (Get-Command $hide -ErrorAction SilentlyContinue) { $variants += $hide }
+            if (Get-Command $show -ErrorAction SilentlyContinue) { $variants += $show }
+            if (Get-Command $set1 -ErrorAction SilentlyContinue) { $variants += $set1 }
+            if (Get-Command $set2 -ErrorAction SilentlyContinue) { $variants += $set2 }
+            if (Get-Command $set3 -ErrorAction SilentlyContinue) { $variants += $set3 }
+            if (Get-Command $uninstall -ErrorAction SilentlyContinue) { $variants += $uninstall }
+            if (Get-Command $install -ErrorAction SilentlyContinue) { $variants += $install }
+            if (Get-Command $remove -ErrorAction SilentlyContinue) { $variants += $remove }
+            if (Get-Command $add -ErrorAction SilentlyContinue) { $variants += $add }
+
+            if ($variants.Count -gt 0) {
+                Write-Host "  $($variants -join ', ')"
+            }
+        }
+        Write-Host ""
+    }
+    exit
+}
+
+# Load tweaks
+if ($Tweaks -ne "") {
+    # Use custom tweaks
+    $Tweaks.Split(",") | ForEach-Object { AddOrRemoveTweak($_) }
+} else {
+    # Use default preset
+    $parsed = Parse-Preset $PresetTexts["Default"]
+    $parsed | ForEach-Object { AddOrRemoveTweak($_) }
+}
+
+Write-Host "The following tweaks will be applied:" -ForegroundColor Green
+$TweakList | ForEach-Object { Write-Host "  - $_" }
+Write-Host ""
+
+# Confirm execution
+$confirm = Read-Host "Continue? (Y/n)"
+if ($confirm -eq "n" -or $confirm -eq "N") {
+    Write-Host "Cancelled"
+    exit
+}
+
+# Request admin privileges
+RequireAdmin
+
+Write-Host "Applying tweaks..." -ForegroundColor Green
+Write-Host ""
+
+# Execute tweaks
+$TweakList | ForEach-Object {
+    try {
+        Invoke-Expression $_
+    } catch {
+        Write-Warning "Error executing $_ : $($_.Exception.Message)"
+    }
+}
+
+Write-Host ""
+Write-Host "Done! A system restart is recommended to apply all changes." -ForegroundColor Green
+
+# Press any key to restart, Ctrl+C to exit
+Write-Host ""
+Write-Host "Press any key to restart the computer, or Ctrl+C to exit." -ForegroundColor Yellow
+[Console]::ReadKey($true) | Out-Null
+Restart
