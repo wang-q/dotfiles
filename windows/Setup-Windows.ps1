@@ -39,15 +39,18 @@ Function RequireAdmin {
 }
 
 # Parse and manage tweaks
-$tweaks = @()
+# Named $TweakList to avoid clashing with the [string]$Tweaks param:
+# PowerShell variables are case-insensitive, and the param's [string] type
+# constraint would silently turn "+=" into string concatenation.
+$TweakList = @()
 $PSCommandArgs = @()
 
 Function AddOrRemoveTweak($tweak) {
     $tweak = $tweak.Trim()
     If ($tweak[0] -eq "!") {
-        $script:tweaks = $script:tweaks | Where-Object { $_ -ne $tweak.Substring(1) }
+        $script:TweakList = @($script:TweakList | Where-Object { $_ -ne $tweak.Substring(1) })
     } ElseIf ($tweak -ne "") {
-        $script:tweaks += $tweak
+        $script:TweakList += $tweak
     }
 }
 
@@ -235,7 +238,7 @@ if ($Tweaks -ne "") {
 }
 
 Write-Host "The following tweaks will be applied:" -ForegroundColor Green
-$tweaks | ForEach-Object { Write-Host "  - $_" }
+$TweakList | ForEach-Object { Write-Host "  - $_" }
 Write-Host ""
 
 # Confirm execution
@@ -252,7 +255,7 @@ Write-Host "Applying tweaks..." -ForegroundColor Green
 Write-Host ""
 
 # Execute tweaks
-$tweaks | ForEach-Object {
+$TweakList | ForEach-Object {
     try {
         Invoke-Expression $_
     } catch {
@@ -1520,8 +1523,3 @@ Function Restart {
 ##########
 #endregion Auxiliary Functions
 ##########
-
-
-
-# Export functions
-Export-ModuleMember -Function *
